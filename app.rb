@@ -3,11 +3,12 @@ require "sinatra"
 
 configure do
 	require "redis"
-	redisUri = ENV["REDISTOGO_URL"] || 'redis://localhost:6379'
+	redisUri = ENV["REDISCLOUD_URL"] || 'redis://localhost:6379'
 	uri = URI.parse(redisUri)
 	REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 end
 
 get "/" do
-	"Hello World!"
+	REDIS.set("welcome", "Hello World!")
+	erb "<h1>" + REDIS.get('welcome') + "</h1>"
 end
