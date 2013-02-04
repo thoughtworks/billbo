@@ -15,6 +15,7 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 
 I'd recommend using [Appfog](http://appfog.com)
 
+ - Create an account on [Appfog](http://appfog.com);
  - Create a Sinatra project;
  - Once it's created, go to Add-ons page and install Redis-Cloud;
  - In the Services tab add a Redis service;
