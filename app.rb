@@ -9,6 +9,6 @@ configure do
 end
 
 get "/" do
-	REDIS.set("welcome", "Hello World!")
-	erb "<h1>" + REDIS.get('welcome') + "</h1>"
+	REDIS.set("welcome", "Hello World")
+	erb :index
 end
