@@ -1,4 +1,3 @@
-require 'rspec'
 require './model/bill'
 
 describe Bill do
