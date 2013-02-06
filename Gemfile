@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 gem 'sinatra', ' 1.3.4'
 gem 'redis', '3.0.2'
-gem 'af'
 
-group :test, :development do
+group :development do
+  gem 'af'
 	gem 'shotgun', '0.9'
+  gem 'rspec', '2.12.0'
 end
 
