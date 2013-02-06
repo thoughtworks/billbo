@@ -1,6 +1,6 @@
 require 'bundler/setup'
+require 'sinatra'
 require './model/bill'
-Bundler.require
 
 configure do
 	require 'redis'
