@@ -1,4 +1,4 @@
-require './model/bill'
+require 'spec_helper'
 
 describe Bill do
   let(:bill) do
