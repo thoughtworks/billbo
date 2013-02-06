@@ -9,6 +9,4 @@ configure do
 	REDIS = Redis.new(host: uri.host, port: uri.port, password: uri.password)
 end
 
-get '/' do
-	erb :index
-end
+require './controller/application_controller.rb'
