@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'sinatra', ' 1.3.4'
 gem 'redis', '3.0.2'
+gem 'activerecord', '3.2.11'
+gem 'sinatra-activerecord', '1.2.1'
+gem 'ohm', '1.2.0'
 
 group :development do
   gem 'af'
