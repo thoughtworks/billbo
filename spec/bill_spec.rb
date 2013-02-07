@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe Bill do
-  let(:bill) do
-    Bill.new(issued_by: 'company')
-  end 
-  subject { bill }
-
-  it { should be_valid }
+  it 'finds a bill by id' do
+    bill = Bill.find 4
+    bill.id.should == 4
+  end
 end
