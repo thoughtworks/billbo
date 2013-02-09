@@ -13,18 +13,13 @@ class Bill
 
   def self.find(id)
     bill = REDIS.hgetall("bills:#{id}")
-    receipt = if bill['bill_receipt'].empty?
-                nil
-              else
-                bill['bill_receipt']
-              end
     new id,
         bill['issued_by'],
         bill['due_date'],
         bill['total_amount'],
         bill['barcode'],
-        receipt,
-        bill['status']
+        bill['bill_receipt'],
+        bill['status'] unless bill.empty?
   end
 
   def save
