@@ -38,6 +38,10 @@ class Bill
     REDIS.keys("bills:*").count
   end
 
+  def to_s
+    "Bill: id:#{@id}, issued_by:#{@issued_by}, due_date:#{@due_date}, total_amount:#{@total_amount}, barcode:#{@barcode}, status:#{@status}"
+  end
+
   def ===(other_bill)
     self.instance_variables.each do |ivar|
       return false unless self.instance_variable_get(ivar).eql? other_bill.instance_variable_get(ivar)

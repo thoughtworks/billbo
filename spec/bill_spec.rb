@@ -38,6 +38,11 @@ describe Bill do
     bills_fetched.count.should == bills.count
   end
 
+  it 'prints a bill' do
+    expected = "Bill: id:#{bill.id}, issued_by:#{bill.issued_by}, due_date:#{bill.due_date}, total_amount:#{bill.total_amount}, barcode:#{bill.barcode}, status:#{bill.status}"
+    bill.to_s.should == expected
+  end
+
   after do
     REDIS.del 'bills'
     REDIS.keys('bills:*').each { |key| REDIS.del key }
