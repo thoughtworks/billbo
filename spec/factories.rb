@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :bill do
-    id 999
+    sequence (:id) 
     issued_by "company"
     due_date "25-01-2013"
     total_amount 123.45

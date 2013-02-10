@@ -17,6 +17,7 @@ class Bill
                   :total_amount, @total_amount,
                   :barcode, @barcode,
                   :status, @status)
+    REDIS.zadd 'bills', Time.now.to_i, @id
   end
 
   def self.find(id)
@@ -27,6 +28,10 @@ class Bill
       bill['total_amount'],
       bill['barcode'],
       bill['status'] unless bill.empty?
+  end
+
+  def self.all
+    REDIS.zrevrange('bills', 0, -1).map { |id| find id }
   end
 
   def self.count

@@ -30,6 +30,14 @@ describe Bill do
     Bill.count.should == 1
   end
 
+  it 'gets all bills' do
+    number_of_bills = 5
+    bills = FactoryGirl.build_list(:bill, number_of_bills) 
+    bills.each { |b| b.save }
+    bills_fetched = Bill.all
+    bills_fetched.count.should == bills.count
+  end
+
   after do
     REDIS.del 'bills'
     REDIS.keys('bills:*').each { |key| REDIS.del key }
