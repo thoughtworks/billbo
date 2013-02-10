@@ -11,14 +11,14 @@ class Bill
     @status        = status.to_sym
   end
 
-  def self.create(bill)
-    REDIS.hmset("bills:#{bill.id}",
-                :issued_by, bill.issued_by,
-                  :due_date, bill.due_date,
-                  :total_amount, bill.total_amount,
-                  :barcode, bill.barcode,
-                  :bill_receipt, bill.bill_receipt,
-                  :status, bill.status)
+  def save
+    REDIS.hmset("bills:#{@id}",
+                :issued_by, @issued_by,
+                  :due_date, @due_date,
+                  :total_amount, @total_amount,
+                  :barcode, @barcode,
+                  :bill_receipt, @bill_receipt,
+                  :status, @status)
   end
 
   def self.count

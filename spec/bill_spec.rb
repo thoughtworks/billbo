@@ -14,13 +14,13 @@ describe Bill do
     (bill_different_id === bill).should be_false
   end
 
-  it 'creates a bill' do
-    expect { Bill.create(bill) }.to change { Bill.count }.by(1)
+  it 'saves a bill' do
+    expect { bill.save }.to change { Bill.count }.by(1)
   end
 
   it 'counts the amount of bills' do
     Bill.count.should == 0
-    Bill.create(bill)
+    bill.save
     Bill.count.should == 1
   end
 
