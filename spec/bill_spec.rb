@@ -20,13 +20,7 @@ describe Bill do
 
   it 'counts the amount of bills' do
     Bill.count.should == 0
-    REDIS.hmset("bills:#{bill.id}",
-                :issued_by, bill.issued_by,
-                  :due_date, bill.due_date,
-                  :total_amount, bill.total_amount,
-                  :barcode, bill.barcode,
-                  :bill_receipt, bill.bill_receipt,
-                  :status, bill.status)
+    Bill.create(bill)
     Bill.count.should == 1
   end
 
