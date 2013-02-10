@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/thoughtworks/billbo.png?branch=master)](https://travis-ci.org/thoughtworks/billbo)
 
 Help an institution that helps other people. They got a lot of bills to pay and we got a lot of ideas to share.
 
