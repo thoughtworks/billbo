@@ -1,13 +1,12 @@
 class Bill
-  attr_reader :id, :issued_by, :due_date, :total_amount, :barcode, :bill_receipt, :status
+  attr_reader :id, :issued_by, :due_date, :total_amount, :barcode, :status
 
-  def initialize(id, issued_by, due_date, total_amount, barcode, bill_receipt, status)
+  def initialize(id, issued_by, due_date, total_amount, barcode, status)
     @id            = id.to_i
     @issued_by     = issued_by
     @due_date      = due_date
     @total_amount  = total_amount.to_f
     @barcode       = barcode
-    @bill_receipt  = bill_receipt
     @status        = status.to_sym
   end
 
@@ -17,8 +16,17 @@ class Bill
                   :due_date, @due_date,
                   :total_amount, @total_amount,
                   :barcode, @barcode,
-                  :bill_receipt, @bill_receipt,
                   :status, @status)
+  end
+
+  def self.find(id)
+    bill = REDIS.hgetall("bills:#{id}")
+    new id,
+      bill['issued_by'],
+      bill['due_date'],
+      bill['total_amount'],
+      bill['barcode'],
+      bill['status'] unless bill.empty?
   end
 
   def self.count
@@ -27,7 +35,7 @@ class Bill
 
   def ===(other_bill)
     self.instance_variables.each do |ivar|
-      return unless self.instance_variable_get(ivar).eql? other_bill.instance_variable_get(ivar)
+      return false unless self.instance_variable_get(ivar).eql? other_bill.instance_variable_get(ivar)
     end
   end
 end
