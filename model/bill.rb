@@ -11,6 +11,20 @@ class Bill
     @status        = status.to_sym
   end
 
+  def self.create(bill)
+    REDIS.hmset("bills:#{bill.id}",
+                :issued_by, bill.issued_by,
+                  :due_date, bill.due_date,
+                  :total_amount, bill.total_amount,
+                  :barcode, bill.barcode,
+                  :bill_receipt, bill.bill_receipt,
+                  :status, bill.status)
+  end
+
+  def self.count
+    REDIS.keys("bills:*").count
+  end
+
   def ===(other_bill)
     self.instance_variables.each do |ivar|
       return unless self.instance_variable_get(ivar).eql? other_bill.instance_variable_get(ivar)
