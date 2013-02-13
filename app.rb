@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require 'sinatra'
 Bundler.require
 require './model/bill'
 
