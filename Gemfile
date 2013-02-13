@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra', ' 1.3.4'
 gem 'redis', '3.0.2'
+gem 'thin'
 
 group :test do
   gem 'rspec', '2.12.0'
