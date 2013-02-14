@@ -1,4 +1,4 @@
 get '/' do
   @bills = Bill.all
-	erb :index
+	erb :list_bills
 end
