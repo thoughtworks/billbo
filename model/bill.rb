@@ -30,6 +30,12 @@ class Bill
       bill['status'] unless bill.empty?
   end
 
+  def self.create(bill)
+    id = REDIS.incr("ids:bills")
+    b = build(id, bill)
+    return b if b.save
+  end
+
   def self.all
     REDIS.zrevrange('bills', 0, -1).map { |id| find id }
   end
@@ -46,5 +52,10 @@ class Bill
     self.instance_variables.each do |ivar|
       return false unless self.instance_variable_get(ivar).eql? other_bill.instance_variable_get(ivar)
     end
+  end
+
+  private
+  def self.build(id, bill)
+    new id, bill.issued_by, bill.due_date, bill.total_amount, bill.barcode, bill.status
   end
 end

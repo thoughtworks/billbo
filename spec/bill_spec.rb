@@ -19,6 +19,13 @@ describe Bill do
     bill_found = Bill.find(bill.id)
     (bill === bill_found).should be_true
   end
+
+  it 'creates a bill' do
+    bill_to_be_created = FactoryGirl.build(:bill, id: nil)
+    Bill.create(bill_to_be_created).stub(:save)
+    bill_created = Bill.create(bill_to_be_created)
+    bill_created.id.should_not be_nil
+  end
   
   it 'finds a bill by id' do
     bill.save
