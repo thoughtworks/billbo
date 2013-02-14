@@ -16,6 +16,8 @@ describe Bill do
 
   it 'saves a bill' do
     expect { bill.save }.to change { Bill.count }.by(1)
+    bill_found = Bill.find(bill.id)
+    (bill === bill_found).should be_true
   end
   
   it 'finds a bill by id' do
