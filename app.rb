@@ -10,4 +10,5 @@ configure do
 	REDIS = Redis.new(host: uri.host, port: uri.port, password: uri.password)
 end
 
+require './db/seed.rb'
 require './controller/application_controller.rb'
