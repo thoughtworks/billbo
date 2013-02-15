@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'sinatra', ' 1.3.4'
 gem "sinatra-r18n", "1.1.4"
 gem 'redis', '3.0.2'
-gem 'thin'
+gem 'carrierwave', '0.8.0'
+gem 'carrierwave-google_drive'
 
 group :test do
   gem 'rspec', '2.12.0'
@@ -12,6 +13,7 @@ end
 group :development do
   gem 'af'
 	gem 'shotgun', '0.9'
+  gem 'thin'
   gem 'pry'
   gem 'guard-rspec', '2.4.0'
   gem 'rb-fsevent', '0.9.1'
