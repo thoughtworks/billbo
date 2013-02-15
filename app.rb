@@ -10,5 +10,5 @@ configure do
 	REDIS = Redis.new(host: uri.host, port: uri.port, password: uri.password)
 end
 
-require './db/seed.rb'
+require './db/seed.rb' if ENV['RACK_ENV'] == "development"
 require './controller/application_controller.rb'
