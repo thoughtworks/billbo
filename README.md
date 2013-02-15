@@ -8,7 +8,7 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 
 ### To run locally for development
 
- - Start redis server `$ path/to/redis/src/redis-server app.rb`
+ - Start redis server `$ path/to/redis/src/redis-server`
  - Run the application using shotgun `$ shotgun app.rb`
  - Go to [localhost:9393](http://localhost:9393)
 
