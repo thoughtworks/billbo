@@ -2,7 +2,6 @@ require 'bundler/setup'
 require 'sinatra'
 Bundler.require
 require './model/bill'
-require './model/file_uploader'
 
 configure do
 	require 'redis'

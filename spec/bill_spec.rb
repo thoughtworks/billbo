@@ -14,7 +14,7 @@ describe Bill do
     (bill_different_id === bill).should be_false
   end
 
-  it 'saves a bill without receipt' do
+  it 'saves a bill' do
     expect { bill.save }.to change { Bill.count }.by(1)
     bill_found = Bill.find(bill.id)
     (bill === bill_found).should be_true
@@ -48,7 +48,7 @@ describe Bill do
   end
 
   it 'prints a bill' do
-    expected = "Bill: id:#{bill.id}, issued_by:#{bill.issued_by}, due_date:#{bill.due_date}, total_amount:#{bill.total_amount}, barcode:#{bill.barcode}, receipt:#{bill.receipt}, status:#{bill.status}"
+    expected = "Bill: id:#{bill.id}, issued_by:#{bill.issued_by}, due_date:#{bill.due_date}, total_amount:#{bill.total_amount}, barcode:#{bill.barcode}, status:#{bill.status}"
     bill.to_s.should == expected
   end
 

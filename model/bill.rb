@@ -1,46 +1,32 @@
 class Bill
-  attr_reader :id, :issued_by, :due_date, :total_amount, :barcode, :receipt, :status
+  attr_reader :id, :issued_by, :due_date, :total_amount, :barcode, :status
 
-  def initialize(id, issued_by, due_date, total_amount, barcode, receipt, status)
+  def initialize(id, issued_by, due_date, total_amount, barcode, status)
     @id            = id.to_i
     @issued_by     = issued_by
     @due_date      = due_date
     @total_amount  = total_amount.to_f
     @barcode       = barcode
-    @receipt       = receipt
     @status        = status.to_sym
   end
 
   def save
-    url = if @receipt
-            @receipt.url
-          else
-            ""
-          end
     REDIS.hmset("bills:#{@id}",
                 :issued_by, @issued_by,
                   :due_date, @due_date,
                   :total_amount, @total_amount,
                   :barcode, @barcode,
-                  :receipt, url,
                   :status, @status)
     REDIS.zadd 'bills', Time.now.to_i, @id
   end
 
   def self.find(id)
     bill = REDIS.hgetall("bills:#{id}")
-    if bill['receipt'] && !bill['receipt'].empty?
-      receipt = FileUploader.new
-      receipt = bill['receipt']
-    else
-      receipt = nil
-    end
     new id,
       bill['issued_by'],
       bill['due_date'],
       bill['total_amount'],
       bill['barcode'],
-      receipt,
       bill['status'] unless bill.empty?
   end
 
@@ -59,7 +45,7 @@ class Bill
   end
 
   def to_s
-    "Bill: id:#{@id}, issued_by:#{@issued_by}, due_date:#{@due_date}, total_amount:#{@total_amount}, barcode:#{@barcode}, receipt:#{@receipt}, status:#{@status}"
+    "Bill: id:#{@id}, issued_by:#{@issued_by}, due_date:#{@due_date}, total_amount:#{@total_amount}, barcode:#{@barcode}, status:#{@status}"
   end
 
   def ===(other_bill)
@@ -70,6 +56,6 @@ class Bill
 
   private
   def self.build(id, bill)
-    new id, bill.issued_by, bill.due_date, bill.total_amount, bill.barcode, bill.receipt, bill.status
+    new id, bill.issued_by, bill.due_date, bill.total_amount, bill.barcode, bill.status
   end
 end
