@@ -21,10 +21,10 @@ describe Bill do
   end
 
   it 'creates a bill' do
-    bill_to_be_created = FactoryGirl.build(:bill, id: nil)
-    Bill.create(bill_to_be_created).stub(:save)
-    bill_created = Bill.create(bill_to_be_created)
-    bill_created.id.should_not be_nil
+    bill_to_be_created = FactoryGirl.build(:bill, id: 0)
+    Bill.create(bill_to_be_created.to_hash).stub(:save)
+    bill_created = Bill.create(bill_to_be_created.to_hash)
+    bill_created.id.should_not == 0
   end
   
   it 'finds a bill by id' do
@@ -50,6 +50,12 @@ describe Bill do
   it 'prints a bill' do
     expected = "Bill: id:#{bill.id}, issued_by:#{bill.issued_by}, due_date:#{bill.due_date}, total_amount:#{bill.total_amount}, barcode:#{bill.barcode}, status:#{bill.status}"
     bill.to_s.should == expected
+  end
+
+  it 'builds a hash from a bill' do
+    hash = { 'id' => 0, 'issued_by' => "company", 'due_date' => "25-01-2013", 'total_amount' => 123.45, 'barcode' => "000000000000000000000000000000000000", 'status' => :opened }
+    bill_created = FactoryGirl.build(:bill, id: 0)
+    (bill_created.to_hash === hash).should be_true
   end
 
   after do

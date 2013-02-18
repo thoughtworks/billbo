@@ -12,11 +12,11 @@ class Bill
 
   def save
     REDIS.hmset("bills:#{@id}",
-                :issued_by, @issued_by,
-                  :due_date, @due_date,
-                  :total_amount, @total_amount,
-                  :barcode, @barcode,
-                  :status, @status)
+                'issued_by', @issued_by,
+                'due_date', @due_date,
+                'total_amount', @total_amount,
+                'barcode', @barcode,
+                'status', @status)
     REDIS.zadd 'bills', Time.now.to_i, @id
   end
 
@@ -54,8 +54,16 @@ class Bill
     end
   end
 
+  def to_hash
+    hash = {}
+    instance_variables.each do
+      |var| hash[var.to_s.delete("@")] = instance_variable_get(var) 
+    end
+    hash
+  end
+
   private
   def self.build(id, bill)
-    new id, bill.issued_by, bill.due_date, bill.total_amount, bill.barcode, bill.status
+    new id, bill['issued_by'], bill['due_date'], bill['total_amount'], bill['barcode'], bill['status']
   end
 end
