@@ -1,1 +1,18 @@
-<h3><%= i18n.new_bill %></h3>
+<form class="form-horizontal">
+  <fieldset>
+    <h3><%= i18n.new_bill %></h3>
+    <div class="control-group">
+      <input type="text" placeholder="<%= i18n.issued_by %>" required />
+    </div>
+    <div class="control-group">
+      <input type="text" value="02-16-2012" id="datepicker" required />
+    </div>
+    <div class="control-group">
+      <input type="text" placeholder="<%= i18n.total_amount %>" required />
+    </div>
+    <div class="control-group">
+      <input type="text" placeholder="<%= i18n.barcode %>" required />
+    </div>
+    <button type="submit" class="btn"><%= i18n.create_bill %></button>
+  </fieldset>
+</form>

@@ -1,3 +1,8 @@
 subtext: "It's all about helping someone. But helping efficiently"
 bills: Bills
 new_bill: New Bill
+create_bill: Create Bill
+barcode: Barcode
+total_amount: Total Amount
+due_date: Due Date
+issued_by: Company

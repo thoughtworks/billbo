@@ -1,3 +1,8 @@
 subtext: "Para ajudar alguém. Mas ajudar eficientemente"
 bills: Contas
 new_bill: Nova Conta
+issued_by: Empresa
+due_date: Data de Vencimento
+total_amount: Valor Total
+barcode: Código de Barras
+create_bill: Criar Conta
