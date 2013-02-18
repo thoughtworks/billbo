@@ -32,6 +32,7 @@ class Bill
 
   def self.create(bill)
     id = REDIS.incr("ids:bills")
+    bill['status'] = :opened
     b = build(id, bill)
     return b if b.save
   end

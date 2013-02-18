@@ -1,17 +1,17 @@
-<form class="form-horizontal">
+<form class="form-horizontal" method="post" action="/new_bill">
   <fieldset>
     <h3><%= i18n.new_bill %></h3>
     <div class="control-group">
-      <input type="text" placeholder="<%= i18n.issued_by %>" required />
+      <input name="issued_by" type="text" placeholder="<%= i18n.issued_by %>" required />
     </div>
     <div class="control-group">
-      <input type="text" value="02-16-2012" id="datepicker" required />
+      <input name="due_date" type="text" placeholder="<%= i18n.due_date %> dd-MM-yyyy" id="datepicker" required />
     </div>
     <div class="control-group">
-      <input type="text" placeholder="<%= i18n.total_amount %>" required />
+      <input name="total_amount" type="text" placeholder="<%= i18n.total_amount %>" required />
     </div>
     <div class="control-group">
-      <input type="text" placeholder="<%= i18n.barcode %>" required />
+      <input name="barcode" type="text" placeholder="<%= i18n.barcode %>" required />
     </div>
     <button type="submit" class="btn"><%= i18n.create_bill %></button>
   </fieldset>
