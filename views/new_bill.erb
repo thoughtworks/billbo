@@ -1,3 +1,10 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= value %>
+  </div>
+<% end %>
+
 <form class="form-horizontal" method="post" action="/new_bill">
   <fieldset>
     <h3><%= i18n.new_bill %></h3>
