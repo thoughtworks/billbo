@@ -7,18 +7,16 @@ gem 'thin'
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 
-group :test do
-  gem 'rspec', '2.12.0'
-end
-
 group :development do
   gem 'af'
-	gem 'shotgun', '0.9'
+  gem 'shotgun', '0.9'
   gem 'pry'
-  gem 'guard-rspec', '2.4.0'
-  gem 'rb-fsevent', '0.9.1'
 end
 
-group :test, :development do
+group :test do
   gem 'factory_girl', '4.2.0'
+  gem 'rspec', '2.12.0'
+  gem 'guard-rspec', '2.4.0'
+  gem 'rb-fsevent', '0.9.1'
+  gem 'cucumber'
 end
