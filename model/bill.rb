@@ -21,13 +21,13 @@ class Bill
   end
 
   def self.find(id)
-    bill = REDIS.hgetall("bills:#{id}")
+    bill_hash = REDIS.hgetall("bills:#{id}")
     new id,
-      bill['issued_by'],
-      bill['due_date'],
-      bill['total_amount'],
-      bill['barcode'],
-      bill['status'] unless bill.empty?
+      bill_hash['issued_by'],
+      bill_hash['due_date'],
+      bill_hash['total_amount'],
+      bill_hash['barcode'],
+      bill_hash['status'] unless bill_hash.empty?
   end
 
   def self.create(bill)
@@ -64,7 +64,7 @@ class Bill
   end
 
   private
-  def self.build(id, bill)
-    new id, bill['issued_by'], bill['due_date'], bill['total_amount'], bill['barcode'], bill['status']
+  def self.build(id, bill_hash)
+    new id, bill_hash['issued_by'], bill_hash['due_date'], bill_hash['total_amount'], bill_hash['barcode'], bill_hash['status']
   end
 end
