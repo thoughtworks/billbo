@@ -1,3 +1,7 @@
+before do
+  params[:locale] = "pt"
+end
+
 get '/' do
   @bills = Bill.all
 	erb :list_bills
@@ -10,8 +14,8 @@ end
 post '/new_bill' do
   bill = Bill.create(params)
   if bill 
-    redirect '/new_bill', :success => "Bill created succesfully"
+    redirect '/new_bill', :success => i18n.bill_creation_success
   else
-    redirect '/new_bill', :error => "Problem creating the bill"
+    redirect '/new_bill', :error => i18n.bill_creation_fail
   end
 end

@@ -6,3 +6,5 @@ barcode: Barcode
 total_amount: Total Amount
 due_date: Due Date
 issued_by: Company
+bill_creation_success: Bill created succesfully
+bill_creation_fail: Problem creating the bill

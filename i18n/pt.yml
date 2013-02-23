@@ -6,3 +6,5 @@ due_date: Data de Vencimento
 total_amount: Valor Total
 barcode: Código de Barras
 create_bill: Criar Conta
+bill_creation_success: Conta criada com sucesso
+bill_creation_fail: Problema ao criar a conta
