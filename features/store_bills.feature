@@ -7,3 +7,8 @@ Feature: store bills
     Scenario: create an empty bill
         When I create an empty bill
         Then it should succeed
+
+    Scenario: list all bills
+        Given I have 3 bills created
+        When I open the home page
+        Then it should list 3 bills

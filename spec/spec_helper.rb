@@ -1,4 +1,4 @@
 require './app.rb'
 require 'factory_girl'
-require 'factories'
-
+require './spec/factories'
+require 'capybara'
