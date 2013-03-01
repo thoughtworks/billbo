@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), '..', '..', 'app')
-require 'Capybara'
-require 'Capybara/cucumber'
+require 'capybara'
+require 'capybara/cucumber'
 require 'factory_girl'
 require './spec/factories'
 require 'rspec'
@@ -8,7 +8,7 @@ require 'rspec'
 Capybara.app = eval("Rack::Builder.new {( " + File.read(File.dirname(__FILE__) + '/../../config.ru') + "\n )}")
 
 class SomeWorld
-  include Capybara
+  include Capybara::DSL
   include RSpec::Expectations
   include RSpec::Matchers
 end
