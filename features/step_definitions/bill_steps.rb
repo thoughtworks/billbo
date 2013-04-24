@@ -17,7 +17,7 @@ Then /^it should list (\d+) bills$/ do |bills|
                   end 
 
   within('#content') do
-    page.should have_css("p", count: bills_counter)
+    page.should have_css("div.bill-container", count: bills_counter)
   end
 end
 
