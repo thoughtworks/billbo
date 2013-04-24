@@ -1,4 +1,27 @@
 <h3><%= i18n.bills %></h3>
-<% @bills.each do |bill| %>
-  <p><%= bill.to_s %></p>
-<% end %>
+<ul class="thumbnails">
+  <% @bills.each do |bill| %>
+    <div class="bill-container">
+      <li class="span3">
+        <a class="thumbnail bill-box" href="#">
+          <img src="http://www.placehold.it/150x200" alt="" />
+          <h4><%= bill.issued_by %></h4>
+          <p>R$<%= bill.total_amount %></p>
+        </a>
+      </li>
+      <div class="bill-details">
+        <div class="row-fluid">
+          <div class="span4">
+            <img src="http://www.placehold.it/150x200" alt="" />
+          </div>
+          <div class="span8">
+            <p><%= bill.issued_by %></p>
+            <p>R$<%= bill.total_amount %></p>
+            <p><%= bill.due_date %></p>
+            <p><%= bill.barcode %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</ul>
