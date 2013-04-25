@@ -20,6 +20,11 @@ class Bill
     REDIS.zadd 'bills', Time.now.to_i, @id
   end
 
+  def close
+    @status = :closed
+    self.save
+  end
+
   def self.find(id)
     bill_hash = REDIS.hgetall("bills:#{id}")
     new id,
