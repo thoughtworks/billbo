@@ -4,8 +4,7 @@ var hideAllBillDetails = function() {
 }
 
 $(document).ready(function() {
-  $(".bill-box").on("click", function(event) {
-    event.preventDefault();
+  $(".bill-box").on("click", function() {
     hideAllBillDetails();
 
     var container = $(this).closest(".bill-container");
@@ -14,8 +13,7 @@ $(document).ready(function() {
     container.next().addClass("after-active-box");
   });
 
-  $(".close-bill-details").on("click", function(event) {
-    event.preventDefault();
+  $(".close-bill-details").on("click", function() {
     hideAllBillDetails();
   });
 });
