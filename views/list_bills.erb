@@ -4,7 +4,7 @@
     <div class="bill-container">
       <li class="span3">
         <a class="thumbnail bill-box" href="#">
-          <img src="http://www.placehold.it/150x200" alt="" />
+          <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
           <h4><%= bill.issued_by %></h4>
           <p>R$<%= bill.total_amount %></p>
         </a>
@@ -13,10 +13,10 @@
         <button type="button" class="close close-bill-details">&times;</button>
         <div class="row-fluid">
           <div class="span4">
-            <img src="http://www.placehold.it/150x200" alt="" />
+            <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
           </div>
           <div class="span8">
-            <p><%= bill.issued_by %></p>
+            <h4><%= bill.issued_by %></h4>
             <p>R$<%= bill.total_amount %></p>
             <p><%= bill.due_date %></p>
             <p><%= bill.barcode %></p>

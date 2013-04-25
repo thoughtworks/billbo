@@ -17,7 +17,7 @@
   width: 95%;
   height: 270px;
   background-color: #ddd;
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   display: none;
 }
 
@@ -32,7 +32,16 @@
 }
 
 .bill-box {
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   margin-bottom: 20px;
 }
 
+.bill-box img {
+  width: 150px;
+  height: 200px;
+}
+
+.bill-details img {
+  width: 200px;
+  height: 270px;
+}
