@@ -14,6 +14,6 @@ env:
     - secure: "YQuJSfxoObZirBviOwtVPZrlgztCwFGSmpDBXXIDR8yRxUZJP5/RmLcul2TI\n4AdjEzLPN54jS82FzLqKow3Bzq4yLq3GOpTzJBphyge87NfSbRUFJzVqdQ+9\nqN9YsFsJ6HqWl8jBR05F2AwiDua/1vSif53RxoB/G4oLAd4cRYk="
 
 after_success:
-  - af logout 
   - af login --email ${AF_EMAIL} --passwd ${AF_PASSWORD}
   - af update billbo
+  - af logout 
