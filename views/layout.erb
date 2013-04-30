@@ -1,22 +1,36 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]>      <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Billbo App</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/billbo.css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/billbo.js"></script>
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/billbo.css" />
+    <script src="js/vendor/custom.modernizr.js"></script>
   </head>
 
   <body>
-    <div class="container" >
-      <div class="page-header">
-        <h1>Billbo <small><%= i18n.subtext %></small></h1>
+    <header>
+      <div class="row">
+        <div class="twelve columns">
+          <h1>Billbo <small><%= i18n.subtext %></small></h1>
+        </div>
       </div>
-      <div id="content">
-        <%= yield %>
-      </div>
-    </div>
+    </header>
+    <section id="content">
+      <%= yield %>
+    </section>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/billbo.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
   </body>
 </html>
+

@@ -1,28 +1,32 @@
-<h3><%= i18n.bills %></h3>
-<ul class="thumbnails">
-  <% @bills.each do |bill| %>
-    <div class="bill-container">
-      <li class="span3">
-        <a class="thumbnail bill-box" href="#">
-          <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
-          <h4><%= bill.issued_by %></h4>
-          <p>R$<%= bill.total_amount %></p>
-        </a>
-      </li>
-      <div class="bill-details">
-        <button type="button" class="close close-bill-details">&times;</button>
-        <div class="row-fluid">
-          <div class="span4">
+<div class="row">
+  <div class="twelve columns">
+    <h3 class="subheader"><%= i18n.bills %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <ul class="small-block-grid-2 large-block-grid-4 thumbnails">
+      <% @bills.each do |bill| %>
+        <li class="bill-container">
+          <a class="thumbnail bill-box" href="#">
             <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
-          </div>
-          <div class="span8">
             <h4><%= bill.issued_by %></h4>
             <p>R$<%= bill.total_amount %></p>
-            <p><%= bill.due_date %></p>
-            <p><%= bill.barcode %></p>
+          </a>
+          <div class="row panel radius bill-details">
+            <div class="four columns">
+              <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
+            </div>
+            <div class="eight columns">
+              <button type="button" class="tiny close-bill-details">&times;</button>
+              <h4><%= bill.issued_by %></h4>
+              <p>R$<%= bill.total_amount %></p>
+              <p><%= bill.due_date %></p>
+              <p><%= bill.barcode %></p>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
