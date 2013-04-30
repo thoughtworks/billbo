@@ -1,5 +1,19 @@
-language: ruby
-rvm:
-  - "1.9.3"
+---
+language: 
+  - ruby
 
-script: bundle exec rspec spec && cucumber -f progress
+rvm:
+  - 1.9.3
+
+script: 
+  - bundle exec rspec spec && cucumber -f progress
+
+env:
+  global:
+    - secure: "EQ8N0PC+P7ju1dkXqy0m9Qodehy3Rsf4ySaWujKg9w5mUmz72Eb8IH3Zoxrb\nXK6g/LU61sGauXxbhR6sk96PXbp0+BSYBAxbVWlzzqPpWTSPkWn2J130lJng\nL6EorB45F5QRUOxlZqhjz+cDxNyOT+tfbhrrfpKs727iauMh2Kc="
+    - secure: "YQuJSfxoObZirBviOwtVPZrlgztCwFGSmpDBXXIDR8yRxUZJP5/RmLcul2TI\n4AdjEzLPN54jS82FzLqKow3Bzq4yLq3GOpTzJBphyge87NfSbRUFJzVqdQ+9\nqN9YsFsJ6HqWl8jBR05F2AwiDua/1vSif53RxoB/G4oLAd4cRYk="
+
+after_success:
+  - af logout 
+  - af login --email ${AF_EMAIL} --passwd ${AF_PASSWORD}
+  - af update billbo

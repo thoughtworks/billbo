@@ -8,7 +8,6 @@ gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 
 group :development do
-  gem 'af'
   gem 'shotgun', '0.9'
   gem 'pry'
 end
@@ -20,4 +19,8 @@ group :test do
   gem 'rb-fsevent', '0.9.1'
   gem 'cucumber'
   gem 'capybara'
+end
+
+group :development, :test do
+  gem 'af'
 end
