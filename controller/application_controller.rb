@@ -3,7 +3,7 @@ before do
 end
 
 get '/' do
-  @bills = Bill.all
+  @bills = Bill.all.select { |bill| bill.status != :closed }
 	erb :list_bills
 end
 

@@ -47,6 +47,12 @@ describe Bill do
     bills_fetched.count.should == bills.count
   end
 
+  it 'gets all bills not closed' do
+    number_of_bills = 5
+    bills = FactoryGirl.build_list(:bill, number_of_bills) 
+
+  end
+
   it 'closes a bill' do
     bill.status.should == :opened
     bill.close
