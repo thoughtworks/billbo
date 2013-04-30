@@ -22,4 +22,4 @@ I'd recommend using [Appfog](http://appfog.com)
  - In the Services tab add a Redis service;
  - Go to your command line and login in your appfog account running `$ af login`;
  - Then run `$ af update [appname]`;
- - Every time you want to push changes to your appfog app just run `$ af update [appname]` again;
+ - _If you're allowed to push to the original repository (thoughtworks/billbo), deployment will be automatic after each push and can be checked on [billbo.aws.af.cm](http://billbo.aws.af.cm);_
