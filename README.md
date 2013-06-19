@@ -23,3 +23,7 @@ I'd recommend using <a href="http://appfog.com" target="_blank">Appfog</a>
  - Go to your command line and login in your appfog account running `$ af login`;
  - Then run `$ af update [appname]`;
  - _If you're allowed to push to the original repository (thoughtworks/billbo), deployment will be automatic after each push and can be checked on <a href="http://billbo.aws.af.cm" target="_blank">billbo.aws.af.cm</a>;_
+
+### Do you wanna help? 
+
+ - Check out our <a href="https://trello.com/b/VMLleo9S" target="_blank">Trello board</a>;
