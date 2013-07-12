@@ -1,6 +1,9 @@
 <div class="row">
   <div class="twelve columns">
-    <h3 class="subheader"><%= i18n.bills %></h3>
+    <p class="align_right"><%= i18n.sort_by %>:
+      <a href="#"><%= i18n.gt_value %></a>, <a href="#"><%= i18n.lt_value %></a>, 
+      <a href="#"><%= i18n.priority %></a>, <a href="#"><%= i18n.due_date %></a>
+    </p>
   </div>
 </div>
 <div class="row">
@@ -8,22 +11,17 @@
     <ul class="small-block-grid-2 large-block-grid-4 thumbnails">
       <% @bills.each do |bill| %>
         <li class="bill-container">
-          <a class="thumbnail bill-box" href="#">
+          <a href="#" data-reveal-id="myModal<%= bill.id %>">
             <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
-            <h4><%= bill.issued_by %></h4>
+            <h5><%= bill.issued_by %></h5>
             <p>R$<%= bill.total_amount %></p>
           </a>
-          <div class="row panel radius bill-details">
-            <div class="four columns">
-              <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
-            </div>
-            <div class="eight columns">
-              <button type="button" class="tiny close-bill-details">&times;</button>
+          <div class="reveal-modal" id="myModal<%= bill.id %>">
+              <a class="close-reveal-modal">&#215;</a>
               <h4><%= bill.issued_by %></h4>
               <p>R$<%= bill.total_amount %></p>
               <p><%= bill.due_date %></p>
               <p><%= bill.barcode %></p>
-            </div>
           </div>
         </li>
       <% end %>

@@ -25,6 +25,14 @@ class Bill
     self.save
   end
 
+  def total_amount
+    sprintf('%.2f', @total_amount).sub('.', ',')
+  end
+
+  def due_date
+    @due_date.gsub('-', '/')
+  end
+
   def self.find(id)
     bill_hash = REDIS.hgetall("bills:#{id}")
     new id,
