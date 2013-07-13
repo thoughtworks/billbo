@@ -14,12 +14,12 @@
           <a href="#" data-reveal-id="myModal<%= bill.id %>">
             <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
             <h5><%= bill.issued_by %></h5>
-            <p>R$<%= bill.total_amount %></p>
+            <p>R$ <%= bill.total_amount %></p>
           </a>
           <div class="reveal-modal" id="myModal<%= bill.id %>">
               <a class="close-reveal-modal">&#215;</a>
               <h4><%= bill.issued_by %></h4>
-              <p>R$<%= bill.total_amount %></p>
+              <p>R$ <%= bill.total_amount %></p>
               <p><%= bill.due_date %></p>
               <p><%= bill.barcode %></p>
           </div>
