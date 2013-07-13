@@ -26,11 +26,7 @@ class Bill
   end
 
   def total_amount
-    sprintf('%.2f', @total_amount).sub('.', ',')
-  end
-
-  def due_date
-    @due_date.gsub('-', '/')
+    sprintf('%.2f', @total_amount)
   end
 
   def self.find(id)
