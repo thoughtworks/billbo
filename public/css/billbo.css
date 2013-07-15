@@ -38,3 +38,5 @@ p.align_right {
 }
 
 p.align_right a { font-weight: bold; }
+
+a.current:link, a.current:visited { color: black !important; }

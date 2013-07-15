@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/billbo.css" />
     <link rel="stylesheet" href="css/reveal.css" />
-  
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.reveal.js"></script>
   </head>
 
   <body>
@@ -26,12 +23,32 @@
     <section>
       <%= yield %>
     </section>
-
-    <script src="js/vendor/jquery.js"></script>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.tinysort.min.js"></script>
     <script src="js/foundation.min.js"></script>
     <script src="js/billbo.js"></script>
-    <script>
+    <script type="text/javascript">
       $(document).foundation();
+
+      $(document).ready(function() {
+        $('.gt_value').click(function() {
+          $('ul#all-bills>li').tsort('p.total_amount',{order:'desc'});
+        });
+
+        $('.lt_value').click(function() {
+          $('ul#all-bills>li').tsort('p.total_amount');
+        });
+
+        $('.due_date').click(function() {
+          $('ul#all-bills>li').tsort('p.due_date');
+        });
+
+        $('.sort_list a').click(function() {
+          $("a.current").removeClass("current");
+          $(this).addClass("current");
+        });
+      });
     </script>
 
   </body>

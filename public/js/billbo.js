@@ -1,3 +1,5 @@
+$(document).foundation();
+
 var hideAllBillDetails = function() {
   $(".bill-details").removeClass("active-box");
 }
