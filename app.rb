@@ -12,5 +12,3 @@ end
 
 require './model/bill'
 require './controller/application_controller'
-
-require './db/seed.rb' if ENV['RACK_ENV'] == "development"
