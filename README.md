@@ -4,22 +4,22 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 
 ## Setup local environment
 
- - <a href="http://redis.io/download" target="_blank">Redis</a> is required.
+ - <a href="http://mongodb.org/" target="_blank">MongoDB</a> is required.
 
 ### To run locally for development
 
- - Start redis server `$ path/to/redis/src/redis-server`;
+ - Start mongo server `$ path/to/mongo/mongod`;
  - Run the application using shotgun `$ shotgun`;
  - Go to <a href="http://localhost:9393" target="_blank">localhost:9393</a>;
 
 ### If you want to deploy on the cloud
 
-I'd recommend using <a href="http://appfog.com" target="_blank">Appfog</a>
+I'd recommend using <a href="http://appfog.com" target="_blank">AppFog</a>
 
- - Create an account on <a href="http://appfog.com" target="_blank">Appfog</a>;
+ - Create an account on <a href="http://appfog.com" target="_blank">AppFog</a>;
  - Create a Sinatra project;
- - Once it's created, go to Add-ons page and install Redis-Cloud;
- - In the Services tab add a Redis service;
+ - Once it's created, go to Add-ons page and install MongoLab;
+ - In the Services tab add a MongoDB service;
  - Go to your command line and login in your appfog account running `$ af login`;
  - Then run `$ af update [appname]`;
  - _If you're allowed to push to the original repository (thoughtworks/billbo), deployment will be automatic after each push and can be checked on <a href="http://billbo.aws.af.cm" target="_blank">billbo.aws.af.cm</a>;_
