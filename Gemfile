@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'sinatra', ' 1.3.4'
-gem "sinatra-r18n", "1.1.4"
+gem 'sinatra-r18n', '1.1.4'
 gem 'redis', '3.0.2'
 gem 'thin'
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
+
+gem 'mongoid', '~> 3.1.4'
 
 group :development do
   gem 'shotgun', '0.9'

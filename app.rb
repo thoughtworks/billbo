@@ -6,6 +6,8 @@ require 'sinatra/redirect_with_flash'
 Bundler.require
 require './model/bill'
 
+Mongoid.load!('./mongoid.yml', :development)
+
 configure do
   use Rack::Session::Cookie, :key => 'rack.session',
                              :path => '/',
