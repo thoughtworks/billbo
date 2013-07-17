@@ -10,6 +10,8 @@ gem 'mongoid', '~> 3.1.4'
 group :development do
   gem 'shotgun', '0.9'
   gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-doc'
 end
 
 group :test do
