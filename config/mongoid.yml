@@ -13,4 +13,4 @@ test:
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGO_PX_URI'] %>
+      uri: <%= ENV['MONGOLAB_URI'] %>
