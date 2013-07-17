@@ -25,4 +25,10 @@ end
 
 group :development, :test do
   gem 'af'
+
+  # irb goodies
+  gem 'awesome_print'
+  gem 'fancy_irb'
+  gem 'interactive_editor'
+  gem 'wirble'
 end
