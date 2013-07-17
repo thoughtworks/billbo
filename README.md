@@ -17,11 +17,13 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 I'd recommend using <a href="http://appfog.com" target="_blank">AppFog</a>
 
  - Create an account on <a href="http://appfog.com" target="_blank">AppFog</a>;
- - Create a Sinatra project;
- - Once it's created, go to Add-ons page and install MongoLab;
+ - Install Appfog gem `af`;
+ - Using your command line shell, go to directory where your forked billbo repository is;
+ - Login in your Appfog account running `$ af login`;
+ - Run `$ af push [appname] --runtime ruby193` and follow the instructions to create the app;
+ - Once it's created, go to <a href="https://console.appfog.com" target="_blank">Appfog console</a> and install the MongoLab Add-on;
  - In the Services tab add a MongoDB service;
- - Go to your command line and login in your appfog account running `$ af login`;
- - Then run `$ af update [appname]`;
+ - Then run `$ af update [appname]` and make sure your app restarted;
  - _If you're allowed to push to the original repository (thoughtworks/billbo), deployment will be automatic after each push and can be checked on <a href="http://billbo.aws.af.cm" target="_blank">billbo.aws.af.cm</a>;_
 
 ### Do you wanna help? 
