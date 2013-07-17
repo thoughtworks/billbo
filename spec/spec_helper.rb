@@ -3,6 +3,8 @@ require 'factory_girl'
 require './spec/factories'
 require 'capybara'
 
+Mongoid.load!('./config/mongoid.yml', :test)
+
 # Clean database after running tests
 RSpec.configure do |config|
   config.after(:each) do
