@@ -1,11 +1,6 @@
 require 'bundler/setup'
-require 'sinatra'
-require 'sinatra/flash'
-require 'sinatra/redirect_with_flash'
 
 Bundler.require
-require './model/bill'
-
 Mongoid.load!('./mongoid.yml', :development)
 
 configure do
@@ -15,5 +10,7 @@ configure do
                              :secret => 'change_me'
 end
 
+require './model/bill'
+require './controller/application_controller'
+
 require './db/seed.rb' if ENV['RACK_ENV'] == "development"
-require './controller/application_controller.rb'
