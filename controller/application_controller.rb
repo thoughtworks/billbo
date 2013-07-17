@@ -3,8 +3,8 @@ before do
 end
 
 get '/' do
-  @bills = Bill.all.select { |bill| bill.status != :closed }
-	erb :list_bills
+  @bills = Bill.where(status: :open)
+  erb :list_bills
 end
 
 get '/new_bill' do
@@ -13,7 +13,7 @@ end
 
 post '/new_bill' do
   bill = Bill.create(params)
-  if bill 
+  if bill
     redirect '/new_bill', :success => i18n.bill_creation_success
   else
     redirect '/new_bill', :error => i18n.bill_creation_fail
