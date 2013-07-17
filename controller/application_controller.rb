@@ -1,5 +1,5 @@
 before do
-  session[:locale] = params[:locale] if params[:locale]
+  session[:locale] = 'pt'
 end
 
 get '/' do
