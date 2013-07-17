@@ -13,11 +13,6 @@ configure do
                              :path => '/',
                              :expire_after => 2592000, # In seconds
                              :secret => 'change_me'
-
-  require 'redis'
-	redisUri = ENV['REDISCLOUD_URL'] || 'redis://localhost:6379'
-	uri = URI.parse(redisUri)
-	REDIS = Redis.new(host: uri.host, port: uri.port, password: uri.password)
 end
 
 require './db/seed.rb' if ENV['RACK_ENV'] == "development"
