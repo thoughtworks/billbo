@@ -1,7 +1,7 @@
 Given /^I have (\d+) bills$/ do |bills|
   bills.to_i.times do
-    bill = FactoryGirl.build(:bill) 
-    Bill.create(bill.to_hash)
+    bill = FactoryGirl.build(:bill)
+    Bill.create(bill.attributes)
   end
 end
 
@@ -11,7 +11,7 @@ Given /^set the status of (\d+) them as (closed)$/ do |bills_quantity, status|
 
   bills = Bill.all
   (0...bills_quantity.to_i).each do |i|
-    bills[i].close 
+    bills[i].close
   end
 end
 
@@ -20,11 +20,11 @@ When /^I open the home page$/ do
 end
 
 Then /^it should list (\d+) bills$/ do |bills|
-  bills_counter = if bills.eql?('all') 
+  bills_counter = if bills.eql?('all')
                     Bill.count
-                  else 
+                  else
                     bills.to_i
-                  end 
+                  end
 
   within('.thumbnails') do
     page.should have_css("li.bill-container", count: bills_counter)
@@ -37,5 +37,5 @@ When /^I create an empty bill$/ do
 end
 
 Then /^it should succeed$/ do
-  # intentionally blank = success
+  Bill.count.should == 1
 end

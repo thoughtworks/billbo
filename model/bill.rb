@@ -10,12 +10,4 @@ class Bill
     self.status = :closed
     self.save
   end
-
-  def total_amount
-    sprintf('%.2f', @total_amount)
-  end
-
-  def to_s
-    "Bill: id:#{@id}, issued_by:#{@issued_by}, due_date:#{@due_date}, total_amount:#{@total_amount}, barcode:#{@barcode}, status:#{@status}"
-  end
 end
