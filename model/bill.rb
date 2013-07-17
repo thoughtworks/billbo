@@ -4,7 +4,7 @@ class Bill
   field :due_date, type: Date
   field :total_amount, type: Float
   field :barcode, type: String
-  field :status, type: Symbol, default: :opened
+  field :status, type: Symbol, default: :open
 
   def close
     self.status = :closed

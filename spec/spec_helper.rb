@@ -1,9 +1,11 @@
-require './app.rb'
-require 'factory_girl'
-require './spec/factories'
+require './app'
 require 'capybara'
 
 Mongoid.load!('./config/mongoid.yml', :test)
+
+# Load FactoryGirl definitions
+require 'factory_girl'
+FactoryGirl.find_definitions
 
 # Clean database after running tests
 RSpec.configure do |config|
