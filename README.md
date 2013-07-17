@@ -26,4 +26,4 @@ I'd recommend using <a href="http://appfog.com" target="_blank">Appfog</a>
 
 ### Do you wanna help? 
 
- - Check out our <a href="https://trello.com/b/VMLleo9S" target="_blank">Trello board</a>;
+ - Check out our <a href="https://trello.com/b/VMLleo9S/billbo" target="_blank">Trello board</a>;
