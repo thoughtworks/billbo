@@ -1,7 +1,7 @@
 require 'bundler/setup'
 
 Bundler.require
-Mongoid.load!('./mongoid.yml', :development)
+Mongoid.load!('./db/mongoid.yml', :development)
 
 configure do
   use Rack::Session::Cookie, :key => 'rack.session',
