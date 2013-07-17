@@ -14,9 +14,7 @@ class SomeWorld
 end
 
 After do
-  REDIS.del 'bills'
-  REDIS.keys('bills:*').each { |key| REDIS.del key }
-  REDIS.del 'ids:bills'
+  Mongoid.default_session.collections.each { |coll| coll.drop unless /^system/.match(coll.name) }
 end
 
 World do
