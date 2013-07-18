@@ -5,21 +5,28 @@
   </div>
 <% end %>
 
-<form class="form-horizontal" method="post" action="/new_bill">
-  <fieldset>
-    <h3><%= i18n.new_bill %></h3>
-    <div class="control-group">
-      <input name="issued_by" type="text" placeholder="<%= i18n.issued_by %>" required />
+<section class="large-6 columns">
+  <h3><%= i18n.new_bill %></h3>
+  <form method="post" action="/new_bill">
+    <label for="issued_by"><%= i18n.issued_by %></label>
+    <input name="issued_by" type="text" required />
+
+    <label for="due_date"><%= i18n.due_date %></label>
+    <input name="due_date" type="date" required />
+
+    <div class="row collapse">
+      <label for="total_amount"><%= i18n.total_amount %></label>
+      <div class="small-2 large-2 columns">
+        <span class="prefix">R$</span>
+      </div>
+      <div class="small-10 large-10 columns">
+        <input name="total_amount" type="text" pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required />
+      </div>
     </div>
-    <div class="control-group">
-      <input name="due_date" type="text" placeholder="<%= i18n.due_date %> dd-MM-yyyy" id="datepicker" required />
-    </div>
-    <div class="control-group">
-      <input name="total_amount" type="text" placeholder="<%= i18n.total_amount %>" required />
-    </div>
-    <div class="control-group">
-      <input name="barcode" type="text" placeholder="<%= i18n.barcode %>" required />
-    </div>
-    <button type="submit" class="btn"><%= i18n.create_bill %></button>
-  </fieldset>
-</form>
+
+    <label for="barcode"><%= i18n.barcode %></label>
+    <input name="barcode" type="text" required />
+
+    <button type="submit" class="button"><%= i18n.create_bill %></button>
+  </form>
+</section>
