@@ -12,6 +12,11 @@ Help an institution that helps other people. They got a lot of bills to pay and 
  - Run the application using shotgun `$ shotgun`;
  - Go to <a href="http://localhost:9393" target="_blank">localhost:9393</a>;
 
+### To seed test data
+ - Run `$ rake db:seed` to create one single bill for testing
+ - Run `$ rake db:seed[n]` to create n bills
+ - `$ rake -T` will list all available tasks
+
 ### If you want to deploy on the cloud
 
 I'd recommend using <a href="http://appfog.com" target="_blank">AppFog</a>
