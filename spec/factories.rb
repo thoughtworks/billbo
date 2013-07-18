@@ -10,7 +10,7 @@ FactoryGirl.define do
     due_date      { generate(:due_date) }
     total_amount  { generate(:total_amount) }
     barcode       '000000000000000000000000000000000000'
-    status        { :open }
+    status        { :opened }
   end
 end
 

@@ -1,9 +1,9 @@
 before do
-  session[:locale] = 'pt'
+    session[:locale] = params[:lang] if params[:lang]
 end
 
 get '/' do
-  @bills = Bill.where(status: :open)
+  @bills = Bill.where(status: :opened)
   erb :list_bills
 end
 

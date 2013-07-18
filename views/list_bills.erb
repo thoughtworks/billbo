@@ -1,34 +1,34 @@
-<div id="bill-list">
-<div class="row">
+<section id="bill-list" class="small-12 columns">
+  <div class="row">
     <p class="align_right sort_list"><%= i18n.sort_by %>: 
-      <a class="gt_value" href="#"><%= i18n.gt_value %></a>, 
-      <a class="lt_value" href="#"><%= i18n.lt_value %></a>, 
-      <a class="priority" href="#"><%= i18n.priority %></a>, 
-      <a class="due_date" href="#"><%= i18n.due_date %></a>
+    <a class="gt_value" href="#"><%= i18n.gt_value %></a>,
+    <a class="lt_value" href="#"><%= i18n.lt_value %></a>,
+    <a class="priority" href="#"><%= i18n.priority %></a>,
+    <a class="due_date" href="#"><%= i18n.due_date %></a>
     </p>
-</div>
-<div class="row">
-  <div class="twelve columns">
-    <ul id="all-bills" class="small-block-grid-2 large-block-grid-4 thumbnails">
-      <% @bills.each do |bill| %>
-        <li class="bill-container">
+  </div>
+  <section class="row">
+    <div class="small-12 columns">
+      <ul id="all-bills" class="small-block-grid-2 large-block-grid-4 thumbnails">
+        <% @bills.each do |bill| %>
+          <li class="bill-container">
           <a href="#" data-reveal-id="myModal<%= bill.id %>">
             <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
             <h5 class="name"><%= bill.issued_by %></h5>
             <p class="total_amount">R$ <%= bill.total_amount %></p>
           </a>
-          <div class="reveal-modal bill-details" id="myModal<%= bill.id %>">
-              <a class="close-reveal-modal">&#215;</a>
-              <h4><%= bill.issued_by %></h4>
-              <p>R$ <%= bill.total_amount %></p>
-              <p class="due_date"><%= bill.due_date %></p>
-              <p><%= bill.barcode %></p>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-</div>
+          <section class="reveal-modal bill-details" id="myModal<%= bill.id %>">
+            <a class="close-reveal-modal">&#215;</a>
+            <h4><%= bill.issued_by %></h4>
+            <p>R$ <%= bill.total_amount %></p>
+            <p class="due_date"><%= bill.due_date %></p>
+            <p><%= bill.barcode %></p>
+          </section>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</section>
 
 

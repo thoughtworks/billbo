@@ -1,13 +1,16 @@
-test:
-  sessions:
-    default:
-      database: billbo_test
-      hosts:
-        - localhost:27017
-
 development:
   sessions:
     default:
       database: billbo_dev
       hosts:
         - localhost
+
+test:
+  sessions:
+    default:
+      uri: <%= ENV['MONGO_TST_URI'] %>
+
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %>

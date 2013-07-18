@@ -1,7 +1,7 @@
+ENV['RACK_ENV'] ||= 'test'
+
 require './app'
 require 'capybara'
-
-Mongoid.load!('./config/mongoid.yml', :test)
 
 # Load FactoryGirl definitions
 require 'factory_girl'
