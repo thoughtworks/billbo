@@ -3,7 +3,7 @@ before do
 end
 
 get '/' do
-  @bills = Bill.where(status: :open)
+  @bills = Bill.where(status: :opened)
   erb :list_bills
 end
 
