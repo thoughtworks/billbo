@@ -12,7 +12,7 @@ configure do
                              :secret => 'change_me'
 end
 
-ENV['MONGO_TST_URI'] ||= "mongodb://localhost/billbo_test"
+ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
 
 require './model/bill'

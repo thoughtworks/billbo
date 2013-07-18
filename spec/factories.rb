@@ -4,13 +4,13 @@ FactoryGirl.define do
   sequence(:issued_by)    { "Company #{('A'..'Z').to_a.sample}" }
   sequence(:due_date)     { time_rand Time.local(2013, 1, 1), Time.now }
   sequence(:total_amount) { "%.2f" % Random.rand(1.0..100.0) }
+  sequence(:barcode)      { (0...36).map{ ('0'..'9').to_a[rand(10)] }.join }
 
   factory :bill do
     issued_by     { generate(:issued_by) }
     due_date      { generate(:due_date) }
     total_amount  { generate(:total_amount) }
-    barcode       '000000000000000000000000000000000000'
-    status        { :opened }
+    barcode       { generate(:barcode) }
   end
 end
 

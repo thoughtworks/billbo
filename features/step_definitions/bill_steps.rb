@@ -1,40 +1,31 @@
-Given /^I have (\d+) bills$/ do |bills|
-  bills.to_i.times do
-    bill = FactoryGirl.build(:bill)
-    Bill.create(bill.attributes)
+Given /^I have (\d+) bills$/ do |n|
+  n.to_i.times do
+    FactoryGirl.create(:bill)
   end
 end
 
-Given /^set the status of (\d+) of them as (closed)$/ do |bills_quantity, status|
-  bills_count = Bill.count
-  raise IndexError, "There isn't #{bills_quantity.to_i} bills stored" if bills_quantity.to_i > bills_count
-
-  bills = Bill.all
-  (0...bills_quantity.to_i).each do |i|
-    bills[i].close
-  end
+Given /^I set the status of (\d+) of them as (paid)$/ do |n, status|
+  n.to_i.times {
+    Bill.where(status: :opened).update(status: status)
+  }
 end
 
 When /^I open the home page$/ do
   visit '/'
 end
 
-Then /^it should list (\d+) bills$/ do |bills|
-  bills_counter = if bills.eql?('all')
-                    Bill.count
-                  else
-                    bills.to_i
-                  end
+Then /^it should list (\d+) bills$/ do |n|
+  bills_count = n=='all' ? Bill.count : n.to_i
 
   within('#all-bills') do
-    page.should have_css("li.bill-container", count: bills_counter)
+    page.should have_css("li.bill-container", count: bills_count)
   end
 end
 
-When /^I create an empty bill$/ do
+When /^I try to create an empty bill$/ do
   Bill.create({})
 end
 
-Then /^it should succeed$/ do
-  Bill.count.should == 1
+Then /^it should fail$/ do
+  Bill.count.should == 0
 end

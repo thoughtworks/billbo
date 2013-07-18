@@ -5,8 +5,8 @@ Feature: store bills
   So that I can share them with other users
 
   Scenario: create an empty bill
-    When I create an empty bill
-    Then it should succeed
+    When I try to create an empty bill
+    Then it should fail
 
   Scenario: list all bills
     Given I have 3 bills
@@ -15,6 +15,6 @@ Feature: store bills
 
   Scenario: do not show closed bills
     Given I have 3 bills
-    And set the status of 1 of them as closed
+    And I set the status of 1 of them as paid
     When I open the home page
     Then it should list 2 bills
