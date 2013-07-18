@@ -17,11 +17,11 @@
 
     <div class="row collapse">
       <label for="total_amount"><%= i18n.total_amount %></label>
-      <div class="small-2 large-2 columns">
+      <div class="small-2 columns">
         <span class="prefix">R$</span>
       </div>
-      <div class="small-10 large-10 columns">
-        <input name="total_amount" type="text" pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required />
+      <div class="small-10 columns">
+        <input name="total_amount" type="number" pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required />
       </div>
     </div>
 
