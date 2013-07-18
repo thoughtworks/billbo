@@ -15,7 +15,7 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 
 ### To seed test data
  - Run `$ rake db:seed` to create one single bill for testing
- - Run `$ rake db:seed[n]` to create n bills
+ - Run `$ rake db:seed[n]` to create `n` bills
  - `$ rake -T` will list all available tasks
 
 ### If you want to deploy on the cloud
@@ -27,7 +27,7 @@ I'd recommend using <a href="http://appfog.com" target="_blank">AppFog</a>
  - Using your command line shell, go to directory where your forked billbo repository is;
  - Login in your Appfog account running `$ af login`;
  - Run `$ af push [appname] --runtime ruby193` and follow the instructions to create the app;
- - Once it's created, go to <a href="https://console.appfog.com" target="_blank">Appfog console</a> and install the MongoLab Add-on;
+ - Once it's created, go to <a href="https://console.appfog.com" target="_blank">AppFog console</a> and install the MongoLab Add-on;
  - In the Services tab add a MongoDB service;
  - Then run `$ af update [appname]` and make sure your app restarted;
  - _If you're allowed to push to the original repository (thoughtworks/billbo), deployment will be automatic after each push and can be checked on <a href="http://billbo.aws.af.cm" target="_blank">billbo.aws.af.cm</a>;_
