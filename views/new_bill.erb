@@ -1,12 +1,13 @@
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <%= value %>
-  </div>
-<% end %>
-
 <section class="large-6 columns">
+  <% flash.each do |key, value| %>
+    <div data-alert class="alert-box <%= key %>">
+      <%= value %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+
   <h3><%= i18n.new_bill %></h3>
+
   <form method="post" action="/new_bill">
     <label for="issued_by"><%= i18n.issued_by %></label>
     <input name="issued_by" type="text" required />
