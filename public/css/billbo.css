@@ -36,12 +36,14 @@ p.align_right {
   color: #999;
 }
 
-p.align_right a { font-weight: bold; }
+p.align_right a {
+  font-weight: bold; 
+}
 
-a.current:link, a.current:visited { color: black !important; }
+a.current:link, a.current:visited {
+  color: black !important; 
+}
 
-.flags { float: right; overflow: auto; margin-top: 15px; }
-
-h1 { margin: 0; padding: 0; line-height: 100%; }
-body { margin-top: 15px;  }
-header { margin-bottom: 15px; }
+.flags {
+  top: 35px; 
+}

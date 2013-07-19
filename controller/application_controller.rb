@@ -1,6 +1,6 @@
 before do
-    session[:locale] = params[:lang] if params[:lang]
-    session[:locale] = 'pt' if session[:locale] == nil
+  session[:locale] = params[:locale] if params[:locale]
+  session[:locale] = 'pt' unless session[:locale]
 end
 
 get '/' do

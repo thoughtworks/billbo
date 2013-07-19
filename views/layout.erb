@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]>      <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if IE 8]>      <html class="no-js lt-ie9" lang="<%= session[:locale] %>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<%= session[:locale] %>"> <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -13,22 +13,25 @@
   </head>
 
   <body>
-    <header>
-      <div class="row">
-        <div class="twelve columns">
-          <h1 style="float: left;">Billbo <small><%= i18n.subtext %></small></h1>
-          <div class="flags">
-            <a href="?lang=pt"><img src="images/brazil_flag.png" alt="Versão em Português" /></a>
-            <a href="?lang=en"><img src="images/usa_flag.png" alt="English Version" /></a>
-          </div>
-        </div>
+    <header class="row">
+      <div class="small-10 columns">
+        <h1>Billbo <small><%= i18n.subtext %></small></h1>
+      </div>
+      <div class="small-2 columns flags">
+        <a id="link-pt" href="?locale=pt">
+          <img src="img/brazil_flag.png" alt="Versão em Português" />
+        </a>
+        <a id="link-en" href="?locale=en">
+          <img src="img/usa_flag.png" alt="English Version" />
+        </a>
+      </div>
     </header>
     <section class="row">
       <%= yield %>
     </section>
     
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.tinysort.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/jquery.tinysort.min.js"></script>
     <script src="js/foundation.min.js"></script>
     <script src="js/billbo.js"></script>
     <script type="text/javascript">
