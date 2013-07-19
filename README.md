@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/thoughtworks/billbo.png?branch=master)](https://travis-ci.org/thoughtworks/billbo)
+<a href="https://codeclimate.com/github/thoughtworks/billbo"><img src="https://codeclimate.com/github/thoughtworks/billbo.png" /></a>
 
 Help an institution that helps other people. They got a lot of bills to pay and we got a lot of ideas to share.
 
