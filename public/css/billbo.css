@@ -1,47 +1,35 @@
-.bill-details {
-  display: none;
-}
-
-.active-box {
-  display: block;
-  width: 650px;
-  margin-left: 20px;
-}
-
-.bill-box {
-  margin: 0 20px 20px 0;
-}
-
-.bill-box img {
-  width: 150px;
-  height: 200px;
-}
-
-.bill-details img {
-  width: 200px;
-  height: 270px;
-}
-
-.close-bill-details {
-  float: right;
-}
-
-.bill-container:hover {
-  background-color: #f6f6f6;
-}
-
-p.align_right {
-  text-align: right;
-  font-size: 12px;
+div.sort_list {
+  font-size: 0.8em;
   color: #999;
 }
 
-p.align_right a {
-  font-weight: bold; 
+p.issued-by {
+  font-size: 1.2em;
+  color: black;
+  font-weight: bold;
+  margin: 15px 0px 5px 0px;
 }
 
-a.current:link, a.current:visited {
-  color: black !important; 
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a.label.secondary:hover {
+  background-color: silver;
+}
+
+a.label {
+  color: white;
+}
+
+.th.radius img {
+  margin-top: 10px;
+}
+
+.th.radius p {
+  margin: 10px;
 }
 
 .flags {

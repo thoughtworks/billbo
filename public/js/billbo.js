@@ -1,19 +1,18 @@
-$(document).foundation();
-
-var hideAllBillDetails = function() {
-  $(".bill-details").removeClass("active-box");
-}
-
 $(document).ready(function() {
-  $(".bill-box").on("click", function(event) {
-    event.preventDefault();
-    hideAllBillDetails();
-
-    var container = $(this).closest(".bill-container");
-    container.find(".bill-details").addClass("active-box");
+  $('.gt_value').click(function() {
+    $('ul#all-bills>li').tsort('p.total_amount',{order:'desc'});
   });
 
-  $(".close-bill-details").on("click", function() {
-    hideAllBillDetails();
+  $('.lt_value').click(function() {
+    $('ul#all-bills>li').tsort('p.total_amount');
+  });
+
+  $('.due_date').click(function() {
+    $('ul#all-bills>li').tsort('p.due_date');
+  });
+
+  $('.sort_list').on('click', 'a', function() {
+    $("a").addClass("secondary");
+    $(this).removeClass("secondary");
   });
 });

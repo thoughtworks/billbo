@@ -1,29 +1,31 @@
 <section id="bill-list" class="small-12 columns">
-  <div class="row">
-    <p class="align_right sort_list"><%= i18n.sort_by %>: 
-    <a class="gt_value" href="#"><%= i18n.gt_value %></a>,
-    <a class="lt_value" href="#"><%= i18n.lt_value %></a>,
-    <a class="priority" href="#"><%= i18n.priority %></a>,
-    <a class="due_date" href="#"><%= i18n.due_date %></a>
-    </p>
-  </div>
+  <section class="row">
+    <div class="large-6 push-6 columns sort_list">
+      <ul class="small-block-grid-4">
+        <li><a class="gt_value label secondary" href="#"><%= i18n.gt_value %></a></li>
+        <li><a class="lt_value label secondary" href="#"><%= i18n.lt_value %></a></li>
+        <li><a class="priority label secondary" href="#"><%= i18n.priority %></a></li>
+        <li><a class="due_date label secondary" href="#"><%= i18n.due_date %></a></li>
+      </ul>
+    </div>
+  </section>
   <section class="row">
     <div class="small-12 columns">
-      <ul id="all-bills" class="small-block-grid-2 large-block-grid-4 thumbnails">
+      <ul id="all-bills" class="small-block-grid-2 large-block-grid-4">
         <% @bills.each do |bill| %>
           <li class="bill-container">
-          <a href="#" data-reveal-id="myModal<%= bill.id %>">
-            <img src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
-            <h5 class="name"><%= bill.issued_by %></h5>
-            <p class="total_amount">R$ <%= bill.total_amount %></p>
-          </a>
-          <section class="reveal-modal bill-details" id="myModal<%= bill.id %>">
-            <a class="close-reveal-modal">&#215;</a>
-            <h4><%= bill.issued_by %></h4>
-            <p>R$ <%= bill.total_amount %></p>
-            <p class="due_date"><%= bill.due_date %></p>
-            <p><%= bill.barcode %></p>
-          </section>
+            <a href="#" class="th radius" data-reveal-id="myModal<%= bill.id %>">
+              <img class="center" src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
+              <p class="issued-by"><%= bill.issued_by %></p>
+              <p class="total_amount">R$ <%= bill.total_amount %></p>
+            </a>
+            <section class="reveal-modal" id="myModal<%= bill.id %>">
+              <a class="close-reveal-modal">&#215;</a>
+              <h4><%= bill.issued_by %></h4>
+              <p>R$ <%= bill.total_amount %></p>
+              <p class="due_date"><%= bill.due_date %></p>
+              <p><%= bill.barcode %></p>
+            </section>
           </li>
         <% end %>
       </ul>

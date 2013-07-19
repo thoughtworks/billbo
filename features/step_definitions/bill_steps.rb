@@ -5,7 +5,7 @@ Given /^I have (\d+) bills$/ do |bills|
   end
 end
 
-Given /^set the status of (\d+) them as (closed)$/ do |bills_quantity, status|
+Given /^set the status of (\d+) of them as (closed)$/ do |bills_quantity, status|
   bills_count = Bill.count
   raise IndexError, "There isn't #{bills_quantity.to_i} bills stored" if bills_quantity.to_i > bills_count
 
@@ -26,9 +26,8 @@ Then /^it should list (\d+) bills$/ do |bills|
                     bills.to_i
                   end
 
-  within('.thumbnails') do
+  within('#all-bills') do
     page.should have_css("li.bill-container", count: bills_counter)
-    page.should have_css("section.bill-details", count: bills_counter)
   end
 end
 
