@@ -8,15 +8,15 @@ get '/' do
   erb :list_bills
 end
 
-get '/new_bill' do
+get '/bill/new' do
   erb :new_bill
 end
 
-post '/new_bill' do
+post '/bill/create' do
   bill = Bill.create(params)
   if bill
-    redirect '/new_bill', :success => i18n.bill_creation_success
+    redirect '/bill/new', :success => i18n.bill_creation_success
   else
-    redirect '/new_bill', :error => i18n.bill_creation_fail
+    redirect '/bill/new', :error => i18n.bill_creation_fail
   end
 end
