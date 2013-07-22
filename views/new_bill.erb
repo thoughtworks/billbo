@@ -1,4 +1,4 @@
-<section class="large-6 columns">
+<section class="large-6 columns new-bill">
   <% flash.each do |key, value| %>
     <div data-alert class="alert-box <%= key %>">
       <%= value %>
@@ -21,7 +21,7 @@
         <span class="prefix">R$</span>
       </div>
       <div class="small-10 columns">
-        <input name="total_amount" type="number" min="1" pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required />
+        <input name="total_amount" type="number" min="0" step="any" required />
       </div>
     </div>
 
