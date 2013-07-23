@@ -7,6 +7,7 @@ gem 'sinatra-redirect-with-flash'
 
 gem 'mongoid', '~> 3.1.4'
 
+
 group :development do
   gem 'shotgun'
   gem 'pry'
@@ -25,6 +26,8 @@ end
 
 group :development, :test do
   gem 'af'
+
+  gem 'guard-cucumber'
 
   # irb goodies
   gem 'awesome_print'
