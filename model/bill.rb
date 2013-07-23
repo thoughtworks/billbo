@@ -6,10 +6,11 @@ class Bill
   field :total_amount, type: Float
   field :barcode, type: String
   field :status, type: Symbol, default: :opened
+  field :image_url, type: String
 
-  validates :issued_by, :due_date, :total_amount, :barcode, presence: true
+  validates :issued_by, :due_date, :total_amount, :barcode, :image_url, presence: true
   validates :status, inclusion: { in: [:paid, :opened, :reserved] }
-  validates :barcode, uniqueness: true
+  validates :barcode, :image_url, uniqueness: true
 
-  attr_accessible :issued_by, :due_date, :total_amount, :barcode, :status
+  attr_accessible :issued_by, :due_date, :total_amount, :barcode, :status, :image_url
 end

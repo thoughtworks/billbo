@@ -16,7 +16,8 @@ describe Bill do
         'due_date'     => Date.today,
         'total_amount' => 1.0,
         'barcode'      => '1',
-        'status'       => :paid }
+        'status'       => :paid,
+        'image_url'      => "xxx" }
     }
 
     it 'mass assigns fields successfully' do
@@ -41,6 +42,7 @@ describe Bill do
       bill.total_amount == new_attributes['total_amount']
       bill.barcode == new_attributes['barcode']
       bill.status == new_attributes['status']
+      bill.status == new_attributes['image_url']
     end
   end
 
@@ -49,11 +51,12 @@ describe Bill do
       bill = Bill.new
 
       bill.should_not be_valid
-      bill.errors.should have(4).items
+      bill.errors.should have(5).items
       bill.errors.should have_key(:issued_by)
       bill.errors.should have_key(:due_date)
       bill.errors.should have_key(:total_amount)
       bill.errors.should have_key(:barcode)
+      bill.errors.should have_key(:image_url)
     end
 
     it 'validates that status is invalid' do
@@ -71,10 +74,21 @@ describe Bill do
     it 'validates that barcode is unique' do
       bill.save
       new_bill = Bill.new(bill.attributes)
+      new_bill.image_url = 'xxx'
 
       new_bill.should_not be_valid
       new_bill.errors.should have_key(:barcode)
       new_bill.errors[:barcode][0] =~ /is already taken/
+    end
+
+    it 'has a unique image url' do
+      bill.save
+      new_bill = Bill.new(bill.attributes)
+      new_bill.barcode = "000"
+
+      new_bill.should_not be_valid
+      new_bill.errors.should have_key(:image_url)
+      new_bill.errors[:image_url][0] =~ /is already taken/
     end
   end
 end
