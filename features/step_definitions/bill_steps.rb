@@ -10,6 +10,18 @@ Given /^I set the status of (\d+) of them as (paid)$/ do |n, status|
   }
 end
 
+When(/^I create a bill$/) do
+  visit '/bill/new'
+
+  fill_in 'issued_by', :with => 'XXX'
+  fill_in 'due_date', :with => '2020/07/21'
+  fill_in 'total_amount', :with => '100.00'
+  fill_in 'barcode', :with => "000"
+
+  form = find_by_id 'new_bill'
+  Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
+end
+
 When /^I open the home page$/ do
   visit '/'
 end
@@ -20,6 +32,10 @@ Then /^it should list (\d+) bills$/ do |n|
   within('#all-bills') do
     page.should have_css("li.bill-container", count: bills_count)
   end
+end
+
+Then(/^it should show success message$/) do
+  page.should have_css 'div.alert-box.success'
 end
 
 When /^I try to create an empty bill$/ do

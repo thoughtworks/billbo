@@ -4,6 +4,10 @@ Feature: store bills
   I want to store bills
   So that I can share them with other users
 
+  Scenario: create a bill
+    When I create a bill
+    Then it should show success message
+
   Scenario: create an empty bill
     When I try to create an empty bill
     Then it should fail
