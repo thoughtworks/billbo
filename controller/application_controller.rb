@@ -14,6 +14,8 @@ end
 
 post '/bill/create' do
   bill = Bill.create(params)
+  bill.image_url = params[:image]
+
   if bill.save
     redirect '/bill/new', :success => i18n.bill_creation_success
   else

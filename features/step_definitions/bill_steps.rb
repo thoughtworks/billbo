@@ -18,6 +18,9 @@ When(/^I create a bill$/) do
   fill_in 'total_amount', :with => '100.00'
   fill_in 'barcode', :with => "000"
 
+  root_path = File.dirname(__FILE__)
+  attach_file('image', File.join(root_path, 'bill.jpg'), visible: false)
+
   form = find_by_id 'new_bill'
   Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
 end

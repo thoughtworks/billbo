@@ -6,7 +6,7 @@ Feature: store bills
 
   Scenario: create a bill
     When I create a bill
-    Then it should show success message
+    Then it should show success message 
 
   Scenario: create an empty bill
     When I try to create an empty bill
