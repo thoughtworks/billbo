@@ -14,7 +14,7 @@ end
 
 post '/bill/create' do
   bill = Bill.create(params)
-  if bill
+  if bill.save
     redirect '/bill/new', :success => i18n.bill_creation_success
   else
     redirect '/bill/new', :error => i18n.bill_creation_fail
