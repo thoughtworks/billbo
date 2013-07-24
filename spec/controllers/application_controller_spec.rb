@@ -29,13 +29,27 @@ describe 'Billbo' do
   end
 
   describe 'POST /bill/create' do
-    it 'creates bill and redirects' do
+    it 'creates valid bill and redirects' do
       post '/bill/create', FactoryGirl.attributes_for(:bill)
 
       last_response.should be_redirect
       follow_redirect!
       last_response.should be_ok
       last_request.url.should =~ /bill\/new/
+      last_response.body.should =~ /success/
+      last_response.body.should_not =~ /error/
+    end
+    it 'recognizes invalid bill and redirects' do
+      attributes = FactoryGirl.attributes_for(:bill)
+      attributes[:issued_by] = ''
+      post '/bill/create', attributes
+
+      last_response.should be_redirect
+      follow_redirect!
+      last_response.should be_ok
+      last_request.url.should =~ /bill\/new/
+      last_response.body.should_not =~ /success/
+      last_response.body.should =~ /error/
     end
   end
 end
