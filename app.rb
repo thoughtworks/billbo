@@ -2,6 +2,9 @@ require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
+require 'carrierwave'
+require 'carrierwave-google_drive'
+require 'carrierwave/mongoid'
 
 Bundler.require
 
@@ -15,5 +18,8 @@ end
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
 
+
+require './uploaders/file_uploader'
 require './model/bill'
 require './controller/application_controller'
+

@@ -5,6 +5,8 @@ gem 'sinatra-r18n'
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 
+gem "rmagick", '~> 2.13.2'
+
 gem 'mongoid', '~> 3.1.4'
 
 
@@ -28,6 +30,10 @@ group :development, :test do
   gem 'af'
 
   gem 'guard-cucumber'
+  gem 'carrierwave'
+  gem 'carrierwave-google_drive'
+  gem 'carrierwave-processing'
+  gem 'carrierwave-mongoid'
 
   # irb goodies
   gem 'awesome_print'
