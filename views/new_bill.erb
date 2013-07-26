@@ -10,10 +10,10 @@
 
   <form id='new_bill' method="post" action="/bill/create">
     <label for="issued_by"><%= i18n.issued_by %></label>
-    <input name="issued_by" type="text" required />
+    <input name="issued_by" type="text" required autofocus />
 
     <label for="due_date"><%= i18n.due_date %></label>
-    <input name="due_date" type="date" required />
+    <input name="due_date" type="date" placeholder="<%= i18n.date_format %>" required />
 
     <div class="row collapse">
       <label for="total_amount"><%= i18n.total_amount %></label>
@@ -21,7 +21,7 @@
         <span class="prefix">R$</span>
       </div>
       <div class="small-10 columns">
-        <input name="total_amount" type="number" min="0" step="any" required />
+        <input name="total_amount" type="number" min="0.1" step="any" required />
       </div>
     </div>
 
