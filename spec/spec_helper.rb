@@ -7,6 +7,7 @@ require 'capybara'
 require 'factory_girl'
 FactoryGirl.find_definitions
 
+
 # Clean database after running tests
 RSpec.configure do |config|
   config.after(:each) do

@@ -9,10 +9,13 @@ class Bill
   field :barcode, type: String
   field :status, type: Symbol, default: :opened
   field :image_url, type: String
-  mount_uploader :image, FileUploader
+  field :image
+  mount_uploader :image, FileUploader 
 
-  validates :issued_by, :due_date, :total_amount, :barcode, presence: true
+  validates_presence_of :issued_by, :due_date, :total_amount, :barcode
   validates :status, inclusion: { in: [:paid, :opened, :reserved] }
-  validates :barcode, uniqueness: true
+  validates_uniqueness_of :barcode
+
+  attr_accessible :issued_by, :due_date, :total_amount, :barcode, :status, :image_url, :image
 
 end

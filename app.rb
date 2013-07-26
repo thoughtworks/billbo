@@ -18,6 +18,16 @@ end
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
 
+if ENV['RACK_ENV'] == 'test'
+  CarrierWave::Uploader::GoogleDrive.configure do |config|
+    config.storage = :file
+    config.enable_processing = false
+  end
+else
+  CarrierWave::Uploader::GoogleDrive.configure do |config|
+    config.storage = :google_drive
+  end
+end
 
 require './uploaders/file_uploader'
 require './model/bill'
