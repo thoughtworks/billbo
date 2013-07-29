@@ -9,7 +9,8 @@ before do
 end
 
 def localeLabels localeCode
-  YAML::load(File.read("i18n/#{localeCode}.yml")).to_json
+  current_dir = File.expand_path File.dirname(__FILE__);
+  YAML::load(File.read("#{current_dir}/../i18n/#{localeCode}.yml")).to_json
 end
 
 get '/' do
