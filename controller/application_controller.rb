@@ -1,5 +1,5 @@
 before do
-  session[:locale] ||= 'pt'
+  session[:locale] ||= 'pt_BR'
   session[:i18n_hash] ||= localeLabels(session[:locale])
 
   if params[:locale]
