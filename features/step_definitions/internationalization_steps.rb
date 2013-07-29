@@ -1,6 +1,6 @@
 def code_of language 
-  languageCodes = { "portuguese" => "pt_BR", "english" => "en_US" }
-  languageCodes[language]
+  languageCodes = { "portuguese" => "pt", "english" => "en" }
+  languageCodes[language.downcase]
 end
 
 Given(/^the website is in (.*)$/) do |language|
