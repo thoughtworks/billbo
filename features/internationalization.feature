@@ -14,3 +14,8 @@ Feature: Internationalization
     Then the website should be in english
     When I change the website language to portuguese
     Then the website should be in portuguese
+
+  Scenario: Error loads the default language file
+    Given the website receives a invalid internationalization code
+    When I open the home page
+    Then the website should be in portuguese
