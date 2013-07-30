@@ -15,7 +15,7 @@
         <% @bills.each do |bill| %>
           <li class="bill-container">
             <a href="#" class="th radius" data-reveal-id="myModal<%= bill.id %>">
-              <img class="center" src="http://www.placehold.it/200x270&text=Bill+Image" alt="" />
+              <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
               <p class="issued-by"><%= bill.issued_by %></p>
               <p class="total_amount">R$ <%= bill.total_amount %></p>
             </a>

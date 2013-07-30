@@ -1,22 +1,22 @@
 require 'factory_girl'
 
-image_file = File.open(File.join(settings.root, "spec/", "bill.png"))
-
 FactoryGirl.define do
   sequence(:issued_by)    { "Company #{('A'..'Z').to_a.sample}" }
   sequence(:due_date)     { time_rand Time.local(2013, 1, 1), Time.now }
   sequence(:total_amount) { "%.2f" % Random.rand(1.0..100.0) }
   sequence(:barcode)      { (0...36).map{ ('0'..'9').to_a[rand(10)] }.join }
-  sequence(:image_url)        { "image#{(1..99).to_a.sample}" }
+  sequence(:url)          { "image#{(1..99).to_a.sample}" }
+  sequence(:filename)     { "filename#{(1..99).to_a.sample}"}
 
   factory :bill do
     issued_by     { generate(:issued_by) }
     due_date      { generate(:due_date) }
     total_amount  { generate(:total_amount) }
     barcode       { generate(:barcode) }
-    image_url     { generate(:image_url) }
-    image         {   image_file }
+    url           { generate(:url) }
+    filename      { generate(:filename) }
   end
+
 end
 
 def time_rand(from=0.0, to=Time.now)

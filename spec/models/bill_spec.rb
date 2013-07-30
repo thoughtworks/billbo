@@ -17,8 +17,8 @@ describe Bill do
         'total_amount' => 1.0,
         'barcode'      => '1',
         'status'       => :paid,
-        'image_url'    => "xxx",
-        "image"        =>"bill.png"
+        'url'          => "xxx",
+        "filename"     => "bill.png"
       }
     }
 
@@ -37,6 +37,8 @@ describe Bill do
       bill.total_amount = new_attributes['total_amount']
       bill.barcode = new_attributes['barcode']
       bill.status = new_attributes['status']
+      bill.url = new_attributes['url']
+      bill.filename = new_attributes['filename']
 
       bill.should be_valid
       bill.issued_by == new_attributes['issued_by']
@@ -44,7 +46,8 @@ describe Bill do
       bill.total_amount == new_attributes['total_amount']
       bill.barcode == new_attributes['barcode']
       bill.status == new_attributes['status']
-      bill.status == new_attributes['image_url']
+      bill.url == new_attributes['url']
+      bill.filename == new_attributes['filename']
     end
   end
 
@@ -75,7 +78,6 @@ describe Bill do
     it 'validates that barcode is unique' do
       bill.save
       new_bill = Bill.new(bill.attributes)
-      new_bill.image_url = 'xxx'
 
       new_bill.should_not be_valid
       new_bill.errors.should have_key(:barcode)
