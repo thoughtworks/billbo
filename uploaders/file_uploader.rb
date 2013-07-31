@@ -8,7 +8,7 @@ class FileUploader < CarrierWave::Uploader::GoogleDrive
   google_password ENV['billbo_password']
 
   def extension_white_list
-    %w(jpg jpeg gif png pdf)
+    %w(jpg jpeg gif png)
   end
 
   def updatemodel file
