@@ -6,7 +6,17 @@ Feature: store bills
 
   Scenario: create a bill
     When I create a bill
-    Then it should show success message 
+    Then it should show success message
+
+
+  Scenario: check out bill information
+    Given I have created bills:
+    | issued_by | due_date   | total_amount | barcode | image    |
+    | xxx       | 2020/07/21 | 300.0        | 000     | bill.png |
+    When I open the home page
+    And I should view bills information:
+    | issued_by | total_amount | image    |
+    | xxx       | 300.0        | bill.png |
 
   Scenario: create an empty bill
     When I try to create an empty bill

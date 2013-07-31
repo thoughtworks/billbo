@@ -25,6 +25,34 @@ When(/^I create a bill$/) do
   Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
 end
 
+Given(/^I have created bills:$/) do |table|
+  table.hashes.each do |row|
+    visit '/bill/new'
+
+    fill_in 'issued_by', :with => row["issued_by"]
+    fill_in 'due_date', :with => row["due_date"]
+    fill_in 'total_amount', :with => row["total_amount"]
+    fill_in 'barcode', :with => row["barcode"]
+
+    root_path = File.dirname(__FILE__)
+    attach_file('image', File.join(root_path, row["image"]), visible: false)
+
+    form = find_by_id 'new_bill'
+    Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
+  end
+end
+
+When(/^I should view bills information:$/) do |table|
+  table.hashes.each do |row|
+    within('#all-bills') do
+      page.should have_xpath("//img[@src=\"/uploads/#{row['image']}\"]")
+      page.should have_xpath("//img[@alt=\"#{row['image']}\"]")
+      page.should have_content(row["issued_by"])
+      page.should have_content(row["total_amount"])
+    end
+  end
+end
+
 When /^I open the home page$/ do
   visit '/'
 end
