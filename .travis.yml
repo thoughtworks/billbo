@@ -15,6 +15,7 @@ env:
     - secure: "DprsU+VdaoctLkkyh8UbMdG8cV35hlY+ruAz4aZfHb/bWdsNueXZhHxeloAe\nINoRLwpcrNwegrU3cg2gEDxKm+PcC6qyeDQB4FqDT+D3i5RJNNMWgk/MQ91y\nQ0J7URU70/xtW+xTDIsFcYE/G9DlTtjcX/y/NPiwuHKvGgstX7w="
 
 after_success:
+  - git checkout master
   - af login --email ${AF_EMAIL} --passwd ${AF_PASSWORD}
   - af update billbo
   - af logout 
