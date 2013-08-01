@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/foundation.css" />
     <link rel="stylesheet" href="/css/billbo.css" />
-    <link rel="stylesheet" href="/css/reveal.css" />
   </head>
 
   <body>
@@ -36,6 +35,7 @@
     <script src="/js/billbo.js"></script>
     <script type="text/javascript">
       $(document).foundation();
+      window.i18n = <%= session[:i18n_hash] %>
     </script>
   </body>
 </html>

@@ -15,6 +15,8 @@ configure do
                              :secret => 'change_me'
 end
 
+R18n::I18n.default = 'pt'
+
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
 

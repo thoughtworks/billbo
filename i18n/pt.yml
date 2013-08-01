@@ -1,4 +1,4 @@
-subtext: "Para ajudar alguém. Mas ajudar eficientemente"
+subtext: Para ajudar alguém. Mas ajudar eficientemente
 bills: Contas
 new_bill: Nova Conta
 issued_by: Empresa
@@ -6,9 +6,13 @@ due_date: Vencimento
 total_amount: Valor Total
 barcode: Código de Barras
 create_bill: Criar Conta
-bill_creation_success: Conta criada com sucesso
 bill_creation_fail: Problema ao criar a conta
+bill_creation_ok: Conta criada com sucesso
 gt_value: Maior valor
 lt_value: Menor valor
 priority: Prioridade
 image: Imagem
+required_field: Campo obrigatório
+greater_than_zero: Valor deve ser maior que zero
+after_yesterday: Data não pode ser anterior a hoje
+date_format: mm/dd/aaaa
