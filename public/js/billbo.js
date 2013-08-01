@@ -1,8 +1,8 @@
-var today = function() {
-  this.now = new Date();
-  this.dd = now.getDate();
-  this.mm = now.getMonth()+1; //January is 0!
-  this.yyyy = now.getFullYear();
+function today() {
+  var now = new Date(),
+      dd = now.getDate(),
+      mm = now.getMonth() + 1, // Months start from 0
+      yyyy = now.getFullYear();
 
   if (dd < 10) {
     dd = '0' + dd;
@@ -10,47 +10,34 @@ var today = function() {
   if (mm < 10) {
     mm = '0' + mm;
   }
-  return yyyy+'-'+mm+'-'+dd;
-};
+  return yyyy + '-' + mm + '-' + dd;
+}
 
-// Someone help me to refactor that? =)
+
 function CustomErrorMessage() {
-  this.required = function(formEl) {
-    this.formEl = formEl;
+  this.REQUIRED = 'required_field';
+  this.GT_ZERO = 'greater_than_zero';
+  this.AFTER_YESTERDAY = 'after_yesterday';
 
-    this.formEl.on('change invalid', function() {
+  function addValidation(formEl, validationName) {
+    formEl.on('change invalid', function() {
       var textfield = $(this).get(0);
       textfield.setCustomValidity('');
 
       if (!textfield.validity.valid) {
-        textfield.setCustomValidity(window.i18n["required_field"]);
+        textfield.setCustomValidity(window.i18n[validationName]);
       }
     });
+  }
+
+  this.required = function(formEl) {
+    addValidation(formEl, this.REQUIRED);
   }
   this.greaterThanZero = function(formEl) {
-    this.formEl = formEl;
-
-    this.formEl.on('change invalid', function() {
-      var textfield = $(this).get(0);
-      textfield.setCustomValidity('');
-
-      if (!textfield.validity.valid) {
-        textfield.setCustomValidity(window.i18n["greater_than_zero"]);
-      }
-    });
+    addValidation(formEl, this.GT_ZERO);
   }
-
   this.afterToday = function(formEl) {
-    this.formEl = formEl;
-
-    this.formEl.on('change invalid', function() {
-      var textfield = $(this).get(0);
-      textfield.setCustomValidity('');
-
-      if (!textfield.validity.valid) {
-        textfield.setCustomValidity(window.i18n["after_yesterday"]);
-      }
-    });
+    addValidation(formEl, this.AFTER_YESTERDAY);
   }
 }
 
@@ -74,8 +61,10 @@ $(document).ready(function() {
 
   $('input[name="due_date"]').attr('min', today());
 
-  var customize = new CustomErrorMessage();
-  customize.required($('section.new-bill').find($('input')));
-  customize.greaterThanZero($('section.new-bill').find($('input[type="number"]')));
-  customize.afterToday($('section.new-bill').find($('input[type="date"]')));
+  var customize = new CustomErrorMessage(),
+      newBillSection = $('section.new-bill');
+
+  customize.required(newBillSection.find($('input')));
+  customize.greaterThanZero(newBillSection.find($('input[type="number"]')));
+  customize.afterToday(newBillSection.find($('input[type="date"]')));
 });
