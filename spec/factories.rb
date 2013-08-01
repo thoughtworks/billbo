@@ -1,5 +1,7 @@
 require 'factory_girl'
 
+image_path= (File.join( settings.root, "spec", "fixtures"))
+
 FactoryGirl.define do
   sequence(:issued_by)    { "Company #{('A'..'Z').to_a.sample}" }
   sequence(:due_date)     { time_rand Time.local(2013, 1, 1), Time.now }
@@ -16,7 +18,11 @@ FactoryGirl.define do
     url           { generate(:url) }
     filename      { generate(:filename) }
   end
-
+  factory :image, class: File do
+    filename        { "bill.png" }
+    filepath        { image_path }
+    initialize_with { new(File.join(filepath, filename)) }
+  end
 end
 
 def time_rand(from=0.0, to=Time.now)

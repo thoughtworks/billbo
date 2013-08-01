@@ -6,6 +6,7 @@ describe 'FileUploader' do
   include CarrierWave::RMagick
 
   let(:bill) { FactoryGirl.build(:bill) }
+  let(:image) { FactoryGirl.build(:image) }
   
   before do
     @uploader = FileUploader.new(bill)
@@ -19,8 +20,7 @@ describe 'FileUploader' do
   
   describe 'process' do
     it "should scale down a image to fit within 500 by 500 pixels" do     
-      path_to_file = File.join( File.dirname(__FILE__), "../../features/step_definitions/bill.png")
-      @uploader.store!(File.open(path_to_file))
+      @uploader.store!(image)
 
       image =  Magick::Image::read( @uploader.file.file ).first
       image.columns.should be <= 500
@@ -29,17 +29,17 @@ describe 'FileUploader' do
   end
   
   describe 'extension' do
-    it "should throw IntegrityError when assignment not allowed extension" do
-      path_to_file = File.join( File.dirname(__FILE__), "../../public/img/example.pepper")
-      expect { @uploader.store! (File.open(path_to_file)) }.to raise_error(
+    it "should throw IntegrityError when assigning a file with not allowed extension" do
+      other_format = FactoryGirl.build(:image, filename: "example.pepper")
+
+      expect { @uploader.store! (other_format) }.to raise_error(
       	CarrierWave::IntegrityError, /allowed types: jpg, jpeg, gif, png/)
     end
   end
   
   describe 'update_model' do
   	it 'should update url and filename attribute for bill' do
-      path_to_file = File.join( File.dirname(__FILE__), "../../features/step_definitions/bill.png")
-      @uploader.store!(File.open(path_to_file))
+      @uploader.store!(image)
       
       bill.url.should == @uploader.url
       bill.filename.should == @uploader.filename

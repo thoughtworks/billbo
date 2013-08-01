@@ -17,9 +17,9 @@ When(/^I create a bill$/) do
   fill_in 'due_date', :with => '2020/07/21'
   fill_in 'total_amount', :with => '100.00'
   fill_in 'barcode', :with => "000"
-
-  root_path = File.dirname(__FILE__)
-  attach_file('image', File.join(root_path, 'bill.png'), visible: false)
+  
+  image = FactoryGirl.build(:image)
+  attach_file('image', image.path , visible: false)
 
   form = find_by_id 'new_bill'
   Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
@@ -34,8 +34,8 @@ Given(/^I have created bills:$/) do |table|
     fill_in 'total_amount', :with => row["total_amount"]
     fill_in 'barcode', :with => row["barcode"]
 
-    root_path = File.dirname(__FILE__)
-    attach_file('image', File.join(root_path, row["image"]), visible: false)
+    image = FactoryGirl.build(:image, filename: row["image"])
+    attach_file('image', image.path, visible: false)
 
     form = find_by_id 'new_bill'
     Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
