@@ -9,6 +9,9 @@ gem "rmagick", '~> 2.13.2'
 
 gem 'mongoid', '~> 3.1.4'
 
+gem 'json'
+gem 'oauth2'
+
 
 group :development do
   gem 'shotgun'

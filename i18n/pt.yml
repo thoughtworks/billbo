@@ -16,3 +16,4 @@ required_field: Campo obrigatório
 greater_than_zero: Valor deve ser maior que zero
 after_yesterday: Data não pode ser anterior a hoje
 date_format: mm/dd/aaaa
+not_an_admin_account: Faça login com uma conta de administrador

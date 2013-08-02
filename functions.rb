@@ -31,3 +31,7 @@ def locale_labels locale_code
 
   YAML::load(File.read(locale_file)).to_json
 end
+
+def logged_in
+  not session[:email].nil?
+end

@@ -52,4 +52,22 @@ describe 'Billbo' do
       last_response.body.should =~ /error/
     end
   end
+
+
+  describe 'GET /logout' do
+    it 'should logout the user and redirect to homepage' do
+      get '/logout'
+
+      last_response.should be_redirect
+      follow_redirect!
+
+      last_response.should be_ok
+      last_request.url.should == homepage
+    end
+  end
+
+  def homepage
+    'http://example.org/'
+  end
+
 end

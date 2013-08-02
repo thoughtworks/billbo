@@ -30,5 +30,7 @@ before do
 end
 
 require './model/bill'
+require './model/admin'
+require './model/auth'
 require './controller/application_controller'
 
