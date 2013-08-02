@@ -27,10 +27,17 @@ require './uploaders/file_uploader'
 
 before do
   setup_locale
+
+  if logged_in
+    @admin = Admin.new
+    @admin.email = session[:email]
+  end
 end
 
 require './model/bill'
 require './model/admin'
 require './model/auth'
-require './controller/application_controller'
+require './controller/home_controller'
+require './controller/bill_controller'
+require './controller/admin_controller'
 

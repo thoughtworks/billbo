@@ -1,28 +1,3 @@
-get '/' do
-  if logged_in
-    @admin = Admin.new
-    @admin.email = session[:email]
-  end
-
-  @bills = Bill.where(status: :opened)
-  erb :list_bills
-end
-
-get '/bill/new' do
-  erb :new_bill
-end
-
-post '/bill/create' do
-  bill = Bill.create(params)
-
-  if bill.save
-    redirect '/bill/new', :success => i18n.bill_creation_ok
-  else
-    redirect '/bill/new', :error => i18n.bill_creation_fail
-  end
-end
-
-
 get '/auth' do
   auth = Auth.new
   redirect auth.authorize_url(redirect_uri)
