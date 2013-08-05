@@ -17,3 +17,7 @@ greater_than_zero: Value must be greater than zero
 after_yesterday: Date can not be before today
 date_format: mm/dd/yyyy
 not_an_admin_account: Log in with an admin account
+upload_receipt: Upload receipt
+receipt: Receipt
+name: Name
+email: Email
