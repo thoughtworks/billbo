@@ -21,3 +21,5 @@ upload_receipt: Upload receipt
 receipt: Receipt
 name: Name
 email: Email
+receipt_uploaded_fail: Problem while uploading the receipt
+receipt_uploaded_ok: Receipt uploaded succesfully

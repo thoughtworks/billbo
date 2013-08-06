@@ -54,12 +54,18 @@ describe 'Billbo' do
 
   describe 'POST /bill/upload-receipt' do
     it 'updates a bill inserting its receipt data' do
-      post "/bill/upload-receipt/#{bill.id}", FactoryGirl.attributes_for(:receipt)
+      attrs = FactoryGirl.attributes_for(:receipt)
+
+      id = bill.id
+      post "/bill/upload-receipt/#{id}", attrs
 
       last_response.should be_redirect
       follow_redirect!
       last_response.should be_ok
       last_request.url.should == "http://example.org/"
+
+      bill2 = Bill.find(id)
+      bill2.contributor_email.should == attrs[:contributor_email]
     end
     it 'recognizes invalid data and redirects' do
       attributes = FactoryGirl.attributes_for(:receipt)
