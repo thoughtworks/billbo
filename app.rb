@@ -21,10 +21,12 @@ R18n::I18n.default = 'pt'
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
 
+ENV['billbo_login'] = "billbo.staging@gmail.com"
+ENV['billbo_password'] = "billbostaging"
+
 setup_carrierwave
 
 require './uploaders/file_uploader'
-require './uploaders/receipt_uploader'
 
 before do
   setup_locale
@@ -36,6 +38,7 @@ before do
 end
 
 require './model/bill'
+require './model/receipt'
 require './model/admin'
 require './model/auth'
 require './controller/home_controller'

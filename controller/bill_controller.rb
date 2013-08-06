@@ -19,11 +19,11 @@ end
 
 post '/bill/upload-receipt/:bill_id' do
   bill = Bill.find(params[:bill_id])
-  bill.contributor_email = params[:contributor_email]
+  bill.create_receipt(params)
 
-  if bill.receipt_data_valid? && bill.save
-    redirect '/', :success => i18n.receipt_uploaded_ok
+  if bill.save
+    redirect '/', :success => i18n.upload_receipt_ok
   else
-    redirect "/bill/upload-receipt/#{params[:bill_id]}", :error => i18n.receipt_uploaded_fail
+    redirect "/bill/upload-receipt/#{params[:bill_id]}", :error => i18n.upload_receipt_fail
   end
 end

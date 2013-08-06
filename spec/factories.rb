@@ -23,11 +23,11 @@ FactoryGirl.define do
     filepath        { image_path }
     initialize_with { new(File.join(filepath, filename)) }
   end
-  factory :receipt, class: Bill do
+  factory :receipt do
     contributor_name "John"
     contributor_email "john@gmail.com"
-    receipt_url { generate :url }
-    receipt_filename { generate :filename }
+    url { generate :url }
+    filename { generate :filename }
   end
 end
 

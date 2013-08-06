@@ -21,5 +21,5 @@ upload_receipt: Enviar recibo
 receipt: Recibo
 name: Nome
 email: Email
-receipt_uploaded_fail: Ocorreu um erro ao enviar o recibo
-receipt_uploaded_ok: Recibo enviado com sucesso
+upload_receipt_fail: Ocorreu um erro ao enviar o recibo
+upload_receipt_ok: Recibo enviado com sucesso

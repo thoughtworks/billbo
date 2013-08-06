@@ -65,7 +65,7 @@ describe 'Billbo' do
       last_request.url.should == "http://example.org/"
 
       bill2 = Bill.find(id)
-      bill2.contributor_email.should == attrs[:contributor_email]
+      bill2.receipt.contributor_email.should == attrs[:contributor_email]
     end
     it 'recognizes invalid data and redirects' do
       attributes = FactoryGirl.attributes_for(:receipt)

@@ -9,6 +9,10 @@ describe Bill do
     (bill == bill_found).should be_true
   end
 
+  # context :relations do
+  #   it { should embed_one :receipt }
+  # end
+
   context :update do
     let(:new_attributes) {
       { 'id'           => 1,
@@ -82,14 +86,6 @@ describe Bill do
       new_bill.should_not be_valid
       new_bill.errors.should have_key(:barcode)
       new_bill.errors[:barcode][0] =~ /is already taken/
-    end
-
-    it 'validates the email and receipt file' do
-      bill.contributor_email = ''
-      bill.receipt_data_valid?.should be_false
-
-      bill.contributor_email = 'email'
-      bill.receipt_data_valid?.should be_true
     end
 
   end
