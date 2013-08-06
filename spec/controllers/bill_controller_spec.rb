@@ -7,6 +7,8 @@ describe 'Billbo' do
     Sinatra::Application
   end
 
+  let(:bill) { FactoryGirl.create(:bill) }
+
   describe 'GET /bill/new' do
     it 'should render new_bill' do
       get '/bill/new'
@@ -47,6 +49,27 @@ describe 'Billbo' do
 
       last_response.should be_ok
       last_response.body.should =~ /Enviar recibo/
+    end
+  end
+
+  describe 'POST /bill/upload-receipt' do
+    it 'updates a bill inserting its receipt data' do
+      post "/bill/upload-receipt/#{bill.id}", FactoryGirl.attributes_for(:receipt)
+
+      last_response.should be_redirect
+      follow_redirect!
+      last_response.should be_ok
+      last_request.url.should == "http://example.org/"
+    end
+    it 'recognizes invalid data and redirects' do
+      attributes = FactoryGirl.attributes_for(:receipt)
+      attributes[:contributor_email] = ''
+      post "/bill/upload-receipt/#{bill.id}", attributes
+
+      last_response.should be_redirect
+      follow_redirect!
+      last_response.should be_ok
+      last_request.url.should == "http://example.org/bill/upload-receipt/#{bill.id}"
     end
   end
 

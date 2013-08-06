@@ -8,7 +8,7 @@
 
   <h3><%= i18n.upload_receipt %></h3>
 
-  <form id='new_bill' method="post" action="/bill/upload" enctype="multipart/form-data">
+  <form id='new_bill' method="post" action="<%= @action %>" enctype="multipart/form-data">
     <label for="name"><%= i18n.name %></label>
     <input name="name" type="text" autofocus />
 

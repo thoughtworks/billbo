@@ -23,6 +23,12 @@ FactoryGirl.define do
     filepath        { image_path }
     initialize_with { new(File.join(filepath, filename)) }
   end
+  factory :receipt, class: Bill do
+    contributor_name "John"
+    contributor_email "john@gmail.com"
+    receipt_url { generate :url }
+    receipt_filename { generate :filename }
+  end
 end
 
 def time_rand(from=0.0, to=Time.now)

@@ -24,6 +24,7 @@ Mongoid.load!('./config/mongoid.yml')
 setup_carrierwave
 
 require './uploaders/file_uploader'
+require './uploaders/receipt_uploader'
 
 before do
   setup_locale
