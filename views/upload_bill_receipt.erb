@@ -9,11 +9,11 @@
   <h3><%= i18n.upload_receipt %></h3>
 
   <form id='new_bill' method="post" action="<%= @action %>" enctype="multipart/form-data">
-    <label for="name"><%= i18n.name %></label>
-    <input name="name" type="text" autofocus />
+    <label for="contributor_name"><%= i18n.name %></label>
+    <input name="contributor_name" type="text" autofocus />
 
-    <label for="email"><%= i18n.email %></label>
-    <input name="email" type="text" required />
+    <label for="contributor_email"><%= i18n.email %></label>
+    <input name="contributor_email" type="text" required />
 
     <label for="receipt"><%= i18n.receipt %></label>
     <input name="receipt" type="file" />
