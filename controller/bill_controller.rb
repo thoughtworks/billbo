@@ -24,3 +24,19 @@ def admin? email
   admin = Admin.new
   admin.exists? email
 end
+
+get '/bill/upload-receipt/:bill_id' do
+  @action = "/bill/upload-receipt/#{params[:bill_id]}"
+  erb :upload_bill_receipt
+end
+
+post '/bill/upload-receipt/:bill_id' do
+  bill = Bill.find(params[:bill_id])
+  bill.create_receipt(params)
+
+  if bill.save
+    redirect '/', :success => i18n.upload_receipt_ok
+  else
+    redirect "/bill/upload-receipt/#{params[:bill_id]}", :error => i18n.upload_receipt_fail
+  end
+end

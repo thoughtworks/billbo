@@ -26,6 +26,12 @@ FactoryGirl.define do
   factory :admin do
     email         { "admin@example.com" }
   end
+  factory :receipt do
+    contributor_name "John"
+    contributor_email "john@gmail.com"
+    url { generate :url }
+    filename { generate :filename }
+  end
 end
 
 def time_rand(from=0.0, to=Time.now)

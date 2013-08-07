@@ -23,6 +23,7 @@ end
 group :test do
   gem 'factory_girl'
   gem 'rspec'
+  gem 'mongoid-rspec'
   gem 'guard-rspec'
   gem 'rb-fsevent'
   gem 'cucumber'

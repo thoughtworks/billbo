@@ -9,6 +9,10 @@ describe Bill do
     (bill == bill_found).should be_true
   end
 
+  # context :relations do
+  #   it { should embed_one :receipt }
+  # end
+
   context :update do
     let(:new_attributes) {
       { 'id'           => 1,
