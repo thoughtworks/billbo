@@ -27,6 +27,7 @@ require './uploaders/file_uploader'
 
 before do
   setup_locale
+  setup_user
 
   if logged_in
     @admin = Admin.new

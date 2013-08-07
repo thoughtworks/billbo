@@ -18,6 +18,12 @@ def setup_locale
   session[:i18n_hash] = locale_labels(session[:locale])
 end
 
+def setup_user
+  if test_env?
+    session[:email] = request.cookies["stub_email"] if request.cookies["stub_email"]
+  end
+end
+
 def locale_labels locale_code
   current_dir = File.expand_path File.dirname(__FILE__);
   locale_file = "#{current_dir}/i18n/#{locale_code}.yml"

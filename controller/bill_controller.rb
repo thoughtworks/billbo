@@ -1,5 +1,13 @@
 get '/bill/new' do
-  erb :new_bill
+  if session[:email].nil?
+  	redirect '/auth?url=/bill/new'
+  end
+  
+  if admin? session[:email]
+    erb :new_bill
+  else
+    redirect '/', :error => i18n.not_an_admin_account
+  end
 end
 
 post '/bill/create' do
@@ -10,4 +18,9 @@ post '/bill/create' do
   else
     redirect '/bill/new', :error => i18n.bill_creation_fail
   end
+end
+
+def admin? email
+  admin = Admin.new
+  admin.exists? email
 end

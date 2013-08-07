@@ -27,6 +27,7 @@ group :test do
   gem 'rb-fsevent'
   gem 'cucumber'
   gem 'capybara'
+  gem 'launchy'
 end
 
 group :development, :test do

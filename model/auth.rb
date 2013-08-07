@@ -1,6 +1,6 @@
 class Auth
-  GOOGLE_CLIENT_ID = "705027818305.apps.googleusercontent.com"
-  GOOGLE_CLIENT_SECRET = "HuQQFanZJZZpwqVONjvE1aqX"
+  GOOGLE_CLIENT_ID = "895352289951-llfvtba6m8fnfvprfll7a85ficrlq7r8.apps.googleusercontent.com"
+  GOOGLE_CLIENT_SECRET = "bAhMrM9wzIESCh_evRgf7WZ-"
 
   attr_accessor :access_token, :email, :is_verified, :client
 

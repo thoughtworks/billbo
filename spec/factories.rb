@@ -23,6 +23,9 @@ FactoryGirl.define do
     filepath        { image_path }
     initialize_with { new(File.join(filepath, filename)) }
   end
+  factory :admin do
+    email         { "admin@example.com" }
+  end
 end
 
 def time_rand(from=0.0, to=Time.now)

@@ -1,19 +1,13 @@
 get '/auth' do
   auth = Auth.new
-  redirect auth.authorize_url(redirect_uri)
+  url = params["url"] || '/'
+  redirect auth.authorize_url redirect_uri "url=#{url}"
 end
 
 get '/oauth2callback' do
-  auth = Auth.new(params[:code], redirect_uri)
-  admin = Admin.new
-
-  if admin.exists?(auth.email)
-    session[:email] = auth.email
-  else
-    redirect '/', :error => i18n.not_an_admin_account
-  end
-
-  redirect '/'
+  auth = Auth.new(params[:code], redirect_uri("url=#{params["url"]}"))
+  session[:email] = auth.email
+  redirect params["url"]
 end
 
 get '/logout' do
@@ -21,9 +15,9 @@ get '/logout' do
   redirect '/'
 end
 
-def redirect_uri
+def redirect_uri query = nil
   uri = URI.parse(request.url)
   uri.path = '/oauth2callback'
-  uri.query = nil
+  uri.query = query
   uri.to_s
 end

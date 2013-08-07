@@ -5,12 +5,14 @@ Feature: store bills
   So that I can share them with other users
 
   Scenario: create a bill
+    Given I am an admin
     When I create a bill
     Then it should show success message
 
 
   Scenario: check out bill information
-    Given I have created bills:
+    Given I am an admin
+    And I have created bills:
     | issued_by | due_date   | total_amount | barcode | image    |
     | xxx       | 2020/07/21 | 300.0        | 000     | bill.png |
     When I open the home page
