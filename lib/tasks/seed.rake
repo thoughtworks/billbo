@@ -11,5 +11,6 @@ namespace :db do
     num.times {
       puts "Bill created:\n#{FactoryGirl.create(:bill).inspect}\n\n"
     }
+    puts "Admin created:\n#{FactoryGirl.create(:admin).inspect}\n\n"
   end
 end
