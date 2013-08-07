@@ -9,7 +9,7 @@ describe 'Billbo' do
 
   let(:bill) { FactoryGirl.create(:bill) }
 
-describe 'GET /bill/new' do
+  describe 'GET /bill/new' do
     describe 'when log in as admin' do
       before do
         log_in_as_admin
@@ -133,22 +133,5 @@ describe 'GET /bill/new' do
       last_response.should be_ok
       last_request.url.should == "http://example.org/bill/upload-receipt/#{bill.id}"
     end
-  end
-  
-  def homepage
-    'http://example.org/'
-  end
-  
-  def log_in_as_admin
-    admin = FactoryGirl.create(:admin)
-    log_in admin.email
-  end
-
-  def log_in email
-    set_cookie "stub_email=#{email}"
-  end
-
-  def logout
-    set_cookie ''
   end
 end
