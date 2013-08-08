@@ -6,6 +6,7 @@ end
 
 get '/oauth2callback' do
   auth = Auth.new(params[:code], redirect_uri("url=#{params["url"]}"))
+  session[:name] = auth.name
   session[:email] = auth.email
   redirect params["url"]
 end

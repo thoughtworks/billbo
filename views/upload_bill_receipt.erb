@@ -10,14 +10,14 @@
 
   <form id='new_bill' method="post" action="<%= @action %>" enctype="multipart/form-data">
     <label for="contributor_name"><%= i18n.name %></label>
-    <input name="contributor_name" type="text" autofocus />
+    <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"/>
 
     <label for="contributor_email"><%= i18n.email %></label>
-    <input name="contributor_email" type="text" required />
+    <input name="contributor_email" type="text" required value="<%= session['email']%>"/>
 
     <label for="image"><%= i18n.receipt %></label>
     <input name="image" type="file" />
 
-    <button type="submit" class="button"><%= i18n.create_bill %></button>
+    <button type="submit" class="button"><%= i18n.upload_receipt %></button>
   </form>
 </section>
