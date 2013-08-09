@@ -9,7 +9,6 @@ Feature: store bills
     When I create a bill
     Then it should show success message
 
-
   Scenario: check out bill information
     Given I am an admin
     And I have created bills:

@@ -86,19 +86,6 @@ describe 'Billbo' do
     end
   end
 
-
-  describe 'GET /logout' do
-    it 'should logout the user and redirect to homepage' do
-      get '/logout'
-
-      last_response.should be_redirect
-      follow_redirect!
-
-      last_response.should be_ok
-      last_request.url.should == homepage
-    end
-  end
-
   describe 'GET /bill/receipt/:bill_id' do
     it "render upload_receipt view" do
       get '/bill/upload-receipt/1'
