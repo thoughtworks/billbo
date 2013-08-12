@@ -41,3 +41,7 @@ end
 def logged_in
   not session[:email].nil?
 end
+
+def logged_as_admin?
+  logged_in and not Admin.all(email: session[:email]).empty?
+end

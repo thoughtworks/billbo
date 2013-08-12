@@ -2,7 +2,7 @@ get '/bill/new' do
   if session[:email].nil?
   	redirect '/auth?url=/bill/new'
   end
-  
+
   if admin? session[:email]
     erb :new_bill
   else
@@ -21,8 +21,7 @@ post '/bill/create' do
 end
 
 def admin? email
-  admin = Admin.new
-  admin.exists? email
+  not Admin.all(email: email).empty?
 end
 
 get '/bill/upload-receipt/:bill_id' do
