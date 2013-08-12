@@ -19,12 +19,12 @@ describe 'FileUploader' do
   end
   
   describe 'process' do
-    it "should scale down a image to fit within 500 by 500 pixels" do     
+    it "should scale down a image to fit within 1000 by 1000 pixels" do     
       @uploader.store!(image)
 
       image =  Magick::Image::read( @uploader.file.file ).first
-      image.columns.should be <= 500
-      image.rows.should be <= 500
+      image.columns.should be <= 1000
+      image.rows.should be <= 1000
     end
   end
   

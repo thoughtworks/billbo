@@ -2,7 +2,7 @@
 
 class FileUploader < CarrierWave::Uploader::GoogleDrive
   include CarrierWave::RMagick
-  process :resize_to_limit => [500, 500]
+  process :resize_to_limit => [1000, 1000]
 
   google_login ENV['billbo_login']
   google_password ENV['billbo_password']
