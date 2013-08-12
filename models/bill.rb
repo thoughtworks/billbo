@@ -14,6 +14,7 @@ class Bill
   validates_presence_of :issued_by, :due_date, :total_amount, :barcode
   validates :status, inclusion: { in: [:paid, :opened, :reserved] }
   validates_uniqueness_of :barcode
+  validates :total_amount, numericality: { greater_than_or_equal_to: 0 }
 
   has_one :receipt
 end

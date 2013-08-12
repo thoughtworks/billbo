@@ -3,10 +3,12 @@ require 'spec_helper'
 describe Bill do
   let(:bill) { FactoryGirl.build(:bill) }
 
-  it 'saves a bill successfully' do
-    expect { bill.save }.to change { Bill.count }.by(1)
-    bill_found = Bill.find(bill.id)
-    (bill == bill_found).should be_true
+  context :save do
+    it 'saves a bill successfully' do
+      expect { bill.save }.to change { Bill.count }.by(1)
+      bill_found = Bill.find(bill.id)
+      (bill == bill_found).should be_true
+    end
   end
 
   # context :relations do
@@ -52,6 +54,13 @@ describe Bill do
       bill.status == new_attributes['status']
       bill.url == new_attributes['url']
       bill.filename == new_attributes['filename']
+    end
+
+    it 'validates total_amount must be greater than 0.0' do
+      bill.update_attributes(total_amount: -1)
+
+      bill.should_not be_valid
+      bill.errors.should have_key(:total_amount)
     end
   end
 
