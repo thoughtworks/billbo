@@ -32,12 +32,19 @@
                 </a>
               </div>
             </div>
-            <section class="reveal-modal" id="myModal<%= bill.id %>">
+            <section class="reveal-modal small-12 columns" id="myModal<%= bill.id %>">
               <a class="close-reveal-modal">&#215;</a>
-              <h4><%= bill.issued_by %></h4>
-              <p>R$ <%= bill.total_amount %></p>
-              <p class="due_date"><%= bill.due_date %></p>
-              <p><%= bill.barcode %></p>
+              <div class="small-8 columns">
+                <h4><%= bill.issued_by %></h4>
+                <p>R$ <%= bill.total_amount %></p>
+                <p class="due_date"><%= bill.due_date %></p>
+                <p><%= bill.barcode %></p>
+              </div>
+              <div>
+                <a href="<%= bill.url %>" >
+                  <img class="small-4 columns" src="<%= bill.url %>" alt="<%= bill.filename %>"/>
+                </a>
+              </div>
             </section>
           </li>
         <% end %>
