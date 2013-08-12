@@ -60,7 +60,7 @@ describe Bill do
       bill = Bill.new
 
       bill.should_not be_valid
-      bill.errors.should have(4).items
+      bill.errors.should have(5).items
       bill.errors.should have_key(:issued_by)
       bill.errors.should have_key(:due_date)
       bill.errors.should have_key(:total_amount)

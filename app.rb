@@ -35,11 +35,10 @@ before do
   end
 end
 
-require './model/bill'
-require './model/receipt'
-require './model/admin'
-require './model/auth'
-require './controller/home_controller'
-require './controller/bill_controller'
-require './controller/admin_controller'
-
+require './models/bill'
+require './models/receipt'
+require './models/admin'
+require './models/auth'
+require './controllers/home_controller'
+require './controllers/bill_controller'
+require './controllers/admin_controller'

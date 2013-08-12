@@ -1,4 +1,3 @@
-
 class Bill
   include Mongoid::Document
   include CarrierWave::Mount
