@@ -13,6 +13,7 @@ describe Bill do
 
   context :relations do
     it { should have_one(:receipt) }
+    it { should have_many(:reservations) }
   end
 
   context :update do

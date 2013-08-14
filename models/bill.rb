@@ -20,6 +20,7 @@ class Bill
   validates :total_amount, numericality: { greater_than_or_equal_to: 0 }
 
   has_one :receipt
+  has_many :reservations
 
   private
 
