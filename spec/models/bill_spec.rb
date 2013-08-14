@@ -69,11 +69,11 @@ describe Bill do
       bill = Bill.new
 
       bill.should_not be_valid
-      bill.errors.should have(5).items
-      bill.errors.should have_key(:issued_by)
-      bill.errors.should have_key(:due_date)
-      bill.errors.should have_key(:total_amount)
-      bill.errors.should have_key(:barcode)
+      bill.errors.messages.should have(4).items
+      bill.errors.messages.should have_key(:issued_by)
+      bill.errors.messages.should have_key(:due_date)
+      bill.errors.messages.should have_key(:total_amount)
+      bill.errors.messages.should have_key(:barcode)
     end
 
     it 'validates that status is invalid' do
@@ -97,5 +97,11 @@ describe Bill do
       new_bill.errors[:barcode][0] =~ /is already taken/
     end
 
+    it 'validates due_date is a valid date' do
+      invalid_bill = FactoryGirl.build(:bill, due_date: '30/07/2013')
+
+      invalid_bill.should_not be_valid
+      invalid_bill.errors.should have_key(:due_date)
+    end
   end
 end
