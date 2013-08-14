@@ -5,6 +5,7 @@ require 'sinatra/redirect_with_flash'
 require 'carrierwave'
 require 'carrierwave-google_drive'
 require 'carrierwave/mongoid'
+require 'pony'
 require './functions'
 
 Bundler.require
@@ -28,6 +29,7 @@ require './uploaders/file_uploader'
 before do
   setup_locale
   setup_user
+  setup_email
 
   if logged_in
     @admin = Admin.new

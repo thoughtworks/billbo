@@ -11,7 +11,7 @@ gem 'mongoid', '~> 3.1.4'
 
 gem 'json'
 gem 'oauth2'
-
+gem 'pony'
 
 group :development do
   gem 'shotgun'

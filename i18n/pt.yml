@@ -23,3 +23,9 @@ name: Nome
 email: Email
 upload_receipt_fail: Ocorreu um erro ao enviar o recibo
 upload_receipt_ok: Recibo enviado com sucesso
+upload_receipt_subject: Pagamento carregado
+regards_to_admin: Oi Administrador!
+paid: pago
+for: pra
+here_is: Aqui está o
+thanks: Obrigado

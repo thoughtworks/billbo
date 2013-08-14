@@ -41,3 +41,19 @@ end
 def logged_in
   not session[:email].nil?
 end
+
+def setup_email
+  if !test_env?
+    Pony.options = { :via => :smtp,
+                     :via_options => {
+                        :address              => 'smtp.gmail.com',
+                        :port                 => '587',
+                        :enable_starttls_auto => true,
+                        :user_name            => ENV['billbo_login'],
+                        :password             => ENV['billbo_password'],
+                        :authentication       => :plain,
+                        :domain               => "localhost.localdomain"
+                      }
+                    }
+  end
+end

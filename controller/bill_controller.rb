@@ -32,11 +32,24 @@ end
 
 post '/bill/upload-receipt/:bill_id' do
   bill = Bill.find(params[:bill_id])
-  bill.create_receipt(params)
+  receipt = bill.create_receipt(params)
 
   if bill.save
+    send_email receipt, bill
     redirect '/', :success => i18n.upload_receipt_ok
   else
     redirect "/bill/upload-receipt/#{params[:bill_id]}", :error => i18n.upload_receipt_fail
   end
 end
+
+def send_email payment, bill
+  Admin.all.each do |admin|
+    Pony.mail :to => admin.email,
+          :from => payment.contributor_email,
+          :subject => i18n.upload_receipt_subject,
+          :html_body => erb(:email,
+                            :locals => {:receipt => payment, :bill => bill },
+                            :layout => false),
+          :via => :smtp
+    end
+  end

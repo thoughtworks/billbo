@@ -96,19 +96,36 @@ describe 'Billbo' do
   end
 
   describe 'POST /bill/upload-receipt' do
-    it 'updates a bill inserting its receipt data' do
-      attrs = FactoryGirl.attributes_for(:receipt)
+    describe 'with valid data' do
+      it 'updates a bill inserting its receipt data' do
+        attrs = FactoryGirl.attributes_for(:receipt)
+        post "/bill/upload-receipt/#{bill.id}", attrs
 
-      id = bill.id
-      post "/bill/upload-receipt/#{id}", attrs
+        last_response.should be_redirect
+        follow_redirect!
+        last_response.should be_ok
+        last_request.url.should == homepage
 
-      last_response.should be_redirect
-      follow_redirect!
-      last_response.should be_ok
-      last_request.url.should == homepage
+        updated_bill = Bill.find(bill.id)
+        updated_bill.receipt.contributor_email.should == attrs[:contributor_email]
+      end
+      it 'send an email to the admin with the receipt information' do
+        admin = FactoryGirl.create(:admin)
+        attrs = FactoryGirl.attributes_for(:receipt)
 
-      bill2 = Bill.find(id)
-      bill2.receipt.contributor_email.should == attrs[:contributor_email]
+        Pony.should_receive :mail do  |params|
+          params[:to].should == admin.email
+          params[:from].should == attrs[:contributor_email]
+          params[:subject].should include 'upload_receipt_subject'
+          params[:html_body].should include attrs[:contributor_name],
+                                            bill.issued_by,
+                                            bill.total_amount.to_s,
+                                            bill.due_date.to_s
+          params[:via].should == :smtp
+        end
+
+        post "/bill/upload-receipt/#{bill.id}", attrs
+      end
     end
     it 'recognizes invalid data and redirects' do
       attributes = FactoryGirl.attributes_for(:receipt)

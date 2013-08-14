@@ -23,3 +23,9 @@ name: Name
 email: Email
 upload_receipt_fail: Problem uploading the receipt
 upload_receipt_ok: Receipt uploaded succesfully
+upload_receipt_subject: Payment uploaded
+regards_to_admin: Hi Administrator!
+paid: paid
+for: for
+here_is: Here is the
+thanks: Thanks
