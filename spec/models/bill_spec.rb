@@ -11,9 +11,9 @@ describe Bill do
     end
   end
 
-  # context :relations do
-  #   it { should embed_one :receipt }
-  # end
+  context :relations do
+    it { should have_one(:receipt) }
+  end
 
   context :update do
     let(:new_attributes) {
