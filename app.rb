@@ -17,7 +17,8 @@ configure do
                              :secret => 'change_me'
 end
 
-R18n::I18n.default = 'pt'
+R18n.default_places = './i18n/'
+R18n.set('pt')
 
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
@@ -37,11 +38,11 @@ before do
   end
 end
 
-require './model/bill'
-require './model/receipt'
-require './model/admin'
-require './model/auth'
-require './controller/home_controller'
-require './controller/bill_controller'
-require './controller/admin_controller'
-
+require './models/bill'
+require './models/receipt'
+require './models/admin'
+require './models/auth'
+require './models/reservation'
+require './controllers/home_controller'
+require './controllers/bill_controller'
+require './controllers/admin_controller'

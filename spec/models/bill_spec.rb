@@ -3,15 +3,18 @@ require 'spec_helper'
 describe Bill do
   let(:bill) { FactoryGirl.build(:bill) }
 
-  it 'saves a bill successfully' do
-    expect { bill.save }.to change { Bill.count }.by(1)
-    bill_found = Bill.find(bill.id)
-    (bill == bill_found).should be_true
+  context :save do
+    it 'saves a bill successfully' do
+      expect { bill.save }.to change { Bill.count }.by(1)
+      bill_found = Bill.find(bill.id)
+      (bill == bill_found).should be_true
+    end
   end
 
-  # context :relations do
-  #   it { should embed_one :receipt }
-  # end
+  context :relations do
+    it { should have_one(:receipt) }
+    it { should have_many(:reservations) }
+  end
 
   context :update do
     let(:new_attributes) {
@@ -53,6 +56,13 @@ describe Bill do
       bill.url == new_attributes['url']
       bill.filename == new_attributes['filename']
     end
+
+    it 'validates total_amount must be greater than 0.0' do
+      bill.update_attributes(total_amount: -1)
+
+      bill.should_not be_valid
+      bill.errors.should have_key(:total_amount)
+    end
   end
 
   context :validation do
@@ -60,11 +70,11 @@ describe Bill do
       bill = Bill.new
 
       bill.should_not be_valid
-      bill.errors.should have(4).items
-      bill.errors.should have_key(:issued_by)
-      bill.errors.should have_key(:due_date)
-      bill.errors.should have_key(:total_amount)
-      bill.errors.should have_key(:barcode)
+      bill.errors.messages.should have(4).items
+      bill.errors.messages.should have_key(:issued_by)
+      bill.errors.messages.should have_key(:due_date)
+      bill.errors.messages.should have_key(:total_amount)
+      bill.errors.messages.should have_key(:barcode)
     end
 
     it 'validates that status is invalid' do
@@ -88,5 +98,11 @@ describe Bill do
       new_bill.errors[:barcode][0] =~ /is already taken/
     end
 
+    it 'validates due_date is a valid date' do
+      invalid_bill = FactoryGirl.build(:bill, due_date: '30/07/2013')
+
+      invalid_bill.should_not be_valid
+      invalid_bill.errors.should have_key(:due_date)
+    end
   end
 end

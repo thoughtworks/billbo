@@ -15,6 +15,11 @@
       </ul>
     </div>
   </section>
+
+  <% if logged_as_admin?  %>
+    <a href="/bill/new" class="button"><%= i18n.new_bill %></a>
+  <% end %>
+
   <section class="row">
     <div class="small-12 columns">
       <ul id="all-bills" class="small-block-grid-2 large-block-grid-4">
