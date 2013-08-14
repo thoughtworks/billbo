@@ -12,6 +12,7 @@ gem 'mongoid', '~> 3.1.4'
 gem 'json'
 gem 'oauth2'
 
+gem 'mongoid-rspec'
 
 group :development do
   gem 'shotgun'
@@ -23,7 +24,6 @@ end
 group :test do
   gem 'factory_girl'
   gem 'rspec'
-  gem 'mongoid-rspec'
   gem 'guard-rspec'
   gem 'rb-fsevent'
   gem 'cucumber'
