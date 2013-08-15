@@ -95,7 +95,7 @@ describe 'Billbo' do
         get '/bill/upload-receipt/1'
 
         last_response.should be_ok
-        last_response.body.should =~ /Enviar recibo/
+        last_response.body.should =~ /upload_receipt/
       end
     end
 
@@ -141,7 +141,7 @@ describe 'Billbo' do
         last_response.should be_redirect
         follow_redirect!
         last_response.should be_ok
-        last_request.url.should == "http://example.org/bill/upload-receipt/#{bill.id}"
+        last_request.url.should == "#{homepage}bill/upload-receipt/#{bill.id}"
       end
     end
   end
@@ -153,7 +153,7 @@ describe 'Billbo' do
         get "/bill/reserve/#{bill.id}"
 
         last_response.should be_ok
-        last_response.body.should =~ /Reservar conta/
+        last_response.body.should =~ /reserve_bill/
       end
     end
     context 'POST /bill/reserve' do
@@ -181,8 +181,8 @@ describe 'Billbo' do
         last_response.should be_redirect
         follow_redirect!
         last_response.should be_ok
-        last_request.url.should == "http://example.org/bill/reserve/#{bill.id}"
-        last_response.body.should =~ /Ocorreu um erro/
+        last_request.url.should == "#{homepage}bill/reserve/#{bill.id}"
+        last_response.body.should =~ /reserve_bill_fail/
       end
     end
   end
