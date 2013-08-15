@@ -1,7 +1,6 @@
 class Bill
   include Mongoid::Document
   include CarrierWave::Mount
-  include R18n::Helpers
 
   field :issued_by, type: String
   field :due_date, type: Date
@@ -26,7 +25,7 @@ class Bill
 
   def validate_date
     unless self.due_date && self.due_date >= Date.today
-      self.errors.add(:due_date, i18n.after_yesterday)
+      self.errors.add(:due_date, "#{t.after_yesterday}")
     end
   end
 end

@@ -17,6 +17,7 @@ configure do
                              :secret => 'change_me'
 end
 
+include R18n::Helpers
 R18n.default_places = './i18n/'
 R18n.set('pt')
 

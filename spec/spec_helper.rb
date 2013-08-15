@@ -4,7 +4,6 @@ require './app'
 require 'capybara'
 require 'pony'
 
-include R18n::Helpers
 R18n.default_places = '../i18n/'
 R18n.set('pt')
 
