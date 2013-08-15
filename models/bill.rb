@@ -21,6 +21,10 @@ class Bill
   has_one :receipt
   has_many :reservations
 
+  def has_active_reservation?
+    self.reservations.where(:active_until.gte => DateTime.now).count > 0
+  end
+
   private
 
   def validate_date

@@ -3,6 +3,19 @@ require 'spec_helper'
 describe Bill do
   let(:bill) { FactoryGirl.build(:bill) }
 
+  context 'active reservation' do
+    it 'verify if the bill has active reservation' do
+      bill.save
+      bill.has_active_reservation?.should == false
+
+      bill.reservations.create(:email => 'test@xxx.com', :phone_number => '22222222')
+      bill.has_active_reservation?.should == true
+
+      bill.reservations.last.update_attribute(:active_until, 1.hour.ago)
+      bill.has_active_reservation?.should == false
+    end
+  end
+
   context :save do
     it 'saves a bill successfully' do
       expect { bill.save }.to change { Bill.count }.by(1)

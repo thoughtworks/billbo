@@ -27,6 +27,11 @@
           <li class="bill-container">
             <div>
               <a href="#" class="th radius" data-reveal-id="myModal<%= bill.id %>">
+                <% if bill.has_active_reservation? %>
+                  <p class="alert-box alert">
+                    <%= i18n.bill_reserved %>
+                  </p>
+                <% end %>
                 <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
                 <p class="issued-by"><%= bill.issued_by %></p>
                 <p class="total_amount">R$ <%= bill.total_amount %></p>
