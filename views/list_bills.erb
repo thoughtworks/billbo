@@ -27,7 +27,7 @@
           <% a_class = if bill.has_active_reservation? then ' reserved' else ' not_reserved' end %>
           <li class="bill-container">
             <div>
-              <a href="#" class="th radius<%= a_class %>" data-reveal-id="myModal<%= bill.id %>">
+              <a href="#" class="th radius <%= bill.status %>" data-reveal-id="myModal<%= bill.id %>">
 
                 <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
                 <p class="issued-by"><%= bill.issued_by %></p>
