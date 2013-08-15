@@ -20,10 +20,6 @@ post '/bill/create' do
   end
 end
 
-def admin? email
-  not Admin.all(email: email).empty?
-end
-
 get '/bill/upload-receipt/:bill_id' do
   @action = "/bill/upload-receipt/#{params[:bill_id]}"
   erb :upload_bill_receipt
@@ -41,6 +37,28 @@ post '/bill/upload-receipt/:bill_id' do
   end
 end
 
+get '/bill/reserve/:bill_id' do
+  @action = "/bill/reserve/#{params[:bill_id]}"
+  erb :reserve_bill
+end
+
+post '/bill/reserve/:bill_id' do
+  bill = Bill.find(params[:bill_id])
+  bill.reservations.create(params)
+
+  unless bill.reservations.last.errors.any?
+    redirect '/', :success => i18n.reserve_bill_ok
+  else
+    redirect "/bill/reserve/#{params[:bill_id]}", :error => i18n.reserve_bill_fail
+  end
+end
+
+private
+
+def admin? email
+  not Admin.all(email: email).empty?
+end
+
 def send_email payment, bill
   Admin.all.each do |admin|
     Pony.mail :to => admin.email,
@@ -50,5 +68,6 @@ def send_email payment, bill
                             :locals => {:receipt => payment, :bill => bill },
                             :layout => false),
           :via => :smtp
-    end
+    
   end
+end

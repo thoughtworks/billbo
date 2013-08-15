@@ -29,3 +29,7 @@ paid: pago
 for: pra
 here_is: Aqui está o
 thanks: Obrigado
+reserve_bill: Reservar conta
+phone_number: Telefone
+reserve_bill_fail: Ocorreu um erro ao reservar a conta
+reserve_bill_ok: Conta reservada com sucesso

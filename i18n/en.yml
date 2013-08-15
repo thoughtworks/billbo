@@ -29,3 +29,7 @@ paid: paid
 for: for
 here_is: Here is the
 thanks: Thanks
+reserve_bill: Reserve bill
+phone_number: Phone Number
+reserve_bill_fail: Problem reserving the bill
+reserve_bill_ok: Bill reserved succesfully

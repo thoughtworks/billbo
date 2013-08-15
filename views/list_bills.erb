@@ -32,8 +32,11 @@
                 <p class="total_amount">R$ <%= bill.total_amount %></p>
               </a>
               <div class="text-center">
-                <a href="/bill/upload-receipt/<%= bill.id %>" class="button">
-                <%= i18n.upload_receipt %>
+                <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
+                  <%= i18n.reserve_bill %>
+                </a>
+                <a href="/bill/upload-receipt/<%= bill.id %>" class="tiny button">
+                  <%= i18n.upload_receipt %>
                 </a>
               </div>
             </div>
