@@ -1,3 +1,11 @@
+.reserved {
+  background-color: #FFCCCC;
+}
+
+.not_reserved {
+  background-color: #CEEFCC;
+}
+
 div.sort_list {
   font-size: 0.8em;
   color: #999;
