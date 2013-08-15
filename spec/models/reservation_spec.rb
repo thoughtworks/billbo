@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe Reservation do
 
-  context :fields do
-    its("date.to_s") { should == DateTime.now.to_s }
+  its("date.to_i") { should == DateTime.now.to_i }
+  its("active_until.to_i") { should == 24.hours.from_now.to_i }
 
+  context :fields do
     it { should allow_mass_assignment_of(:phone_number) }
     it { should allow_mass_assignment_of(:email) }
+
+    it { should_not allow_mass_assignment_of(:date) }
+    it { should_not allow_mass_assignment_of(:active_until) }
   end
 
   context :relations do

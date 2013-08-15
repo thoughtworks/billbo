@@ -18,6 +18,11 @@ FactoryGirl.define do
     url           { generate(:url) }
     filename      { generate(:filename) }
   end
+  factory :reservation do
+    phone_number {"(81) 8855-5522"}
+    email {"john@gmail.com"}
+    bill {FactoryGirl.create(:bill)}
+  end
   factory :image, class: File do
     filename        { "bill.png" }
     filepath        { image_path }
