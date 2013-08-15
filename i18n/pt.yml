@@ -23,3 +23,7 @@ name: Nome
 email: Email
 upload_receipt_fail: Ocorreu um erro ao enviar o recibo
 upload_receipt_ok: Recibo enviado com sucesso
+reserve_bill: Reservar conta
+phone_number: Telefone
+reserve_bill_fail: Ocorreu um erro ao reservar a conta
+reserve_bill_ok: Conta reservada com sucesso

@@ -8,7 +8,7 @@ class Reservation
 
   attr_accessible :email, :phone_number
 
-  validates_presence_of :phone_number, :email, :bill_id
+  validates_presence_of :phone_number, :email
 
   belongs_to :bill
 end

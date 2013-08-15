@@ -1,0 +1,20 @@
+<section class="large-6 columns new-bill">
+  <% flash.each do |key, value| %>
+    <div data-alert class="alert-box <%= key %>">
+      <%= value %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+
+  <h3><%= i18n.reserve_bill %></h3>
+
+  <form id='new_bill' method="post" action="<%= @action %>">
+    <label for="phone_number"><%= i18n.phone_number %></label>
+    <input name="phone_number" type="text" autofocus />
+
+    <label for="email"><%= i18n.email %></label>
+    <input name="email" type="text" required value="<%= session['email']%>"/>
+
+    <button type="submit" class="button"><%= i18n.reserve_bill %></button>
+  </form>
+</section>

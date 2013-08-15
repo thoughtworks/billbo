@@ -39,3 +39,19 @@ post '/bill/upload-receipt/:bill_id' do
     redirect "/bill/upload-receipt/#{params[:bill_id]}", :error => i18n.upload_receipt_fail
   end
 end
+
+get '/bill/reserve/:bill_id' do
+  @action = "/bill/reserve/#{params[:bill_id]}"
+  erb :reserve_bill
+end
+
+post '/bill/reserve/:bill_id' do
+  bill = Bill.find(params[:bill_id])
+  bill.reservations.create(params)
+
+  unless bill.reservations.last.errors.any?
+    redirect '/', :success => i18n.reserve_bill_ok
+  else
+    redirect "/bill/reserve/#{params[:bill_id]}", :error => i18n.reserve_bill_fail
+  end
+end

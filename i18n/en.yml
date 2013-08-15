@@ -23,3 +23,7 @@ name: Name
 email: Email
 upload_receipt_fail: Problem uploading the receipt
 upload_receipt_ok: Receipt uploaded succesfully
+reserve_bill: Reserve bill
+phone_number: Phone Number
+reserve_bill_fail: Problem reserving the bill
+reserve_bill_ok: Bill reserved succesfully
