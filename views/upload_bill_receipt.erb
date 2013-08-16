@@ -16,7 +16,7 @@
     <input name="contributor_email" type="text" required value="<%= session['email']%>"/>
 
     <label for="image"><%= i18n.receipt %></label>
-    <input name="image" type="file" />
+    <input name="image" type="file" required/>
 
     <button type="submit" class="button"><%= i18n.upload_receipt %></button>
   </form>
