@@ -34,3 +34,4 @@ phone_number: Phone Number
 reserve_bill_fail: Problem reserving the bill
 reserve_bill_ok: Bill reserved succesfully
 bill_reserved: Bill reserved!
+contact_contributor: "You can contact, if necessary, by the following email:"
