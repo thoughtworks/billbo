@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'sinatra'
 gem 'sinatra-r18n'
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 
-gem "rmagick", '~> 2.13.2'
+gem 'rmagick', '~> 2.13.2'
 
 gem 'mongoid', '~> 3.1.4'
 
