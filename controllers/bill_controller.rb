@@ -68,6 +68,6 @@ def send_email payment, bill
                             :locals => {:receipt => payment, :bill => bill },
                             :layout => false),
           :via => :smtp
-    
+
   end
 end
