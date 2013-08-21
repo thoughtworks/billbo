@@ -11,6 +11,7 @@ class Bill
   field :filename, type: String
   mount_uploader :image, FileUploader
 
+  before_create :escape_fields
   before_validation :validate_date
 
   validates_presence_of :issued_by, :due_date, :total_amount, :barcode
@@ -31,5 +32,10 @@ class Bill
     unless self.due_date && self.due_date >= Date.today
       self.errors.add(:due_date, "#{t.after_yesterday}")
     end
+  end
+
+  def escape_fields
+    self.issued_by = h self.issued_by
+    self.barcode = h self.barcode
   end
 end

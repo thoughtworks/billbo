@@ -12,4 +12,12 @@ class Receipt
   belongs_to :bill
 
   validates_presence_of :contributor_email
+
+  before_create :escape_fields
+
+  private
+  def escape_fields
+    self.issued_by = h self.issued_by
+    self.barcode = h self.barcode
+  end
 end
