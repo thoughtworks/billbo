@@ -17,7 +17,7 @@ class Receipt
 
   private
   def escape_fields
-    self.issued_by = h self.issued_by
-    self.barcode = h self.barcode
+    self.contributor_name = h self.contributor_name
+    self.contributor_email = h self.contributor_email
   end
 end
