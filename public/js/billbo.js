@@ -43,15 +43,15 @@ function CustomErrorMessage() {
 
 $(document).ready(function() {
   $('.gt_value').click(function() {
-    $('ul#all-bills>li').tsort('p.total_amount',{order:'desc'});
+      .sort('p.total_amount',{order:'desc'});
   });
 
   $('.lt_value').click(function() {
-    $('ul#all-bills>li').tsort('p.total_amount');
+    $('ul#all-bills>li').sort('p.total_amount');
   });
 
   $('.due_date').click(function() {
-    $('ul#all-bills>li').tsort('p.due_date');
+    $('ul#all-bills>li').sort('p.due_date');
   });
 
   $('.sort_list').on('click', 'a', function() {
