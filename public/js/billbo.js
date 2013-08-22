@@ -27,7 +27,7 @@ function CustomErrorMessage() {
 
 $(document).ready(function() {
   $('.gt_value').click(function() {
-      .sort('p.total_amount',{order:'desc'});
+    $('ul#all-bills>li').sort('p.total_amount',{order:'desc'});
   });
 
   $('.lt_value').click(function() {
