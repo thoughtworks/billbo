@@ -8,7 +8,14 @@ class Reservation
 
   attr_accessible :email, :phone_number
 
+  before_create :escape_fields
   validates_presence_of :phone_number, :email
 
   belongs_to :bill
+
+  private
+  def escape_fields
+    self.phone_number = h self.phone_number
+    self.email = h self.email
+  end
 end
