@@ -1,0 +1,19 @@
+pt:
+  mongoid:
+    models:
+      bill: "Conta"
+    errors:
+      messages:
+        taken: "já está em uso"
+        required: "deve ser preenchido"
+    attributes:
+      bill:
+        issued_by: "Empresa"
+        due_date: "Data de vencimento"
+        total_amount: "Valor total"
+        barcode: "Código de barras"
+        status: "Status"
+        filename: "Nome do arquivo"
+  errors:
+    messages:
+      extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"

@@ -1,0 +1,19 @@
+en:
+  mongoid:
+    models:
+      bill: "Bill"
+    errors:
+      messages:
+        taken: "is already taken"
+        required: "is required"
+    attributes:
+      bill:
+        issued_by: "Company"
+        due_date: "Due date"
+        total_amount: "Total amount"
+        barcode: "Barcode"
+        status: "Status"
+        filename: "File name"
+  errors:
+    messages:
+      extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"
