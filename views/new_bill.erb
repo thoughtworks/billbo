@@ -1,4 +1,12 @@
 <section class="large-6 columns new-bill">
+  <% if errors.any? %>
+    <ul>
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <% flash.each do |key, value| %>
     <div data-alert class="alert-box <%= key %>">
       <%= value %>

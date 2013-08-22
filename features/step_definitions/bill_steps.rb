@@ -68,5 +68,5 @@ Then /^it should fail$/ do
 end
 
 Then /^I should see the error message "(.*?)"$/ do |message|
-  #page.should have_content(message)
+  page.should have_content(message)
 end

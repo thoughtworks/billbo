@@ -3,8 +3,8 @@ get '/bill/new' do
     redirect '/auth?url=/bill/new'
   end
 
-  if admin? session[:email]
-    erb :new_bill
+  if admin?(session[:email])
+    erb :new_bill, locals: { errors: [] }
   else
     redirect '/', :error => i18n.not_an_admin_account
   end
@@ -17,7 +17,7 @@ post '/bill/create' do
   if bill.save
     redirect '/bill/new', :success => i18n.bill_creation_ok
   else
-    redirect '/bill/new', :error => i18n.bill_creation_fail
+    erb :new_bill, locals: { errors: bill.errors.full_messages }
   end
 end
 
