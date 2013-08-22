@@ -15,7 +15,7 @@ image: Imagem
 required_field: Campo obrigatório
 greater_than_zero: Valor deve ser maior que zero
 after_yesterday: Data não pode ser anterior a hoje
-date_format: mm/dd/aaaa
+date_format: dd/mm/aaaa
 not_an_admin_account: Faça login com uma conta de administrador
 upload_receipt: Enviar recibo
 receipt: Recibo
@@ -34,4 +34,4 @@ phone_number: Telefone
 reserve_bill_fail: Ocorreu um erro ao reservar a conta
 reserve_bill_ok: Conta reservada com sucesso
 bill_reserved: Conta reservada!
-contact_contributor: "Você pode entrar em contato, caso necessário, pelo seguinte email:" 
+contact_contributor: "Você pode entrar em contato, caso necessário, pelo seguinte email:"
