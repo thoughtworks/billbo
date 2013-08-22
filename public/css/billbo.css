@@ -43,3 +43,7 @@ a.label {
 .flags {
   top: 35px;
 }
+
+.prefix {
+  position: static;
+}

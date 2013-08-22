@@ -1,19 +1,3 @@
-function today() {
-  var now = new Date(),
-      dd = now.getDate(),
-      mm = now.getMonth() + 1, // Months start from 0
-      yyyy = now.getFullYear();
-
-  if (dd < 10) {
-    dd = '0' + dd;
-  }
-  if (mm < 10) {
-    mm = '0' + mm;
-  }
-  return yyyy + '-' + mm + '-' + dd;
-}
-
-
 function CustomErrorMessage() {
   this.REQUIRED = 'required_field';
   this.GT_ZERO = 'greater_than_zero';
@@ -43,15 +27,15 @@ function CustomErrorMessage() {
 
 $(document).ready(function() {
   $('.gt_value').click(function() {
-      .sort('p.total_amount',{order:'desc'});
+    $('ul#all-bills>li').tsort('p.total_amount',{order:'desc'});
   });
 
   $('.lt_value').click(function() {
-    $('ul#all-bills>li').sort('p.total_amount');
+    $('ul#all-bills>li').tsort('p.total_amount');
   });
 
   $('.due_date').click(function() {
-    $('ul#all-bills>li').sort('p.due_date');
+    $('ul#all-bills>li').tsort('p.due_date');
   });
 
   $('.sort_list').on('click', 'a', function() {
@@ -59,12 +43,15 @@ $(document).ready(function() {
     $(this).removeClass("secondary");
   });
 
-  $('input[name="due_date"]').attr('min', today());
-
   var customize = new CustomErrorMessage(),
       newBillSection = $('section.new-bill');
 
   customize.required(newBillSection.find($('input')));
   customize.greaterThanZero(newBillSection.find($('input[type="number"]')));
   customize.afterToday(newBillSection.find($('input[type="date"]')));
+
+  $("#datepicker").datepicker({
+    dateFormat: "dd/mm/yy",
+    minDate: 0 // disable days before today
+  });
 });
