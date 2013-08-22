@@ -10,35 +10,25 @@ Given /^I set the status of (\d+) of them as (paid)$/ do |n, status|
   }
 end
 
+Given /^there is a bill with barcode "(.*?)"$/ do |barcode|
+  FactoryGirl.create(:bill, barcode: barcode)
+end
+
+When /^I try to create a new bill with barcode "(.*?)"$/ do |barcode|
+  create_bill(barcode: barcode)
+end
+
 When(/^I create a bill$/) do
-  visit '/bill/new'
-
-  fill_in 'issued_by', :with => 'XXX'
-  fill_in 'due_date', :with => '21/07/2020'
-  fill_in 'total_amount', :with => '100.00'
-  fill_in 'barcode', :with => "000"
-
-  image = FactoryGirl.build(:image)
-  attach_file('image', image.path , visible: false)
-
-  form = find_by_id 'new_bill'
-  Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
+  create_bill
 end
 
 Given(/^I have created bills:$/) do |table|
   table.hashes.each do |row|
-    visit '/bill/new'
-
-    fill_in 'issued_by', :with => row["issued_by"]
-    fill_in 'due_date', :with => row["due_date"]
-    fill_in 'total_amount', :with => row["total_amount"]
-    fill_in 'barcode', :with => row["barcode"]
-
-    image = FactoryGirl.build(:image, filename: row["image"])
-    attach_file('image', image.path, visible: false)
-
-    form = find_by_id 'new_bill'
-    Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
+    create_bill(issued_by: row[:issued_by],
+                due_date: row[:due_date],
+                total_amount: row[:total_amount],
+                barcode: row[:barcode],
+                image: FactoryGirl.build(:image, filename: row["image"]))
   end
 end
 
@@ -75,4 +65,8 @@ end
 
 Then /^it should fail$/ do
   Bill.count.should == 0
+end
+
+Then /^I should see the error message "(.*?)"$/ do |message|
+  #page.should have_content(message)
 end

@@ -8,5 +8,5 @@ Feature: upload receipt
     Given I open the home page
     And I have 2 bills
     And I select a bill
-    When I upload a receipt 
+    When I upload a receipt
     Then it should show success message
