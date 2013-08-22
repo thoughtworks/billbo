@@ -49,8 +49,6 @@ $(document).ready(function() {
   customize.required(newBillSection.find($('input')));
   customize.greaterThanZero(newBillSection.find($('input[type="number"]')));
   customize.afterToday(newBillSection.find($('input[type="date"]')));
-});
 
-$(function() {
-  $("#datepicker").datepicker();
+  $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
 });
