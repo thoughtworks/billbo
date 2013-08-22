@@ -1,6 +1,6 @@
 get '/bill/new' do
   if session[:email].nil?
-  	redirect '/auth?url=/bill/new'
+    redirect '/auth?url=/bill/new'
   end
 
   if admin? session[:email]
@@ -11,7 +11,10 @@ get '/bill/new' do
 end
 
 post '/bill/create' do
-  bill = Bill.create(params)
+  due_date = Date.parse(params[:due_date]) rescue nil
+  attributes = params.merge("due_date" => due_date)
+
+  bill = Bill.new(attributes)
 
   if bill.save
     redirect '/bill/new', :success => i18n.bill_creation_ok
@@ -68,6 +71,6 @@ def send_email payment, bill
                             :locals => {:receipt => payment, :bill => bill },
                             :layout => false),
           :via => :smtp
-    
+
   end
 end
