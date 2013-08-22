@@ -12,12 +12,12 @@ end
 
 When(/^I create a bill$/) do
   visit '/bill/new'
-  
+
   fill_in 'issued_by', :with => 'XXX'
-  fill_in 'due_date', :with => '2020/07/21'
+  fill_in 'due_date', :with => '21/07/2020'
   fill_in 'total_amount', :with => '100.00'
   fill_in 'barcode', :with => "000"
-  
+
   image = FactoryGirl.build(:image)
   attach_file('image', image.path , visible: false)
 
