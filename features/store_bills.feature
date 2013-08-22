@@ -33,3 +33,9 @@ Feature: store bills
     And I set the status of 1 of them as paid
     When I open the home page
     Then it should list 2 bills
+
+  Scenario: create a bill with duplicated barcode
+    Given I am an admin
+    And there is a bill with barcode "01234"
+    When I try to create a new bill with barcode "01234"
+    Then I should see the error message "Código de barras já em uso"
