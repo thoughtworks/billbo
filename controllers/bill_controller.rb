@@ -12,9 +12,7 @@ end
 
 post '/bill/create' do
   due_date = Date.parse(params[:due_date]) rescue nil
-  attributes = params.merge("due_date" => due_date)
-
-  bill = Bill.new(attributes)
+  bill = Bill.new(params.merge("due_date" => due_date))
 
   if bill.save
     redirect '/bill/new', :success => i18n.bill_creation_ok

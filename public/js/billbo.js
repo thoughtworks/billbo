@@ -50,5 +50,8 @@ $(document).ready(function() {
   customize.greaterThanZero(newBillSection.find($('input[type="number"]')));
   customize.afterToday(newBillSection.find($('input[type="date"]')));
 
-  $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+  $("#datepicker").datepicker({
+    dateFormat: "dd/mm/yy",
+    minDate: 0 // disable days before today
+  });
 });
