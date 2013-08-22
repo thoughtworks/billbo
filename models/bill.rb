@@ -12,7 +12,7 @@ class Bill
   mount_uploader :image, FileUploader
 
   before_create :escape_fields
-  before_validation :validate_date
+  validate :date_is_before_today
 
   validates_presence_of :issued_by, :due_date, :total_amount, :barcode
   validates :status, inclusion: { in: [:paid, :opened, :reserved] }
@@ -28,8 +28,8 @@ class Bill
 
   private
 
-  def validate_date
-    unless self.due_date && self.due_date >= Date.today
+  def date_is_before_today
+    if self.due_date && self.due_date < Date.today
       self.errors.add(:due_date, "#{t.after_yesterday}")
     end
   end
