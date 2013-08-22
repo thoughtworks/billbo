@@ -47,6 +47,8 @@ post '/bill/reserve/:bill_id' do
   bill.reservations.create(params)
 
   unless bill.reservations.last.errors.any?
+    bill.status = :reserved
+    bill.save
     redirect '/', :success => i18n.reserve_bill_ok
   else
     redirect "/bill/reserve/#{params[:bill_id]}", :error => i18n.reserve_bill_fail

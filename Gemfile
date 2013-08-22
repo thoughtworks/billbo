@@ -14,6 +14,8 @@ gem 'oauth2'
 gem 'pony'
 gem 'mongoid-rspec'
 
+gem 'whenever', :require => false
+
 group :development do
   gem 'shotgun'
   gem 'pry'

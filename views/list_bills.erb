@@ -24,19 +24,19 @@
     <div class="small-12 columns">
       <ul id="all-bills" class="small-block-grid-2 large-block-grid-4">
         <% @bills.each do |bill| %>
-          <% a_class = if bill.has_active_reservation? then 'reserved' else 'opened' end %>
           <li class="bill-container">
             <div>
-              <a href="#" class="th radius <%= a_class %>" data-reveal-id="myModal<%= bill.id %>">
-
+              <a href="#" class="th radius <%= bill.status %>" data-reveal-id="myModal<%= bill.id %>">
                 <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
                 <p class="issued-by"><%= bill.issued_by %></p>
                 <p class="total_amount">R$ <%= bill.total_amount %></p>
               </a>
               <div class="text-center">
-                <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
-                  <%= i18n.reserve_bill %>
-                </a>
+                <% if bill.status == :opened %>
+                  <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
+                    <%= i18n.reserve_bill %>
+                  </a>
+                <% end %>
                 <a href="/bill/upload-receipt/<%= bill.id %>" class="tiny button">
                   <%= i18n.upload_receipt %>
                 </a>

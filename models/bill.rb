@@ -22,8 +22,15 @@ class Bill
   has_one :receipt
   has_many :reservations
 
-  def has_active_reservation?
-    self.reservations.where(:active_until.gte => DateTime.now).count > 0
+  def self.update_reservations_status
+    reserved_bills = self.where(status: :reserved)
+    reserved_bills.each do |reserved_bill|
+      if reserved_bill.reservations.where(status: :active, :date.lte => DateTime.now - 1).count > 0
+        reserved_bill.reservations.where(status: :active).update(status: :inactive)
+        reserved_bill.status = :opened
+        reserved_bill.save
+      end
+    end
   end
 
   private
@@ -38,4 +45,5 @@ class Bill
     self.issued_by = h self.issued_by
     self.barcode = h self.barcode
   end
+
 end
