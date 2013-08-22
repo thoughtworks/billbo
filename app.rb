@@ -21,6 +21,10 @@ include R18n::Helpers
 R18n.default_places = './i18n/'
 R18n.set('pt')
 
+I18n.default_locale = :pt
+I18n.load_path << File.join(Dir.pwd, "config", "locales", "en.yml")
+I18n.load_path << File.join(Dir.pwd, "config", "locales", "pt.yml")
+
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
 
