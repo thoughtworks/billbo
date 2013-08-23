@@ -5,14 +5,6 @@ require 'spec_helper'
 describe Bill do
   let(:bill) { FactoryGirl.build(:bill) }
 
-  context :save do
-    it 'saves a bill successfully' do
-      expect { bill.save }.to change { Bill.count }.by(1)
-      bill_found = Bill.find(bill.id)
-      (bill == bill_found).should be_true
-    end
-  end
-
   context :relations do
     it { should have_one(:receipt) }
     it { should have_many(:reservations) }
@@ -31,38 +23,21 @@ describe Bill do
       }
     }
 
+    it 'is created with open status' do
+      bill.save
+      bill.status.should == :opened
+    end
+
     it 'mass assigns fields successfully' do
       bill.update_attributes(new_attributes)
 
       bill.should be_valid
       bill.id.should_not == new_attributes['id']
-      bill.due_date.should == new_attributes['due_date']
-      bill.attributes.except('_id', 'due_date').should == new_attributes.except('id', 'due_date')
-    end
-
-    it 'update fields successfully' do
-      bill.issued_by = new_attributes['issued_by']
-      bill.due_date = new_attributes['due_date']
-      bill.total_amount = new_attributes['total_amount']
-      bill.barcode = new_attributes['barcode']
-      bill.status = new_attributes['status']
-      bill.url = new_attributes['url']
-      bill.filename = new_attributes['filename']
-
-      bill.should be_valid
-      bill.issued_by == new_attributes['issued_by']
-      bill.due_date == new_attributes['due_date']
-      bill.total_amount == new_attributes['total_amount']
-      bill.barcode == new_attributes['barcode']
-      bill.status == new_attributes['status']
-      bill.url == new_attributes['url']
-      bill.filename == new_attributes['filename']
+      bill.attributes.except('_id').should == new_attributes.except('id')
     end
 
     it 'validates total_amount must be greater than 0.0' do
       bill.update_attributes(total_amount: -1)
-
-      bill.should_not be_valid
       bill.errors.should have_key(:total_amount)
     end
   end
@@ -80,14 +55,12 @@ describe Bill do
     end
 
     it 'validates that status is invalid' do
-      bill.status = :foo
-
-      bill.should_not be_valid
+      bill.update_attributes(status: :foo)
       bill.errors.should have_key(:status)
     end
 
     it 'validates that status is valid' do
-      bill.status = :reserved
+      bill.update_attributes(status: :reserved)
       bill.should be_valid
     end
 
@@ -109,32 +82,16 @@ describe Bill do
   end
 
   context 'update reservations status' do
-    it 'verify if the bill is created in opened status' do
-      bill.save
-      bill.status.should == :opened
-    end
-    it 'verify if the bill reservation status is not updated back to opened' do
-      bill.status = :reserved
-      bill.save
-      bill.reservations.create(:email => 'test@xxx.com', :phone_number => '22222222')
-      bill.reservations.last.status.should == :active
-      bill.reservations.last.save
-      Bill.update_reservations_status
-      updated_bill = Bill.find(bill.id)
-      updated_bill.status.should == :reserved
-      updated_bill.reservations.last.status.should == :active
-    end
     it 'verify if the bill reservation status is updated back to opened' do
-      bill.status = :reserved
-      bill.save
-      bill.reservations.create(:email => 'test@xxx.com', :phone_number => '22222222')
-      bill.reservations.last.status.should == :active
-      bill.reservations.last.date = DateTime.now - 1
-      bill.reservations.last.save
+      bill.update_attributes(status: :reserved)
+      reservation = bill.reservations.create!(:email => 'test@xxx.com', :phone_number => '22222222')
+      reservation.date = DateTime.yesterday
+      reservation.save!
+
       Bill.update_reservations_status
-      updated_bill = Bill.find(bill.id)
-      updated_bill.status.should == :opened
-      updated_bill.reservations.last.status.should == :inactive
+
+      bill.reload.status.should == :opened
+      reservation.reload.status.should == :inactive
     end
   end
 end
