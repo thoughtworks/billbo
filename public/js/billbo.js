@@ -38,6 +38,10 @@ $(document).ready(function() {
     $('ul#all-bills>li').tsort('p.due_date');
   });
 
+  $('.status').click(function() {
+    $('ul#all-bills>li').tsort('a.th',{attr:'class'},'p.due_date');
+  });
+
   $('.sort_list').on('click', 'a', function() {
     $("a").addClass("secondary");
     $(this).removeClass("secondary");
