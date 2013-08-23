@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+# encoding: UTF-8
+
 class Bill
   include Mongoid::Document
   include CarrierWave::Mount

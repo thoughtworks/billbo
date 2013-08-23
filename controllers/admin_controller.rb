@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 get '/auth' do
   auth = Auth.new
   url = params["url"] || '/'

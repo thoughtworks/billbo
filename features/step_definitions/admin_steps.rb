@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 Given(/^I am an admin$/) do
 	admin = FactoryGirl.create(:admin)
 	log_in admin.email

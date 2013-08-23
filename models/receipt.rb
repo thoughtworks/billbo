@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Receipt
   include Mongoid::Document
   include CarrierWave::Mount

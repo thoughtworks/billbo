@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 def create_bill(attributes = {})
   attributes = attributes.reverse_merge(
     issued_by: "XXX",

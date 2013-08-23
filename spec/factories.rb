@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'factory_girl'
 
 image_path= (File.join( settings.root, "spec", "fixtures"))

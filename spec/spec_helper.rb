@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 ENV['RACK_ENV'] ||= 'test'
 
 require './app'
@@ -30,7 +32,7 @@ end
 def homepage
   'http://example.org/'
 end
-  
+
 def log_in_as_admin
   admin = FactoryGirl.create(:admin)
   log_in admin.email

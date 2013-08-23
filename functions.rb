@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 def test_env?
   ENV['RACK_ENV'] == 'test'
 end

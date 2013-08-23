@@ -1,9 +1,11 @@
+# encoding: UTF-8
+
 get '/bill/new' do
   if session[:email].nil?
     redirect '/auth?url=/bill/new'
   end
 
-  if admin?(session[:email])
+  if Admin.where(email: session[:email]).any?
     erb :new_bill, locals: { errors: [] }
   else
     redirect '/', :error => i18n.not_an_admin_account
