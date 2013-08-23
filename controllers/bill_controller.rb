@@ -60,10 +60,6 @@ end
 
 private
 
-def admin? email
-  not Admin.all(email: email).empty?
-end
-
 def send_email payment, bill
   Admin.all.each do |admin|
     Pony.mail :to => admin.email,
