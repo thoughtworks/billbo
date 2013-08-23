@@ -32,7 +32,7 @@ def setup_user
   end
 end
 
-def locale_labels locale_code
+def locale_labels(locale_code)
   current_dir = File.expand_path File.dirname(__FILE__);
   locale_file = "#{current_dir}/i18n/#{locale_code}.yml"
 
@@ -70,6 +70,6 @@ def setup_email
   end
 end
 
-def h text
+def h(text)
   Rack::Utils.escape_html text
 end
