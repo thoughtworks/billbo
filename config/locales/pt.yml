@@ -6,6 +6,7 @@ pt:
       messages:
         taken: "já está em uso"
         blank: "é um campo obrigatório"
+        not_a_number: "deve ser um valor numérico"
     attributes:
       bill:
         issued_by: "Empresa"

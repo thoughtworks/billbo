@@ -6,6 +6,7 @@ en:
       messages:
         taken: "is already taken"
         blank: "is required"
+        not_a_number: "must be a number"
     attributes:
       bill:
         issued_by: "Company"
