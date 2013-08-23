@@ -4,12 +4,6 @@ def test_env?
   ENV['RACK_ENV'] == 'test'
 end
 
-def setup_carrierwave
-  CarrierWave::Uploader::GoogleDrive.configure do |config|
-    config.storage = :google_drive
-  end
-end
-
 def setup_locale
   I18n.locale = session[:locale] || :pt
 

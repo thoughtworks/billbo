@@ -8,7 +8,9 @@ require 'carrierwave'
 require 'carrierwave-google_drive'
 require 'carrierwave/mongoid'
 require 'pony'
+
 require './functions'
+require './config/initializers/carrierwave'
 
 Bundler.require
 
@@ -29,8 +31,6 @@ I18n.load_path << File.join(Dir.pwd, "config", "locales", "pt.yml")
 
 ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
 Mongoid.load!('./config/mongoid.yml')
-
-setup_carrierwave
 
 require './uploaders/file_uploader'
 

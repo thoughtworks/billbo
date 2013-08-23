@@ -25,3 +25,8 @@ end
 World do
   SomeWorld.new
 end
+
+CarrierWave::Uploader::GoogleDrive.configure do |config|
+  config.storage = :file
+  config.enable_processing = false
+end
