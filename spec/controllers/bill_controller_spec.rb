@@ -17,33 +17,31 @@ describe 'Billbo' do
         before do
           log_in_as_admin
         end
-        it 'should render new_bill ' do
+
+        it 'renders new_bill' do
           get '/bill/new'
 
           last_response.should be_ok
           last_request.url.should =~ /bill\/new/
         end
-        after do
-          logout
-        end
       end
+
       describe 'when log in as not admin user' do
         before do
           log_in 'test@example.com'
         end
-        it 'should render homepage ' do
+
+        it 'renders homepage ' do
           get '/bill/new'
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage
         end
-        after do
-          logout
-        end
       end
+
       describe 'when not log in' do
-        it 'should render auth' do
+        it 'renders auth' do
           get '/bill/new'
           last_response.should be_redirect
           follow_redirect!
