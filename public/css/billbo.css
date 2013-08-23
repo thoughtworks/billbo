@@ -28,6 +28,17 @@ a.label.secondary:hover {
   background-color: silver;
 }
 
+a.button.secondary {
+  background-color: #2ba6cb;
+  border-color: #2284a1;
+  color: white;
+}
+
+a.button.secondary:hover {
+  background-color: #2284a1;
+  color: white;
+}
+
 a.label {
   color: white;
 }
