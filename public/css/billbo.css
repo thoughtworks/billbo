@@ -62,3 +62,7 @@ a.label {
 .alert-box ul {
   margin-bottom: 0px;
 }
+
+.title a {
+  color: #000;
+}
