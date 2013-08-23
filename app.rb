@@ -15,7 +15,7 @@ require './uploaders/file_uploader'
 require './functions'
 require './config/initializers/carrierwave'
 require './config/initializers/i18n'
-
+require './config/initializers/mail'
 
 configure do
   use Rack::Session::Cookie, :key => 'rack.session',
@@ -30,7 +30,6 @@ Mongoid.load!('./config/mongoid.yml')
 before do
   setup_locale
   setup_user
-  setup_email
 
   if logged_in
     @admin = Admin.new

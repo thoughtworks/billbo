@@ -15,6 +15,7 @@ def setup_locale
   session[:i18n_hash] = locale_labels(session[:locale])
 end
 
+# TODO This test-specific setup should not be here
 def setup_user
   if test_env?
     session[:email] = request.cookies["stub_email"] if request.cookies["stub_email"]
@@ -36,27 +37,11 @@ def locale_labels(locale_code)
 end
 
 def logged_in
-  not session[:email].nil?
+  session[:email].present?
 end
 
 def logged_as_admin?
-  logged_in and not Admin.all(email: session[:email]).empty?
-end
-
-def setup_email
-  if !test_env?
-    Pony.options = { :via => :smtp,
-                     :via_options => {
-                        :address              => 'smtp.gmail.com',
-                        :port                 => '587',
-                        :enable_starttls_auto => true,
-                        :user_name            => ENV['billbo_login'],
-                        :password             => ENV['billbo_password'],
-                        :authentication       => :plain,
-                        :domain               => "localhost.localdomain"
-                      }
-                    }
-  end
+  logged_in && Admin.where(email: session[:email]).any?
 end
 
 def h(text)
