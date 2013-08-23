@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 
 describe 'Billbo' do
@@ -55,6 +57,11 @@ describe 'Billbo' do
         before do
           log_in_as_admin
         end
+
+        after do
+          logout
+        end
+
         it 'creates valid bill and redirects' do
           expect {
             post '/bill/create', FactoryGirl.attributes_for(:bill)
@@ -67,22 +74,16 @@ describe 'Billbo' do
           last_response.body.should =~ /success/
           last_response.body.should_not =~ /error/
         end
-        it 'recognizes invalid bill and redirects' do
+
+        it 'recognizes invalid bill and render new view with errors' do
           attributes = FactoryGirl.attributes_for(:bill)
           attributes[:issued_by] = ''
           expect {
             post '/bill/create', attributes
-          }.to change { Bill.count }.by(0)
+          }.to_not change { Bill.count }
 
-          last_response.should be_redirect
-          follow_redirect!
           last_response.should be_ok
-          last_request.url.should =~ /bill\/new/
-          last_response.body.should_not =~ /success/
-          last_response.body.should =~ /error/
-        end
-        after do
-          logout
+          last_response.body.should =~ /Empresa é um campo obrigatório/
         end
       end
     end
