@@ -7,11 +7,12 @@
 
 <section id="bill-list" class="small-12 columns">
   <section class="row">
-    <div class="large-4 push-8 columns sort_list">
-      <ul class="small-block-grid-3">
+    <div class="large-6 push-6 columns sort_list">
+      <ul class="small-block-grid-4">
         <li><a class="gt_value label secondary" href="#"><%= i18n.gt_value %></a></li>
         <li><a class="lt_value label secondary" href="#"><%= i18n.lt_value %></a></li>
         <li><a class="due_date label secondary" href="#"><%= i18n.due_date %></a></li>
+        <li><a class="status label secondary" href="#"><%= i18n.status %></a></li>
       </ul>
     </div>
   </section>
@@ -24,19 +25,19 @@
     <div class="small-12 columns">
       <ul id="all-bills" class="small-block-grid-2 large-block-grid-4">
         <% @bills.each do |bill| %>
-          <% a_class = if bill.has_active_reservation? then 'reserved' else 'opened' end %>
           <li class="bill-container">
             <div>
-              <a href="#" class="th radius <%= a_class %>" data-reveal-id="myModal<%= bill.id %>">
-
+              <a href="#" class="th radius <%= bill.status %>" data-reveal-id="myModal<%= bill.id %>">
                 <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
                 <p class="issued-by"><%= bill.issued_by %></p>
                 <p class="total_amount">R$ <%= bill.total_amount %></p>
               </a>
               <div class="text-center">
-                <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
-                  <%= i18n.reserve_bill %>
-                </a>
+                <% if bill.status == :opened %>
+                  <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
+                    <%= i18n.reserve_bill %>
+                  </a>
+                <% end %>
                 <a href="/bill/upload-receipt/<%= bill.id %>" class="tiny button">
                   <%= i18n.upload_receipt %>
                 </a>

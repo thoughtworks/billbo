@@ -4,12 +4,13 @@ class Reservation
   field :phone_number, type: String
   field :email, type: String
   field :date, type: DateTime, default: -> { DateTime.now }
-  field :active_until, type: DateTime, default: -> { 24.hours.from_now }
+  field :status, type: Symbol, default: :active
 
   attr_accessible :email, :phone_number
 
   before_create :escape_fields
   validates_presence_of :phone_number, :email
+  validates :status, inclusion: { in: [:active, :inactive] }
 
   belongs_to :bill
 

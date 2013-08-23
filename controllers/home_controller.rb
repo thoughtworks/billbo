@@ -1,5 +1,4 @@
 get '/' do
-  @bills = Bill.where(status: :opened)
-  @bills = @bills.sort_by {|obj| obj.due_date }
+  @bills = Bill.any_of({ status: :opened }, { status: :reserved }).asc(:status, :due_date)
   erb :list_bills
 end

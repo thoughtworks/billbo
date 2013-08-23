@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Reservation do
 
   its("date.to_i") { should == DateTime.now.to_i }
-  its("active_until.to_i") { should == 24.hours.from_now.to_i }
+  its("status") { should == :active }
 
   context :fields do
     it { should allow_mass_assignment_of(:phone_number) }

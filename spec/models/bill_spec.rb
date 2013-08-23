@@ -3,19 +3,6 @@ require 'spec_helper'
 describe Bill do
   let(:bill) { FactoryGirl.build(:bill) }
 
-  context 'active reservation' do
-    it 'verify if the bill has active reservation' do
-      bill.save
-      bill.has_active_reservation?.should == false
-
-      bill.reservations.create(:email => 'test@xxx.com', :phone_number => '22222222')
-      bill.has_active_reservation?.should == true
-
-      bill.reservations.last.update_attribute(:active_until, 1.hour.ago)
-      bill.has_active_reservation?.should == false
-    end
-  end
-
   context :save do
     it 'saves a bill successfully' do
       expect { bill.save }.to change { Bill.count }.by(1)
@@ -116,6 +103,36 @@ describe Bill do
 
       invalid_bill.should_not be_valid
       invalid_bill.errors.should have_key(:due_date)
+    end
+  end
+
+  context 'update reservations status' do
+    it 'verify if the bill is created in opened status' do
+      bill.save
+      bill.status.should == :opened
+    end
+    it 'verify if the bill reservation status is not updated back to opened' do
+      bill.status = :reserved
+      bill.save
+      bill.reservations.create(:email => 'test@xxx.com', :phone_number => '22222222')
+      bill.reservations.last.status.should == :active
+      bill.reservations.last.save
+      Bill.update_reservations_status
+      updated_bill = Bill.find(bill.id)
+      updated_bill.status.should == :reserved
+      updated_bill.reservations.last.status.should == :active
+    end
+    it 'verify if the bill reservation status is updated back to opened' do
+      bill.status = :reserved
+      bill.save
+      bill.reservations.create(:email => 'test@xxx.com', :phone_number => '22222222')
+      bill.reservations.last.status.should == :active
+      bill.reservations.last.date = DateTime.now - 1
+      bill.reservations.last.save
+      Bill.update_reservations_status
+      updated_bill = Bill.find(bill.id)
+      updated_bill.status.should == :opened
+      updated_bill.reservations.last.status.should == :inactive
     end
   end
 end
