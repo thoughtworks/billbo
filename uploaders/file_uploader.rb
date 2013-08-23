@@ -1,4 +1,4 @@
-# encoding: utf-8
+# encoding: UTF-8
 
 class FileUploader < CarrierWave::Uploader::GoogleDrive
   include CarrierWave::RMagick
