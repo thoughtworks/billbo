@@ -16,9 +16,6 @@ gem 'mongoid-rspec'
 
 group :development do
   gem 'shotgun'
-  gem 'pry'
-  gem 'pry-nav'
-  gem 'pry-doc'
 end
 
 group :test do
@@ -33,6 +30,10 @@ end
 
 group :development, :test do
   gem 'af'
+
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-doc'
 
   gem 'guard-cucumber'
   gem 'carrierwave'
