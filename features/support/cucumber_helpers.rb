@@ -6,9 +6,7 @@ def create_bill(attributes = {})
     due_date: "01/01/2020",
     total_amount: 100.00,
     barcode: "0123",
-    image: FactoryGirl.build(:image)
-  )
-
+    image: FactoryGirl.build(:image))
 
   visit '/bill/new'
 

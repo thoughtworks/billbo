@@ -50,5 +50,4 @@ class Bill
     self.issued_by = h self.issued_by
     self.barcode = h self.barcode
   end
-
 end

@@ -155,6 +155,7 @@ describe 'Billbo' do
         last_response.body.should =~ /reserve_bill/
       end
     end
+
     context 'POST /bill/reserve' do
       it 'creates a new reservation' do
         attrs = FactoryGirl.attributes_for(:reservation)
@@ -172,6 +173,7 @@ describe 'Billbo' do
         last_bill.reservations.last.phone_number.should == attrs[:phone_number]
         last_bill.reservations.last.bill.should == bill
       end
+
       it 'recognizes invalid data and redirects' do
         attributes = FactoryGirl.attributes_for(:reservation)
         attributes[:email] = ''
