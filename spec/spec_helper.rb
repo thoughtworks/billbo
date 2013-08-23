@@ -19,11 +19,19 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Pony.stub(:deliver)
+    setup_carrierwave
   end
 
   config.after(:each) do
     Mongoid.default_session.collections.each { |coll| coll.drop unless /^system/.match(coll.name) }
     FileUtils.rm_rf(Dir[File.join(File.dirname(__FILE__), "../public/#{FileUploader.store_dir}/[^.]*")])
+  end
+end
+
+def setup_carrierwave
+  CarrierWave::Uploader::GoogleDrive.configure do |config|
+    config.storage = :file
+    config.enable_processing = false
   end
 end
 

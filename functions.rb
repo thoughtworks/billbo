@@ -6,12 +6,7 @@ end
 
 def setup_carrierwave
   CarrierWave::Uploader::GoogleDrive.configure do |config|
-    if test_env?
-      config.storage = :file
-      config.enable_processing = false
-    else
-      config.storage = :google_drive
-    end
+    config.storage = :google_drive
   end
 end
 
