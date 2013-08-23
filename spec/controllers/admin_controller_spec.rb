@@ -8,7 +8,7 @@ describe 'Admin Controller' do
   end
 
   let(:homepage_url){ '/' }
-  
+
   describe 'GET /auth' do
   	it 'it should redirect to an authorized url' do
   	  auth_callback = "#{homepage}oauth2callback?url=/"
@@ -24,7 +24,7 @@ describe 'Admin Controller' do
   end
 
   describe 'GET /logout' do
-  	before do	
+  	before do
   	  log_in_as_admin
     end
     it 'should logout the user and redirect to homepage' do
@@ -34,7 +34,7 @@ describe 'Admin Controller' do
       last_response.should be_redirect
       follow_redirect!
       last_response.should be_ok
-      last_request.url.should == homepage      
+      last_request.url.should == homepage
     end
   end
 

@@ -14,7 +14,13 @@ def setup_carrierwave
 end
 
 def setup_locale
-  session[:locale] = params[:locale] if params[:locale]
+  I18n.locale = session[:locale] || :pt
+
+  if params[:locale]
+    session[:locale] = params[:locale]
+    I18n.locale = params[:locale]
+  end
+
   session[:i18n_hash] = locale_labels(session[:locale])
 end
 
@@ -31,8 +37,8 @@ def locale_labels locale_code
   unless File.exist? locale_file
     default_locale_file = "#{current_dir}/i18n/pt.yml"
     locale_file = default_locale_file
-    R18n::I18n.default = 'pt'
-    session[:locale] = 'pt'
+    R18n::I18n.default = "pt"
+    session[:locale] = "pt"
   end
 
   YAML::load(File.read(locale_file)).to_json
