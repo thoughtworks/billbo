@@ -5,7 +5,7 @@ en:
     errors:
       messages:
         taken: "is already taken"
-        required: "is required"
+        blank: "is required"
     attributes:
       bill:
         issued_by: "Company"

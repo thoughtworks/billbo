@@ -5,7 +5,7 @@ pt:
     errors:
       messages:
         taken: "já está em uso"
-        required: "deve ser preenchido"
+        blank: "é um campo obrigatório"
     attributes:
       bill:
         issued_by: "Empresa"
