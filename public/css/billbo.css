@@ -47,3 +47,7 @@ a.label {
 .prefix {
   position: static;
 }
+
+.alert-box ul {
+  margin-bottom: 0px;
+}
