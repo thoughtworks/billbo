@@ -22,6 +22,10 @@ configure do
                              :secret => 'change_me'
 end
 
+before do
+  locale_labels(I18n.locale)
+end
+
 def h(content)
   Rack::Utils.escape_html(content)
 end
