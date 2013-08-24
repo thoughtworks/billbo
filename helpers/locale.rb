@@ -2,6 +2,10 @@
 
 module Sinatra
   module LocaleHelper
+    def define_default_locale(locale)
+      session[:locale] ||= locale
+    end
+
     def locale_labels(locale_code)
       locale_file = "#{settings.root}/i18n/#{locale_code}.yml"
 
