@@ -25,7 +25,7 @@ end
 
 get '/bill/upload-receipt/:bill_id' do
   @action = "/bill/upload-receipt/#{params[:bill_id]}"
-  erb :upload_bill_receipt
+  erb :"/bills/upload_receipt"
 end
 
 post '/bill/upload-receipt/:bill_id' do
@@ -42,7 +42,7 @@ end
 
 get '/bill/reserve/:bill_id' do
   @action = "/bill/reserve/#{params[:bill_id]}"
-  erb :reserve_bill
+  erb :"bills/reserve"
 end
 
 post '/bill/reserve/:bill_id' do
@@ -65,7 +65,7 @@ def send_email payment, bill
     Pony.mail :to => admin.email,
           :from => payment.contributor_email,
           :subject => i18n.upload_receipt_subject,
-          :html_body => erb(:email,
+          :html_body => erb(:"/mails/payment_confirmation",
                             :locals => {:receipt => payment, :bill => bill },
                             :layout => false),
           :via => :smtp
