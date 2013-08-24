@@ -30,11 +30,6 @@ Mongoid.load!('./config/mongoid.yml')
 before do
   setup_locale
   setup_user
-
-  if logged_in
-    @admin = Admin.new
-    @admin.email = session[:email]
-  end
 end
 
 require './models/bill'

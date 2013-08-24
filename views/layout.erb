@@ -28,7 +28,7 @@
     </header>
     <section class="row">
       <% if logged_in %>
-        <%= @admin.email %>
+        <%= session[:email] %>
         <a href="/logout">Logout</a>
       <% else %>
         <a href="/auth" id="login_with_google">Login with Google</a>
