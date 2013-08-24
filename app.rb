@@ -22,10 +22,6 @@ configure do
                              :secret => 'change_me'
 end
 
-before do
-  define_default_locale(:pt)
-end
-
 def h(content)
   Rack::Utils.escape_html(content)
 end

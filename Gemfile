@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'sinatra-r18n'
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 

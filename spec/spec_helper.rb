@@ -6,9 +6,6 @@ require './app'
 require 'capybara'
 require 'pony'
 
-R18n.default_places = '../i18n/'
-R18n.set('pt')
-
 require 'factory_girl'
 FactoryGirl.find_definitions
 
