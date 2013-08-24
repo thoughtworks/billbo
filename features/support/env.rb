@@ -3,6 +3,7 @@
 ENV['RACK_ENV'] ||= 'test'
 
 require File.join(File.dirname(__FILE__), '..', '..', 'app')
+require 'cucumber/rspec/doubles'
 require 'capybara'
 require 'capybara/cucumber'
 require 'factory_girl'
