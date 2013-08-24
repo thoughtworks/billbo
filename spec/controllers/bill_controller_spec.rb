@@ -121,7 +121,7 @@ describe 'Billbo' do
           Pony.should_receive :mail do  |params|
             params[:to].should == admin.email
             params[:from].should == attrs[:contributor_email]
-            params[:subject].should include 'upload_receipt_subject'
+            params[:subject].should include 'Pagamento carregado'
             params[:html_body].should include attrs[:contributor_name],
                                               bill.issued_by,
                                               bill.total_amount.to_s,
@@ -144,7 +144,6 @@ describe 'Billbo' do
       end
     end
   end
-
 
   context 'Bill Reservation' do
     context 'GET /bill/reserve/:bill_id' do
@@ -183,7 +182,7 @@ describe 'Billbo' do
         follow_redirect!
         last_response.should be_ok
         last_request.url.should == "#{homepage}bill/reserve/#{bill.id}"
-        last_response.body.should =~ /reserve_bill_fail/
+        last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
       end
     end
   end

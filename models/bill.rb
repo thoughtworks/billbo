@@ -42,7 +42,7 @@ class Bill
 
   def date_is_before_today
     if self.due_date && self.due_date < Date.today
-      self.errors.add(:due_date, "#{t.after_yesterday}")
+      self.errors.add(:due_date, "#{I18n.t(:after_yesterday)}")
     end
   end
 

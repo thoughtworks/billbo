@@ -1,5 +1,5 @@
-<h2><%= i18n.regards_to_admin%></h2>
+<h2><%= I18n.t(:regards_to_admin)%></h2>
 
-<p><%= "#{receipt.contributor_name}  #{i18n.paid} R$ #{bill.total_amount} #{i18n.for} #{bill.issued_by}, #{i18n.due_date}: #{bill.due_date}. #{i18n.here_is} " %><a href="<%= receipt.url %>"><%= i18n.receipt%></a>.</p>
-<p><%= "#{i18n.contact_contributor} #{receipt.contributor_email}." %></p>
-<p><%= i18n.thanks %></p>
+<p><%= "#{receipt.contributor_name}  #{I18n.t(:paid)} R$ #{bill.total_amount} #{I18n.t(:for)} #{bill.issued_by}, #{I18n.t(:due_date)}: #{bill.due_date}. #{I18n.t(:here_is)} " %><a href="<%= receipt.url %>"><%= I18n.t(:receipt)%></a>.</p>
+<p><%= "#{I18n.t(:contact_contributor)} #{receipt.contributor_email}." %></p>
+<p><%= I18n.t(:thanks) %></p>

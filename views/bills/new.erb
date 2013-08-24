@@ -9,17 +9,17 @@
     </div>
   <% end %>
 
-  <h3><%= i18n.new_bill %></h3>
+  <h3><%= I18n.t(:new_bill) %></h3>
 
   <form id='new_bill' method="post" action="/bill/create" enctype="multipart/form-data">
-    <label for="issued_by"><%= i18n.issued_by %></label>
+    <label for="issued_by"><%= I18n.t(:issued_by) %></label>
     <input name="issued_by" type="text" required autofocus />
 
-    <label for="due_date"><%= i18n.due_date %></label>
-    <input id="datepicker" name="due_date" type="text" placeholder="<%= i18n.date_format %>" required />
+    <label for="due_date"><%= I18n.t(:due_date) %></label>
+    <input id="datepicker" name="due_date" type="text" placeholder="<%= I18n.t(:date_format) %>" required />
 
     <div class="row collapse">
-      <label for="total_amount"><%= i18n.total_amount %></label>
+      <label for="total_amount"><%= I18n.t(:total_amount) %></label>
       <div class="small-2 columns">
         <span class="prefix">R$</span>
       </div>
@@ -28,12 +28,12 @@
       </div>
     </div>
 
-    <label for="barcode"><%= i18n.barcode %></label>
+    <label for="barcode"><%= I18n.t(:barcode) %></label>
     <input name="barcode" type="text" required />
 
-    <label for="image"><%= i18n.image %></label>
+    <label for="image"><%= I18n.t(:image) %></label>
     <input name="image" type="file" />
 
-    <button type="submit" class="button"><%= i18n.create_bill %></button>
+    <button type="submit" class="button"><%= I18n.t(:create_bill) %></button>
   </form>
 </section>

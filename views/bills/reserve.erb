@@ -6,15 +6,15 @@
     </div>
   <% end %>
 
-  <h3><%= i18n.reserve_bill %></h3>
+  <h3><%= I18n.t(:reserve_bill) %></h3>
 
-  <form id='new_bill' method="post" action="<%= @action %>">
-    <label for="phone_number"><%= i18n.phone_number %></label>
+  <form id='reserve_bill' method="post" action="<%= @action %>">
+    <label for="phone_number"><%= I18n.t(:phone_number) %></label>
     <input name="phone_number" type="text" autofocus />
 
-    <label for="email"><%= i18n.email %></label>
+    <label for="email"><%= I18n.t(:email) %></label>
     <input name="email" type="text" required value="<%= session['email']%>"/>
 
-    <button type="submit" class="button"><%= i18n.reserve_bill %></button>
+    <button type="submit" class="button"><%= I18n.t(:reserve_bill) %></button>
   </form>
 </section>
