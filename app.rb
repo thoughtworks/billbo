@@ -13,10 +13,10 @@ require 'pony'
 
 require './uploaders/file_uploader'
 require './functions'
-require './config/initializers/carrierwave'
-require './config/initializers/i18n'
-require './config/initializers/mail'
-require './config/initializers/mongoid'
+
+Dir.glob("./{config/initializers,controllers,models}/**/*.rb").each do |file|
+  require file
+end
 
 configure do
   use Rack::Session::Cookie, :key => 'rack.session',
@@ -29,12 +29,3 @@ before do
   setup_locale
   setup_user
 end
-
-require './models/bill'
-require './models/receipt'
-require './models/admin'
-require './models/auth'
-require './models/reservation'
-require './controllers/home_controller'
-require './controllers/bill_controller'
-require './controllers/admin_controller'
