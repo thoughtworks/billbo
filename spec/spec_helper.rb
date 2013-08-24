@@ -9,11 +9,9 @@ require 'pony'
 R18n.default_places = '../i18n/'
 R18n.set('pt')
 
-# Load FactoryGirl definitions
 require 'factory_girl'
 FactoryGirl.find_definitions
 
-# Clean database after running tests
 RSpec.configure do |config|
   config.include Mongoid::Matchers
 
