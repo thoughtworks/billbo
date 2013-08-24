@@ -11,8 +11,6 @@ require 'carrierwave-google_drive'
 require 'carrierwave/mongoid'
 require 'pony'
 
-require './functions'
-
 Dir.glob("./{config/initializers,controllers,models,helpers}/**/*.rb").each do |file|
   require file
 end
@@ -27,4 +25,15 @@ end
 before do
   setup_locale
   setup_user
+end
+
+# TODO This test-specific setup should not be here
+def setup_user
+  if ENV['RACK_ENV'] == 'test' && request.cookies["stub_email"]
+    session[:email] = request.cookies["stub_email"]
+  end
+end
+
+def h(content)
+  Rack::Utils.escape_html(content)
 end
