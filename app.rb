@@ -14,7 +14,7 @@ require 'pony'
 require './uploaders/file_uploader'
 require './functions'
 
-Dir.glob("./{config/initializers,controllers,models}/**/*.rb").each do |file|
+Dir.glob("./{config/initializers,controllers,models,helpers}/**/*.rb").each do |file|
   require file
 end
 
