@@ -44,10 +44,10 @@ def log_in_as_admin
   log_in admin.email
 end
 
-def log_in email
-  set_cookie "stub_email=#{email}"
+def log_in(email)
+  Sinatra::Application.any_instance.stub(:logged_in_email).and_return(email)
 end
 
 def logout
-  set_cookie ''
+  Sinatra::Application.any_instance.stub(:logged_in_email).and_return("")
 end
