@@ -11,7 +11,6 @@ require 'carrierwave-google_drive'
 require 'carrierwave/mongoid'
 require 'pony'
 
-require './uploaders/file_uploader'
 require './functions'
 
 Dir.glob("./{config/initializers,controllers,models,helpers}/**/*.rb").each do |file|

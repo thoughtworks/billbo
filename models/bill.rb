@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-# encoding: UTF-8
+require_relative "file_uploader"
 
 class Bill
   include Mongoid::Document

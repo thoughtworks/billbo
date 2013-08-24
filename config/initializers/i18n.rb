@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 include R18n::Helpers
 
 # TODO Remove R18n

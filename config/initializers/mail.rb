@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 Pony.options = {
   :via => :smtp,
   :via_options => {
