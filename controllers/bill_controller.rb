@@ -6,7 +6,7 @@ get '/bill/new' do
   end
 
   if Admin.where(email: session[:email]).any?
-    erb :new_bill, locals: { errors: [] }
+    erb :"/bills/new", locals: { errors: [] }
   else
     redirect '/', :error => i18n.not_an_admin_account
   end
@@ -19,7 +19,7 @@ post '/bill/create' do
   if bill.save
     redirect '/bill/new', :success => i18n.bill_creation_ok
   else
-    erb :new_bill, locals: { errors: bill.errors.full_messages }
+    erb :"/bills/new", locals: { errors: bill.errors.full_messages }
   end
 end
 

@@ -1,6 +1,6 @@
 <section class="large-6 columns new-bill">
 
-  <%= erb :errors, locals: { errors: errors } if errors.any? %>
+  <%= erb :"/bills/errors", locals: { errors: errors } if errors.any? %>
 
   <% flash.each do |key, value| %>
     <div data-alert class="alert-box <%= key %>">
