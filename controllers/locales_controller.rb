@@ -1,8 +1,11 @@
 # encoding: UTF-8
 
 get '/locale/:locale' do
-  I18n.locale = params[:locale]
-  session[:i18n_hash] = locale_labels(params[:locale])
+  locale = params[:locale].to_sym
+  locale = settings.available_locales.include?(locale) ? locale : I18n.default_locale
+
+  I18n.locale = locale
+  session[:i18n_hash] = locale_labels(locale)
 
   redirect back
 end
