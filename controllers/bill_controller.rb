@@ -1,11 +1,11 @@
 # encoding: UTF-8
 
 get '/bill/new' do
-  if session[:email].nil?
+  if !logged_in
     redirect '/auth?url=/bill/new'
   end
 
-  if Admin.where(email: session[:email]).any?
+  if logged_as_admin?
     erb :"/bills/new", locals: { errors: [] }
   else
     redirect '/', :error => i18n.not_an_admin_account
