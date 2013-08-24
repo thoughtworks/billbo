@@ -23,7 +23,6 @@ configure do
 end
 
 before do
-  setup_locale
   setup_user
 end
 
