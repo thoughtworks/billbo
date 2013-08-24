@@ -16,6 +16,7 @@ require './functions'
 require './config/initializers/carrierwave'
 require './config/initializers/i18n'
 require './config/initializers/mail'
+require './config/initializers/mongoid'
 
 configure do
   use Rack::Session::Cookie, :key => 'rack.session',
@@ -23,9 +24,6 @@ configure do
                              :expire_after => 2592000, # In seconds
                              :secret => 'change_me'
 end
-
-ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
-Mongoid.load!('./config/mongoid.yml')
 
 before do
   setup_locale
