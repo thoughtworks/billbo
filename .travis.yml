@@ -1,18 +1,11 @@
 ---
-language: 
+language:
   - ruby
 
 rvm:
   - 1.9.3
 
-script: 
-  - bundle exec rspec spec 
-  - cucumber -f progress
-  - git checkout master
-  - af target https://api1.appfog.com
-  - af login --email ${AF_EMAIL} --passwd ${AF_PASSWORD}
-  - af update billbo
-  - af logout 
+script: "ci/travis.rb"
 
 env:
   global:
