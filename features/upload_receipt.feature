@@ -10,3 +10,10 @@ Feature: upload receipt
     And I select a bill
     When I upload a receipt
     Then it should show success message
+
+  Scenario: upload a receipt without the contributor email
+    Given I open the home page
+    And I have 2 bills
+    And I select a bill
+    When I upload a receipt without the contributor email
+    Then I should see the error message "E-mail é um campo obrigatório"

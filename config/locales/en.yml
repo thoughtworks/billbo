@@ -2,6 +2,7 @@ en:
   mongoid:
     models:
       bill: "Bill"
+      receipt: "Receipt"
     errors:
       messages:
         taken: "is already taken"
@@ -15,6 +16,8 @@ en:
         barcode: "Barcode"
         status: "Status"
         filename: "File name"
+      receipt:
+        contributor_email: "Email"
   errors:
     messages:
       extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"

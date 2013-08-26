@@ -32,7 +32,7 @@ post '/bill/upload-receipt/:bill_id' do
   bill = Bill.find(params[:bill_id])
   receipt = bill.create_receipt(params)
 
-  if bill.save
+  if receipt.persisted?
     send_email receipt, bill
     redirect '/', :success => I18n.t(:upload_receipt_ok)
   else
