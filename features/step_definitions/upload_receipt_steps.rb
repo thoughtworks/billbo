@@ -1,5 +1,5 @@
 Given /^I select a bill$/ do
-  @bill = Bill.all.first
+  @bill = Bill.first
 end
 
 When /^I upload a receipt$/ do
@@ -7,7 +7,14 @@ When /^I upload a receipt$/ do
 
   fill_in 'contributor_name', :with => 'user'
   fill_in 'contributor_email', :with => 'user@example.com'
-  
-  form = find_by_id 'upload_receipt'
-  Capybara::RackTest::Form.new(page.driver, form.native).submit :name => nil
+
+  click_button 'Enviar recibo'
+end
+
+When /^I upload a receipt without the contributor email$/ do
+  visit "/bill/upload-receipt/#{@bill.id}"
+
+  fill_in 'contributor_name', :with => 'user'
+
+  click_button 'Enviar recibo'
 end

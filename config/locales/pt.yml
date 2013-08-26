@@ -2,6 +2,7 @@ pt:
   mongoid:
     models:
       bill: "Conta"
+      receipt: "Recibo"
     errors:
       messages:
         taken: "já está em uso"
@@ -15,6 +16,8 @@ pt:
         barcode: "Código de barras"
         status: "Status"
         filename: "Nome do arquivo"
+      receipt:
+        contributor_email: "E-mail"
   errors:
     messages:
       extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
