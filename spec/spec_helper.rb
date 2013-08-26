@@ -39,6 +39,10 @@ def log_in_as_admin
   log_in admin.email
 end
 
+def app
+  Sinatra::Application
+end
+
 def log_in(email)
   Sinatra::Application.any_instance.stub(:logged_in_email).and_return(email)
 end

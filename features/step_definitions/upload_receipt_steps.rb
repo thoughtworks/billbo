@@ -5,7 +5,7 @@ Given /^I select a bill$/ do
 end
 
 When /^I upload a receipt$/ do
-  visit "/bill/upload-receipt/#{@bill.id}"
+  visit "/bills/#{@bill.id}/receipts/new"
 
   fill_in 'contributor_name', :with => 'user'
   fill_in 'contributor_email', :with => 'user@example.com'
@@ -14,7 +14,7 @@ When /^I upload a receipt$/ do
 end
 
 When /^I upload a receipt without the contributor email$/ do
-  visit "/bill/upload-receipt/#{@bill.id}"
+  visit "/bills/#{@bill.id}/receipts/new"
 
   fill_in 'contributor_name', :with => 'user'
 

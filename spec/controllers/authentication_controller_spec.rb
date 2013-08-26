@@ -2,12 +2,8 @@
 
 require 'spec_helper'
 
-describe 'Admin Controller' do
+describe 'Authentication controller' do
   include Rack::Test::Methods
-
-  def app
-    Sinatra::Application
-  end
 
   let(:homepage_url){ '/' }
 
