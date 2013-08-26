@@ -2,25 +2,25 @@
 
 get '/bills/:bill_id/receipts/new' do
   @bill = Bill.find(params[:bill_id])
-  erb :"/receipts/new"
+  erb :"/receipts/new", locals: { errors: [] }
 end
 
 post '/bills/:bill_id/receipts/create' do
-  bill = Bill.find(params[:bill_id])
-  receipt = bill.create_receipt(params)
+  @bill = Bill.find(params[:bill_id])
+  receipt = @bill.create_receipt(params)
 
   if receipt.persisted?
-    send_email receipt, bill
+    send_email(receipt, @bill)
     redirect '/', :success => I18n.t(:upload_receipt_ok)
   else
-    redirect "/bills/#{bill.id}/receipts/new", :error => I18n.t(:upload_receipt_fail)
+    erb :"receipts/new", locals: { errors: receipt.errors.full_messages }
   end
 end
 
 private
 
 # FIXME this should not be here
-def send_email payment, bill
+def send_email(payment, bill)
   Admin.all.each do |admin|
     Pony.mail :to => admin.email,
           :from => payment.contributor_email,
