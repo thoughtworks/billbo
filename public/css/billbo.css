@@ -66,3 +66,8 @@ a.label {
 .title a {
   color: #000;
 }
+
+.auth-row {
+  margin: 15px;
+}
+
