@@ -8,7 +8,7 @@
 
   <h3><%= I18n.t(:upload_receipt) %></h3>
 
-  <form id='upload_receipt' method="post" action="<%= @action %>" enctype="multipart/form-data">
+  <form id='upload_receipt' method="post" action="/bills/<%= @bill.id %>/receipts/create" enctype="multipart/form-data">
     <label for="contributor_name"><%= I18n.t(:name) %></label>
     <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"/>
 
