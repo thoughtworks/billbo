@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+require_relative "file_uploader"
+
 class Receipt
   include Mongoid::Document
   include CarrierWave::Mount
