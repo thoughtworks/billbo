@@ -13,13 +13,12 @@ RSpec.configure do |config|
   config.include Mongoid::Matchers
 
   config.before(:each) do
+    Mongoid.purge!
     Pony.stub(:deliver)
     setup_carrierwave
   end
 
-  config.after(:each) do
-    # FIXME Why do we need to do this manually?
-    Mongoid.default_session.collections.each { |coll| coll.drop unless /^system/.match(coll.name) }
+  config.after(:all) do
     FileUtils.rm_rf(Dir[File.join(File.dirname(__FILE__), "../public/#{FileUploader.store_dir}/[^.]*")])
   end
 end
