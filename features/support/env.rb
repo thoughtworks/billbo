@@ -19,7 +19,7 @@ class SomeWorld
 end
 
 After do
-  # FIXME Why we need to do this manually?
+  # FIXME Why do we need to do this manually?
   Mongoid.default_session.collections.each { |coll| coll.drop unless /^system/.match(coll.name) }
   FileUtils.rm_rf(Dir[File.join(File.dirname(__FILE__), "../../public/#{FileUploader.store_dir}/[^.]*")])
 end
