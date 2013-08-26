@@ -27,12 +27,14 @@
       </div>
     </header>
     <section class="row">
-      <% if logged_in %>
-        <%= logged_in_email %>
-        <a href="/logout">Logout</a>
-      <% else %>
-        <a href="/auth" id="login_with_google">Login with Google</a>
-      <% end %>
+      <div class="small-12 columns auth-row">
+        <% if logged_in %>
+          <%= logged_in_email %>
+          <a href="/logout">Logout</a>
+        <% else %>
+          <a href="/auth" id="login_with_google">Login with Google</a>
+        <% end %>
+      </div>
     </section>
 
     <section class="row">
