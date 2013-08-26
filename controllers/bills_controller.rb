@@ -60,6 +60,7 @@ end
 
 private
 
+# FIXME this should not be here
 def send_email payment, bill
   Admin.all.each do |admin|
     Pony.mail :to => admin.email,

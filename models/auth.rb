@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 class Auth
+  # FIXME This should not be versioned
   GOOGLE_CLIENT_ID = "895352289951-llfvtba6m8fnfvprfll7a85ficrlq7r8.apps.googleusercontent.com"
   GOOGLE_CLIENT_SECRET = "bAhMrM9wzIESCh_evRgf7WZ-"
 
