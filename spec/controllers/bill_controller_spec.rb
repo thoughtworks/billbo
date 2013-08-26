@@ -69,8 +69,7 @@ describe 'Billbo' do
           follow_redirect!
           last_response.should be_ok
           last_request.url.should =~ /bill\/new/
-          last_response.body.should =~ /success/
-          last_response.body.should_not =~ /error/
+          last_response.body.should include("Conta criada com sucesso")
         end
 
         it 'recognizes invalid bill and render new view with errors' do
