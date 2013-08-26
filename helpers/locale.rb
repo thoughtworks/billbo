@@ -8,6 +8,10 @@ module Sinatra
       locale_file = "#{settings.locales_path}/#{locale_code}.yml"
       session[:i18n_hash] =  YAML::load(File.read(locale_file))[locale_code.to_s].to_json
     end
+
+    def set_locale
+      I18n.locale = session[:locale] || I18n.default_locale
+    end
   end
 
   helpers LocaleHelper
