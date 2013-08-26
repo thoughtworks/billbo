@@ -53,10 +53,9 @@ describe "Receipts controller" do
         attributes[:contributor_email] = ''
         post "/bills/#{bill.id}/receipts/create", attributes
 
-        last_response.should be_redirect
-        follow_redirect!
+        last_response.should_not be_redirect
         last_response.should be_ok
-        last_request.url.should == "#{homepage}bills/#{bill.id}/receipts/new"
+        last_request.url.should == "#{homepage}bills/#{bill.id}/receipts/create"
       end
     end
   end
