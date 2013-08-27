@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]>      <html class="no-js lt-ie9" lang="<%= session[:locale] %>"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="<%= session[:locale] %>"> <!--<![endif]-->
+<!--[if IE 8]>      <html class="no-js lt-ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<%= I18n.locale %>"> <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -15,13 +15,13 @@
   <body>
     <header class="row">
       <div class="small-10 columns">
-        <h1 class="title"><a href="/">Billbo</a> <small><%= i18n.subtext %></small></h1>
+        <h1 class="title"><a href="/">Billbo</a> <small><%= I18n.t(:subtext) %></small></h1>
       </div>
       <div class="small-2 columns flags">
-        <a id="link-pt" href="?locale=pt">
+        <a id="link-pt" href="/locale/pt">
           <img src="/img/brazil_flag.png" alt="Versão em Português" />
         </a>
-        <a id="link-en" href="?locale=en">
+        <a id="link-en" href="/locale/en">
           <img src="/img/usa_flag.png" alt="English Version" />
         </a>
       </div>
@@ -29,7 +29,7 @@
     <section class="row">
       <div class="small-12 columns auth-row">
         <% if logged_in %>
-          <%= @admin.email %>
+          <%= logged_in_email %>
           <a href="/logout">Logout</a>
         <% else %>
           <a href="/auth" id="login_with_google">Login with Google</a>

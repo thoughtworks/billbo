@@ -1,3 +1,7 @@
+# encoding: UTF-8
+
+Bundler.require
+
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/flash'
@@ -6,9 +10,10 @@ require 'carrierwave'
 require 'carrierwave-google_drive'
 require 'carrierwave/mongoid'
 require 'pony'
-require './functions'
 
-Bundler.require
+Dir.glob("./{config/initializers,controllers,models,helpers}/**/*.rb").each do |file|
+  require file
+end
 
 configure do
   use Rack::Session::Cookie, :key => 'rack.session',
@@ -17,37 +22,11 @@ configure do
                              :secret => 'change_me'
 end
 
-# TODO Remove R18n
-include R18n::Helpers
-R18n.default_places = './i18n/'
-R18n.set('pt')
-
-I18n.load_path << File.join(Dir.pwd, "config", "locales", "en.yml")
-I18n.load_path << File.join(Dir.pwd, "config", "locales", "pt.yml")
-
-ENV['MONGO_TST_URI'] ||= 'mongodb://localhost/billbo_test'
-Mongoid.load!('./config/mongoid.yml')
-
-setup_carrierwave
-
-require './uploaders/file_uploader'
-
 before do
-  setup_locale
-  setup_user
-  setup_email
-
-  if logged_in
-    @admin = Admin.new
-    @admin.email = session[:email]
-  end
+  set_locale
+  locale_labels(I18n.locale)
 end
 
-require './models/bill'
-require './models/receipt'
-require './models/admin'
-require './models/auth'
-require './models/reservation'
-require './controllers/home_controller'
-require './controllers/bill_controller'
-require './controllers/admin_controller'
+def h(content)
+  Rack::Utils.escape_html(content)
+end

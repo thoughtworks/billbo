@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 Given /^I select a bill$/ do
   @bill = Bill.all.first
 end

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 def code_of language 
   languageCodes = { "portuguese" => "pt", "english" => "en" }
   languageCodes[language.downcase]
