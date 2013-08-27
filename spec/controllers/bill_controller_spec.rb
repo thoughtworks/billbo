@@ -17,33 +17,31 @@ describe 'Billbo' do
         before do
           log_in_as_admin
         end
-        it 'should render new_bill ' do
+
+        it 'renders new_bill' do
           get '/bill/new'
 
           last_response.should be_ok
           last_request.url.should =~ /bill\/new/
         end
-        after do
-          logout
-        end
       end
+
       describe 'when log in as not admin user' do
         before do
           log_in 'test@example.com'
         end
-        it 'should render homepage ' do
+
+        it 'renders homepage ' do
           get '/bill/new'
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage
         end
-        after do
-          logout
-        end
       end
+
       describe 'when not log in' do
-        it 'should render auth' do
+        it 'renders auth' do
           get '/bill/new'
           last_response.should be_redirect
           follow_redirect!
@@ -71,8 +69,7 @@ describe 'Billbo' do
           follow_redirect!
           last_response.should be_ok
           last_request.url.should =~ /bill\/new/
-          last_response.body.should =~ /success/
-          last_response.body.should_not =~ /error/
+          last_response.body.should include("Conta criada com sucesso")
         end
 
         it 'recognizes invalid bill and render new view with errors' do
@@ -123,7 +120,7 @@ describe 'Billbo' do
           Pony.should_receive :mail do  |params|
             params[:to].should == admin.email
             params[:from].should == attrs[:contributor_email]
-            params[:subject].should include 'upload_receipt_subject'
+            params[:subject].should include 'Pagamento carregado'
             params[:html_body].should include attrs[:contributor_name],
                                               bill.issued_by,
                                               bill.total_amount.to_s,
@@ -147,7 +144,6 @@ describe 'Billbo' do
     end
   end
 
-
   context 'Bill Reservation' do
     context 'GET /bill/reserve/:bill_id' do
       it "render reserve_bill view" do
@@ -157,6 +153,7 @@ describe 'Billbo' do
         last_response.body.should =~ /reserve_bill/
       end
     end
+
     context 'POST /bill/reserve' do
       it 'creates a new reservation' do
         attrs = FactoryGirl.attributes_for(:reservation)
@@ -174,6 +171,7 @@ describe 'Billbo' do
         last_bill.reservations.last.phone_number.should == attrs[:phone_number]
         last_bill.reservations.last.bill.should == bill
       end
+
       it 'recognizes invalid data and redirects' do
         attributes = FactoryGirl.attributes_for(:reservation)
         attributes[:email] = ''
@@ -183,7 +181,7 @@ describe 'Billbo' do
         follow_redirect!
         last_response.should be_ok
         last_request.url.should == "#{homepage}bill/reserve/#{bill.id}"
-        last_response.body.should =~ /reserve_bill_fail/
+        last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
       end
     end
   end

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'factory_girl'
 
 image_path= (File.join( settings.root, "spec", "fixtures"))
@@ -18,19 +20,23 @@ FactoryGirl.define do
     url           { generate(:url) }
     filename      { generate(:filename) }
   end
+
   factory :reservation do
     phone_number {"(81) 8855-5522"}
     email {"john@gmail.com"}
     bill {FactoryGirl.create(:bill)}
   end
+
   factory :image, class: File do
     filename        { "bill.png" }
     filepath        { image_path }
     initialize_with { new(File.join(filepath, filename)) }
   end
+
   factory :admin do
     email         { "admin@example.com" }
   end
+
   factory :receipt do
     contributor_name "John"
     contributor_email "john@gmail.com"

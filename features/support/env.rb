@@ -1,6 +1,9 @@
+# encoding: UTF-8
+
 ENV['RACK_ENV'] ||= 'test'
 
 require File.join(File.dirname(__FILE__), '..', '..', 'app')
+require 'cucumber/rspec/doubles'
 require 'capybara'
 require 'capybara/cucumber'
 require 'factory_girl'
@@ -16,10 +19,15 @@ class SomeWorld
 end
 
 After do
-  Mongoid.default_session.collections.each { |coll| coll.drop unless /^system/.match(coll.name) }
+  Mongoid.purge!
   FileUtils.rm_rf(Dir[File.join(File.dirname(__FILE__), "../../public/#{FileUploader.store_dir}/[^.]*")])
 end
 
 World do
   SomeWorld.new
+end
+
+CarrierWave::Uploader::GoogleDrive.configure do |config|
+  config.storage = :file
+  config.enable_processing = false
 end

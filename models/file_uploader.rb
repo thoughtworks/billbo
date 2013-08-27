@@ -11,8 +11,8 @@ class FileUploader < CarrierWave::Uploader::GoogleDrive
     %w(jpg jpeg gif png)
   end
 
-  def updatemodel file
-    model.update_attribute("filename".to_sym, self.filename )
-    model.update_attribute("url".to_sym, self.url )
+  def updatemodel(file)
+    model.update_attribute(:filename, self.filename)
+    model.update_attribute(:url, self.url)
   end
 end

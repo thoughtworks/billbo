@@ -1,12 +1,12 @@
+# encoding: UTF-8
+
 def create_bill(attributes = {})
   attributes = attributes.reverse_merge(
     issued_by: "XXX",
     due_date: "01/01/2020",
     total_amount: 100.00,
     barcode: "0123",
-    image: FactoryGirl.build(:image)
-  )
-
+    image: FactoryGirl.build(:image))
 
   visit '/bill/new'
 

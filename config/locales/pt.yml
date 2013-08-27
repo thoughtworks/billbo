@@ -21,3 +21,42 @@ pt:
   errors:
     messages:
       extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
+
+  subtext: Para ajudar alguém. Mas ajudar eficientemente
+  bills: Contas
+  new_bill: Nova Conta
+  issued_by: Empresa
+  due_date: Vencimento
+  total_amount: Valor Total
+  barcode: Código de Barras
+  create_bill: Criar Conta
+  bill_creation_fail: Problema ao criar a conta
+  bill_creation_ok: Conta criada com sucesso
+  gt_value: Maior valor
+  lt_value: Menor valor
+  priority: Prioridade
+  image: Imagem
+  required_field: Campo obrigatório
+  greater_than_zero: Valor deve ser maior que zero
+  after_yesterday: Data não pode ser anterior a hoje
+  date_format: dd/mm/aaaa
+  not_an_admin_account: Faça login com uma conta de administrador
+  upload_receipt: Enviar recibo
+  receipt: Recibo
+  name: Nome
+  email: Email
+  upload_receipt_fail: Ocorreu um erro ao enviar o recibo
+  upload_receipt_ok: Recibo enviado com sucesso
+  upload_receipt_subject: Pagamento carregado
+  regards_to_admin: Oi Administrador!
+  paid: pago
+  for: pra
+  here_is: Aqui está o
+  thanks: Obrigado
+  reserve_bill: Reservar conta
+  phone_number: Telefone
+  reserve_bill_fail: Ocorreu um erro ao reservar a conta
+  reserve_bill_ok: Conta reservada com sucesso
+  bill_reserved: Conta reservada!
+  contact_contributor: "Você pode entrar em contato, caso necessário, pelo seguinte email:"
+  status: Status

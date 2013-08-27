@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 Given /^I have (\d+) bills$/ do |n|
   n.to_i.times do
     FactoryGirl.create(:bill)
