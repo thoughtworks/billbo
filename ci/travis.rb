@@ -16,4 +16,8 @@ def run(commands)
 end
 
 run(spec_commands)
-run(deploy_commands) if ENV["TRAVIS_BRANCH"] == "master"
+
+if ENV["TRAVIS_BRANCH"] == "master"
+  puts "Running deploy process"
+  run(deploy_commands)
+end
