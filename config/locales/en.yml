@@ -18,6 +18,7 @@ en:
         filename: "File name"
       receipt:
         contributor_email: "Email"
+        image: "The receipt"
   errors:
     messages:
       extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"
@@ -49,10 +50,10 @@ en:
   upload_receipt_ok: Receipt uploaded succesfully
   upload_receipt_subject: Payment uploaded
   regards_to_admin: Hi Administrator!
-  paid: paid
-  for: for
-  here_is: Here is the
-  thanks: Thanks
+  paid_a_bill: paid a bill
+  receipt_available: The receipt is available
+  here: here
+  thanks: Thanks!
   reserve_bill: Reserve bill
   phone_number: Phone Number
   reserve_bill_fail: Problem reserving the bill

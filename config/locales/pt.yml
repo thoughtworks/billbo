@@ -18,6 +18,7 @@ pt:
         filename: "Nome do arquivo"
       receipt:
         contributor_email: "E-mail"
+        image: "O recibo"
   errors:
     messages:
       extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
@@ -49,10 +50,10 @@ pt:
   upload_receipt_ok: Recibo enviado com sucesso
   upload_receipt_subject: Pagamento carregado
   regards_to_admin: Oi Administrador!
-  paid: pago
-  for: pra
-  here_is: Aqui está o
-  thanks: Obrigado
+  paid_a_bill: pagou uma conta
+  receipt_available: O recibo está disponível
+  here: aqui
+  thanks: Obrigado!
   reserve_bill: Reservar conta
   phone_number: Telefone
   reserve_bill_fail: Ocorreu um erro ao reservar a conta
