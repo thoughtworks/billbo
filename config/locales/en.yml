@@ -1,4 +1,7 @@
 en:
+  date:
+    formats:
+      default: '%m-%d-%Y'
   mongoid:
     models:
       bill: "Bill"

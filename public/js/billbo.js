@@ -35,11 +35,11 @@ $(document).ready(function() {
   });
 
   $('.due_date').click(function() {
-    $('ul#all-bills>li').tsort('p.due_date');
+    $('ul#all-bills>li').tsort('p.due_date', {data: 'timestamp'});
   });
 
   $('.status').click(function() {
-    $('ul#all-bills>li').tsort('a.th',{attr:'class'},'p.due_date');
+    $('ul#all-bills>li').tsort('a.th', {attr:'class'}, 'p.due_date', {data: 'timestamp'});
   });
 
   $('.sort_list').on('click', 'a', function() {

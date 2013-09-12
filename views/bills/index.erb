@@ -48,8 +48,8 @@
               <div class="small-8 columns">
                 <h4><%= bill.issued_by %></h4>
                 <p>R$ <%= bill.total_amount %></p>
-                <p class="due_date"><%= bill.due_date %></p>
-                <p><%= bill.barcode %></p>
+                <p class="due_date" data-timestamp="<%=bill.due_date.to_time.to_i%>"><%= I18n.l bill.due_date %></p>
+                <p><%= bill.barcode %></p> 
               </div>
               <div>
                 <a href="<%= bill.url %>" >

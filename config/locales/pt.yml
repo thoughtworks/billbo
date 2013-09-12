@@ -1,4 +1,7 @@
 pt:
+  date:
+    formats:
+      default: '%d-%m-%Y'
   mongoid:
     models:
       bill: "Conta"
