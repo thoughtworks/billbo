@@ -29,6 +29,7 @@ pt:
   subtext: Para ajudar alguém. Mas ajudar eficientemente
   bills: Contas
   new_bill: Nova Conta
+  update_bill: Editar Conta
   issued_by: Empresa
   due_date: Vencimento
   total_amount: Valor Total
@@ -63,5 +64,7 @@ pt:
   reserve_bill_fail: Ocorreu um erro ao reservar a conta
   reserve_bill_ok: Conta reservada com sucesso
   bill_reserved: Conta reservada!
+  update_bill_fail: Ocorreu um erro ao editar a conta
+  update_bill_ok: Conta atualizada com sucesso
   contact_contributor: "Você pode entrar em contato, caso necessário, pelo seguinte email:"
   status: Status
