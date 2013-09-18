@@ -1,7 +1,7 @@
 function CustomErrorMessage() {
   this.REQUIRED = 'required_field';
   this.GT_ZERO = 'greater_than_zero';
-  this.BEFORE_YESTERDAY = 'before_yesterday';
+  this.BEFORE_YESTERDAY = 'before_today';
 
   function addValidation(formEl, validationName) {    
     formEl.on('change invalid', function() {
