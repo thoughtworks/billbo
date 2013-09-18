@@ -1,7 +1,7 @@
 en:
   date:
     formats:
-      default: '%m-%d-%Y'
+      default: '%m/%d/%Y'
   mongoid:
     models:
       bill: "Bill"
@@ -11,6 +11,7 @@ en:
         taken: "is already taken"
         blank: "is required"
         not_a_number: "must be a number"
+        greater_than: "Total amount should be greater than zero"
     attributes:
       bill:
         issued_by: "Company"
@@ -31,6 +32,7 @@ en:
   new_bill: New Bill
   create_bill: Create Bill
   update_bill: Update Bill
+  update_bill_button: Update
   barcode: Barcode
   total_amount: Total Amount
   due_date: Due Date

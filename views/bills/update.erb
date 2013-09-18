@@ -17,7 +17,7 @@
     <input name="issued_by" type="text" required autofocus value="<%= @bill.issued_by %>" />
 
     <label for="due_date"><%= I18n.t(:due_date) %></label>
-    <input id="datepicker" name="due_date" type="text" placeholder="<%= I18n.t(:date_format) %>" value="<%= @bill.due_date %>" required />
+    <input id="datepicker" name="due_date" type="text" placeholder="<%= I18n.t(:date_format) %>" value="<%= I18n.l @bill.due_date %>" required />
 
     <div class="row collapse">
       <label for="total_amount"><%= I18n.t(:total_amount) %></label>
@@ -35,6 +35,6 @@
     <label for="image"><%= I18n.t(:image) %></label>
     <input name="image" type="file" />
 
-    <button type="submit" class="button"><%= I18n.t(:update_bill) %></button>
+    <button type="submit" class="button"><%= I18n.t(:update_bill_button) %></button>
   </form>
 </section>

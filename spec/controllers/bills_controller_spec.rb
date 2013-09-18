@@ -156,7 +156,7 @@ describe 'Bills controller' do
         last_bill.due_date.day.should == attrs_to_update[:due_date].day
         last_bill.due_date.month.should == attrs_to_update[:due_date].month
         last_bill.due_date.year.should == attrs_to_update[:due_date].year
-        last_bill.total_amount.to_s.should == attrs_to_update[:total_amount].to_s
+        last_bill.total_amount.should == attrs_to_update[:total_amount].to_f
         last_bill.barcode.should == attrs_to_update[:barcode]
       end
       

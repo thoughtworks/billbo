@@ -22,7 +22,7 @@ class Bill
   validates :status, inclusion: { in: [:paid, :opened, :reserved] }
   validates_uniqueness_of :barcode
   validates_numericality_of :barcode
-  validates :total_amount, numericality: { greater_than_or_equal_to: 0 }
+  validates :total_amount, numericality: { greater_than: 0 }
 
   has_one :receipt
   has_many :reservations

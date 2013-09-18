@@ -1,7 +1,7 @@
 pt:
   date:
     formats:
-      default: '%d-%m-%Y'
+      default: '%d/%m/%Y'
   mongoid:
     models:
       bill: "Conta"
@@ -11,6 +11,7 @@ pt:
         taken: "já está em uso"
         blank: "é um campo obrigatório"
         not_a_number: "deve ser um valor numérico"
+        greater_than: "Valor total deve ser maior que zero"
     attributes:
       bill:
         issued_by: "Empresa"
@@ -30,6 +31,7 @@ pt:
   bills: Contas
   new_bill: Nova Conta
   update_bill: Editar Conta
+  update_bill_button: Editar
   issued_by: Empresa
   due_date: Vencimento
   total_amount: Valor Total
