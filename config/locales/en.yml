@@ -21,17 +21,21 @@ en:
   errors:
     messages:
       extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"
-
+      
   subtext: "It's all about helping someone. But helping efficiently"
   bills: Bills
   new_bill: New Bill
   create_bill: Create Bill
+  delete_bill: Delete
   barcode: Barcode
   total_amount: Total Amount
   due_date: Due Date
   issued_by: Company
   bill_creation_fail: Problem creating the bill
   bill_creation_ok: Bill created succesfully
+  confirm_delete: Are you sure you want to delete this bill?
+  delete_bill_fail: It was not possible to delete this bill
+  delete_bill_ok: Bill deleted succesfully
   gt_value: Highest price
   lt_value: Lowest price
   priority: Priority

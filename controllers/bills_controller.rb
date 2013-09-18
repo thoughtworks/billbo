@@ -40,3 +40,14 @@ post '/bill/reserve/:bill_id' do
     redirect "/bill/reserve/#{params[:bill_id]}", :error => I18n.t(:reserve_bill_fail)
   end
 end
+
+get '/delete/:bill_id' do
+  bill = Bill.find(params[:bill_id])
+  
+  if bill.delete
+    redirect '/', :success => I18n.t(:delete_bill_ok)
+  else
+    redirect '/', :error => I18n.t(:delete_bill_fail)
+  end
+end
+

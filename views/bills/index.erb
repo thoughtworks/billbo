@@ -50,6 +50,15 @@
                 <p>R$ <%= bill.total_amount %></p>
                 <p class="due_date"><%= bill.due_date %></p>
                 <p><%= bill.barcode %></p>
+                
+                
+                <% if logged_as_admin?  %>
+                  <a href="/delete/<%= bill.id %>" class="tiny button" onclick="return confirm(<%= I18n.t("confirm_delete")%>)">
+                    <%= I18n.t("delete_bill")%>
+                  </a>
+                <% end %>
+                
+                
               </div>
               <div>
                 <a href="<%= bill.url %>" >
