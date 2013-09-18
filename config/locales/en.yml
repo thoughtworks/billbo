@@ -1,4 +1,7 @@
 en:
+  date:
+    formats:
+      default: '%m/%d/%Y'
   mongoid:
     models:
       bill: "Bill"
@@ -8,6 +11,7 @@ en:
         taken: "is already taken"
         blank: "is required"
         not_a_number: "must be a number"
+        greater_than: "Total amount should be greater than zero"
     attributes:
       bill:
         issued_by: "Company"
@@ -18,6 +22,7 @@ en:
         filename: "File name"
       receipt:
         contributor_email: "Email"
+        image: "The receipt"
   errors:
     messages:
       extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"
@@ -26,6 +31,8 @@ en:
   bills: Bills
   new_bill: New Bill
   create_bill: Create Bill
+  update_bill: Update Bill
+  update_bill_button: Update
   barcode: Barcode
   total_amount: Total Amount
   due_date: Due Date
@@ -37,8 +44,9 @@ en:
   priority: Priority
   image: Image
   required_field: Required field
-  greater_than_zero: Value must be greater than zero
-  after_yesterday: Date can not be before today
+  invalid_due_date: Complete with a valid date
+  greater_than_zero: Total amount must be a number greater than zero
+  before_today: can not be before today
   date_format: mm/dd/yyyy
   not_an_admin_account: Log in with an admin account
   upload_receipt: Upload receipt
@@ -49,14 +57,16 @@ en:
   upload_receipt_ok: Receipt uploaded succesfully
   upload_receipt_subject: Payment uploaded
   regards_to_admin: Hi Administrator!
-  paid: paid
-  for: for
-  here_is: Here is the
-  thanks: Thanks
+  paid_a_bill: paid a bill
+  receipt_available: The receipt is available
+  here: here
+  thanks: Thanks!
   reserve_bill: Reserve bill
   phone_number: Phone Number
   reserve_bill_fail: Problem reserving the bill
   reserve_bill_ok: Bill reserved succesfully
   bill_reserved: Bill reserved!
+  update_bill_fail: Problem updating the bill
+  update_bill_ok: Bill updated successfully
   contact_contributor: "You can contact, if necessary, by the following email:"
   status: Status

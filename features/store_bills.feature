@@ -15,7 +15,7 @@ Feature: store bills
     | issued_by | due_date   | total_amount | barcode | image    |
     | xxx       | 2020/07/21 | 300.0        | 000     | bill.png |
     When I open the home page
-    And I should view bills information:
+    Then I should view bills information:
     | issued_by | total_amount | image    |
     | xxx       | 300.0        | bill.png |
 
