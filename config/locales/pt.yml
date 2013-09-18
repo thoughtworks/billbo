@@ -20,12 +20,7 @@ pt:
         contributor_email: "E-mail"
   errors:
     messages:
-      extension_white_list_error: "Deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
-      
-  errors:
-    messages:
-      
-      
+      extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
 
   subtext: Para ajudar alguém. Mas ajudar eficientemente
   bills: Contas
