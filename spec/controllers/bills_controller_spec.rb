@@ -123,4 +123,29 @@ describe 'Bills controller' do
       end
     end
   end
+  
+  context 'Delete Bill' do
+    context 'GET /delete/:bill_id' do
+      describe 'when logged in as admin' do
+        
+        before do
+          log_in_as_admin
+        end
+      
+        it 'delete bill' do
+          bill.save!
+          expect{
+            get "/delete/#{bill.id}"
+          }.to change { Bill.count }.from(1).to(0)
+
+          last_response.should be_redirect
+          follow_redirect!
+          last_response.should be_ok
+          last_request.url.should == homepage
+        end
+        
+      end
+    end
+  end
+    
 end

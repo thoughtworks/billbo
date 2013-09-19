@@ -34,8 +34,7 @@ pt:
   bill_creation_fail: Problema ao criar a conta
   bill_creation_ok: Conta criada com sucesso
   confirm_delete: Você quer realmente deletar esta conta?
-  delete_bill_fail: Não foi possível deletar esta conta.
-  delete_bill_ok: A conta foi deletada com sucesso!
+  bill_delete_ok: A conta foi deletada com sucesso!
   gt_value: Maior valor
   lt_value: Menor valor
   priority: Prioridade

@@ -42,12 +42,10 @@ post '/bill/reserve/:bill_id' do
 end
 
 get '/delete/:bill_id' do
-  bill = Bill.find(params[:bill_id])
-  
-  if bill.delete
-    redirect '/', :success => I18n.t(:delete_bill_ok)
-  else
-    redirect '/', :error => I18n.t(:delete_bill_fail)
+  begin
+    bill = Bill.find(params[:bill_id])
+    bill.delete
+  rescue Mongoid::Errors::DocumentNotFound => e
   end
+  redirect '/', :success => I18n.t(:bill_delete_ok)
 end
-
