@@ -47,8 +47,13 @@
               <div class="small-8 columns">
                 <h4><%= bill.issued_by %></h4>
                 <p>R$ <%= bill.total_amount %></p>
-                <p class="due_date"><%= bill.due_date %></p>
+                <p class="due_date" data-timestamp="<%=bill.due_date.to_time.to_i%>"><%= I18n.l bill.due_date %></p>
                 <p><%= bill.barcode %></p>
+                
+                <% if logged_as_admin? && bill.status == :opened %>
+                  <a href="/bill/update/<%= bill.id %>" class="tiny button"><%= I18n.t("update_bill_button") %></a>
+                <% end %>
+                 
               </div>
               <div>
                 <a href="<%= bill.url %>" >
