@@ -147,5 +147,73 @@ describe 'Bills controller' do
       end
     end
   end
+
+  context 'Bill Update' do
+    context 'GET /bill/update/:bill_id' do
+      before do
+        log_in_as_admin
+      end
+      
+      it "render update_bill view" do
+        get "/bill/update/#{bill.id}"
+
+        last_response.should be_ok
+        last_response.body.should =~ /update_bill/
+      end
+    end
     
+    context 'POST /bill/update/:bill_id' do
+      before do
+        log_in_as_admin
+      end
+
+      it 'updates a bill sucessfully' do
+        attrs_to_update = FactoryGirl.attributes_for(:bill)
+        id = bill.id
+        
+        expect {
+          post "/bill/update/#{id}", attrs_to_update
+        }.to_not change { Bill.count }
+     
+        last_bill = Bill.find(id)
+        last_bill.issued_by.should == attrs_to_update[:issued_by]
+        last_bill.due_date.day.should == attrs_to_update[:due_date].day
+        last_bill.due_date.month.should == attrs_to_update[:due_date].month
+        last_bill.due_date.year.should == attrs_to_update[:due_date].year
+        last_bill.total_amount.should == attrs_to_update[:total_amount].to_f
+        last_bill.barcode.should == attrs_to_update[:barcode]
+      end
+      
+      it 'recognizes invalid data (due_date) and redirect' do
+        attrs_to_update = FactoryGirl.attributes_for(:bill)
+        attrs_to_update[:due_date] = '32/12/2013'
+        post "/bill/update/#{bill.id}", attrs_to_update
+
+        last_response.should be_ok
+        last_request.url.should == "#{homepage}bill/update/#{bill.id}"
+        last_response.body.should =~ /Complete com uma data válida/
+      end
+      
+      it 'recognizes invalid data (due_date before today) and redirect' do
+        attrs_to_update = FactoryGirl.attributes_for(:bill)
+        attrs_to_update[:due_date] = '17/09/2013'
+        post "/bill/update/#{bill.id}", attrs_to_update
+
+        last_response.should be_ok
+        last_request.url.should == "#{homepage}bill/update/#{bill.id}"
+        last_response.body.should =~ /não pode ser anterior a hoje/
+      end
+      
+      it 'recognizes invalid data (barcode) and redirect' do
+        attrs_to_update = FactoryGirl.attributes_for(:bill)
+        attrs_to_update[:barcode] = 'AAA'
+        post "/bill/update/#{bill.id}", attrs_to_update
+
+        last_response.should be_ok
+        last_request.url.should == "#{homepage}bill/update/#{bill.id}"
+        last_response.body.should include("Código de barras deve ser um valor numérico")
+      end
+      
+    end
+  end
 end

@@ -34,7 +34,7 @@ Given(/^I have created bills:$/) do |table|
   end
 end
 
-When(/^I should view bills information:$/) do |table|
+Then(/^I should view bills information:$/) do |table|
   table.hashes.each do |row|
     within('#all-bills') do
       page.should have_xpath("//img[@src=\"/uploads/#{row['image']}\"]")
@@ -71,4 +71,28 @@ end
 
 Then /^I should see the error message "(.*?)"$/ do |message|
   page.should have_content(message)
+end
+
+Given /^I select an unclaimed bill$/ do
+  @bill = Bill.where(status: :opened).first
+end
+
+When /^I change (.*) detail of the bill to "(.*?)"$/ do |attr_name, attr_value|
+  visit "/bill/update/#{@bill.id}"
+
+  fill_in attr_name, :with => attr_value
+
+  click_button 'Editar'
+end
+
+Then(/^I should view bill information:$/) do |table|
+  visit "/bill/update/#{@bill.id}"
+  table.hashes.each do |row|
+    within('#update_bill') do
+      find_field("issued_by").value.should have_content(row["issued_by"])
+      find_field("due_date").value.should have_content(row["due_date"])
+      find_field("total_amount").value.should have_content(row["total_amount"])
+      find_field("barcode").value.should have_content(row["barcode"])
+    end
+  end
 end

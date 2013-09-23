@@ -1,4 +1,7 @@
 pt:
+  date:
+    formats:
+      default: '%d/%m/%Y'
   mongoid:
     models:
       bill: "Conta"
@@ -8,6 +11,7 @@ pt:
         taken: "já está em uso"
         blank: "é um campo obrigatório"
         not_a_number: "deve ser um valor numérico"
+        greater_than: "Valor total deve ser maior que zero"
     attributes:
       bill:
         issued_by: "Empresa"
@@ -18,6 +22,7 @@ pt:
         filename: "Nome do arquivo"
       receipt:
         contributor_email: "E-mail"
+        image: "O recibo"
   errors:
     messages:
       extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
@@ -26,6 +31,8 @@ pt:
   bills: Contas
   new_bill: Nova Conta
   delete_bill: Deletar
+  update_bill: Editar Conta
+  update_bill_button: Editar
   issued_by: Empresa
   due_date: Vencimento
   total_amount: Valor Total
@@ -40,8 +47,9 @@ pt:
   priority: Prioridade
   image: Imagem
   required_field: Campo obrigatório
-  greater_than_zero: Valor deve ser maior que zero
-  after_yesterday: Data não pode ser anterior a hoje
+  invalid_due_date: Complete com uma data válida
+  greater_than_zero: Valor total deve ser um número maior que zero
+  before_today: não pode ser anterior a hoje
   date_format: dd/mm/aaaa
   not_an_admin_account: Faça login com uma conta de administrador
   upload_receipt: Enviar recibo
@@ -52,14 +60,16 @@ pt:
   upload_receipt_ok: Recibo enviado com sucesso
   upload_receipt_subject: Pagamento carregado
   regards_to_admin: Oi Administrador!
-  paid: pago
-  for: pra
-  here_is: Aqui está o
-  thanks: Obrigado
+  paid_a_bill: pagou uma conta
+  receipt_available: O recibo está disponível
+  here: aqui
+  thanks: Obrigado!
   reserve_bill: Reservar conta
   phone_number: Telefone
   reserve_bill_fail: Ocorreu um erro ao reservar a conta
   reserve_bill_ok: Conta reservada com sucesso
   bill_reserved: Conta reservada!
+  update_bill_fail: Ocorreu um erro ao editar a conta
+  update_bill_ok: Conta atualizada com sucesso
   contact_contributor: "Você pode entrar em contato, caso necessário, pelo seguinte email:"
   status: Status
