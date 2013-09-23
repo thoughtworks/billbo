@@ -41,7 +41,7 @@ post '/bill/reserve/:bill_id' do
   end
 end
 
-post '/delete/:bill_id' do
+delete '/bill/delete/:bill_id' do
   if logged_as_admin?
     begin
       bill = Bill.find(params[:bill_id])
@@ -52,5 +52,4 @@ post '/delete/:bill_id' do
   else
     redirect '/', :error => I18n.t(:not_an_admin_account)
   end
-
 end

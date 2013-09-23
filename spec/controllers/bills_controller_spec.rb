@@ -125,7 +125,7 @@ describe 'Bills controller' do
   end
   
   context 'Delete Bill' do
-    context 'GET /delete/:bill_id' do
+    context 'POST /bill/delete' do
       describe 'when logged in as admin' do
         
         before do
@@ -135,7 +135,7 @@ describe 'Bills controller' do
         it 'delete bill' do
           bill.save!
           expect{
-            get "/delete/#{bill.id}"
+            delete "/bill/delete/#{bill.id}"
           }.to change { Bill.count }.from(1).to(0)
 
           last_response.should be_redirect

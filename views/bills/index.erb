@@ -52,9 +52,12 @@
                 <p><%= bill.barcode %></p>
                 
                 <% if logged_as_admin?  %>
-                  <a href="/delete/<%= bill.id %>" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_delete")%>')">
-                    <%= I18n.t("delete_bill")%>
-                  </a>
+                  <form id='delete_bill_form' method="post" action="/bill/delete/<%= bill.id %>" enctype="multipart/form-data">
+                    <input name="_method" type="hidden" value="delete">
+                    <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_delete")%>')">
+                      <%= I18n.t("delete_bill")%>
+                    </button>
+                  </form>
                 <% end %>
                 
               </div>
