@@ -124,19 +124,20 @@ describe 'Bills controller' do
     end
   end
   
-  context 'Delete Bill' do
-    context 'POST /bill/delete' do
+  context 'Remove Bill' do
+    context 'POST /bill/remove' do
       describe 'when logged in as admin' do
         
         before do
           log_in_as_admin
         end
-      
-        it 'delete bill' do
-          bill.save!
+        
+        it 'should remove a bill' do
+          bill_to_remove = FactoryGirl.create(:bill)
+          bill_to_remove.save!
           expect{
-            delete "/bill/delete/#{bill.id}"
-          }.to change { Bill.count }.from(1).to(0)
+            delete "/bill/remove/#{bill_to_remove.id}"
+          }.to change { Bill.count }.by(-1)
 
           last_response.should be_redirect
           follow_redirect!

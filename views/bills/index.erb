@@ -57,11 +57,11 @@
               </div>
               <% if logged_as_admin?  %>
                 <div class="row text-center">
-                  <form id='delete_bill_form' method="post" action="/bill/delete/<%= bill.id %>" enctype="multipart/form-data">
+                  <form id='remove_bill_form' method="post" action="/bill/remove/<%= bill.id %>" enctype="multipart/form-data">
                     <a href="/bill/update/<%= bill.id %>" class="tiny button"><%= I18n.t("update_bill_button") %></a>
                     <input name="_method" type="hidden" value="delete">
-                    <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_delete")%>')">
-                      <%= I18n.t("delete_bill")%>
+                    <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_remove")%>')">
+                      <%= I18n.t("remove_bill")%>
                     </button>
                   </form>
                 </div>
