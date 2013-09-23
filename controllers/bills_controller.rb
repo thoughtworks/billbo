@@ -41,11 +41,16 @@ post '/bill/reserve/:bill_id' do
   end
 end
 
-get '/delete/:bill_id' do
-  begin
-    bill = Bill.find(params[:bill_id])
-    bill.delete
-  rescue Mongoid::Errors::DocumentNotFound => e
+post '/delete/:bill_id' do
+  if logged_as_admin?
+    begin
+      bill = Bill.find(params[:bill_id])
+      bill.delete
+    rescue Mongoid::Errors::DocumentNotFound => e
+    end
+    redirect '/', :success => I18n.t(:bill_delete_ok)
+  else
+    redirect '/', :error => I18n.t(:not_an_admin_account)
   end
-  redirect '/', :success => I18n.t(:bill_delete_ok)
+
 end
