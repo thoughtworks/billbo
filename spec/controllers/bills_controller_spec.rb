@@ -133,10 +133,9 @@ describe 'Bills controller' do
         end
         
         it 'should remove a bill' do
-          bill_to_remove = FactoryGirl.create(:bill)
-          bill_to_remove.save!
+          bill.save!
           expect{
-            delete "/bill/remove/#{bill_to_remove.id}"
+            delete "/bill/remove/#{bill.id}"
           }.to change { Bill.count }.by(-1)
 
           last_response.should be_redirect
