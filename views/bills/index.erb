@@ -48,18 +48,24 @@
                 <h4><%= bill.issued_by %></h4>
                 <p>R$ <%= bill.total_amount %></p>
                 <p class="due_date" data-timestamp="<%=bill.due_date.to_time.to_i%>"><%= I18n.l bill.due_date %></p>
-                <p><%= bill.barcode %></p>
-                
-                <% if logged_as_admin? && bill.status == :opened %>
-                  <a href="/bill/update/<%= bill.id %>" class="tiny button"><%= I18n.t("update_bill_button") %></a>
-                <% end %>
-                 
+                <p><%= bill.barcode %></p>            
               </div>
               <div>
                 <a href="<%= bill.url %>" >
                   <img class="small-4 columns" src="<%= bill.url %>" alt="<%= bill.filename %>"/>
                 </a>
               </div>
+              <% if logged_as_admin?  %>
+                <div class="row text-center">
+                  <form id='remove_bill_form' method="post" action="/bill/remove/<%= bill.id %>" enctype="multipart/form-data">
+                    <a href="/bill/update/<%= bill.id %>" class="tiny button"><%= I18n.t("update_bill_button") %></a>
+                    <input name="_method" type="hidden" value="delete">
+                    <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_remove")%>')">
+                      <%= I18n.t("remove_bill")%>
+                    </button>
+                  </form>
+                </div>
+              <% end %>
             </section>
           </li>
         <% end %>

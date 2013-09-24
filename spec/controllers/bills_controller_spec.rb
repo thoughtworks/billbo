@@ -124,6 +124,30 @@ describe 'Bills controller' do
     end
   end
   
+  context 'Remove Bill' do
+    context 'POST /bill/remove' do
+      describe 'when logged in as admin' do
+        
+        before do
+          log_in_as_admin
+        end
+        
+        it 'should remove a bill' do
+          bill.save!
+          expect{
+            delete "/bill/remove/#{bill.id}"
+          }.to change { Bill.count }.by(-1)
+
+          last_response.should be_redirect
+          follow_redirect!
+          last_response.should be_ok
+          last_request.url.should == homepage
+        end
+        
+      end
+    end
+  end
+
   context 'Bill Update' do
     context 'GET /bill/update/:bill_id' do
       before do

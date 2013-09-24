@@ -30,6 +30,7 @@ pt:
   subtext: Para ajudar alguém. Mas ajudar eficientemente
   bills: Contas
   new_bill: Nova Conta
+  remove_bill: Remover
   update_bill: Editar Conta
   update_bill_button: Editar
   issued_by: Empresa
@@ -39,6 +40,8 @@ pt:
   create_bill: Criar Conta
   bill_creation_fail: Problema ao criar a conta
   bill_creation_ok: Conta criada com sucesso
+  confirm_remove: Você quer realmente remover esta conta?
+  bill_remove_ok: A conta foi removida com sucesso!
   gt_value: Maior valor
   lt_value: Menor valor
   priority: Prioridade
