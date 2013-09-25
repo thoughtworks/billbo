@@ -91,3 +91,14 @@ post '/bill/update/:bill_id' do
     erb :"/bills/update", locals: { errors: [I18n.t(:invalid_due_date)] }
   end
 end
+
+get '/bill/close/:bill_id' do
+  @bill = Bill.find(params[:bill_id])
+  if logged_as_admin? && @bill.status == :waiting_confirmation
+    @bill.status = :closed
+    @bill.save!
+    redirect '/', :success => I18n.t("bill_closed_ok")
+  else
+    redirect '/', :error => I18n.t("not_an_admin_account")
+  end
+end

@@ -19,7 +19,7 @@ class Bill
   validate :date_is_before_today
 
   validates_presence_of :issued_by, :due_date, :total_amount, :barcode
-  validates :status, inclusion: { in: [:paid, :opened, :reserved] }
+  validates :status, inclusion: { in: [:opened, :reserved, :waiting_confirmation, :closed] }
   validates_uniqueness_of :barcode
   validates_numericality_of :barcode
   validates :total_amount, numericality: { greater_than: 0 }

@@ -63,9 +63,12 @@
                     <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_remove")%>')">
                       <%= I18n.t("remove_bill")%>
                     </button>
+                    <% if bill.status == :waiting_confirmation %>
+                      <a href="/bill/close/<%= bill.id %>" class="tiny button"><%= I18n.t("close_bill") %></a>
+                    <% end %>
                   </form>
                 </div>
-              <% end %>
+              <% end %>              
             </section>
           </li>
         <% end %>
