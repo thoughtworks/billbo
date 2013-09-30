@@ -223,9 +223,11 @@ describe 'Bills controller' do
           log_in_as_admin
           bill.status = :waiting_confirmation
         end
+
         after do
           logout
         end
+
         it 'should render homepage' do
           get "/bill/close/#{bill.id}"
           
@@ -236,26 +238,30 @@ describe 'Bills controller' do
           last_response.body.should =~ /bill_closed_ok/
         end 
       end
+
       describe 'when log in as not admin user' do
         before do
           log_in 'test@example.com'
           bill.status = :waiting_confirmation
         end
+
         after do
           logout
         end
+
         it 'should render homepage with not and admin account message' do
           get "/bill/close/#{bill.id}"
-          
+
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage
           last_response.body.should =~ /not_an_admin_account/
         end
+
         it 'shoud not close the bill' do
           get "/bill/close/#{bill.id}"
-          
+
           bill.status.should == :waiting_confirmation
         end
       end

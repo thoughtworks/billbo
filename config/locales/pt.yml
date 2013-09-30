@@ -44,6 +44,7 @@ pt:
   bill_remove_ok: A conta foi removida com sucesso
   close_bill: Fechar
   bill_closed_ok: Conta fechada com sucesso
+  bill_not_able_to_close: Essa conta deve estar "aguardando confirmação" para ser fechada
   gt_value: Maior valor
   lt_value: Menor valor
   priority: Prioridade

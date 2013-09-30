@@ -94,11 +94,13 @@ end
 
 get '/bill/close/:bill_id' do
   @bill = Bill.find(params[:bill_id])
-  if logged_as_admin? && @bill.status == :waiting_confirmation
+  if @bill.status != :waiting_confirmation
+    redirect '/', :error => I18n.t("bill_not_able_to_close")
+  elsif !logged_as_admin?
+    redirect '/', :error => I18n.t("not_an_admin_account")
+  else
     @bill.status = :closed
     @bill.save!
     redirect '/', :success => I18n.t("bill_closed_ok")
-  else
-    redirect '/', :error => I18n.t("not_an_admin_account")
   end
 end
