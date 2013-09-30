@@ -6,6 +6,10 @@
   background-color: #CEEFCC;
 }
 
+.waiting_confirmation {
+  background-color: #D7F5FD;
+}
+
 div.sort_list {
   font-size: 0.8em;
   color: #999;

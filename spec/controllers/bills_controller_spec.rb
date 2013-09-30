@@ -127,23 +127,22 @@ describe 'Bills controller' do
   context 'Remove Bill' do
     context 'POST /bill/remove' do
       describe 'when logged in as admin' do
-        
         before do
           log_in_as_admin
         end
-        
         it 'should remove a bill' do
           bill.save!
           expect{
             delete "/bill/remove/#{bill.id}"
           }.to change { Bill.count }.by(-1)
-
+        end
+        it 'should render homepage' do
+          delete "/bill/remove/#{bill.id}"
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage
         end
-        
       end
     end
   end
@@ -214,6 +213,58 @@ describe 'Bills controller' do
         last_response.body.should include("Código de barras deve ser um valor numérico")
       end
       
+    end
+  end
+  
+  context 'Close Bill' do
+    context 'get /bill/close/:bill_id' do
+      describe 'when log in as admin' do
+        before do
+          log_in_as_admin
+          bill.status = :waiting_confirmation
+        end
+
+        after do
+          logout
+        end
+
+        it 'should render homepage' do
+          get "/bill/close/#{bill.id}"
+          
+          last_response.should be_redirect
+          follow_redirect!
+          last_response.should be_ok
+          last_request.url.should == homepage
+          last_response.body.should =~ /bill_closed_ok/
+        end 
+      end
+
+      describe 'when log in as not admin user' do
+        before do
+          log_in 'test@example.com'
+          bill.status = :waiting_confirmation
+        end
+
+        after do
+          logout
+        end
+
+        it 'should render homepage with not and admin account message' do
+          get "/bill/close/#{bill.id}"
+
+          last_response.should be_redirect
+          follow_redirect!
+          last_response.should be_ok
+          last_request.url.should == homepage
+          last_response.body.should =~ /not_an_admin_account/
+        end
+
+        it 'shoud not close the bill' do
+          get "/bill/close/#{bill.id}"
+
+          bill.status.should == :waiting_confirmation
+        end
+      end
     end
   end
 end
