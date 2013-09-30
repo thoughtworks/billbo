@@ -1,0 +1,24 @@
+<% flash.each do |key, value| %>
+  <div data-alert class="alert-box <%= key %>">
+    <%= value %>
+  </div>
+<% end %>
+
+
+<div class="share">
+  <section class="row">
+    <div class="large-3 push-1 columns sort_list">
+      <ul class="small-block-grid-3">
+        <li><a class="share-on-facebook" href="#"
+          onclick="window.open(
+                  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+                  'facebook-share-dialog', 
+                  'width=626,height=436'); 
+                  return false;">
+          <%= I18n.t("share_on_facebook")%></a></li>
+        <li><a class="share-on-twitter" href="#"><%= I18n.t("share_on_twitter")%></a></li>
+        <li><a class="skip-sharing" href='/'><%= I18n.t("skip_sharing")%></a></li>
+      </ul>
+    </div>
+  </section>
+</div>

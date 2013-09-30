@@ -17,7 +17,7 @@ describe Bill do
         'due_date'     => Date.today,
         'total_amount' => 1.0,
         'barcode'      => '1',
-        'status'       => :paid,
+        'status'       => :waiting_confirmation,
         'url'          => "xxx",
         "filename"     => "bill.png"
       }
