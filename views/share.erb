@@ -4,21 +4,35 @@
   </div>
 <% end %>
 
-
 <div class="share">
-  <section class="row">
-    <div class="large-3 push-1 columns sort_list">
-      <ul class="small-block-grid-3">
-        <li><a class="share-on-facebook" href="#"
-          onclick="window.open(
-                  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-                  'facebook-share-dialog', 
-                  'width=626,height=436'); 
-                  return false;">
-          <%= I18n.t("share_on_facebook")%></a></li>
-        <li><a class="share-on-twitter" href="#"><%= I18n.t("share_on_twitter")%></a></li>
-        <li><a class="skip-sharing" href='/'><%= I18n.t("skip_sharing")%></a></li>
-      </ul>
-    </div>
-  </section>
+  <div class="thanks_for_sharing">
+    <p><%= I18n.t("thanks_for_sharing_one")%></p>
+    <p><%= I18n.t("thanks_for_sharing_two")%></p>
+  </div>
+  <div class="row">
+    <ul class="small-block-grid-3">
+      <li class="social-button">
+        <a class="share-on-facebook" href="#"
+        onclick="window.open(
+                'https://www.facebook.com/sharer/sharer.php?u=billbo.aws.af.cm',
+                'facebook-share-dialog',
+                'width=626,height=436');
+                return false;">
+                <img src="http://billbo.aws.af.cm/img/share_on_facebook.jpg" alt="Share on Facebook" title="Share on Facebook"></a></li>
+      <li class="social-button">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-related="jasoncosta" data-size="large" data-count="none">Twitter
+        </a>
+        <script>!function(d,s,id){
+          var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;js.src="https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+          }
+        }(document,"script","twitter-wjs");
+        </script>
+      </li>
+      <li class="social-button"><a class="skip-sharing" href='/'><%= I18n.t("skip_sharing")%></a></li>
+    </ul>
+  </div>
 </div>

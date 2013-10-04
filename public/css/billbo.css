@@ -10,6 +10,23 @@
   background-color: #D7F5FD;
 }
 
+div.share {
+  background-color: #D7F5FD;
+  margin: 4em 8em 8em;
+  border-radius: 1em;
+  font-family: "Helvetica";
+  font-size: x-large;
+}
+
+div.thanks_for_sharing {
+  padding: 2em;
+  text-align: center;
+}
+
+.social-button{
+  text-align:center;
+}
+
 div.sort_list {
   font-size: 0.8em;
   color: #999;

@@ -13,7 +13,7 @@ post '/bills/:bill_id/receipts/create' do
     @bill.status = :waiting_confirmation
     @bill.save!
     send_email(receipt, @bill)
-    redirect '/', :success => I18n.t(:upload_receipt_ok)
+    redirect '/share/', :success => I18n.t(:upload_receipt_ok)
   else
     erb :"receipts/new", locals: { errors: receipt.errors.full_messages }
   end
