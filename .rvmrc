@@ -1,1 +1,1 @@
-rvm use 1.9.3@billbo --create --default
+rvm use ruby-2.0.0-p247@billbo --create --default

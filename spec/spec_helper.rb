@@ -30,11 +30,11 @@ def setup_carrierwave
   end
 end
 
-def homepage
+def homepage_url
   'http://example.org/'
 end
 
-def share
+def share_url
   'http://example.org/share/'
 end
 
