@@ -34,6 +34,10 @@ def homepage
   'http://example.org/'
 end
 
+def share
+  'http://example.org/share/'
+end
+
 def log_in_as_admin
   admin = FactoryGirl.create(:admin)
   log_in admin.email
