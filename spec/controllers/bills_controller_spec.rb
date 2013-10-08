@@ -32,7 +32,7 @@ describe 'Bills controller' do
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
-          last_request.url.should == homepage
+          last_request.url.should == homepage_url
         end
       end
 
@@ -102,7 +102,7 @@ describe 'Bills controller' do
         last_response.should be_redirect
         follow_redirect!
         last_response.should be_ok
-        last_request.url.should == homepage
+        last_request.url.should == homepage_url
 
         last_bill = Bill.find(id)
         last_bill.reservations.last.email.should == attrs[:email]
@@ -118,7 +118,7 @@ describe 'Bills controller' do
         last_response.should be_redirect
         follow_redirect!
         last_response.should be_ok
-        last_request.url.should == "#{homepage}bill/reserve/#{bill.id}"
+        last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
         last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
       end
     end
@@ -141,7 +141,7 @@ describe 'Bills controller' do
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
-          last_request.url.should == homepage
+          last_request.url.should == homepage_url
         end
       end
     end
@@ -189,7 +189,7 @@ describe 'Bills controller' do
         post "/bill/update/#{bill.id}", attrs_to_update
 
         last_response.should be_ok
-        last_request.url.should == "#{homepage}bill/update/#{bill.id}"
+        last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should =~ /Complete com uma data válida/
       end
       
@@ -199,7 +199,7 @@ describe 'Bills controller' do
         post "/bill/update/#{bill.id}", attrs_to_update
 
         last_response.should be_ok
-        last_request.url.should == "#{homepage}bill/update/#{bill.id}"
+        last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should =~ /não pode ser anterior a hoje/
       end
       
@@ -209,7 +209,7 @@ describe 'Bills controller' do
         post "/bill/update/#{bill.id}", attrs_to_update
 
         last_response.should be_ok
-        last_request.url.should == "#{homepage}bill/update/#{bill.id}"
+        last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should include("Código de barras deve ser um valor numérico")
       end
       
@@ -234,7 +234,7 @@ describe 'Bills controller' do
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
-          last_request.url.should == homepage
+          last_request.url.should == homepage_url
           last_response.body.should =~ /bill_closed_ok/
         end 
       end
@@ -255,7 +255,7 @@ describe 'Bills controller' do
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
-          last_request.url.should == homepage
+          last_request.url.should == homepage_url
           last_response.body.should =~ /not_an_admin_account/
         end
 

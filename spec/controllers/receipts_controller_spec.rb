@@ -55,7 +55,7 @@ describe "Receipts controller" do
 
         last_response.should_not be_redirect
         last_response.should be_ok
-        last_request.url.should == "#{homepage}bills/#{bill.id}/receipts/create"
+        last_request.url.should == "#{homepage_url}bills/#{bill.id}/receipts/create"
       end
     end
   end

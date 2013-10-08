@@ -5,19 +5,19 @@ require 'spec_helper'
 describe 'Authentication controller' do
   include Rack::Test::Methods
 
-  let(:homepage_url){ '/' }
+  let(:test_homepage_url){ '/' }
 
   describe 'GET /auth' do
     it 'redirects to an authorized url' do
-      auth_callback = "#{homepage}oauth2callback?url=/"
-      Auth.any_instance.stub(:authorize_url).with(auth_callback).and_return homepage_url
+      auth_callback = "#{homepage_url}oauth2callback?url=/"
+      Auth.any_instance.stub(:authorize_url).with(auth_callback).and_return test_homepage_url
 
-      get '/auth', url: homepage_url
+      get '/auth', url: test_homepage_url
 
       last_response.should be_redirect
       follow_redirect!
       last_response.should be_ok
-      last_request.url.should == homepage
+      last_request.url.should == homepage_url
     end
   end
 
@@ -33,7 +33,7 @@ describe 'Authentication controller' do
       last_response.should be_redirect
       follow_redirect!
       last_response.should be_ok
-      last_request.url.should == homepage
+      last_request.url.should == homepage_url
     end
   end
 
@@ -44,12 +44,12 @@ describe 'Authentication controller' do
       auth.stub(:email).and_return 'email'
       Auth.stub(:new).and_return auth
 
-      get '/oauth2callback', {url: homepage, code: '2352'}
+      get '/oauth2callback', {url: homepage_url, code: '2352'}
 
       last_response.should be_redirect
       follow_redirect!
       last_response.should be_ok
-      last_request.url.should == homepage
+      last_request.url.should == homepage_url
     end
   end
 end
