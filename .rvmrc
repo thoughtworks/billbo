@@ -1,1 +1,1 @@
-rvm use 1.9.3@billbo --create --default
+rvm use 2.0.0@billbo --create --default
