@@ -1,5 +1,4 @@
 # encoding: UTF-8
-require 'pry'
 
 Given /^I have (\d+) bills$/ do |n|
   n.to_i.times do

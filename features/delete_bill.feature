@@ -9,4 +9,3 @@ Feature: Delete a bill
 		When I open the home page
 		And I select a "opened" bill
 		Then I should be able to delete this bill
-		
