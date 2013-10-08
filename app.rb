@@ -1,7 +1,5 @@
 # encoding: UTF-8
 
-Bundler.require
-
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/flash'
@@ -10,6 +8,8 @@ require 'carrierwave'
 require 'carrierwave-google_drive'
 require 'carrierwave/mongoid'
 require 'pony'
+
+Bundler.require
 
 Dir.glob("./{config/initializers,controllers,models,helpers}/**/*.rb").each do |file|
   require file

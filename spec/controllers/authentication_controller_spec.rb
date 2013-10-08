@@ -44,7 +44,7 @@ describe 'Authentication controller' do
       auth.stub(:email).and_return 'email'
       Auth.stub(:new).and_return auth
 
-      get '/oauth2callback', {url: homepage_url, code: '2352'}
+      get '/oauth2callback', {url: homepage, code: '2352'}
 
       last_response.should be_redirect
       follow_redirect!

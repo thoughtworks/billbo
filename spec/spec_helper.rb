@@ -30,7 +30,7 @@ def setup_carrierwave
   end
 end
 
-def homepage_url
+def homepage
   'http://example.org/'
 end
 

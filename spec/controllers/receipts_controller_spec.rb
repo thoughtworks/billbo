@@ -23,7 +23,7 @@ describe "Receipts controller" do
         last_response.should be_redirect
         follow_redirect!
         last_response.should be_ok
-        last_request.url.should == share
+        last_request.url.should == share_url
 
         bill.reload.receipt.contributor_email.should == attrs[:contributor_email]
       end
