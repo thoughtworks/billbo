@@ -45,10 +45,6 @@ Then(/^I should view bills information:$/) do |table|
   end
 end
 
-When /^I open the home page$/ do
-  visit '/'
-end
-
 Then /^it should list (\d+) bills$/ do |n|
   bills_count = n=='all' ? Bill.count : n.to_i
 

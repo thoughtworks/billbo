@@ -1,4 +1,4 @@
-Given(/^I am a contributor$/) {}
+# encoding: UTF-8
 
 And(/^I access a NGO's profile page$/) do
   visit '/ngos/mockedNGO'
