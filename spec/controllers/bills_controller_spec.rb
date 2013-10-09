@@ -76,7 +76,7 @@ describe 'Bills controller' do
           }.to_not change { Bill.count }
 
           last_response.should be_ok
-          last_response.body.should =~ /Empresa é um campo obrigatório/
+          last_response.body.should =~ /Empresa e um campo obrigatorio/
         end
       end
     end
@@ -190,7 +190,7 @@ describe 'Bills controller' do
 
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should =~ /Complete com uma data válida/
+        last_response.body.should =~ /Complete com uma data valida/
       end
       
       it 'recognizes invalid data (due_date before today) and redirect' do
@@ -200,7 +200,7 @@ describe 'Bills controller' do
 
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should =~ /não pode ser anterior a hoje/
+        last_response.body.should =~ /nao pode ser anterior a hoje/
       end
       
       it 'recognizes invalid data (barcode) and redirect' do
@@ -210,7 +210,7 @@ describe 'Bills controller' do
 
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should include("Código de barras deve ser um valor numérico")
+        last_response.body.should include("Codigo de barras deve ser um valor numerico")
       end
       
     end
