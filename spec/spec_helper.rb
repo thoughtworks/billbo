@@ -30,8 +30,12 @@ def setup_carrierwave
   end
 end
 
-def homepage
+def homepage_url
   'http://example.org/'
+end
+
+def share_url
+  'http://example.org/share/'
 end
 
 def log_in_as_admin
