@@ -43,6 +43,14 @@ FactoryGirl.define do
     url { generate :url }
     filename { generate :filename }
   end
+  
+  factory :ngo do
+    id { "1234" }
+    name { "My Pet" }
+    admin { "Mary Lee" }
+    phrase { "Seja voce mesmo, mas nao seja sempre o mesmo" }
+    description { "Yourself" }
+  end
 end
 
 def time_rand(from=0.0, to=Time.now)
