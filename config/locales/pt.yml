@@ -8,16 +8,16 @@ pt:
       receipt: "Recibo"
     errors:
       messages:
-        taken: "ja esta em uso"
-        blank: "e um campo obrigatorio"
-        not_a_number: "deve ser um valor numerico"
+        taken: "já está em uso"
+        blank: "é um campo obrigatório"
+        not_a_number: "deve ser um valor numérico"
         greater_than: "Valor total deve ser maior que zero"
     attributes:
       bill:
         issued_by: "Empresa"
         due_date: "Data de vencimento"
         total_amount: "Valor total"
-        barcode: "Codigo de barras"
+        barcode: "Código de barras"
         status: "Status"
         filename: "Nome do arquivo"
       receipt:
@@ -26,7 +26,7 @@ pt:
   errors:
     messages:
       extension_white_list_error: "deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png"
-  subtext: Para ajudar alguem. Mas ajudar eficientemente
+  subtext: Para ajudar alguém. Mas ajudar eficientemente
   bills: Contas
   new_bill: Nova Conta
   remove_bill: Remover
@@ -35,28 +35,28 @@ pt:
   issued_by: Empresa
   due_date: Vencimento
   total_amount: Valor Total
-  barcode: Codigo de Barras
+  barcode: Código de Barras
   create_bill: Criar Conta
   bill_creation_fail: Problema ao criar a conta
   bill_creation_ok: Conta criada com sucesso
-  confirm_remove: Voce quer realmente remover esta conta?
+  confirm_remove: Você quer realmente remover esta conta?
   bill_remove_ok: A conta foi removida com sucesso
   close_bill: Fechar
   bill_closed_ok: Conta fechada com sucesso
-  bill_not_able_to_close: Essa conta deve estar "aguardando confirmacao" para ser fechada
-  thanks_for_sharing_one: Obrigado por ajudar o Billbo em nossa missao!
-  thanks_for_sharing_two: Voce gostaria de compartilhar com o mundo?
-  skip_sharing: Ignorara
+  bill_not_able_to_close: Essa conta deve estar "aguardando confirmação" para ser fechada
+  thanks_for_sharing_one: Obrigado por ajudar o Billbo em nossa missão!
+  thanks_for_sharing_two: Você gostaria de compartilhar com o mundo?
+  skip_sharing: Ignorar →
   gt_value: Maior valor
   lt_value: Menor valor
   priority: Prioridade
   image: Imagem
-  required_field: Campo obrigatorio
-  invalid_due_date: Complete com uma data valida
-  greater_than_zero: Valor total deve ser um numero maior que zero
-  before_today: nao pode ser anterior a hoje
+  required_field: Campo obrigatório
+  invalid_due_date: Complete com uma data válida
+  greater_than_zero: Valor total deve ser um número maior que zero
+  before_today: não pode ser anterior a hoje
   date_format: dd/mm/aaaa
-  not_an_admin_account: Faca login com uma conta de administrador
+  not_an_admin_account: Faça login com uma conta de administrador
   upload_receipt: Enviar recibo
   receipt: Recibo
   name: Nome
@@ -66,7 +66,7 @@ pt:
   upload_receipt_subject: Pagamento carregado
   regards_to_admin: Oi Administrador!
   paid_a_bill: pagou uma conta
-  receipt_available: O recibo esta disponivel
+  receipt_available: O recibo está disponível
   here: aqui
   thanks: Obrigado!
   reserve_bill: Reservar conta
@@ -76,5 +76,5 @@ pt:
   bill_reserved: Conta reservada!
   update_bill_fail: Ocorreu um erro ao editar a conta
   update_bill_ok: Conta atualizada com sucesso
-  contact_contributor: "Voce pode entrar em contato, caso necessario, pelo seguinte email:"
+  contact_contributor: "Você pode entrar em contato, caso necessário, pelo seguinte email:"
   status: Status
