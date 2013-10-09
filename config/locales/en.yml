@@ -44,6 +44,9 @@ en:
   close_bill: Close
   bill_closed_ok: Bill closed succesfully
   bill_not_able_to_close: This bill should be "waiting confirmation" to be closed
+  thanks_for_sharing_one: Thank you for helping Billbo in our mission!
+  thanks_for_sharing_two: Do you want to share with the world?
+  skip_sharing: Skip →
   gt_value: Highest price
   lt_value: Lowest price
   priority: Priority
