@@ -14,12 +14,12 @@ describe 'Bills controller' do
         
         last_response.should be_ok
         last_response.body.should include("#{ngo.name}")
-        last_response.body.should include("#{ngo.admin}")
-        last_response.body.should include("#{ngo.phrase}")
         last_response.body.should include("#{ngo.description}")
-                                  
+        last_response.body.should include("#{ngo.phone}")
+        last_response.body.should include("#{ngo.website}")
+        last_response.body.should include("#{ngo.email}")
+        last_response.body.should include("#{ngo.contact}")
       end
     end
-  end    
-
+  end
 end
