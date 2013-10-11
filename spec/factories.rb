@@ -47,9 +47,11 @@ FactoryGirl.define do
   factory :ngo do
     id { "1234" }
     name { "My Pet" }
-    admin { "Mary Lee" }
-    phrase { "Seja voce mesmo, mas nao seja sempre o mesmo" }
     description { "Yourself" }
+    phone { "+55 (81) 3034-5626"}
+    website { "mypet.com.br" }
+    email { "mypet@gmail.com" }
+    contact { "Mary Lee" }
   end
 end
 
