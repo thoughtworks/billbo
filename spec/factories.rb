@@ -52,6 +52,7 @@ FactoryGirl.define do
     website { "mypet.com.br" }
     email { "mypet@gmail.com" }
     contact { "Mary Lee" }
+    photo_url {"https://docs.google.com/uc?&id=0Bya4RyzHQ9KxbUxPaGpkXzFMWG8"}
   end
 end
 
