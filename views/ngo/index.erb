@@ -1,0 +1,23 @@
+<section class="row">
+  <div class="large-3 columns">
+    <img id="ngo_photo" src="" alt="ngo photo"/>
+  </div>
+  <div class="large-9 columns">
+    <div class="row">
+        <h2 class="large-12 columns"><%= @ngo.name %></h2>
+    </div>
+    <div class="row">
+      <%= @ngo.description %>
+    </div>
+    <div class="row">
+      <div class="large-10 push-2 columns">
+        <div class="row">
+          <span class="large-4 columns contact-information"><%= @ngo.phone%></span>
+          <span class="large-3 columns contact-information"><%= @ngo.website%></span>
+          <span class="large-3 columns contact-information"><%= @ngo.email%></span>
+          <span class="large-2 columns contact-information"><%= @ngo.contact%><span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
