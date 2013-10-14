@@ -23,6 +23,16 @@
 </section>
 <h2>Nossas Contas</h2>
 <section class="row">
+    <div class="large-6 push-6 columns sort_list">
+      <ul class="small-block-grid-4">
+        <li><a class="gt_value label secondary" href="#"><%= I18n.t("gt_value") %></a></li>
+        <li><a class="lt_value label secondary" href="#"><%= I18n.t("lt_value") %></a></li>
+        <li><a class="due_date label secondary" href="#"><%= I18n.t("due_date") %></a></li>
+        <li><a class="status label secondary" href="#"><%= I18n.t("status") %></a></li>
+      </ul>
+    </div>
+  </section>
+<section class="row">
     <div class="small-12 columns">
       <ul id="all-bills" class="small-block-grid-2 large-block-grid-4">
         <% @ngo.bills.each do |bill| %>
@@ -50,7 +60,7 @@
                 <h4><%= bill.issued_by %></h4>
                 <p>R$ <%= bill.total_amount %></p>
                 <p class="due_date" data-timestamp="<%=bill.due_date.to_time.to_i%>"><%= I18n.l bill.due_date %></p>
-                <p><%= bill.barcode %></p>            
+                <p><%= bill.barcode %></p>
               </div>
               <div>
                 <a href="<%= bill.url %>" >
