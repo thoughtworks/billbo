@@ -13,6 +13,7 @@ describe Bill do
   context :update do
     let(:new_attributes) {
       { 'id'           => 1,
+        'ngo_id' => 1234,
         'issued_by'    => 'foo',
         'due_date'     => Date.today,
         'total_amount' => 1.0,

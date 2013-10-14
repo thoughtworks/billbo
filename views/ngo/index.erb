@@ -1,0 +1,79 @@
+<section class="row">
+  <div class="large-3 columns">
+    <img id="ngo_photo" src="<%= @ngo.photo_url %>" alt="ngo photo"/>
+  </div>
+  <div class="large-9 columns">
+    <div class="row">
+        <h2 class="large-12 columns"><%= @ngo.name %></h2>
+    </div>
+    <div class="row">
+      <%= @ngo.description %>
+    </div>
+    <div class="row">
+      <div class="large-10 push-2 columns">
+        <div class="row">
+          <span class="large-4 columns contact-information"><%= @ngo.phone%></span>
+          <span class="large-3 columns contact-information"><%= @ngo.website%></span>
+          <span class="large-3 columns contact-information"><%= @ngo.email%></span>
+          <span class="large-2 columns contact-information"><%= @ngo.contact%><span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<h2>Nossas Contas</h2>
+<section class="row">
+    <div class="small-12 columns">
+      <ul id="all-bills" class="small-block-grid-2 large-block-grid-4">
+        <% @ngo.bills.each do |bill| %>
+          <li class="bill-container">
+            <div>
+              <a href="#" class="th radius <%= bill.status %>" data-reveal-id="myModal<%= bill.id %>">
+                <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
+                <p class="issued-by"><%= bill.issued_by %></p>
+                <p class="total_amount">R$ <%= bill.total_amount %></p>
+              </a>
+              <div class="text-center">
+                <% if bill.status == :opened %>
+                  <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
+                    <%= I18n.t("reserve_bill") %>
+                  </a>
+                <% end %>
+                <a href="/bills/<%= bill.id %>/receipts/new" class="tiny button">
+                  <%= I18n.t("upload_receipt") %>
+                </a>
+              </div>
+            </div>
+            <section class="reveal-modal small-12 columns" id="myModal<%= bill.id %>">
+              <a class="close-reveal-modal">&#215;</a>
+              <div class="small-8 columns">
+                <h4><%= bill.issued_by %></h4>
+                <p>R$ <%= bill.total_amount %></p>
+                <p class="due_date" data-timestamp="<%=bill.due_date.to_time.to_i%>"><%= I18n.l bill.due_date %></p>
+                <p><%= bill.barcode %></p>            
+              </div>
+              <div>
+                <a href="<%= bill.url %>" >
+                  <img class="small-4 columns" src="<%= bill.url %>" alt="<%= bill.filename %>"/>
+                </a>
+              </div>
+              <% if logged_as_admin?  %>
+                <div class="row text-center">
+                  <form id='remove_bill_form' method="post" action="/bill/remove/<%= bill.id %>" enctype="multipart/form-data">
+                    <a href="/bill/update/<%= bill.id %>" class="tiny button"><%= I18n.t("update_bill_button") %></a>
+                    <input name="_method" type="hidden" value="delete">
+                    <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_remove")%>')">
+                      <%= I18n.t("remove_bill")%>
+                    </button>
+                    <% if bill.status == :waiting_confirmation %>
+                      <a href="/bill/close/<%= bill.id %>" class="tiny button"><%= I18n.t("close_bill") %></a>
+                    <% end %>
+                  </form>
+                </div>
+              <% end %>
+            </section>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>

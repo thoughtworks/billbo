@@ -10,7 +10,11 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 ### To run locally for development
 
  - Start mongo server `$ path/to/mongo/mongod`;
- - Run the application using shotgun `$ shotgun`;
+ - Run the application using the rake task server:run `$ rake server:run`;
+   This task sets some variables used by the application to access its google drive account and starts the server using shotgun. 
+   
+   It tries to find the information on ~/.billbo.yml file, and when not found, asks the user for the information, using that to create the file for further usage. 
+   
  - Go to <a href="http://localhost:9393" target="_blank">localhost:9393</a>;
 
 ### To seed test data
