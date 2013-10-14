@@ -96,13 +96,13 @@ a.label {
   margin: 15px;
 }
 
-#ngo_photo{
+.ngo_photo{
   width: 256px;
   height: 256px;
 }
 
 .ngo{
   border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
 }
