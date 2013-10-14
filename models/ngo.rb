@@ -11,4 +11,5 @@ class Ngo
   field :contact, type: String
   field :photo_url, type: String
 
+  has_many :bills
 end

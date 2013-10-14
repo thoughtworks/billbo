@@ -24,6 +24,7 @@ class Bill
   validates_numericality_of :barcode
   validates :total_amount, numericality: { greater_than: 0 }
 
+  belongs_to :ngo
   has_one :receipt
   has_many :reservations
 
