@@ -7,10 +7,17 @@ require './spec/factories'
 namespace :db do
   desc 'Seeds the database with bills <n> times'
   task :seed, [:n] do |t, args|
-    num = args[:n] ? args[:n].to_i : 1
-    num.times {
-      puts "Bill created:\n#{FactoryGirl.create(:bill).inspect}\n\n"
-    }
+    clear_all    
     puts "Admin created:\n#{FactoryGirl.create(:admin).inspect}\n\n"
+    num = args[:n] ? args[:n].to_i : 1
+
+    new_ngo = FactoryGirl.create(:ngo_with_bills, bills_count: num) 
+    puts "Ngo created:\n#{new_ngo.inspect}"
   end
+end
+
+def clear_all
+  Admin.delete_all
+  Ngo.delete_all
+  Bill.delete_all
 end
