@@ -1,0 +1,32 @@
+<% flash.each do |key, value| %>
+  <div data-alert class="alert-box <%= key %>">
+    <%= value %>
+  </div>
+<% end %>
+
+<section id="bill-list" class="small-12 columns">
+
+  <% if logged_as_admin?  %>
+    <a href="/bill/new" class="button"><%= I18n.t("new_bill") %></a>
+  <% end %>
+
+  <section role="ngos" class="row">
+    <% @ngos.each do |ngo| %>
+      <div class="small-12 columns ngo">
+        <div class="row">
+          <div class="small-3 columns">
+           <img id="ngo_photo" src="<%= ngo.photo_url %>" alt="ngo photo"/>
+          </div>
+          <div class="small-9 columns">
+            <div class="row">
+              <h2><%= ngo.name %></h2>
+            </div>
+            <div class="row">
+              <%= ngo.description %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</section>
