@@ -21,28 +21,27 @@ FactoryGirl.define do
     filename      { generate(:filename) }
     ngo
   end
-  
+
   factory :ngo do
-    id { "1234" }
-    name { "My Pet" }
-    description { "A dog has no use for fancy cars, big homes, or designer clothes. A water log stick will do just fine. A dog doesn't care if your rich or poor, clever or dull, smart or dumb. Give him your heart and he'll give you his. How many people can you say that about? How many people can make you feel rare and pure and special? How many people can make you feel extraordinary?" }
+    sequence(:name) { "NGO #{('A'..'Z').to_a.sample}" }
+    description { "Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis." }
     phone { "+55 (81) 3034-5626"}
-    website { "mypet.com.br" }
-    email { "mypet@gmail.com" }
+    website { "my.com.br" }
+    email { "my@gmail.com" }
     contact { "Mary Lee" }
     photo_url {"https://docs.google.com/uc?&id=0Bya4RyzHQ9KxbUxPaGpkXzFMWG8"}
 
-    ignore do 
+    ignore do
       bills_count 1
     end
 
     factory :ngo_with_bills do
       after(:create) do |ngo, evaluator|
-        FactoryGirl.create_list(:bill, evaluator.bills_count, ngo: ngo) 
+        FactoryGirl.create_list(:bill, evaluator.bills_count, ngo: ngo)
       end
     end
   end
-  
+
   factory :reservation do
     phone_number {"(81) 8855-5522"}
     email {"john@gmail.com"}
@@ -65,8 +64,8 @@ FactoryGirl.define do
     url { generate :url }
     filename { generate :filename }
   end
-  
-  
+
+
 end
 
 def time_rand(from=0.0, to=Time.now)
