@@ -77,7 +77,7 @@ a.label {
 }
 
 .flags {
-  top: 35px;
+  text-align: right;
 }
 
 .prefix {
@@ -88,15 +88,65 @@ a.label {
   margin-bottom: 0px;
 }
 
-.title a {
-  color: #000;
-}
-
-.auth-row {
-  margin: 15px;
-}
-
-#ngo_photo{
+.ngo_photo{
   width: 256px;
   height: 256px;
 }
+
+.ngo{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+#site-phrase-wrapper {
+  padding: 30px 0;
+  background-color: #333;
+  margin-bottom: 30px;
+}
+
+#site-phrase {
+  color: #fff;
+  font-weight: normal;
+}
+
+#logo a {
+  font-size: 30px;
+  color: #333;
+}
+
+h1 {
+  margin: 3px 0 10px;
+  line-height: 30px
+}
+
+header h1 a {
+  font-family: 'Open Sans', sans-serif;
+}
+
+header > .text-right {
+  margin-top: 10px;
+}
+
+header .login-link {
+  margin-right: 20px;
+  color: #444;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+header .login-link:hover {
+  text-decoration: underline;
+}
+
+div, p {
+  color: #555;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+h2, h2 a {
+  color: #333;
+  margin-top: 0;
+}
+
