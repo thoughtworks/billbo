@@ -93,37 +93,51 @@ describe 'Bills controller' do
     end
 
     context 'POST /bill/reserve' do
-      it 'creates a new reservation' do
-        attrs = FactoryGirl.attributes_for(:reservation)
 
-        id = bill.id
-        post "/bill/reserve/#{id}", attrs
+      context 'when no user logged in' do
+        it 'should not allow reservation creation' do
+          attrs = FactoryGirl.attributes_for(:reservation)
+          post "/bill/reserve/#{bill.id}", attrs
 
-        last_response.should be_redirect
-        follow_redirect!
-        last_response.should be_ok
-        last_request.url.should == homepage_url
+          last_response.status.should == 401
+        end
+      end
+      context 'when user is logged in' do
+        before { log_in 'test@example.com' }
 
-        last_bill = Bill.find(id)
-        last_bill.reservations.last.email.should == attrs[:email]
-        last_bill.reservations.last.phone_number.should == attrs[:phone_number]
-        last_bill.reservations.last.bill.should == bill
+        it 'should allow reservation creation' do
+          attrs = FactoryGirl.attributes_for(:reservation)
+          id = bill.id
+          post "/bill/reserve/#{id}", attrs
+
+          last_response.should be_redirect
+          follow_redirect!
+          last_response.should be_ok
+          last_request.url.should == homepage_url
+
+          last_bill = Bill.find(id)
+          last_bill.reservations.last.email.should == attrs[:email]
+          last_bill.reservations.last.phone_number.should == attrs[:phone_number]
+          last_bill.reservations.last.bill.should == bill
+        end
+
+        it 'recognizes invalid data and redirects' do
+          attributes = FactoryGirl.attributes_for(:reservation)
+          attributes[:email] = ''
+          post "/bill/reserve/#{bill.id}", attributes
+
+          last_response.should be_redirect
+          follow_redirect!
+          last_response.should be_ok
+          last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
+          last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
+        end
+
       end
 
-      it 'recognizes invalid data and redirects' do
-        attributes = FactoryGirl.attributes_for(:reservation)
-        attributes[:email] = ''
-        post "/bill/reserve/#{bill.id}", attributes
-
-        last_response.should be_redirect
-        follow_redirect!
-        last_response.should be_ok
-        last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
-        last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
-      end
     end
   end
-  
+
   context 'Remove Bill' do
     context 'POST /bill/remove' do
       describe 'when logged in as admin' do
@@ -152,7 +166,7 @@ describe 'Bills controller' do
       before do
         log_in_as_admin
       end
-      
+
       it "render update_bill view" do
         get "/bill/update/#{bill.id}"
 
@@ -160,7 +174,7 @@ describe 'Bills controller' do
         last_response.body.should =~ /update_bill/
       end
     end
-    
+
     context 'POST /bill/update/:bill_id' do
       before do
         log_in_as_admin
@@ -169,11 +183,11 @@ describe 'Bills controller' do
       it 'updates a bill sucessfully' do
         attrs_to_update = FactoryGirl.attributes_for(:bill)
         id = bill.id
-        
+
         expect {
           post "/bill/update/#{id}", attrs_to_update
         }.to_not change { Bill.count }
-     
+
         last_bill = Bill.find(id)
         last_bill.issued_by.should == attrs_to_update[:issued_by]
         last_bill.due_date.day.should == attrs_to_update[:due_date].day
@@ -182,7 +196,7 @@ describe 'Bills controller' do
         last_bill.total_amount.should == attrs_to_update[:total_amount].to_f
         last_bill.barcode.should == attrs_to_update[:barcode]
       end
-      
+
       it 'recognizes invalid data (due_date) and redirect' do
         attrs_to_update = FactoryGirl.attributes_for(:bill)
         attrs_to_update[:due_date] = '32/12/2013'
@@ -192,7 +206,7 @@ describe 'Bills controller' do
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should =~ /Complete com uma data válida/
       end
-      
+
       it 'recognizes invalid data (due_date before today) and redirect' do
         attrs_to_update = FactoryGirl.attributes_for(:bill)
         attrs_to_update[:due_date] = '17/09/2013'
@@ -202,7 +216,7 @@ describe 'Bills controller' do
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should =~ /não pode ser anterior a hoje/
       end
-      
+
       it 'recognizes invalid data (barcode) and redirect' do
         attrs_to_update = FactoryGirl.attributes_for(:bill)
         attrs_to_update[:barcode] = 'AAA'
@@ -212,10 +226,10 @@ describe 'Bills controller' do
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should include("Código de barras deve ser um valor numérico")
       end
-      
+
     end
   end
-  
+
   context 'Close Bill' do
     context 'get /bill/close/:bill_id' do
       describe 'when log in as admin' do
@@ -230,13 +244,13 @@ describe 'Bills controller' do
 
         it 'should render homepage' do
           get "/bill/close/#{bill.id}"
-          
+
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage_url
           last_response.body.should =~ /bill_closed_ok/
-        end 
+        end
       end
 
       describe 'when log in as not admin user' do

@@ -1,5 +1,8 @@
 # encoding: UTF-8
 
+require 'helpers/permission'
+authentication_required_for '/bill/reserve/:bill_id', :post
+
 get '/bill/new' do
   if !logged_in
     redirect '/auth?url=/bill/new'
@@ -24,7 +27,7 @@ post '/bill/create' do
     else
       erb :"/bills/new", locals: { errors: bill.errors.full_messages }
     end
-  rescue 
+  rescue
     erb :"/bills/new", locals: { errors: [I18n.t(:invalid_due_date)] }
   end
 end
@@ -68,7 +71,7 @@ get '/bill/update/:bill_id' do
   if logged_as_admin?
     @action = "/bill/update/#{params[:bill_id]}"
     @bill = Bill.find(params[:bill_id])
-  
+
     erb :"bills/update"
   else
     redirect '/', :error => I18n.t(:not_an_admin_account)
@@ -77,7 +80,7 @@ end
 
 post '/bill/update/:bill_id' do
   due_date = nil
-  
+
   begin
     @bill = Bill.find(params[:bill_id])
     due_date = Date.parse(params[:due_date])
@@ -87,7 +90,7 @@ post '/bill/update/:bill_id' do
     else
       erb :"/bills/update", locals: { errors: @bill.errors.full_messages }
     end
-  rescue 
+  rescue
     erb :"/bills/update", locals: { errors: [I18n.t(:invalid_due_date)] }
   end
 end
