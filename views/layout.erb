@@ -3,7 +3,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="<%= I18n.locale %>"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
     <title>Billbo App</title>
 
     <meta property="og:image" content="http://billbo.aws.af.cm/img/billbo.jpg">
@@ -13,33 +12,35 @@
     <meta property="og:type" content="website">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/foundation.css">
-    <link rel="stylesheet" href="/css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/billbo.css">
   </head>
 
   <body>
-    <header class="row">
-      <div class="small-6 columns">
-        <h1 id="logo">
-          <a href="/">Billbo</a>
-        </h1>
-      </div>
-      <div class="small-6 columns text-right">
-        <% if logged_in %>
-          <%= logged_in_email %>
-          <a href="/logout" class="login-link">Logout</a>
-        <% else %>
-          <a href="/auth" id="login_with_google" class="login-link">Login with Google</a>
-        <% end %>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="span6">
+            <h1 id="logo">
+              <a href="/">Billbo</a>
+            </h1>
+          </div>
+          <div class="span6 text-right">
+            <% if logged_in %>
+              <%= logged_in_email %>
+              <a href="/logout" class="login-link">Logout</a>
+            <% else %>
+              <a href="/auth" id="login_with_google" class="login-link">Login with Google</a>
+            <% end %>
 
-        <a class="link-lang" href="/locale/pt">
-          <img src="/img/brazil_flag.png" alt="Versão em Português">
-        </a>
-        <a class="link-lang" href="/locale/en">
-          <img src="/img/usa_flag.png" alt="English Version">
-        </a>
+            <a class="link-lang" href="/locale/pt">
+              <img src="/img/brazil_flag.png" alt="Versão em Português">
+            </a>
+            <a class="link-lang" href="/locale/en">
+              <img src="/img/usa_flag.png" alt="English Version">
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 

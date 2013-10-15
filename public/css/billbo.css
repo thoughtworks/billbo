@@ -1,132 +1,19 @@
-.reserved {
-  background-color: #FFCCCC;
+@charset "utf-8";
+
+h1, h2, h3, h4, h5, h6 {margin: 0}
+img {
+  max-width: 100%;
 }
 
-.opened {
-  background-color: #CEEFCC;
-}
-
-.waiting_confirmation {
-  background-color: #D7F5FD;
-}
-
-div.share {
-  background-color: #D7F5FD;
-  margin: 4em 8em 8em;
-  border-radius: 1em;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: x-large;
-}
-
-div.thanks_for_sharing {
-  padding: 2em;
-  text-align: center;
-}
-
-.social-button{
-  text-align:center;
-}
-
-.contact-information{
-  text-align:right;
-}
-
-div.sort_list {
-  font-size: 0.8em;
-  color: #999;
-}
-
-p.issued-by {
-  font-size: 1.2em;
-  color: black;
-  font-weight: bold;
-  margin: 15px 0px 5px 0px;
-}
-
-img.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-a.label.secondary:hover {
-  background-color: silver;
-}
-
-a.button.secondary {
-  background-color: #2ba6cb;
-  border-color: #2284a1;
-  color: white;
-}
-
-a.button.secondary:hover {
-  background-color: #2284a1;
-  color: white;
-}
-
-a.label {
-  color: white;
-}
-
-.th.radius img {
-  margin-top: 10px;
-}
-
-.th.radius p {
-  margin: 10px;
-}
-
-.flags {
-  text-align: right;
-}
-
-.prefix {
-  position: static;
-}
-
-.alert-box ul {
-  margin-bottom: 0px;
-}
-
-/*.ngo_photo{
-  width: 256px;
-  height: 256px;
-}*/
-
-.ngo{
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 40px;
-  margin-bottom: 40px;
-}
-
-#site-phrase-wrapper {
-  padding: 15px 0 10px;
-  background-color: #444;
-  margin-bottom: 30px;
-}
-
-#site-phrase {
-  color: #fff;
-  font-weight: normal;
-  font-size: 20px;
-  font-family: 'Open Sans', Helvetica, sans-serif;
-}
-
-#logo a {
-  font-size: 30px;
-  color: #333;
-}
-
-h1 {
-  margin: 3px 0 10px;
-  line-height: 30px
+header {
+  box-shadow: 0 1px 3px #ddd;
 }
 
 header h1 a {
   font-family: 'Open Sans', sans-serif;
 }
 
-header > .text-right {
+header .text-right {
   margin-top: 10px;
 }
 
@@ -141,10 +28,33 @@ header .login-link:hover {
   text-decoration: underline;
 }
 
-div, p {
-  color: #555;
-  line-height: 20px;
-  font-size: 16px;
+#logo a {
+  font-size: 30px;
+  color: #333;
+}
+
+#site-phrase-wrapper {
+  padding: 20px 0;
+  background-color: #444;
+  margin-bottom: 30px;
+}
+
+#site-phrase-wrapper h3 {
+  color: #fff;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+.ngo{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  margin: 3px 0 10px;
+  line-height: 30px
 }
 
 .title a {
@@ -201,4 +111,21 @@ div, p {
 }
 .ngo-wrapper:hover .img-wrapper {
   box-shadow: 0 1px 3px #ddd;
+}
+
+
+.main-content {
+  margin-top: 40px;
+}
+
+.ngo-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-info {
+  margin-top: 30px;
+}
+.contact-info small {
+  margin-right: 20px;
 }

@@ -1,15 +1,15 @@
 <section id="site-phrase-wrapper" class="text-center">
-  <h3 id="site-phrase"><%= I18n.t(:subtext) %></h3>
+  <h3><%= I18n.t(:subtext) %></h3>
 </section>
 
-<section class="row">
+<section class="container">
   <% flash.each do |key, value| %>
     <div data-alert class="alert-box <%= key %>">
       <%= value %>
     </div>
   <% end %>
 
-  <section class="small-12 columns">
+  <section>
 
     <% if logged_as_admin?  %>
       <a href="/bill/new" class="button"><%= I18n.t("new_bill") %></a>
