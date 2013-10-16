@@ -25,12 +25,12 @@
       <form method="post" action="/bills/<%= @bill.id %>/receipts/create" enctype="multipart/form-data">
         <div class="form-group">
           <label for="contributor_name"><%= I18n.t(:name) %></label>
-          <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"  class="form-control">
+          <input name="contributor_name" maxlength="200" type="text" autofocus value="<%= session['name']%>"  class="form-control">
         </div>
 
         <div class="form-group">
           <label for="contributor_email"><%= I18n.t(:email) %></label>
-          <input name="contributor_email" type="text" required value="<%= session['email']%>"  class="form-control">
+          <input name="contributor_email" maxlength="100" type="text" required value="<%= session['email']%>"  class="form-control">
         </div>
 
         <div class="form-group">

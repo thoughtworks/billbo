@@ -14,7 +14,7 @@
 
   <form id='update_bill' method="post" action="/bill/update/<%= @bill.id %>" enctype="multipart/form-data">
     <label for="issued_by"><%= I18n.t(:issued_by) %></label>
-    <input name="issued_by" type="text" required autofocus value="<%= @bill.issued_by %>" />
+    <input name="issued_by" maxlength="200" type="text" required autofocus value="<%= @bill.issued_by %>" />
 
     <label for="due_date"><%= I18n.t(:due_date) %></label>
     <input id="datepicker" name="due_date" type="text" placeholder="<%= I18n.t(:date_format) %>" value="<%= I18n.l @bill.due_date %>" required />
@@ -25,7 +25,7 @@
         <span class="prefix">R$</span>
       </div>
       <div class="small-10 columns">
-        <input name="total_amount" type="number" min="0.1" step="any" value="<%= @bill.total_amount %>" required />
+        <input name="total_amount" maxlength="200" type="number" min="0.1" step="any" value="<%= @bill.total_amount %>" required />
       </div>
     </div>
 
