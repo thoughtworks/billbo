@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 module Sinatra
   module AuthenticationHelper
     def logged_in
@@ -13,6 +12,7 @@ module Sinatra
     def logged_in_email
       session[:email] || ""
     end
+
   end
 
   helpers AuthenticationHelper

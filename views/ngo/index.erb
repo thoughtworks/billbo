@@ -90,7 +90,6 @@
 
                 <% if logged_in %>
                   <hr>
-
                   <div class="text-center">
                     <% if bill.status == :opened %>
                       <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-reserve" data-id="<%= bill.id %>">
@@ -98,7 +97,6 @@
                         <i class="glyphicon glyphicon-chevron-down"></i>
                       </a>
                     <% end %>
-
                     <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-upload" data-id="<%= bill.id %>">
                       <%= I18n.t('upload_receipt') %>
                       <i class="glyphicon glyphicon-chevron-down"></i>

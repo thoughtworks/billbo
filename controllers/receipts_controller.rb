@@ -1,4 +1,7 @@
 # encoding: UTF-8
+require 'helpers/permission'
+authentication_required_for '/bills/:bill_id/receipts/create', :post
+
 
 get '/bills/:bill_id/receipts/new' do
   @bill = Bill.find(params[:bill_id])
