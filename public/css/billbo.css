@@ -184,3 +184,9 @@ footer {
 .bill-image {
   border: 1px solid #fff;
 }
+
+.thumbnail > .alert {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
