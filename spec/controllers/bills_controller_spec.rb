@@ -103,34 +103,50 @@ describe 'Bills controller' do
         end
       end
       context 'when user is logged in' do
-        before { log_in 'test@example.com' }
-
-        it 'should allow reservation creation' do
-          attrs = FactoryGirl.attributes_for(:reservation)
-          id = bill.id
-          post "/bill/reserve/#{id}", attrs
-
-          last_response.should be_redirect
-          follow_redirect!
-          last_response.should be_ok
-          last_request.url.should == homepage_url
-
-          last_bill = Bill.find(id)
-          last_bill.reservations.last.email.should == attrs[:email]
-          last_bill.reservations.last.phone_number.should == attrs[:phone_number]
-          last_bill.reservations.last.bill.should == bill
+        let(:attributes) { FactoryGirl.attributes_for(:reservation) }
+        before(:each) do
+          log_in 'test@example.com'
         end
 
-        it 'recognizes invalid data and redirects' do
-          attributes = FactoryGirl.attributes_for(:reservation)
-          attributes[:email] = ''
+        def create_reservation!
           post "/bill/reserve/#{bill.id}", attributes
-
-          last_response.should be_redirect
           follow_redirect!
-          last_response.should be_ok
-          last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
-          last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
+        end
+
+        it 'should allow reservation creation' do
+          create_reservation!
+
+          last_response.status.should == 200
+        end
+
+        context 'when data is valid' do
+
+          it 'should create a reservation' do
+            create_reservation!
+
+            id = bill.id
+            last_bill = Bill.find(id)
+            last_bill.reservations.last.email.should == attributes[:email]
+            last_bill.reservations.last.phone_number.should == attributes[:phone_number]
+            last_bill.reservations.last.bill.should == bill
+          end
+
+          it 'should redirect to homepage url on success reservation' do
+            create_reservation!
+
+            last_response.should be_ok
+            last_request.url.should == homepage_url
+          end
+        end
+
+        context 'when data is invalid' do
+          it 'recognizes invalid data and redirects' do
+            attributes[:email] = ''
+            create_reservation!
+
+            last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
+            last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
+          end
         end
 
       end
