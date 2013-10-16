@@ -115,36 +115,12 @@
 
                   <% if bill.status == :opened %>
                     <form method="post" action="/bill/reserve/<%= bill.id %>" class="form-group hidden-form" id="form-reserve-<%= bill.id %>">
-                      <div class="form-group">
-                        <label for="phone_number"><%= I18n.t(:phone_number) %></label>
-                        <input name="phone_number" type="text" autofocus class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="email"><%= I18n.t(:email) %></label>
-                        <input name="email" type="text" required value="<%= session['email']%>" class="form-control">
-                      </div>
-                      <div class="text-right">
-                        <button type="submit" class="btn btn-success"><%= I18n.t(:reserve_bill) %></button>
-                      </div>
+                      <%= erb "bills/_reserve_fields".to_sym %>
                     </form>
                   <% end %>
 
                   <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group hidden-form" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
-                    <div class="form-group">
-                      <label for="contributor_name"><%= I18n.t(:name) %></label>
-                      <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"  class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label for="contributor_email"><%= I18n.t(:email) %></label>
-                      <input name="contributor_email" type="text" required value="<%= session['email']%>"  class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label for="image"><%= I18n.t(:receipt) %></label>
-                      <input name="image" type="file" required>
-                    </div>
-                    <div class="text-right">
-                      <button type="submit" class="btn btn-success"><%= I18n.t(:upload_receipt) %></button>
-                    </div>
+                    <%= erb "receipts/_form_fields".to_sym %>
                   </form>
 
                 <% end %>

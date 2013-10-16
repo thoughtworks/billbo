@@ -22,19 +22,7 @@
       <h3 class="mb20"><%= I18n.t(:reserve_bill) %></h3>
 
       <form method="post" action="<%= @action %>">
-        <div class="form-group">
-          <label for="phone_number"><%= I18n.t(:phone_number) %></label>
-          <input name="phone_number" type="text" autofocus class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="email"><%= I18n.t(:email) %></label>
-          <input name="email" type="text" required value="<%= session['email']%>" class="form-control">
-        </div>
-
-
-        <div class="text-right">
-          <button type="submit" class="btn btn-success"><%= I18n.t(:reserve_bill) %></button>
-        </div>
+        <%= erb "bills/_reserve_fields".to_sym %>
       </form>
     </div>
   </div>

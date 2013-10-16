@@ -1,0 +1,15 @@
+<div class="form-group">
+  <label for="contributor_name"><%= I18n.t(:name) %></label>
+  <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"  class="form-control">
+</div>
+<div class="form-group">
+  <label for="contributor_email"><%= I18n.t(:email) %></label>
+  <input name="contributor_email" type="text" required value="<%= session['email']%>"  class="form-control">
+</div>
+<div class="form-group">
+  <label for="image"><%= I18n.t(:receipt) %></label>
+  <input name="image" type="file" required>
+</div>
+<div class="text-right">
+  <button type="submit" class="btn btn-success"><%= I18n.t(:upload_receipt) %></button>
+</div>
