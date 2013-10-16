@@ -1,4 +1,12 @@
-<section class="large-6 columns new-bill">
+<section class="container main-content">
+  <ol class="breadcrumb">
+    <li>
+      <a href="/ngo/<%= params[:bill_id] %>">Contas da Ong</a>
+    </li>
+    <li class="active">
+      <%= I18n.t("upload_receipt") %>
+    </li>
+  </ol>
 
   <%= erb :errors, locals: { errors: errors } if errors.any? %>
 
@@ -9,18 +17,31 @@
     </div>
   <% end %>
 
-  <h3><%= I18n.t(:upload_receipt) %></h3>
 
-  <form id='upload_receipt' method="post" action="/bills/<%= @bill.id %>/receipts/create" enctype="multipart/form-data">
-    <label for="contributor_name"><%= I18n.t(:name) %></label>
-    <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"/>
+  <div class="row">
+    <div class="span4 offset4">
+      <h3 class="mb20"><%= I18n.t(:upload_receipt) %></h3>
 
-    <label for="contributor_email"><%= I18n.t(:email) %></label>
-    <input name="contributor_email" type="text" required value="<%= session['email']%>"/>
+      <form method="post" action="/bills/<%= @bill.id %>/receipts/create" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="contributor_name"><%= I18n.t(:name) %></label>
+          <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"  class="form-control">
+        </div>
 
-    <label for="image"><%= I18n.t(:receipt) %></label>
-    <input name="image" type="file" required/>
+        <div class="form-group">
+          <label for="contributor_email"><%= I18n.t(:email) %></label>
+          <input name="contributor_email" type="text" required value="<%= session['email']%>"  class="form-control">
+        </div>
 
-    <button type="submit" class="button"><%= I18n.t(:upload_receipt) %></button>
-  </form>
+        <div class="form-group">
+          <label for="image"><%= I18n.t(:receipt) %></label>
+          <input name="image" type="file" required>
+        </div>
+
+        <div class="text-right">
+          <button type="submit" class="btn btn-success"><%= I18n.t(:upload_receipt) %></button>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>
