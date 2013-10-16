@@ -70,10 +70,15 @@
                 </h3>
                 <p>
                   <% if logged_in %>
-                    <a href="javascript:;" title="<%= I18n.t('barcode') %>" class="btn btn-default bg-gray pull-right">
-                      <i class="glyphicon glyphicon-barcode"></i>
-                      <!-- <%= bill.barcode %> -->
-                    </a>
+                    <div class="barcode pull-right">
+                      <a href="javascript:;" class="btn btn-default bg-gray">
+                        <i class="glyphicon glyphicon-barcode"></i>
+                      </a>
+                      <div class="content">
+                        <small><strong><%= I18n.t('barcode') %></strong></small>
+                        <textarea readonly><%= bill.barcode %></textarea>
+                      </div>
+                    </div>
                   <% end %>
 
                   <span>
