@@ -48,7 +48,7 @@
           <a href="javascript:void(0);" id="due_date"><%= I18n.t("due_date") %></a>
         </li>
         <li>
-          <a href="javascript:void(0);" id="status"><%= I18n.t("status") %></a>
+          <a href="javascript:void(0);" id="status"><%= I18n.t("bill_opened") %></a>
         </li>
       </ul>
     </section>
@@ -58,6 +58,9 @@
         <% @ngo.bills.each do |bill| %>
           <li class="bill" data-n="<%= bill.id %>">
             <div class="thumbnail">
+              <div class="header alert <%= if bill.status == :opened then 'alert-success' else 'alert-warning' end %>">
+                <%= if bill.status == :opened then 'Conta em aberto' else 'Conta reservada' end %>
+              </div>
               <div class="caption">
                 <a href="javascript:void(0);" class="th mb20 block bill-image <%= bill.status %>" title="Ver detalhes da conta">
                   <img src="<%= bill.image_url %>" alt="<%= bill.filename %>">
@@ -68,7 +71,6 @@
                 <p class="due_date" data-timestamp="<%= bill.due_date.to_time.to_i %>">
                   <%= I18n.l bill.due_date %>
                 </p>
-
               </div>
             </div>
             <div class="text-center bill-actions">
