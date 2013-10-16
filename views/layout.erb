@@ -33,7 +33,9 @@
                 <i class="glyphicon glyphicon-off"></i>
               </a>
             <% else %>
-              <a href="/auth" id="login_with_google" class="login-link"></a>
+              <a href="/auth" id="login_with_google" class="login-link">
+                <%= I18n.t('login_with_google') %>
+              </a>
             <% end %>
 
             <a class="link-lang" href="/locale/pt">
