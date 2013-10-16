@@ -29,9 +29,11 @@
           <div class="span6 text-right">
             <% if logged_in %>
               <%= logged_in_email %>
-              <a href="/logout" class="login-link">Logout</a>
+              <a href="/logout" class="login-link btn btn-default btn-sm" title="Logout">
+                <i class="glyphicon glyphicon-off"></i>
+              </a>
             <% else %>
-              <a href="/auth" id="login_with_google" class="login-link">Login with Google</a>
+              <a href="/auth" id="login_with_google" class="login-link"></a>
             <% end %>
 
             <a class="link-lang" href="/locale/pt">

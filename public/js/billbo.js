@@ -26,7 +26,7 @@ $(function() {
   });
 
   $('[title]').tipsy({
-    gravity: 's'
+    gravity: 'n'
   });
 
   $('#gt_value').click(function() {
