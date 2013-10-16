@@ -1480,8 +1480,8 @@ input[type="button"].btn-block {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/images/bootstrap/glyphicons-halflings-regular.eot);
-  src: url(/images/bootstrap/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(/images/bootstrap/glyphicons-halflings-regular.woff) format('woff'), url(/images/bootstrap/glyphicons-halflings-regular.ttf) format('truetype'), url(/images/bootstrap/glyphicons-halflings-regular.svg#glyphicons-halflingsregular) format('svg');
+  src: url(/img/bootstrap/glyphicons-halflings-regular.eot);
+  src: url(/img/bootstrap/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(/img/bootstrap/glyphicons-halflings-regular.woff) format('woff'), url(/img/bootstrap/glyphicons-halflings-regular.ttf) format('truetype'), url(/img/bootstrap/glyphicons-halflings-regular.svg#glyphicons-halflingsregular) format('svg');
 }
 .glyphicon {
   position: relative;

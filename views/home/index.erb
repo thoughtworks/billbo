@@ -19,7 +19,7 @@
     <% @ngos.each do |ngo| %>
       <section class="ngo-wrapper" role="ngo">
         <h4 class="title">
-          <a href="/ngo/<%= ngo.id %>" class="hover"><%= ngo.name %></a>
+          <a href="/ngo/<%= ngo.id %>" class="hover ngo-name"><%= ngo.name %></a>
         </h4>
         <div class="img-wrapper">
           <a href="/ngo/<%= ngo.id %>">

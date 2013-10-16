@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+body {
+  background-color: #f8f8f8;
+}
+
 h1, h2, h3, h4, h5, h6 {margin: 0}
 img {
   max-width: 100%;
@@ -7,6 +11,7 @@ img {
 
 header {
   box-shadow: 0 1px 3px #ddd;
+  background-color: #fff;
 }
 
 header h1 a {
@@ -31,6 +36,10 @@ header .login-link:hover {
 #logo a {
   font-size: 30px;
   color: #333;
+  font-weight: 800;
+}
+#logo a:hover {
+  text-decoration: none;
 }
 
 #site-phrase-wrapper {
@@ -76,6 +85,7 @@ h1 {
 }
 .ngo-wrapper > .img-wrapper {
   position: relative;
+  background-color: #fff;
   border: 1px solid #ddd;
 }
 .ngo-wrapper > .img-wrapper > a {
@@ -110,7 +120,7 @@ h1 {
   display: block;
 }
 .ngo-wrapper:hover .img-wrapper {
-  box-shadow: 0 1px 3px #ddd;
+  box-shadow: 0 2px 5px #ccc;
 }
 
 
@@ -128,4 +138,42 @@ h1 {
 }
 .contact-info small {
   margin-right: 20px;
+}
+
+#all_bills li {
+  display: inline-block;
+  margin: 0 10px 20px;
+  width: 265px;
+}
+.mb40 {
+  margin-bottom: 60px;
+}
+
+.sort_list {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.nav {
+  display: inline-block;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.block {
+  display: block;
+}
+
+footer {
+  margin-bottom: 30px;
+}
+
+.bill-actions {
+  margin-top: 10px;
+  visibility: hidden;
+}
+.bill:hover .bill-actions {
+  visibility: visible;
 }
