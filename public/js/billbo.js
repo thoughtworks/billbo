@@ -1,3 +1,43 @@
+$(function() {
+  $('[title]').tipsy({
+    gravity: 's'
+  });
+
+  $('#gt_value').click(function() {
+    $('#all_bills > li').tsort('.total_amount', {order: 'desc'});
+  });
+
+  $('#lt_value').click(function() {
+    $('#all_bills > li').tsort('.total_amount');
+  });
+
+  $('#due_date').click(function() {
+    $('#all_bills > li').tsort('.due_date', {data: 'timestamp'});
+  });
+
+  $('#status').click(function() {
+    $('#all_bills > li').tsort('.th', {attr:'class'}, '.due_date', {data: 'timestamp'});
+  });
+
+  $('.sort_list').on('click', 'a', function() {
+    $(this).parent().addClass("active").siblings().removeClass("active");
+  });
+
+  var customize = new CustomErrorMessage(),
+      newBillSection = $('section.new-bill');
+
+  customize.required(newBillSection.find($('input')));
+  customize.greaterThanZero(newBillSection.find($('input[type="number"]')));
+  customize.afterToday(newBillSection.find($('input[type="date"]')));
+
+
+  $("#datepicker").datepicker({
+    dateFormat: "dd/mm/yy",
+    minDate: 0 // disable days before today
+  });
+});
+
+
 function CustomErrorMessage() {
   this.REQUIRED = 'required_field';
   this.GT_ZERO = 'greater_than_zero';
@@ -23,43 +63,3 @@ function CustomErrorMessage() {
     addValidation(formEl, this.BEFORE_YESTERDAY);
   }
 }
-
-$(document).ready(function() {
-  $('[title]').tipsy({
-    gravity: 's'
-  });
-
-  $('.gt_value').click(function() {
-    $('ul#all-bills>li').tsort('p.total_amount',{order:'desc'});
-  });
-
-  $('.lt_value').click(function() {
-    $('ul#all-bills>li').tsort('p.total_amount');
-  });
-
-  $('.due_date').click(function() {
-    $('ul#all-bills>li').tsort('p.due_date', {data: 'timestamp'});
-  });
-
-  $('.status').click(function() {
-    $('ul#all-bills>li').tsort('a.th', {attr:'class'}, 'p.due_date', {data: 'timestamp'});
-  });
-
-  $('.sort_list').on('click', 'a', function() {
-    $("a").addClass("secondary");
-    $(this).removeClass("secondary");
-  });
-
-  var customize = new CustomErrorMessage(),
-      newBillSection = $('section.new-bill');
-
-  customize.required(newBillSection.find($('input')));
-  customize.greaterThanZero(newBillSection.find($('input[type="number"]')));
-  customize.afterToday(newBillSection.find($('input[type="date"]')));
-
-
-  $("#datepicker").datepicker({
-    dateFormat: "dd/mm/yy",
-    minDate: 0 // disable days before today
-  });
-});
