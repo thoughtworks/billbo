@@ -8,7 +8,7 @@ module Sinatra
       end
 
       before url, :method => method do
-        redirect('/', 401) if !logged_in
+        halt 401, "Login required" if !logged_in
       end
     end
   end
