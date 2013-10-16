@@ -5,7 +5,7 @@ $(function() {
     var id = self.data('id');
     var sameElement = $('#form-reserve-'+id).is(':visible');
 
-    $('form').hide();
+    $('.hidden-form').hide();
 
     if(!sameElement) {
       $('#form-reserve-'+id).toggle().find('input:first').focus();
@@ -18,7 +18,7 @@ $(function() {
     var id = self.data('id');
     var sameElement = $('#form-upload-'+id).is(':visible');
 
-    $('form').hide();
+    $('.hidden-form').hide();
 
     if(!sameElement) {
       $('#form-upload-'+id).toggle().find('input:first').focus();

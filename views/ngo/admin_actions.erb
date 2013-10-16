@@ -1,0 +1,17 @@
+<form class='remove_bill_form' method="post" action="/bill/remove/<%= bill.id %>">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('<%= I18n.t("confirm_remove")%>')" title="<%= I18n.t("remove_bill")%>">
+    <i class="glyphicon glyphicon-remove"></i>
+  </button>
+
+  <a href="/bill/update/<%= bill.id %>" class="btn btn-warning btn-sm" title="<%= I18n.t("update_bill_button") %>">
+    <i class="glyphicon glyphicon-edit"></i>
+  </a>
+
+  <% if bill.status == :waiting_confirmation %>
+    <a href="/bill/close/<%= bill.id %>" class="btn btn-danger btn-sm">
+      <%= I18n.t("close_bill") %>
+    </a>
+  <% end %>
+</form>

@@ -1,4 +1,4 @@
-<section class="container main-content">
+-<section class="container main-content">
 
   <section class="row mb40">
     <div class="span3">
@@ -114,7 +114,7 @@
                   </div>
 
                   <% if bill.status == :opened %>
-                    <form method="post" action="/bill/reserve/<%= bill.id %>" class="form-group" id="form-reserve-<%= bill.id %>">
+                    <form method="post" action="/bill/reserve/<%= bill.id %>" class="form-group hidden-form" id="form-reserve-<%= bill.id %>">
                       <div class="form-group">
                         <label for="phone_number"><%= I18n.t(:phone_number) %></label>
                         <input name="phone_number" type="text" autofocus class="form-control">
@@ -129,7 +129,7 @@
                     </form>
                   <% end %>
 
-                  <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
+                  <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group hidden-form" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="contributor_name"><%= I18n.t(:name) %></label>
                       <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"  class="form-control">
@@ -148,29 +148,11 @@
                   </form>
 
                 <% end %>
+
+                <%= erb "ngo/admin_actions".to_sym, locals: { bill: bill } if logged_as_admin? %>
+
               </div>
             </div>
-
-
-            <!--
-            <section class="reveal-modal small-12" id="myModal<%= bill.id %>">
-              <% if logged_as_admin?  %>
-                <div class="row text-center">
-                  <form id='remove_bill_form' method="post" action="/bill/remove/<%= bill.id %>" enctype="multipart/form-data">
-                    <a href="/bill/update/<%= bill.id %>" class="tiny button"><%= I18n.t("update_bill_button") %></a>
-                    <input name="_method" type="hidden" value="delete">
-                    <button type="submit" class="tiny button" onclick="return confirm('<%= I18n.t("confirm_remove")%>')">
-                      <%= I18n.t("remove_bill")%>
-                    </button>
-                    <% if bill.status == :waiting_confirmation %>
-                      <a href="/bill/close/<%= bill.id %>" class="tiny button"><%= I18n.t("close_bill") %></a>
-                    <% end %>
-                  </form>
-                </div>
-              <% end %>
-            </section>
-            -->
-
 
           </li>
         <% end %>

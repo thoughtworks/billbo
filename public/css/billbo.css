@@ -181,7 +181,7 @@ footer {
   box-shadow: 0 1px 3px #ccc;
 }
 
-.bill form {
+.bill .hidden-form {
   position: absolute;
   width: 100%;
   padding: 15px;
@@ -242,4 +242,12 @@ footer {
 }
 .barcode:hover > .content {
   display: block;
+}
+.remove_bill_form {
+  position: absolute;
+  top: -1px;
+  left: 100%;
+}
+.remove_bill_form .btn {
+  margin-bottom: 5px;
 }
