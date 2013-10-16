@@ -48,11 +48,6 @@ FactoryGirl.define do
     bill {FactoryGirl.create(:bill)}
   end
 
-  factory :reservation_without_bill, class: Reservation do
-    phone_number {"(81) 8855-5522"}
-    email {"john@gmail.com"}
-  end
-
   factory :image, class: File do
     filename        { "bill.png" }
     filepath        { image_path }

@@ -97,10 +97,10 @@ describe Bill do
   end
 
   context :reserve do
-    context "when no one already reserved it" do
-      let(:reservation) { { phone_number: "(81) 8855-5522", email: "john@gmail.com"} }
-      let(:invalid_reservation) { { phone_number: nil, email: nil} }
+    let(:reservation) { FactoryGirl.build(:reservation) }
 
+    context "when no one already reserved it" do
+      let(:invalid_reservation) { { phone_number: nil, email: nil } }
       before(:each) { bill.save }
 
       context "when reservation is valid" do
@@ -108,10 +108,11 @@ describe Bill do
           bill.status.should eq(:opened)
           bill.should have(0).reservations
 
-          bill.reserve reservation
+          bill.reserve reservation.as_json
 
           bill.status.should eq(:reserved)
           bill.reservations.last.should be_persisted
+          bill.should have(1).reservations
         end
       end
 
@@ -128,8 +129,16 @@ describe Bill do
       end
     end
     context "when bill already reserved" do
-      it "should not reserve it" do
-
+      before do
+        bill.save
+        bill.reserve reservation.as_json
+      end
+      it "should not create a new reservation" do
+        bill.reserve reservation.as_json
+        bill.status.should eq(:reserved)
+        bill.reservations.last.should be_persisted
+        bill.should have(1).reservations
+        bill.errors.full_messages.should include('Reservations Bill already reserved')
       end
     end
   end

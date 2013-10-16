@@ -42,7 +42,7 @@ post '/bill/reserve/:bill_id' do
   if bill.reserve(params)
     redirect '/', :success => I18n.t(:reserve_bill_ok)
   else
-    redirect "/bill/reserve/#{params[:bill_id]}", :error => I18n.t(:reserve_bill_fail)
+    redirect "/bill/reserve/#{params[:bill_id]}", :error => bill.errors.full_messages
   end
 end
 

@@ -40,10 +40,14 @@ class Bill
   end
 
   def reserve(reservation)
-    self.reservations.create reservation
-    unless self.reservations.last.errors.any?
-      self.status = :reserved
-      self.save
+    if reserved?
+      errors.add :reservations, 'Bill already reserved'
+    else
+      self.reservations.create reservation
+      unless self.reservations.last.errors.any?
+        self.status = :reserved
+        self.save
+      end
     end
   end
 
@@ -60,6 +64,10 @@ class Bill
   end
 
   private
+
+  def reserved?
+    self.status == :reserved && has_reservations?
+  end
 
   def date_is_before_today
     if self.due_date && self.due_date < Date.today
