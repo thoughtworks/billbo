@@ -5,10 +5,23 @@ $(function() {
     var id = self.data('id');
     var sameElement = $('#form-reserve-'+id).is(':visible');
 
-    $('[id*=form-reserve-]').hide();
+    $('form').hide();
 
     if(!sameElement) {
-      $('#form-reserve-'+id).toggle();
+      $('#form-reserve-'+id).toggle().find('input:first').focus();
+    }
+  });
+
+// Upload Form
+  $('.btn-upload').click(function() {
+    var self = $(this);
+    var id = self.data('id');
+    var sameElement = $('#form-upload-'+id).is(':visible');
+
+    $('form').hide();
+
+    if(!sameElement) {
+      $('#form-upload-'+id).toggle().find('input:first').focus();
     }
   });
 
