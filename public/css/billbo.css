@@ -170,10 +170,17 @@ footer {
   margin-bottom: 30px;
 }
 
+.bill:hover .thumbnail {
+  box-shadow: 0 1px 3px #ccc;
+}
 .bill-actions {
   margin-top: 10px;
   visibility: hidden;
 }
 .bill:hover .bill-actions {
   visibility: visible;
+}
+
+.bill-image {
+  border: 1px solid #fff;
 }

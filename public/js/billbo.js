@@ -25,6 +25,10 @@ function CustomErrorMessage() {
 }
 
 $(document).ready(function() {
+  $('[title]').tipsy({
+    gravity: 's'
+  });
+
   $('.gt_value').click(function() {
     $('ul#all-bills>li').tsort('p.total_amount',{order:'desc'});
   });
