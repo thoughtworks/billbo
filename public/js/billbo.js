@@ -3,7 +3,7 @@ function CustomErrorMessage() {
   this.GT_ZERO = 'greater_than_zero';
   this.BEFORE_YESTERDAY = 'before_today';
 
-  function addValidation(formEl, validationName) {    
+  function addValidation(formEl, validationName) {
     formEl.on('change invalid', function() {
       var textfield = $(this).get(0);
       textfield.setCustomValidity('');

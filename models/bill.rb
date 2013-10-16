@@ -39,6 +39,18 @@ class Bill
     end
   end
 
+  def formatted_due_date
+    due_date.strftime "%d/%m/%Y"
+  end
+
+  def image_url
+    default_image
+  end
+
+  def default_image
+    "/img/default_bill.png"
+  end
+
   private
 
   def date_is_before_today
