@@ -61,6 +61,7 @@
               <div class="header alert <%= if bill.status == :opened then 'alert-success' else 'alert-warning' end %>">
                 <%= if bill.status == :opened then 'Conta em aberto' else 'Conta reservada' end %>
               </div>
+
               <div class="caption">
                 <a href="javascript:void(0);" class="th mb20 block bill-image <%= bill.status %>" title="Ver detalhes da conta">
                   <img src="<%= bill.image_url %>" alt="<%= bill.filename %>">
@@ -75,7 +76,7 @@
                     <!-- <%= bill.barcode %> -->
                   </a>
 
-                  <span class="total_amount mr30">
+                  <span class="total_amount">
                     <span class="iconize">R$</span>
                     <%= "%.2f" % bill.total_amount %>
                   </span>
@@ -90,16 +91,27 @@
                 <hr>
 
                 <div class="text-center">
-                  <a href="javascript:;" class="btn btn-default bg-gray btn-sm">
+                  <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-reserve" data-id="<%= bill.id %>">
                     <%= I18n.t('reserve_bill') %>
                     <i class="glyphicon glyphicon-chevron-down"></i>
                   </a>
-                  <a href="javascript:;" class="btn btn-success btn-sm">
+                  <a href="javascript:;" class="btn btn-default bg-gray btn-sm">
                     <%= I18n.t('upload_receipt') %>
                     <i class="glyphicon glyphicon-chevron-down"></i>
                   </a>
 
                 </div>
+
+
+
+                <form method="post" action="/bill/reserve/<%= bill.id %>" class="form-group" id="form-reserve-<%= bill.id %>">
+                  <input name="phone_number" type="text" class="form-control" placeholder="<%= I18n.t(:phone_number) %>">
+                  <input name="email" type="text" required value="<%= session['email']%>" class="form-control" placeholder="<%= I18n.t(:email) %>">
+                  <div class="text-right">
+                    <button type="submit" class="btn btn-success"><%= I18n.t(:reserve_bill) %></button>
+                  </div>
+                </form>
+
               </div>
             </div>
             <!-- <div class="text-center bill-actions">

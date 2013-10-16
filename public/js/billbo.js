@@ -1,4 +1,19 @@
 $(function() {
+// Reserve Form
+  $('.btn-reserve').click(function() {
+    var self = $(this);
+    var id = self.data('id');
+    var sameElement = $('#form-reserve-'+id).is(':visible');
+
+    $('[id*=form-reserve-]').hide();
+
+    if(!sameElement) {
+      $('#form-reserve-'+id).toggle();
+    }
+  });
+
+
+
   $('[title]').tipsy({
     gravity: 's'
   });

@@ -145,7 +145,7 @@ h1 {
 }
 #all_bills li {
   display: inline-block;
-  margin: 0 20px 20px;
+  margin: 0 20px 40px;
   width: 265px;
 }
 .mb40 {
@@ -173,19 +173,29 @@ footer {
   margin-bottom: 30px;
 }
 
+.thumbnail {
+  position: relative;
+}
+
 .bill:hover .thumbnail {
   box-shadow: 0 1px 3px #ccc;
 }
-.bill-actions {
-  margin-top: 10px;
-  visibility: hidden;
-}
-.bill:hover .bill-actions {
-  visibility: visible;
+
+.bill form {
+  position: absolute;
+  width: 100%;
+  padding: 15px;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  z-index: 100;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 10px #ccc;
+  display: none;
 }
 
-.bill-image {
-  border: 1px solid #fff;
+.bill form .form-control {
+  margin-bottom: 10px;
 }
 
 .thumbnail > .alert {
@@ -210,3 +220,4 @@ footer {
 .bg-gray {
   background-color: #f5f5f5;
 }
+.
