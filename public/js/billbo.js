@@ -25,8 +25,6 @@ $(function() {
     }
   });
 
-
-
   $('[title]').tipsy({
     gravity: 's'
   });

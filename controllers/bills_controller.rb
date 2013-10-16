@@ -1,5 +1,8 @@
 # encoding: UTF-8
 
+require 'helpers/permission'
+authentication_required_for '/bill/reserve/:bill_id', :post
+
 get '/bill/new' do
   if !logged_in
     redirect '/auth?url=/bill/new'

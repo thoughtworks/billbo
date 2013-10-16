@@ -12,6 +12,9 @@ FactoryGirl.find_definitions
 RSpec.configure do |config|
   config.include Mongoid::Matchers
 
+  config.color = true
+  config.formatter = :documentation
+
   config.before(:each) do
     Mongoid.purge!
     Pony.stub(:deliver)
