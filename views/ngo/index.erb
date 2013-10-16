@@ -66,14 +66,43 @@
                   <img src="<%= bill.image_url %>" alt="<%= bill.filename %>">
                 </a>
 
-                <h3><%= bill.issued_by %></h3>
-                <p class="total_amount">R$ <%= "%.2f" % bill.total_amount %></p>
-                <p class="due_date" data-timestamp="<%= bill.due_date.to_time.to_i %>">
-                  <%= I18n.l bill.due_date %>
+                <h3 class="mb10">
+                  <%= bill.issued_by %>
+                </h3>
+                <p>
+                  <a href="javascript:;" title="<%= I18n.t('barcode') %>" class="btn btn-default bg-gray pull-right">
+                    <i class="glyphicon glyphicon-barcode"></i>
+                    <!-- <%= bill.barcode %> -->
+                  </a>
+
+                  <span class="total_amount mr30">
+                    <span class="iconize">R$</span>
+                    <%= "%.2f" % bill.total_amount %>
+                  </span>
+                  <br>
+                  <span class="due_date" data-timestamp="<%= bill.due_date.to_time.to_i %>">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    <%= I18n.l bill.due_date %>
+                  </span>
+
                 </p>
+
+                <hr>
+
+                <div class="text-center">
+                  <a href="javascript:;" class="btn btn-default bg-gray btn-sm">
+                    <%= I18n.t('reserve_bill') %>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                  </a>
+                  <a href="javascript:;" class="btn btn-success btn-sm">
+                    <%= I18n.t('upload_receipt') %>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                  </a>
+
+                </div>
               </div>
             </div>
-            <div class="text-center bill-actions">
+            <!-- <div class="text-center bill-actions">
               <% if bill.status == :opened %>
                 <a href="/bill/reserve/<%= bill.id %>" class="btn btn-default">
                   <%= I18n.t("reserve_bill") %>
@@ -82,29 +111,8 @@
               <a href="/bills/<%= bill.id %>/receipts/new" class="btn btn-success">
                 <%= I18n.t("upload_receipt") %>
               </a>
-            </div>
+            </div> -->
 
-
-
-            <!-- <div>
-              <a href="#" class="th radius <%= bill.status %>" data-reveal-id="myModal<%= bill.id %>">
-                <img class="center" src="<%= bill.url %>" alt="<%= bill.filename %>" />
-                <p class="issued-by"><%= bill.issued_by %></p>
-                <p class="total_amount">R$ <%= bill.total_amount %></p>
-              </a>
-
-              <div class="text-center">
-                <% if bill.status == :opened %>
-                  <a href="/bill/reserve/<%= bill.id %>" class="tiny button">
-                    <%= I18n.t("reserve_bill") %>
-                  </a>
-                <% end %>
-                <a href="/bills/<%= bill.id %>/receipts/new" class="tiny button">
-                  <%= I18n.t("upload_receipt") %>
-                </a>
-              </div>
-            </div>
-   -->
 
 
             <!-- <section class="reveal-modal small-12" id="myModal<%= bill.id %>">

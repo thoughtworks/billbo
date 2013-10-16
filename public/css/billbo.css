@@ -140,9 +140,12 @@ h1 {
   margin-right: 20px;
 }
 
+#all_bills {
+  padding-left: 0;
+}
 #all_bills li {
   display: inline-block;
-  margin: 0 10px 20px;
+  margin: 0 20px 20px;
   width: 265px;
 }
 .mb40 {
@@ -189,4 +192,21 @@ footer {
   text-align: center;
   padding-top: 5px;
   padding-bottom: 5px;
+  margin-bottom: 0;
+}
+.iconize {
+  font-weight: bold;
+  color: #444;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.mr30 {
+  margin-right: 30px;
+}
+.middle-btn {
+  margin: 0 5px;
+}
+.bg-gray {
+  background-color: #f5f5f5;
 }
