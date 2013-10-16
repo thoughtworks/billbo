@@ -1,20 +1,40 @@
-<section class="large-6 columns new-bill">
-  <% flash.each do |key, value| %>
-    <div data-alert class="alert-box <%= key %>">
-      <%= value %>
-      <a href="#" class="close">&times;</a>
+<section class="new-bill container main-content">
+  <ol class="breadcrumb">
+    <li>
+      <a href="/ngo/<%= params[:bill_id] %>">Contas da Ong</a>
+    </li>
+    <li class="active">
+      Reservar conta
+    </li>
+  </ol>
+
+  <div class="row">
+    <div class="span4 offset4">
+
+      <% flash.each do |key, value| %>
+        <div data-alert class="alert-box <%= key %>">
+          <%= value %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+
+      <h3 class="mb20"><%= I18n.t(:reserve_bill) %></h3>
+
+      <form method="post" action="<%= @action %>">
+        <div class="form-group">
+          <label for="phone_number"><%= I18n.t(:phone_number) %></label>
+          <input name="phone_number" type="text" autofocus class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email"><%= I18n.t(:email) %></label>
+          <input name="email" type="text" required value="<%= session['email']%>" class="form-control">
+        </div>
+
+
+        <div class="text-right">
+          <button type="submit" class="btn btn-success"><%= I18n.t(:reserve_bill) %></button>
+        </div>
+      </form>
     </div>
-  <% end %>
-
-  <h3><%= I18n.t(:reserve_bill) %></h3>
-
-  <form id='reserve_bill' method="post" action="<%= @action %>">
-    <label for="phone_number"><%= I18n.t(:phone_number) %></label>
-    <input name="phone_number" type="text" autofocus />
-
-    <label for="email"><%= I18n.t(:email) %></label>
-    <input name="email" type="text" required value="<%= session['email']%>"/>
-
-    <button type="submit" class="button"><%= I18n.t(:reserve_bill) %></button>
-  </form>
+  </div>
 </section>
