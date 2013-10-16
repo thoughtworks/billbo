@@ -24,11 +24,11 @@
       <form method="post" action="<%= @action %>">
         <div class="form-group">
           <label for="phone_number"><%= I18n.t(:phone_number) %></label>
-          <input name="phone_number" type="text" autofocus class="form-control">
+          <input name="phone_number" maxlength="20"  type="text" autofocus class="form-control">
         </div>
         <div class="form-group">
           <label for="email"><%= I18n.t(:email) %></label>
-          <input name="email" type="text" required value="<%= session['email']%>" class="form-control">
+          <input name="email" maxlength="100" type="text" required value="<%= session['email']%>" class="form-control">
         </div>
 
 
