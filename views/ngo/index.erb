@@ -95,23 +95,47 @@
                     <%= I18n.t('reserve_bill') %>
                     <i class="glyphicon glyphicon-chevron-down"></i>
                   </a>
-                  <a href="javascript:;" class="btn btn-default bg-gray btn-sm">
+
+                  <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-upload" data-id="<%= bill.id %>">
                     <%= I18n.t('upload_receipt') %>
                     <i class="glyphicon glyphicon-chevron-down"></i>
                   </a>
-
                 </div>
 
 
 
                 <form method="post" action="/bill/reserve/<%= bill.id %>" class="form-group" id="form-reserve-<%= bill.id %>">
-                  <input name="phone_number" type="text" class="form-control" placeholder="<%= I18n.t(:phone_number) %>">
-                  <input name="email" type="text" required value="<%= session['email']%>" class="form-control" placeholder="<%= I18n.t(:email) %>">
+
+                  <div class="form-group">
+                    <label for="phone_number"><%= I18n.t(:phone_number) %></label>
+                    <input name="phone_number" type="text" autofocus class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="email"><%= I18n.t(:email) %></label>
+                    <input name="email" type="text" required value="<%= session['email']%>" class="form-control">
+                  </div>
                   <div class="text-right">
                     <button type="submit" class="btn btn-success"><%= I18n.t(:reserve_bill) %></button>
                   </div>
                 </form>
 
+                <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="contributor_name"><%= I18n.t(:name) %></label>
+                    <input name="contributor_name" type="text" autofocus value="<%= session['name']%>"  class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="contributor_email"><%= I18n.t(:email) %></label>
+                    <input name="contributor_email" type="text" required value="<%= session['email']%>"  class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="image"><%= I18n.t(:receipt) %></label>
+                    <input name="image" type="file" required>
+                  </div>
+                  <div class="text-right">
+                    <button type="submit" class="btn btn-success"><%= I18n.t(:upload_receipt) %></button>
+                  </div>
+                </form>
               </div>
             </div>
             <!-- <div class="text-center bill-actions">
