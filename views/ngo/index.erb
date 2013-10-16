@@ -31,11 +31,13 @@
 
 
   <fieldset >
-    <legend>Nossas Contas</legend>
+    <legend><%= I18n.t('our_bills') %></legend>
 
     <section class="sort_list">
       <div class="text-center">
-        <small class="text-muted">Contas ordenadas por:</small>
+        <small class="text-muted">
+          <%= I18n.t('bills_ordered_by') %>
+        </small>
       </div>
       <ul class="nav nav-pills">
         <li class="active">
@@ -59,7 +61,10 @@
           <li class="bill" data-n="<%= bill.id %>">
             <div class="thumbnail">
               <div class="header alert <%= if bill.status == :opened then 'alert-success' else 'alert-warning' end %>">
-                <%= if bill.status == :opened then 'Conta em aberto' else 'Conta reservada' end %>
+                <%= if bill.status == :opened
+                      then I18n.t('bill_opened')
+                      else I18n.t('bill_reserved')
+                    end %>
               </div>
 
               <div class="caption">

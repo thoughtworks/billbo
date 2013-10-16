@@ -73,9 +73,11 @@ en:
   phone_number: Phone Number
   reserve_bill_fail: Problem reserving the bill
   reserve_bill_ok: Bill reserved succesfully
-  bill_reserved: Bill reserved!
+  bill_reserved: Bill reserved
   update_bill_fail: Problem updating the bill
   update_bill_ok: Bill updated successfully
   contact_contributor: "You can contact, if necessary, by the following email:"
   status: Status
   bill_opened: Opened
+  bills_ordered_by: Bills ordered by
+  our_bills: Our bills
