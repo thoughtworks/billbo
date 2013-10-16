@@ -94,16 +94,16 @@ describe 'Bills controller' do
 
     context 'POST /bill/reserve' do
 
+      let(:attributes) { FactoryGirl.attributes_for(:reservation) }
+
       context 'when no user logged in' do
         it 'should not allow reservation creation' do
-          attrs = FactoryGirl.attributes_for(:reservation)
-          post "/bill/reserve/#{bill.id}", attrs
+          post "/bill/reserve/#{bill.id}", attributes
 
           last_response.status.should == 401
         end
       end
       context 'when user is logged in' do
-        let(:attributes) { FactoryGirl.attributes_for(:reservation) }
         before(:each) do
           log_in 'test@example.com'
         end
