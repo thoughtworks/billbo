@@ -1,4 +1,26 @@
 $(function() {
+// Search
+  $('#search_field').keyup(function() {
+    var val = $(this).val().toLowerCase();
+
+    $('.ngo-wrapper').each(function() {
+      var self = $(this);
+      var name = self.data('name');
+
+      if(name.indexOf(val) == -1) {
+        self.hide(0);
+      } else {
+        self.show(0);
+      }
+    });
+
+    if($(".ngo-wrapper:visible").length == 0) {
+      $("#nothing-found").removeClass('hide');
+    } else {
+      $("#nothing-found").addClass('hide');
+    }
+  });
+
 // Reserve Form
   $('.btn-reserve').click(function() {
     var self = $(this);

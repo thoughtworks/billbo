@@ -12,12 +12,19 @@
   <section>
 
     <% if logged_as_admin?  %>
-      <a href="/bill/new" class="button"><%= I18n.t("new_bill") %></a>
+      <a href="/bill/new" class="btn btn-default"><%= I18n.t("new_bill") %></a>
     <% end %>
 
 
+    <div id="search-ngos" class="row mb40">
+      <div class="span4 offset4">
+        <input type="text" class="form-control input-lg" id="search_field" placeholder="<%= I18n.t('search_placeholder') %>">
+      </div>
+    </div>
+
+    <p id="nothing-found" class="text-center text-muted hide"><%= I18n.t('no_results_found') %></p>
     <% @ngos.each do |ngo| %>
-      <section class="ngo-wrapper" role="ngo">
+      <section class="ngo-wrapper" role="ngo" data-name="<%= ngo.name.downcase %>">
         <h4 class="title">
           <a href="/ngo/<%= ngo.id %>" class="hover ngo-name"><%= ngo.name %></a>
         </h4>
