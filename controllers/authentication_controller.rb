@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 get '/auth' do
   auth = Auth.new
   url = params["url"] || '/'
@@ -14,7 +13,8 @@ get '/oauth2callback' do
 end
 
 get '/logout' do
-  session.clear
+  session.delete :name
+  session.delete :email
   redirect '/'
 end
 

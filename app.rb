@@ -23,8 +23,7 @@ configure do
 end
 
 before do
-  set_locale
-  locale_labels(I18n.locale)
+  set_locale session[:locale]
 end
 
 def h(content)
