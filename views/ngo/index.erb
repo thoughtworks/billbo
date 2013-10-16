@@ -39,20 +39,8 @@
           <%= I18n.t('bills_ordered_by') %>
         </small>
       </div>
-      <ul class="nav nav-pills">
-        <li class="active">
-          <a href="javascript:void(0);" id="gt_value"><%= I18n.t("gt_value") %></a>
-        </li>
-        <li>
-          <a href="javascript:void(0);" id="lt_value"><%= I18n.t("lt_value") %></a>
-        </li>
-        <li>
-          <a href="javascript:void(0);" id="due_date"><%= I18n.t("due_date") %></a>
-        </li>
-        <li>
-          <a href="javascript:void(0);" id="status"><%= I18n.t("bill_opened") %></a>
-        </li>
-      </ul>
+
+      <%= erb "ngo/_filters".to_sym %>
     </section>
 
     <section>
@@ -113,11 +101,7 @@
                     </a>
                   </div>
 
-                  <% if bill.status == :opened %>
-                    <form method="post" action="/bill/reserve/<%= bill.id %>" class="form-group hidden-form" id="form-reserve-<%= bill.id %>">
-                      <%= erb "bills/_reserve_fields".to_sym %>
-                    </form>
-                  <% end %>
+                  <%= erb("ngo/_reserve_form".to_sym, locals: {bill: bill}) if bill.status == :opened %>
 
                   <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group hidden-form" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
                     <%= erb "receipts/_form_fields".to_sym %>
@@ -125,7 +109,7 @@
 
                 <% end %>
 
-                <%= erb "ngo/admin_actions".to_sym, locals: { bill: bill } if logged_as_admin? %>
+                <%= erb "ngo/_admin_actions".to_sym, locals: { bill: bill } if logged_as_admin? %>
 
               </div>
             </div>
