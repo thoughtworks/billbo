@@ -11,7 +11,7 @@ require 'pony'
 
 Bundler.require
 
-Dir.glob("./{config/initializers,controllers,models,helpers}/**/*.rb").each do |file|
+Dir.glob("./{config/initializers,helpers,controllers,models}/**/*.rb").each do |file|
   require file
 end
 
