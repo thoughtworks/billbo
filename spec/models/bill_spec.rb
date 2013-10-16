@@ -95,4 +95,43 @@ describe Bill do
       reservation.reload.status.should == :inactive
     end
   end
+
+  context :reserve do
+    context "when no one already reserved it" do
+      let(:reservation) { { phone_number: "(81) 8855-5522", email: "john@gmail.com"} }
+      let(:invalid_reservation) { { phone_number: nil, email: nil} }
+
+      before(:each) { bill.save }
+
+      context "when reservation is valid" do
+        it "should change bill status to reserved" do
+          bill.status.should eq(:opened)
+          bill.should have(0).reservations
+
+          bill.reserve reservation
+
+          bill.status.should eq(:reserved)
+          bill.reservations.last.should be_persisted
+        end
+      end
+
+      context "when reservation is invalid" do
+        it "should change bill status to reserved" do
+          bill.status.should eq(:opened)
+          bill.should have(0).reservations
+
+          bill.reserve invalid_reservation
+
+          bill.status.should eq(:opened)
+          bill.reservations.last.should_not be_persisted
+        end
+      end
+    end
+    context "when bill already reserved" do
+      it "should not reserve it" do
+
+      end
+    end
+  end
+
 end

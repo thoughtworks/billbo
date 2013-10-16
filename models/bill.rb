@@ -39,6 +39,14 @@ class Bill
     end
   end
 
+  def reserve(reservation)
+    self.reservations.create reservation
+    unless self.reservations.last.errors.any?
+      self.status = :reserved
+      self.save
+    end
+  end
+
   def formatted_due_date
     due_date.strftime "%d/%m/%Y"
   end
