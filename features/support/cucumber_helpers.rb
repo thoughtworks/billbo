@@ -24,3 +24,8 @@ end
 def log_in(email)
   Sinatra::Application.any_instance.stub(:logged_in_email).and_return(email)
 end
+
+def code_of(language)
+  languageCodes = { "portuguese" => "pt", "english" => "en" }
+  languageCodes[language.downcase]
+end
