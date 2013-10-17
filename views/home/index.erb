@@ -11,18 +11,6 @@
 
   <section>
 
-    <% if logged_as_admin?  %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= I18n.t 'admin_actions' %></h3>
-        </div>
-        <div class="panel-body">
-          <a href="/bill/new" class="btn btn-success"><%= I18n.t("new_bill") %></a>
-        </div>
-      </div>
-    <% end %>
-
-
     <div id="search-ngos" class="row mb40">
       <div class="span4 offset4">
         <input type="text" class="form-control input-lg" id="search_field" placeholder="<%= I18n.t('search_placeholder') %>">
