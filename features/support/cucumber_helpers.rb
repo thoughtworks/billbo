@@ -20,3 +20,7 @@ def create_bill(attributes = {})
 
   click_button "Criar Conta"
 end
+
+def log_in(email)
+  Sinatra::Application.any_instance.stub(:logged_in_email).and_return(email)
+end
