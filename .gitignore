@@ -1,5 +1,4 @@
 .idea/
 *.rdb
 tmp/
-*.lock
 .DS_Store
