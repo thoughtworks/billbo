@@ -1,4 +1,4 @@
-<section class="large-6 columns new-bill">
+<section class="container main-content">
 
   <%= erb :errors, locals: { errors: errors } if errors.any? %>
 
@@ -9,31 +9,51 @@
     </div>
   <% end %>
 
-  <h3><%= I18n.t(:new_bill) %></h3>
+  <div class="row">
+    <div class="span4 offset4">
+      <h3 class="mb20"><%= I18n.t(:new_bill) %></h3>
 
-  <form id='new_bill' method="post" action="/bill/create" enctype="multipart/form-data">
-    <label for="issued_by"><%= I18n.t(:issued_by) %></label>
-    <input name="issued_by" type="text" required autofocus />
+      <form method="post" action="/bill/create" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="issued_by"><%= I18n.t(:issued_by) %></label>
+          <input name="issued_by" type="text" required autofocus class="form-control">
+        </div>
 
-    <label for="due_date"><%= I18n.t(:due_date) %></label>
-    <input id="datepicker" name="due_date" type="text" placeholder="<%= I18n.t(:date_format) %>" required />
+        <div class="row">
+          <div class="span2">
+            <div class="form-group">
+              <label for="due_date"><%= I18n.t(:due_date) %></label>
+              <input id="datepicker" name="due_date" type="text" placeholder="<%= I18n.t(:date_format) %>" required class="form-control">
+            </div>
+          </div>
 
-    <div class="row collapse">
-      <label for="total_amount"><%= I18n.t(:total_amount) %></label>
-      <div class="small-2 columns">
-        <span class="prefix">R$</span>
-      </div>
-      <div class="small-10 columns">
-        <input name="total_amount" type="number" min="0.1" step="any" required />
-      </div>
+          <div class="span2">
+            <div class="form-group">
+              <label for="total_amount"><%= I18n.t(:total_amount) %></label>
+              <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input name="total_amount" type="number" min="0.1" step="any" required class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="barcode"><%= I18n.t(:barcode) %></label>
+          <input name="barcode" type="text" required class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="image"><%= I18n.t(:image) %></label>
+          <input name="image" type="file">
+        </div>
+
+        <div class="text-right">
+          <button type="submit" class="btn btn-success"><%= I18n.t(:create_bill) %></button>
+        </div>
+      </form>
     </div>
-
-    <label for="barcode"><%= I18n.t(:barcode) %></label>
-    <input name="barcode" type="text" required />
-
-    <label for="image"><%= I18n.t(:image) %></label>
-    <input name="image" type="file" />
-
-    <button type="submit" class="button"><%= I18n.t(:create_bill) %></button>
-  </form>
+  </div>
 </section>

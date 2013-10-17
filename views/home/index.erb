@@ -4,7 +4,7 @@
 
 <section class="container">
   <% flash.each do |key, value| %>
-    <div data-alert class="alert-box <%= key %>">
+    <div data-alert class="alert alert-<%= key == 'error' ? 'danger' : key %>">
       <%= value %>
     </div>
   <% end %>
