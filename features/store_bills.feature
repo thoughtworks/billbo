@@ -30,7 +30,7 @@ Feature: store bills
 
   Scenario: do not show closed bills
     Given I have 3 bills
-    And I set the status of 1 of them as paid
+    And I set the status of 1 of them as "paid"
     When I open the home page
     Then it should list 2 bills
 

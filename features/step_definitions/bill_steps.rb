@@ -6,7 +6,7 @@ Given /^I have (\d+) bills$/ do |n|
   end
 end
 
-Given /^I set the status of (\d+) of them as (paid)$/ do |n, status|
+Given(/^I set the status of (\d+) of them as "(.*?)"$/) do |n, status|
   n.to_i.times {
     Bill.where(status: :opened).update(status: status)
   }
@@ -43,10 +43,6 @@ Then(/^I should view bills information:$/) do |table|
       page.should have_content(row["total_amount"])
     end
   end
-end
-
-When /^I open the home page$/ do
-  visit '/'
 end
 
 Then /^it should list (\d+) bills$/ do |n|
@@ -95,4 +91,19 @@ Then(/^I should view bill information:$/) do |table|
       find_field("barcode").value.should have_content(row["barcode"])
     end
   end
+end
+
+When(/^I select a "(.*?)" bill$/) do |status|
+  within('#all-bills') do
+    @bill = page.first(:css,"a.th.radius.#{status}")
+    @bill.click
+  end
+end
+
+Then(/^I should be able to delete this bill$/) do
+  within("##{@bill['data-reveal-id']}") do
+    page.find(:css,'button.tiny.button').click
+  end
+  page.driver.browser.switch_to.alert.accept
+  page.should have_css 'div.alert-box.success'
 end
