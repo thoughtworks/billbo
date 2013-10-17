@@ -247,7 +247,11 @@ footer {
   position: absolute;
   top: -1px;
   left: 100%;
+  display: none;
 }
 .remove_bill_form .btn {
   margin-bottom: 5px;
+}
+.thumbnail:hover .remove_bill_form {
+  display: block;
 }
