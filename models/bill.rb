@@ -26,13 +26,17 @@ class Bill
 
   belongs_to :ngo
   has_one :receipt
-  has_many :reservations
+  has_one :reservation
+
+  scope :reserved, where(status: :reserved)
 
   def self.update_reservations_status
-    reserved_bills = self.where(status: :reserved)
+    reserved_bills = Bill.reserved
     reserved_bills.each do |reserved_bill|
-      if reserved_bill.reservations.where(status: :active, :date.lte => DateTime.now - 1).count > 0
-        reserved_bill.reservations.where(status: :active).update(status: :inactive)
+      if Reservation.active_until_now_for reserved_bill
+        reservation = Reservation.active_for reserved_bill
+        reservation.update(status: :inactive)
+
         reserved_bill.status = :opened
         reserved_bill.save
       end
@@ -40,15 +44,8 @@ class Bill
   end
 
   def reserve(reservation)
-    if reserved?
-      errors.add :reservations, 'Bill already reserved'
-    else
-      self.reservations.create reservation
-      unless self.reservations.last.errors.any?
-        self.status = :reserved
-        self.save
-      end
-    end
+    errors.add(:reservation, "#{I18n.t(:bill_already_reserved)}") if already_reserved?
+    add_reservation(reservation) unless already_reserved?
   end
 
   def formatted_due_date
@@ -65,8 +62,16 @@ class Bill
 
   private
 
-  def reserved?
-    self.status == :reserved && has_reservations?
+  def add_reservation(reservation)
+    create_reservation reservation
+    unless self.reservation.errors.any?
+      self.status = :reserved
+      save
+    end
+  end
+
+  def already_reserved?
+    self.status == :reserved && has_reservation?
   end
 
   def date_is_before_today

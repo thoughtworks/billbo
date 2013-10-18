@@ -84,3 +84,4 @@ pt:
   login_with_google: Login com Google
   search_placeholder: Procure ONGs
   no_results_found: Nenhuma ONG encontrada
+  bill_already_reserved: "Conta já está reservada"

@@ -126,9 +126,11 @@ describe 'Bills controller' do
 
             id = bill.id
             last_bill = Bill.find(id)
-            last_bill.reservations.last.email.should == attributes[:email]
-            last_bill.reservations.last.phone_number.should == attributes[:phone_number]
-            last_bill.reservations.last.bill.should == bill
+            reservation = last_bill.reservation
+
+            reservation.email.should == attributes[:email]
+            reservation.phone_number.should == attributes[:phone_number]
+            reservation.bill.should == bill
           end
 
           it 'should redirect to homepage url on success reservation' do
@@ -136,6 +138,19 @@ describe 'Bills controller' do
 
             last_response.should be_ok
             last_request.url.should == homepage_url
+          end
+
+          context "when bill already reserved" do
+            before do
+              get '/locale/en'
+              create_reservation!
+            end
+            it "should not create a new reservation" do
+              create_reservation!
+
+              last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
+              last_response.body.should =~ /"Bill already reserved"/
+            end
           end
         end
 

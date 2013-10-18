@@ -16,7 +16,15 @@ class Reservation
 
   belongs_to :bill
 
+  scope :active_for, ->(bill) { where(bill_id: bill.id, status: :active) }
+
+  def self.active_until_now_for(bill)
+    active_until_now(bill).count > 0
+  end
+
   private
+  scope :active_until_now, ->(bill) { where(bill_id: bill.id, status: :active, :date.lte => DateTime.now - 1) }
+
   def escape_fields
     self.phone_number = h self.phone_number
     self.email = h self.email

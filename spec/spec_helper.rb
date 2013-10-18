@@ -5,6 +5,7 @@ ENV['RACK_ENV'] ||= 'test'
 require './app'
 require 'capybara'
 require 'pony'
+require 'pry'
 
 require 'factory_girl'
 FactoryGirl.find_definitions

@@ -7,7 +7,7 @@ describe Bill do
 
   context :relations do
     it { should have_one(:receipt) }
-    it { should have_many(:reservations) }
+    it { should have_one(:reservation) }
   end
 
   context :update do
@@ -82,10 +82,10 @@ describe Bill do
     end
   end
 
-  context 'update reservations status' do
+  context 'update reservation status' do
     it 'verify if the bill reservation status is updated back to opened' do
       bill.update_attributes(status: :reserved)
-      reservation = bill.reservations.create!(:email => 'test@xxx.com', :phone_number => '22222222')
+      reservation = bill.build_reservation(:email => 'test@xxx.com', :phone_number => '22222222')
       reservation.date = DateTime.yesterday
       reservation.save!
 
@@ -106,25 +106,24 @@ describe Bill do
       context "when reservation is valid" do
         it "should change bill status to reserved" do
           bill.status.should eq(:opened)
-          bill.should have(0).reservations
+          bill.reservation.should be_nil
 
           bill.reserve reservation.as_json
 
           bill.status.should eq(:reserved)
-          bill.reservations.last.should be_persisted
-          bill.should have(1).reservations
+          bill.reservation.should be_persisted
         end
       end
 
       context "when reservation is invalid" do
         it "should change bill status to reserved" do
           bill.status.should eq(:opened)
-          bill.should have(0).reservations
+          bill.reservation.should be_nil
 
           bill.reserve invalid_reservation
 
           bill.status.should eq(:opened)
-          bill.reservations.last.should_not be_persisted
+          bill.reservation.should_not be_persisted
         end
       end
     end
@@ -136,9 +135,7 @@ describe Bill do
       it "should not create a new reservation" do
         bill.reserve reservation.as_json
         bill.status.should eq(:reserved)
-        bill.reservations.last.should be_persisted
-        bill.should have(1).reservations
-        bill.errors.full_messages.should include('Reservations Bill already reserved')
+        bill.reservation.should be_persisted
       end
     end
   end
