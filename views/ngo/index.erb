@@ -1,5 +1,4 @@
--<section class="container main-content">
-
+<section class="container main-content">
   <section class="row mb40">
     <div class="span3">
       <img class="ngo_photo" src="<%= @ngo.photo_url %>" alt="ngo photo"/>
@@ -9,19 +8,19 @@
       <p><%= @ngo.description %></p>
 
       <div class="contact-info">
-        <small>
+        <small id="contact">
           <i class="glyphicon glyphicon-user"></i>
           <%= @ngo.contact %>
         </small>
-        <small>
+        <small id="phone">
           <i class="glyphicon glyphicon-earphone"></i>
           <%= @ngo.phone %>
         </small>
-        <small>
+        <small id="website">
           <i class="glyphicon glyphicon-globe"></i>
           <a href="<%= @ngo.website %>" target="blank"><%= @ngo.website %></a>
         </small>
-        <small>
+        <small id="email">
           <i class="glyphicon glyphicon-envelope"></i>
           <a href="mailto:<%= @ngo.email %>"><%= @ngo.email %></a>
         </small>

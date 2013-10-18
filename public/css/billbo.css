@@ -76,7 +76,9 @@ h1 {
   text-decoration: underline;
 }
 
-
+.link-lang:hover {
+	text-decoration: none;
+}
 
 .ngo-wrapper {
   display: inline-block;

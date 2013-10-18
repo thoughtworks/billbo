@@ -13,3 +13,9 @@ end
 Given(/^I am a contributor$/) do
   
 end
+
+Given(/^I (?:visit|open|access) a NGO's profile page$/) do
+  within first(".ngo-wrapper") do
+    find("a.ngo-name").click
+  end
+end
