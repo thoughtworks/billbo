@@ -24,7 +24,7 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 
 ### To run the tests
 - Run `$ rake test:unit` to run the unit tests
-- Run `$ rake test:functional` to run the unit tests
+- Run `$ rake test:functional` to run the functional tests
 - Run `$ rake test:all` to all tests
 
 ### If you want to deploy on the cloud
