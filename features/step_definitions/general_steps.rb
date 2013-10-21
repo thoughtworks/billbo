@@ -14,6 +14,10 @@ Given(/^I am a contributor$/) do
   
 end
 
+Given(/^I am logged in$/) do
+  log_in('contributor@example.com')
+end
+
 Given(/^I (?:visit|open|access) a NGO's profile page$/) do
   visit "/"
   within first(".ngo-wrapper") do

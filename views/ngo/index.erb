@@ -47,7 +47,7 @@
         <% @ngo.bills.each do |bill| %>
           <li class="bill" data-n="<%= bill.id %>">
             <div class="thumbnail">
-              <div class="header alert <%= if bill.status == :opened then 'alert-success' else 'alert-warning' end %>">
+              <div class="header alert <%= if bill.status == :opened then 'alert-success opened-bill' else 'alert-warning reserved-bill' end %>">
                 <%= if bill.status == :opened
                       then I18n.t('bill_opened')
                       else I18n.t('bill_reserved')
