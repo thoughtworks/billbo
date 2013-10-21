@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 spec_commands = ["bundle exec rspec spec",
-                 "cucumber -f progress"]
+                 "cucumber --tags ~@wip --format progress --strict"]
 
 deploy_commands = ["git checkout master",
                    "af target https://api1.appfog.com",
