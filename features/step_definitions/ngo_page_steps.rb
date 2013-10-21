@@ -17,8 +17,14 @@ Then(/^I must see their billboard with their bills sorted, by default, by due da
       find("a").text.should == I18n.t('due_date')
     end
   end
+  dueDates = []
   billboard = find("ul#all_bills")
   within billboard do
-    pending # Falta conseguir uma maneira de analisar a ordem das datas de vencimento
+    page.all("li.bill").each do |bill|
+      within bill do
+        dueDates.push find("span.due_date")["data-timestamp"]
+      end
+    end
+    dueDates.should == dueDates.sort
   end
 end

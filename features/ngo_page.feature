@@ -7,8 +7,7 @@ Feature: NGO Page
 	Background:
 		Given that there is 1 NGO subscribed with 5 bills on each one
 		And I am a contributor
-		When I open the homepage
-		And I access a NGO's profile page
+		When I access a NGO's profile page
 	
 	Scenario: NGO's information
 		Then I must see a name, a description, a phone number and a website link of that NGO

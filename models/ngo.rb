@@ -11,5 +11,5 @@ class Ngo
   field :contact, type: String
   field :photo_url, type: String
 
-  has_many :bills
+  has_many :bills, :order => 'due_date ASC'
 end
