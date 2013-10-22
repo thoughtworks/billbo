@@ -77,7 +77,6 @@ describe 'Bills controller' do
           last_response.body.should match /Empresa é um campo obrigatório/
           last_response.body.should match /Data de vencimento é um campo obrigatório/
           last_response.body.should match /Valor total é um campo obrigatório/
-          last_response.body.should match /Código de barras é um campo obrigatório/
 
         end
 
@@ -227,7 +226,6 @@ describe 'Bills controller' do
         last_bill.due_date.month.should == attrs_to_update[:due_date].month
         last_bill.due_date.year.should == attrs_to_update[:due_date].year
         last_bill.total_amount.should == attrs_to_update[:total_amount].to_f
-        last_bill.barcode.should == attrs_to_update[:barcode]
       end
 
       it 'recognizes invalid data (due_date) and redirect' do
@@ -248,16 +246,6 @@ describe 'Bills controller' do
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
         last_response.body.should match /não pode ser anterior a hoje/
-      end
-
-      it 'recognizes invalid data (barcode) and redirect' do
-        attrs_to_update = FactoryGirl.attributes_for(:bill)
-        attrs_to_update[:barcode] = 'AAA'
-        post "/bill/update/#{bill.id}", attrs_to_update
-
-        last_response.should be_ok
-        last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should match /Código de barras deve ser um valor numérico/
       end
 
     end

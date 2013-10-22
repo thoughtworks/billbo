@@ -11,14 +11,12 @@ en:
         taken: "is already taken"
         blank: "is required"
         not_a_number: "must be a number"
-        greater_than: "Total amount should be greater than zero"
-        not_an_integer: "must be an integer"
+        greater_than: "should be greater than zero"
     attributes:
       bill:
         issued_by: "Company"
         due_date: "Due date"
         total_amount: "Total amount"
-        barcode: "Barcode"
         status: "Status"
         filename: "File name"
       receipt:
@@ -34,7 +32,6 @@ en:
   remove_bill: Remove
   update_bill: Update Bill
   update_bill_button: Update
-  barcode: Barcode
   total_amount: Total Amount
   due_date: Due Date
   issued_by: Company

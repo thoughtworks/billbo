@@ -222,29 +222,6 @@ footer {
 .bg-gray {
   background-color: #f5f5f5;
 }
-.barcode {
-  position: relative;
-}
-.barcode > .content {
-  position: absolute;
-  bottom: 100%;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 3px #ccc;
-  z-index: 100;
-  padding: 3px 10px;
-  display: none;
-  margin-left: -150px;
-}
-.barcode > .content > textarea {
-  width: 300px;
-  border: 0 none;
-  background: 0 none;
-  resize: none;
-}
-.barcode:hover > .content {
-  display: block;
-}
 .remove_bill_form {
   position: absolute;
   top: -1px;

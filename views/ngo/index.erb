@@ -61,17 +61,6 @@
                   <%= bill.issued_by %>
                 </h3>
                 <p>
-                  <% if logged_in %>
-                    <div class="barcode pull-right">
-                      <a href="javascript:;" class="btn btn-default bg-gray">
-                        <i class="glyphicon glyphicon-barcode"></i>
-                      </a>
-                      <div class="content">
-                        <small><strong><%= I18n.t('barcode') %></strong></small>
-                        <textarea readonly><%= bill.barcode %></textarea>
-                      </div>
-                    </div>
-                  <% end %>
 
                   <span>
                     <span class="iconize">R$</span>

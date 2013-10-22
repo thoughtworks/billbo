@@ -17,7 +17,6 @@ describe Bill do
         'issued_by'    => 'foo',
         'due_date'     => Date.today,
         'total_amount' => 1.0,
-        'barcode'      => '1',
         'status'       => :waiting_confirmation,
         'url'          => "xxx",
         "filename"     => "bill.png"
@@ -48,11 +47,10 @@ describe Bill do
       bill = Bill.new
 
       bill.should_not be_valid
-      bill.errors.messages.should have(4).items
+      bill.errors.messages.should have(3).items
       bill.errors.messages.should have_key(:issued_by)
       bill.errors.messages.should have_key(:due_date)
       bill.errors.messages.should have_key(:total_amount)
-      bill.errors.messages.should have_key(:barcode)
     end
 
     it 'validates that status is invalid' do
@@ -63,24 +61,6 @@ describe Bill do
     it 'validates that status is valid' do
       bill.update_attributes(status: :reserved)
       bill.should be_valid
-    end
-
-    it 'validates that barcode is unique' do
-      bill.save
-      new_bill = Bill.new(bill.attributes)
-
-      new_bill.should_not be_valid
-      new_bill.errors.should have_key(:barcode)
-      new_bill.errors[:barcode][0].should match /já está em uso/
-    end
-
-    it 'validates that barcode is an integer' do
-      new_bill = Bill.new({barcode: 4.4})
-      new_bill.save
-      new_bill.should_not be_valid
-      new_bill.errors.should have_key(:barcode)
-      new_bill.errors[:barcode][0].should match /deve ser um valor inteiro/
-
     end
 
     it 'validates due_date is a valid date' do

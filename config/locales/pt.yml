@@ -11,14 +11,13 @@ pt:
         taken: "já está em uso"
         blank: "é um campo obrigatório"
         not_a_number: "deve ser um valor numérico"
-        greater_than: "Valor total deve ser maior que zero"
+        greater_than: "deve ser maior que zero"
         not_an_integer: "deve ser um valor inteiro"
     attributes:
       bill:
         issued_by: "Empresa"
         due_date: "Data de vencimento"
         total_amount: "Valor total"
-        barcode: "Código de barras"
         status: "Status"
         filename: "Nome do arquivo"
       receipt:
@@ -36,7 +35,6 @@ pt:
   issued_by: Empresa
   due_date: Vencimento
   total_amount: Valor Total
-  barcode: Código de Barras
   create_bill: Criar Conta
   bill_creation_fail: Problema ao criar a conta
   bill_creation_ok: Conta criada com sucesso

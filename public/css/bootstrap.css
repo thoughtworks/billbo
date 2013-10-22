@@ -1625,9 +1625,6 @@ input[type="button"].btn-block {
 .glyphicon-qrcode:before {
   content: "\e039";
 }
-.glyphicon-barcode:before {
-  content: "\e040";
-}
 .glyphicon-tag:before {
   content: "\e041";
 }

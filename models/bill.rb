@@ -9,7 +9,6 @@ class Bill
   field :issued_by, type: String
   field :due_date, type: Date
   field :total_amount, type: Float
-  field :barcode, type: String
   field :status, type: Symbol, default: :opened
   field :url, type: String
   field :filename, type: String
@@ -17,11 +16,10 @@ class Bill
 
   before_create :escape_fields
 
-  validates_presence_of :issued_by, :due_date, :total_amount, :barcode
+  validates_presence_of :issued_by, :due_date, :total_amount
 
   validate :date_is_before_today
 
-  validates :barcode, presence: true, allow_blank: true, uniqueness: true, numericality: { only_integer: true }
   validates :total_amount, presence: true, allow_blank: true, numericality: { greater_than: 0 } 
   validates :status, inclusion: { in: [:opened, :reserved, :waiting_confirmation, :closed] }
 
@@ -83,6 +81,5 @@ class Bill
 
   def escape_fields
     self.issued_by = h self.issued_by
-    self.barcode = h self.barcode
   end
 end
