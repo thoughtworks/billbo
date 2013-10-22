@@ -13,7 +13,8 @@ namespace :test do
 
   desc 'Runs functional tests'
   Cucumber::Rake::Task.new(:functional) do |t|
-    t.cucumber_opts = 'features --format pretty'
+    t.cucumber_opts = '--format pretty --tags ~@wip'
+
   end
 
   desc 'Runs all tests'
