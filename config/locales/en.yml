@@ -25,7 +25,7 @@ en:
   errors:
     messages:
       extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"
-  subtext: "It's all about helping someone. But helping efficiently"
+  subtext: It's all about helping someone. But helping efficiently
   bills: Bills
   new_bill: New Bill
   create_bill: Create Bill
@@ -48,11 +48,12 @@ en:
   gt_value: Highest price
   lt_value: Lowest price
   priority: Priority
-  image: Image
+  file: file
   required_field: Required field
   invalid_due_date: Complete with a valid date
   greater_than_zero: Total amount must be a number greater than zero
   before_today: can not be before today
+  exceeds_file_size: exceeds maximum size
   date_format: mm/dd/yyyy
   not_an_admin_account: Log in with an admin account
   upload_receipt: Upload receipt

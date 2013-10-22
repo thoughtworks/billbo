@@ -8,7 +8,7 @@ describe 'FileUploader' do
   include CarrierWave::RMagick
 
   let(:bill) { FactoryGirl.build(:bill) }
-  let(:image) { FactoryGirl.build(:image) }
+  let(:bill_file) { FactoryGirl.build(:bill_file) }
 
   before do
     @uploader = FileUploader.new(bill)
@@ -20,28 +20,18 @@ describe 'FileUploader' do
     @uploader.remove!
   end
 
-  describe 'process' do
-    it "should scale down a image to fit within 1000 by 1000 pixels" do
-      @uploader.store!(image)
-
-      image =  Magick::Image::read( @uploader.file.file ).first
-      image.columns.should be <= 1000
-      image.rows.should be <= 1000
-    end
-  end
-
   describe 'extension' do
-    it "should throw IntegrityError when assigning a file with not allowed extension" do
-      other_format = FactoryGirl.build(:image, filename: "example.pepper")
+    it 'should throw IntegrityError when assigning a file with not allowed extension' do
+      other_format = FactoryGirl.build(:bill_file, filename: "example.pepper")
 
       expect { @uploader.store! (other_format) }.to raise_error(
-      	CarrierWave::IntegrityError, /deve possuir uma das seguintes extensões: jpg, jpeg, gif ou png/)
+      	CarrierWave::IntegrityError, /deve ser .pdf/)
     end
   end
 
   describe 'update_model' do
   	it 'should update url and filename attribute for bill' do
-      @uploader.store!(image)
+      @uploader.store!(bill_file)
 
       bill.url.should == @uploader.url
       bill.filename.should == @uploader.filename

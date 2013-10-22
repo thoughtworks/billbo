@@ -2,13 +2,14 @@
 
 class FileUploader < CarrierWave::Uploader::GoogleDrive
   include CarrierWave::RMagick
-  process :resize_to_limit => [1000, 1000]
+
+  FILE_SIZE_LIMIT = 5
 
   google_login ENV['billbo_login']
   google_password ENV['billbo_password']
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(pdf)
   end
 
   def updatemodel(file)

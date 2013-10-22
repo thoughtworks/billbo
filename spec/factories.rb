@@ -2,7 +2,7 @@
 
 require 'factory_girl'
 
-image_path= (File.join( settings.root, "spec", "fixtures"))
+pdf_path = (File.join( settings.root, "spec", "fixtures"))
 
 FactoryGirl.define do
   sequence(:issued_by)    { "Company #{('A'..'Z').to_a.sample}" }
@@ -45,9 +45,10 @@ FactoryGirl.define do
     email {"john@gmail.com"}
   end
 
-  factory :image, class: File do
-    filename        { "bill.png" }
-    filepath        { image_path }
+  factory :bill_file, class: File do
+    filename        { "bill.pdf" }
+    filepath        { pdf_path
+    }
     initialize_with { new(File.join(filepath, filename)) }
   end
 
