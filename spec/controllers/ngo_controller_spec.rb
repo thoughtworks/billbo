@@ -13,12 +13,12 @@ describe 'Bills controller' do
         get "ngo/#{ngo.id}"
         
         last_response.should be_ok
-        last_response.body.should include("#{ngo.name}")
-        last_response.body.should include("#{ngo.description}")
-        last_response.body.should include("#{ngo.phone}")
-        last_response.body.should include("#{ngo.website}")
-        last_response.body.should include("#{ngo.email}")
-        last_response.body.should include("#{ngo.contact}")
+        last_response.body.should match ngo.name
+        last_response.body.should match ngo.description
+        last_response.body.should include ngo.phone
+        last_response.body.should match ngo.website
+        last_response.body.should match ngo.email
+        last_response.body.should match ngo.contact
       end
     end
   end

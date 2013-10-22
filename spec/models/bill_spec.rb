@@ -71,7 +71,16 @@ describe Bill do
 
       new_bill.should_not be_valid
       new_bill.errors.should have_key(:barcode)
-      new_bill.errors[:barcode][0] =~ /is already taken/
+      new_bill.errors[:barcode][0].should match /já está em uso/
+    end
+
+    it 'validates that barcode is an integer' do
+      new_bill = Bill.new({barcode: 4.4})
+      new_bill.save
+      new_bill.should_not be_valid
+      new_bill.errors.should have_key(:barcode)
+      new_bill.errors[:barcode][0].should match /deve ser um valor inteiro/
+
     end
 
     it 'validates due_date is a valid date' do

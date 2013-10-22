@@ -18,7 +18,7 @@ describe 'Bills controller' do
           get '/bill/new'
 
           last_response.should be_ok
-          last_request.url.should =~ /bill\/new/
+          last_request.url.should match /bill\/new/
         end
       end
 
@@ -41,12 +41,12 @@ describe 'Bills controller' do
           get '/bill/new'
           last_response.should be_redirect
           follow_redirect!
-          last_request.url.should =~ /auth/
+          last_request.url.should match /auth/
         end
       end
     end
 
-    describe 'POST /bill/create' do
+    describe 'POST /bill/new' do
       describe 'when log in as admin' do
         before do
           log_in_as_admin
@@ -58,26 +58,29 @@ describe 'Bills controller' do
 
         it 'creates valid bill and redirects' do
           expect {
-            post '/bill/create', FactoryGirl.attributes_for(:bill)
+            post '/bill/new', FactoryGirl.attributes_for(:bill)
           }.to change { Bill.count }.by(1)
 
           last_response.should be_redirect
           follow_redirect!
           last_response.should be_ok
-          last_request.url.should =~ /bill\/new/
-          last_response.body.should include("Conta criada com sucesso")
+          last_request.url.should match /bill\/new/
+          last_response.body.should match I18n.t(:bill_creation_ok)
         end
 
         it 'recognizes invalid bill and render new view with errors' do
-          attributes = FactoryGirl.attributes_for(:bill)
-          attributes[:issued_by] = ''
           expect {
-            post '/bill/create', attributes
+            post '/bill/new', {}
           }.to_not change { Bill.count }
 
           last_response.should be_ok
-          last_response.body.should =~ /Empresa é um campo obrigatório/
+          last_response.body.should match /Empresa é um campo obrigatório/
+          last_response.body.should match /Data de vencimento é um campo obrigatório/
+          last_response.body.should match /Valor total é um campo obrigatório/
+          last_response.body.should match /Código de barras é um campo obrigatório/
+
         end
+
       end
     end
   end
@@ -88,7 +91,7 @@ describe 'Bills controller' do
         get "/bill/reserve/#{bill.id}"
 
         last_response.should be_ok
-        last_response.body.should =~ /reserve_bill/
+        last_response.body.should match /reserve_bill/
       end
     end
 
@@ -142,14 +145,13 @@ describe 'Bills controller' do
 
           context "when bill already reserved" do
             before do
-              get '/locale/en'
               create_reservation!
             end
             it "should not create a new reservation" do
               create_reservation!
 
               last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
-              last_response.body.should =~ /"Bill already reserved"/
+              last_response.body.should match /Conta já está reservada/
             end
           end
         end
@@ -160,7 +162,7 @@ describe 'Bills controller' do
             create_reservation!
 
             last_request.url.should == "#{homepage_url}bill/reserve/#{bill.id}"
-            last_response.body.should =~ /Ocorreu um erro ao reservar a conta/
+            last_response.body.should match /Ocorreu um erro ao reservar a conta/
           end
         end
 
@@ -202,7 +204,7 @@ describe 'Bills controller' do
         get "/bill/update/#{bill.id}"
 
         last_response.should be_ok
-        last_response.body.should =~ /update_bill/
+        last_response.body.should match /update_bill/
       end
     end
 
@@ -235,7 +237,7 @@ describe 'Bills controller' do
 
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should =~ /Complete com uma data válida/
+        last_response.body.should match /Complete com uma data válida/
       end
 
       it 'recognizes invalid data (due_date before today) and redirect' do
@@ -245,7 +247,7 @@ describe 'Bills controller' do
 
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should =~ /não pode ser anterior a hoje/
+        last_response.body.should match /não pode ser anterior a hoje/
       end
 
       it 'recognizes invalid data (barcode) and redirect' do
@@ -255,7 +257,7 @@ describe 'Bills controller' do
 
         last_response.should be_ok
         last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should include("Código de barras deve ser um valor numérico")
+        last_response.body.should match /Código de barras deve ser um valor numérico/
       end
 
     end
@@ -280,7 +282,7 @@ describe 'Bills controller' do
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage_url
-          last_response.body.should =~ /bill_closed_ok/
+          last_response.body.should match /bill_closed_ok/
         end
       end
 
@@ -301,7 +303,7 @@ describe 'Bills controller' do
           follow_redirect!
           last_response.should be_ok
           last_request.url.should == homepage_url
-          last_response.body.should =~ /not_an_admin_account/
+          last_response.body.should match /not_an_admin_account/
         end
 
         it 'shoud not close the bill' do

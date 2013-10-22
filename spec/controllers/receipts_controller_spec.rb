@@ -9,7 +9,7 @@ describe "Receipts controller" do
       get "/bills/#{bill.id}/receipts/new"
 
       last_response.should be_ok
-      last_response.body.should =~ /upload_receipt/
+      last_response.body.should match /upload_receipt/
     end
   end
 

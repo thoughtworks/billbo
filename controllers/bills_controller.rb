@@ -14,20 +14,13 @@ get '/bill/new' do
   end
 end
 
-post '/bill/create' do
-  due_date = nil
+post '/bill/new' do
+  bill = Bill.new(params)
 
-  begin
-    due_date = Date.parse(params[:due_date])
-    bill = Bill.new(params.merge("due_date" => due_date))
-
-    if bill.save
-      redirect '/bill/new', :success => I18n.t(:bill_creation_ok)
-    else
-      erb :"/bills/new", locals: { errors: bill.errors.full_messages }
-    end
-  rescue
-    erb :"/bills/new", locals: { errors: [I18n.t(:invalid_due_date)] }
+  if bill.save
+    redirect '/bill/new', :success => I18n.t(:bill_creation_ok)
+  else
+    erb :"/bills/new", locals: { errors: bill.errors.full_messages }
   end
 end
 

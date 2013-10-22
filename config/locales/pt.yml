@@ -12,6 +12,7 @@ pt:
         blank: "é um campo obrigatório"
         not_a_number: "deve ser um valor numérico"
         greater_than: "Valor total deve ser maior que zero"
+        not_an_integer: "deve ser um valor inteiro"
     attributes:
       bill:
         issued_by: "Empresa"
@@ -84,5 +85,5 @@ pt:
   login_with_google: Login com Google
   search_placeholder: Procure ONGs
   no_results_found: Nenhuma ONG encontrada
-  bill_already_reserved: "Conta já está reservada"
+  bill_already_reserved: Conta já está reservada
   admin_actions: Ações do administrador

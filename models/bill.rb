@@ -16,13 +16,14 @@ class Bill
   mount_uploader :image, FileUploader
 
   before_create :escape_fields
-  validate :date_is_before_today
 
   validates_presence_of :issued_by, :due_date, :total_amount, :barcode
+
+  validate :date_is_before_today
+
+  validates :barcode, presence: true, allow_blank: true, uniqueness: true, numericality: { only_integer: true }
+  validates :total_amount, presence: true, allow_blank: true, numericality: { greater_than: 0 } 
   validates :status, inclusion: { in: [:opened, :reserved, :waiting_confirmation, :closed] }
-  validates_uniqueness_of :barcode
-  validates_numericality_of :barcode
-  validates :total_amount, numericality: { greater_than: 0 }
 
   belongs_to :ngo
   has_one :receipt
