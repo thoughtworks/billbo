@@ -6,7 +6,7 @@ spec_commands = ["bundle exec rspec spec",
 deploy_commands = ["git checkout master",
                    "af target https://api1.appfog.com",
                    "af login --email ${AF_EMAIL} --passwd ${AF_PASSWORD}",
-                   "af update billbo",
+                   "af update billboapp",
                    "af logout"]
 
 def run(commands)

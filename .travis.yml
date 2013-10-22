@@ -1,14 +1,10 @@
----
 language:
-  - ruby
-
+- ruby
 rvm:
-  - 1.9.3
-
-script: "ci/travis.rb"
-
+- 1.9.3
+script: ci/travis.rb
 env:
   global:
-    - secure: "mXzALesJoCdKgvf6GJ4ML7u43UXsiC3UJmH2l8QvR+1sUGcDSaAvyzFRvkaj9mOFtXclnnd9eM2I6ODtdVYHy5shukSrZSlncy0ufRmd9K7IHfE+XIxPUcnXqoh+guKSRl9EQl/dpDC1wcAGZ6MsMh3ra5M9Up3ejA8Wep0LmsY="
-    - secure: "bIJihsUmWe5ucJvA+RAtrtbVs4cseqxaJZjVXvGKsDdum9yWAigB6XD4mYGXbmqX1OIjiW2b5KlqMJMiTwLG7DQe/AuSI29LwuaJTy8xn6rG9xophLzebhPkwsBpl6v9A6kcA1YRJlHzZ/rEjDQXNIOgR5rynavmdm9tpxtAJCg="
-    - secure: "DprsU+VdaoctLkkyh8UbMdG8cV35hlY+ruAz4aZfHb/bWdsNueXZhHxeloAe\nINoRLwpcrNwegrU3cg2gEDxKm+PcC6qyeDQB4FqDT+D3i5RJNNMWgk/MQ91y\nQ0J7URU70/xtW+xTDIsFcYE/G9DlTtjcX/y/NPiwuHKvGgstX7w="
+  - secure: X7TE4gia427eXgdDTzvAAhRuGLR2JIaFxAiYqx/6/1t69KExxe2NfgoHyDkiCrJYB4+0iiVTXRCE1xJU/LO5hFUrByRWx1qq80G5dSdm+fbEpmZ0fOXLfHQvytHXcGFSyP4aeWXG8YBWnzC/m+mD+2MH6SZxEFZco6HpRyDTSho=
+  - secure: VZXLbz011j9O0yMhNKHzucgwcT5mg4kdjEYgX9wYefn5xK34r6uWutfLDE5KtgXT69z+Zp3RS1bmIH7aoiEbYAxXsP1gLDxdXAJxtanHDDALABvlKIUJZVk5/O6aTG2WmEf1Yr0ne8dXUUFS/B6TzwE93devAYEiRXMoTWhuugk=
+  - secure: UQHebxXNxq3TSVhIAgQRGI25b6qyXKbzoBwIDWTTAAX3eKJfPkDkwo/2W/nLZs/3eWeYjCyEF+uw04+Jgz+iY61hy6aOFdNwvbh7/Xtxmoi0VRrselQ1zNqQVgw9dsHYIcz8DuC/9WgnqmkX3+D5/vlZfaQRAM+C5ovzbAPhJHE=
