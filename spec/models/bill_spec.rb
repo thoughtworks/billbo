@@ -72,6 +72,14 @@ describe Bill do
       invalid_bill.errors.should have_key(:due_date)
     end
 
+    it 'validates if total amount is a number' do
+      invalid_bill = FactoryGirl.build(:bill, total_amount: 'aaaa')
+      
+      invalid_bill.should_not be_valid
+      invalid_bill.errors.should have_key(:total_amount)
+      invalid_bill.errors[:total_amount][0].should match I18n.t(:not_a_number)
+    end
+
     it 'validates the size of the file' do
       invalid_bill = Bill.new({file: fake_file})
       

@@ -24,7 +24,7 @@ class Bill
 
   validate :file_size
 
-  validates :total_amount, presence: true, allow_blank: true, numericality: { greater_than: 0 } 
+  validates :total_amount, allow_blank: true, numericality: {greater_than: 0, message: I18n.t(:not_a_number)}
   validates :status, inclusion: { in: [:opened, :reserved, :waiting_confirmation, :closed] }
 
   belongs_to :ngo
