@@ -44,9 +44,7 @@ describe Bill do
 
   context :validation do
 
-    let(:fake_file){
-      double('file')
-    }
+    let(:fake_file) { double('file') }
 
     it 'validates that all fields are mandatory' do
       bill = Bill.new
@@ -82,6 +80,15 @@ describe Bill do
       
       invalid_bill.should_not be_valid
       invalid_bill.errors.should have_key(:file)
+      invalid_bill.errors[:file][0].should match I18n.t(:exceeds_file_size)
+    end
+
+    it 'validates the extension of the file' do
+      invalid_bill = Bill.new({file: FactoryGirl.build(:not_pdf_file)})
+      
+      invalid_bill.should_not be_valid
+      invalid_bill.errors.should have_key(:file)
+      invalid_bill.errors[:file][0].should match I18n.t('errors.messages.extension_white_list_error')
     end
 
   end

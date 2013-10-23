@@ -25,7 +25,7 @@ en:
         image: "The receipt"
   errors:
     messages:
-      extension_white_list_error: "need to has one of the following extensions: jpg, jpeg, gif or png"
+      extension_white_list_error: "need to be a .pdf"
   subtext: It's all about helping someone. But helping efficiently
   bills: Bills
   new_bill: New Bill
