@@ -20,6 +20,7 @@ pt:
         total_amount: "Valor total"
         status: "Status"
         filename: "Nome do arquivo"
+        file: Arquivo
       receipt:
         contributor_email: "E-mail"
         image: "O recibo"

@@ -19,6 +19,7 @@ en:
         total_amount: "Total amount"
         status: "Status"
         filename: "File name"
+        file: Arquivo
       receipt:
         contributor_email: "Email"
         image: "The receipt"

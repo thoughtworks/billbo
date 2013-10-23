@@ -89,7 +89,7 @@ class Bill
 
   def file_size
     size_in_mb = file.size.to_f / 2**20
-    self.errors.add(:file, "tamanho mtu grande maluco") if size_in_mb > FILE_SIZE_LIMIT
+    self.errors.add(:file, I18n.t(:exceeds_file_size)) if size_in_mb > FILE_SIZE_LIMIT
   end
 
 end
