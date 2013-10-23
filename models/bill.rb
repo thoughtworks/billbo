@@ -55,6 +55,14 @@ class Bill
     due_date.strftime "%d/%m/%Y"
   end
 
+  def image_url
+    default_image
+  end
+
+  def default_image
+    "/img/default_bill.png"
+  end
+
   private
 
   def add_reservation(reservation)
@@ -80,7 +88,7 @@ class Bill
   end
 
   def file_size
-    size_in_mb = self.file.size.to_f / 2**20
+    size_in_mb = file.size.to_f / 2**20
     self.errors.add(:file, "tamanho mtu grande maluco") if size_in_mb > FILE_SIZE_LIMIT
   end
 

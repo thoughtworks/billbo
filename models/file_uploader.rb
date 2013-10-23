@@ -3,8 +3,6 @@
 class FileUploader < CarrierWave::Uploader::GoogleDrive
   include CarrierWave::RMagick
 
-  FILE_SIZE_LIMIT = 5
-
   google_login ENV['billbo_login']
   google_password ENV['billbo_password']
 

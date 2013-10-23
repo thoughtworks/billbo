@@ -47,8 +47,7 @@ FactoryGirl.define do
 
   factory :bill_file, class: File do
     filename        { "bill.pdf" }
-    filepath        { pdf_path
-    }
+    filepath        { pdf_path }
     initialize_with { new(File.join(filepath, filename)) }
   end
 

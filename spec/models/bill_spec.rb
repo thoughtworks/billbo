@@ -43,6 +43,11 @@ describe Bill do
   end
 
   context :validation do
+
+    let(:fake_file){
+      double('file')
+    }
+
     it 'validates that all fields are mandatory' do
       bill = Bill.new
 
@@ -65,10 +70,20 @@ describe Bill do
 
     it 'validates due_date is a valid date' do
       invalid_bill = FactoryGirl.build(:bill, due_date: '30/07/2013')
-
       invalid_bill.should_not be_valid
       invalid_bill.errors.should have_key(:due_date)
     end
+
+    it 'validates the size of the file' do
+      invalid_bill = Bill.new({file: fake_file})
+      
+      ten_mb = 20**20
+      FileUploader.any_instance.stub_chain(:file, :size).and_return(ten_mb)
+      
+      invalid_bill.should_not be_valid
+      invalid_bill.errors.should have_key(:file)
+    end
+
   end
 
   context 'update reservation status' do
