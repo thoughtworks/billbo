@@ -228,26 +228,6 @@ describe 'Bills controller' do
         last_bill.total_amount.should == attrs_to_update[:total_amount].to_f
       end
 
-      xit 'recognizes invalid data (due_date) and redirect' do
-        attrs_to_update = FactoryGirl.attributes_for(:bill)
-        attrs_to_update[:due_date] = '32/12/2013'
-        post "/bill/update/#{bill.id}", attrs_to_update
-
-        last_response.should be_ok
-        last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should match /Complete com uma data válida/
-      end
-
-      it 'recognizes invalid data (due_date before today) and redirect' do
-        attrs_to_update = FactoryGirl.attributes_for(:bill)
-        attrs_to_update[:due_date] = '17/09/2013'
-        post "/bill/update/#{bill.id}", attrs_to_update
-
-        last_response.should be_ok
-        last_request.url.should == "#{homepage_url}bill/update/#{bill.id}"
-        last_response.body.should match /não pode ser anterior a hoje/
-      end
-
     end
   end
 
