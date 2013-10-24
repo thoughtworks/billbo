@@ -1,4 +1,8 @@
 $(function() {
+
+// Phone number
+  $("input[type=tel]").mask("+99 (99) 9999-9999");
+
 // Search
   $('#search_field').keyup(function() {
     var val = $(this).val().toLowerCase();

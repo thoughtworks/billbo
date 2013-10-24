@@ -1,10 +1,10 @@
 <div class="form-group">
   <label for="phone_number"><%= I18n.t(:phone_number) %></label>
-  <input name="phone_number" type="text" autofocus class="form-control">
+  <input name="phone_number" type='tel' pattern='[\+]\d{2}\s[\(]\d{2}[\)]\s\d{4}[\-]\d{4}' title='+99 (99) 9999-9999' autofocus class="form-control" required>
 </div>
 <div class="form-group">
   <label for="email"><%= I18n.t(:email) %></label>
-  <input name="email" type="text" required value="<%= session['email']%>" class="form-control">
+  <input name="email" type="email" required value="<%= session['email']%>" class="form-control" required>
 </div>
 <div class="text-right">
   <button type="submit" class="btn btn-success"><%= I18n.t(:reserve_bill) %></button>
