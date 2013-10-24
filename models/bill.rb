@@ -20,8 +20,6 @@ class Bill
 
   validates_presence_of :issued_by, :due_date, :total_amount
 
-  validate :date_is_before_today
-
   validate :file_size
 
   validates :total_amount, allow_blank: true, numericality: {greater_than: 0, message: I18n.t(:not_a_number)}
