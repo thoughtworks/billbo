@@ -6,7 +6,7 @@ Feature: Homepage
 	
 	Background:
 		Given that there are 3 NGOs subscribed with 0 bill on each one
-		And I am a contributor
+		And I am a contributor that is not logged in
 		When I open the homepage
 
 	Scenario: NGOs' links with the most important information (name, photo and philosophy)

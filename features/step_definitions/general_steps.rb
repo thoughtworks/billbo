@@ -10,12 +10,11 @@ Given(/^that there (?:is|are) (\d+) NGOs? subscribed with (\d+) bills?/) do |ngo
   end
 end
 
-Given(/^I am a contributor$/) do
-  
+Given(/^I am a contributor that is not logged in$/) do
 end
 
-Given(/^I am logged in$/) do
-  log_in('contributor@example.com')
+Given(/^I am a contributor that is logged in$/) do
+  log_in('mail@contributor.com')
 end
 
 Given(/^I (?:visit|open|access) a NGO's profile page$/) do

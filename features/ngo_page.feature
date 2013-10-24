@@ -6,7 +6,7 @@ Feature: NGO Page
 	
 	Background:
 		Given that there is 1 NGO subscribed with 5 bills on each one
-		And I am a contributor
+		And I am a contributor that is not logged in
 		When I access a NGO's profile page
 	
 	Scenario: NGO's information

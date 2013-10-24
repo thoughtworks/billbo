@@ -22,3 +22,15 @@ Then(/^no other user can reserve it$/) do
     page.should_not have_css "a.btn-reserve" #Didn't test due to a problem with the view
   end
 end
+
+When(/^I select an "(.*?)" bill$/) do |status|
+  within "ul#all_bills" do
+    @bill = first("div.#{status}-bill").find(:xpath, '../..')
+  end
+end
+
+Then(/^I can't see the button that allow me to reserve this bill$/) do
+  within @bill do
+    page.should_not have_css "a.btn-reserve"
+  end
+end
