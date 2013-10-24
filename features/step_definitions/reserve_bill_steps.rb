@@ -29,8 +29,6 @@ When(/^I select an "(.*?)" bill$/) do |status|
   end
 end
 
-Then(/^I can't see the button that allow me to reserve this bill$/) do
-  within @bill do
-    page.should_not have_css "a.btn-reserve"
-  end
+Then(/^I can't see the buttons that allow me to reserve bills$/) do
+  page.should_not have_css "a.btn-reserve"
 end

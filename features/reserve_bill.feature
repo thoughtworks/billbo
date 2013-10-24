@@ -14,8 +14,7 @@ Feature: Reserve bill
 		Then that bill becomes "reserved"
 		And no other user can reserve it
 		
-	Scenario: Not logged users can't see the button that allows them to reserve an opened bill
+	Scenario: Not logged users can't see the buttons that allow them to reserve opened bills
 		Given I am a contributor that is not logged in
 		When I access a NGO's profile page
-		And I select an "opened" bill
-		Then I can't see the button that allow me to reserve this bill
+		Then I can't see the buttons that allow me to reserve bills
