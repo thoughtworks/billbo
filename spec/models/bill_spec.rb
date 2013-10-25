@@ -66,12 +66,6 @@ describe Bill do
       bill.should be_valid
     end
 
-    it 'validates due_date is a valid date' do
-      invalid_bill = FactoryGirl.build(:bill, due_date: '30/07/2013')
-      invalid_bill.should_not be_valid
-      invalid_bill.errors.should have_key(:due_date)
-    end
-
     it 'validates if total amount is a number' do
       invalid_bill = FactoryGirl.build(:bill, total_amount: 'aaaa')
 

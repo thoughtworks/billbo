@@ -3,6 +3,7 @@ require "spec_helper"
 describe "Receipts controller" do
   include Rack::Test::Methods
   let(:bill) { FactoryGirl.create(:bill) }
+  let(:ngo) { FactoryGirl.create(:ngo) }
 
   describe "GET /bills/:bill_id/receipts/new" do
     it "renders view to upload a receipt" do
@@ -44,8 +45,11 @@ describe "Receipts controller" do
           last_response.status.should == 200
         end
 
-        it 'should redirect to share page' do
+        it "should redirect to NGO's share page" do
           upload_receipt!
+          get "/ngo/#{ngo.id}/share"
+
+          share_url = "http://example.org/ngo/#{ngo.id}/share"
           last_request.url.should == share_url
         end
 
