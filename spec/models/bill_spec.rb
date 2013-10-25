@@ -129,7 +129,7 @@ describe Bill do
       end
 
       context "when reservation is invalid" do
-        it "should change bill status to reserved" do
+        it "should not change bill status to reserved" do
           bill.status.should eq(:opened)
           bill.reservation.should be_nil
 
@@ -140,6 +140,7 @@ describe Bill do
         end
       end
     end
+
     context "when bill already reserved" do
       before do
         bill.save
