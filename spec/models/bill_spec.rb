@@ -74,7 +74,7 @@ describe Bill do
 
     it 'validates if total amount is a number' do
       invalid_bill = FactoryGirl.build(:bill, total_amount: 'aaaa')
-      
+
       invalid_bill.should_not be_valid
       invalid_bill.errors.should have_key(:total_amount)
       invalid_bill.errors[:total_amount][0].should match I18n.t(:not_a_number)
@@ -82,10 +82,10 @@ describe Bill do
 
     it 'validates the size of the file' do
       invalid_bill = Bill.new({file: fake_file})
-      
+
       ten_mb = 20**20
       FileUploader.any_instance.stub_chain(:file, :size).and_return(ten_mb)
-      
+
       invalid_bill.should_not be_valid
       invalid_bill.errors.should have_key(:file)
       invalid_bill.errors[:file][0].should match I18n.t(:exceeds_file_size)
@@ -93,7 +93,7 @@ describe Bill do
 
     it 'validates the extension of the file' do
       invalid_bill = Bill.new({file: FactoryGirl.build(:not_pdf_file)})
-      
+
       invalid_bill.should_not be_valid
       invalid_bill.errors.should have_key(:file)
       invalid_bill.errors[:file][0].should match I18n.t('errors.messages.extension_white_list_error')
@@ -104,7 +104,7 @@ describe Bill do
   context 'update reservation status' do
     it 'verify if the bill reservation status is updated back to opened' do
       bill.update_attributes(status: :reserved)
-      reservation = bill.build_reservation(:email => 'test@xxx.com', :phone_number => '22222222')
+      reservation = bill.build_reservation(:email => 'test@xxx.com', :phone_number => '(81) 9999-1111')
       reservation.date = DateTime.yesterday
       reservation.save!
 

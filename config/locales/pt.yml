@@ -12,6 +12,11 @@ pt:
         blank: "é um campo obrigatório"
         greater_than: "deve ser maior que zero"
         not_an_integer: "deve ser um valor inteiro"
+      models:
+        reservation:
+          attributes:
+            phone_number:
+              invalid: "inválido"
     attributes:
       bill:
         issued_by: "Empresa"
@@ -23,6 +28,9 @@ pt:
       receipt:
         contributor_email: "E-mail"
         image: "O recibo"
+      reservation:
+        email: "E-mail"
+        phone_number: "Telefone"
   errors:
     messages:
       extension_white_list_error: "deve ser .pdf"

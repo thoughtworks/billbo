@@ -14,6 +14,9 @@ class Reservation
   validates_presence_of :phone_number, :email
   validates :status, inclusion: { in: [:active, :inactive] }
 
+  validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
+  validates :phone_number, format: { with: /[\+]\d{2}\s[\(]\d{2}[\)]\s\d{4}[\-]\d{4}|[\(]\d{2}[\)]\s\d{4}[\-]\d{4}/ }
+
   belongs_to :bill
 
   scope :active_for, ->(bill) { where(bill_id: bill.id, status: :active) }
