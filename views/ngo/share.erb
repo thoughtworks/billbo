@@ -1,0 +1,48 @@
+<section id="site-phrase-wrapper" class="text-center">
+  <h3><%= I18n.t(:subtext) %></h3>
+</section>
+
+<section class="container">
+  <% flash.each do |key, value| %>
+    <div data-alert class="alert alert-<%= key == 'error' ? 'danger' : key %>">
+      <%= value %>
+    </div>
+  <% end %>
+  
+  <section>
+  
+    <div class="well well-lg mb100">
+      <%= I18n.t("thanks_for_sharing_phrase_one")%>
+      <strong><%= @ngo.name %></strong>
+    </div>
+    
+    <p class="text-center lead"><%= I18n.t("thanks_for_sharing_phrase_two")%></p>
+    
+    <div class="text-center mb40">
+      <a class="btn btn-primary" href="#"
+      onclick="window.open(
+              'https://www.facebook.com/sharer/sharer.php?u=billbo.aws.af.cm',
+              'facebook-share-dialog',
+              'width=626,height=436');
+              return false;">
+              <img src="/img/facebook.png" alt="Facebook Icon" height="24">
+              <span class="share-button"><%= I18n.t("facebook") %></span>
+      </a>
+      
+        <a class="btn btn-info tweet" target="_blank">
+          <img src="/img/twitter.png" alt="Twitter Icon" height="24">
+          <span class="share-button"><%= I18n.t("twitter")%></span>
+        </a>
+    </div>
+    
+    <div class="text-center">
+      <a class="skip-sharing" href="/ngo/<%= @ngo.id %>">
+        <%= I18n.t("skip_sharing")%>
+      </a>
+    </div>
+    
+  </section>
+
+</section>
+
+

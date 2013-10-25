@@ -51,9 +51,11 @@ pt:
   close_bill: Fechar
   bill_closed_ok: Conta fechada com sucesso
   bill_not_able_to_close: Essa conta deve estar "aguardando confirmação" para ser fechada
-  thanks_for_sharing_one: Obrigado por ajudar o Billbo em nossa missão!
-  thanks_for_sharing_two: Você gostaria de compartilhar com o mundo?
-  skip_sharing: Ignorar →
+  thanks_for_sharing_phrase_one: Obrigado por contribuir com a causa da ONG
+  thanks_for_sharing_phrase_two: Gostaria de divulgar esta ação para seus amigos?
+  twitter: Compartilhar no Twitter
+  facebook: Compartilhar no Facebook
+  skip_sharing: Voltar para página da ONG
   gt_value: Maior valor
   lt_value: Menor valor
   priority: Prioridade
