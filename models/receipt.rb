@@ -16,6 +16,7 @@ class Receipt
   belongs_to :bill
 
   validates_presence_of :contributor_email
+  validates :contributor_email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
 
   before_create :escape_fields
 
