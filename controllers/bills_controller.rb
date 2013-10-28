@@ -30,9 +30,10 @@ end
 
 post '/bill/reserve/:bill_id' do
   bill = Bill.find(params[:bill_id])
+  ngo = bill.ngo
 
   if bill.reserve(params)
-    redirect '/', :success => I18n.t(:reserve_bill_ok)
+    redirect "/ngo/#{ngo.id}", :success => I18n.t(:reserve_bill_ok)
   else
     redirect "/bill/reserve/#{params[:bill_id]}", :error => bill.errors.full_messages
   end
