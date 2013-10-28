@@ -41,7 +41,7 @@ FactoryGirl.define do
   end
 
   factory :reservation do
-    phone_number {"(81) 8855-5522"}
+    phone_number {"(81) 88555-552"}
     email {"john@gmail.com"}
   end
 
