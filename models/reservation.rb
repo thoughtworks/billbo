@@ -3,6 +3,7 @@
 class Reservation
   include Mongoid::Document
 
+  field :ddd, type: String
   field :phone_number, type: String
   field :email, type: String
   field :date, type: DateTime, default: -> { DateTime.now }
@@ -15,7 +16,9 @@ class Reservation
   validates :status, inclusion: { in: [:active, :inactive] }
 
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
-  validates :phone_number, :allow_blank => true, format: { with: /\d{2}\s[\(]\d{2}[\)]\s\d{5}[\-]\d{4}|\d{2}\s[\(]\d{2}[\)]\s\d{5}[\-]\d{3}|[\(]\d{2}[\)]\s\d{5}[\-]\d{4}|[\(]\d{2}[\)]\s\d{5}[\-]\d{3}/ }
+
+  validates_length_of :ddd, :minimum => 2, :maximum => 2, :allow_blank => true
+  validates_length_of :phone_number, :minimum => 8, :maximum => 10, :allow_blank => true
 
   belongs_to :bill
 

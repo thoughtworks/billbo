@@ -1,9 +1,9 @@
 <div>
   <label for="phone_number"><%= I18n.t(:phone_number) %></label>
 </div>
-<div class="form-group">
-  <input name="ddd_phone_number" type='text' placeholder='(99)' autofocus class="form-control tel ddd-phone-number">
-  <input name="phone_number" type='text' placeholder='9999-9999' autofocus class="form-control tel phone-number">
+<div class="form-group form-inline">
+  <input name="ddd_phone_number" type='text' placeholder='99' maxlength="2" autofocus class="form-control ddd-phone-number">
+  <input name="phone_number" type='text' placeholder='9999-9999' maxlength="10" autofocus class="form-control phone-number">
 </div>
 <div class="form-group">
   <label for="email"><%= I18n.t(:email) %></label>

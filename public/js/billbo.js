@@ -1,8 +1,5 @@
 $(function() {
 
-// Phone number
-  $(".tel").setMask( {mask: "99 (99) 99999-9999"} );
-
 // Search
   $('#search_field').keyup(function() {
     var val = $(this).val().toLowerCase();
