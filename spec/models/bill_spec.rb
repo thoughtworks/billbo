@@ -98,7 +98,7 @@ describe Bill do
   context 'update reservation status' do
     it 'verify if the bill reservation status is updated back to opened' do
       bill.update_attributes(status: :reserved)
-      reservation = bill.build_reservation(:email => 'test@xxx.com', :phone_number => '(81) 99999-1111')
+      reservation = bill.build_reservation(:email => 'test@xxx.com', :ddd => '81', :phone_number => '99999-1111')
       reservation.date = DateTime.yesterday
       reservation.save!
 
@@ -113,7 +113,7 @@ describe Bill do
     let(:reservation) { FactoryGirl.build(:reservation) }
 
     context "when no one already reserved it" do
-      let(:invalid_reservation) { { phone_number: nil, email: nil } }
+      let(:invalid_reservation) { { ddd: nil, phone_number: nil, email: nil } }
       before(:each) { bill.save }
 
       context "when reservation is valid" do

@@ -3,19 +3,22 @@
 class Reservation
   include Mongoid::Document
 
+  field :ddd, type: String
   field :phone_number, type: String
   field :email, type: String
   field :date, type: DateTime, default: -> { DateTime.now }
   field :status, type: Symbol, default: :active
 
-  attr_accessible :email, :phone_number
+  attr_accessible :email, :ddd, :phone_number
 
   before_create :escape_fields
   validates_presence_of :email
   validates :status, inclusion: { in: [:active, :inactive] }
 
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
-  validates :phone_number, :allow_blank => true, format: { with: /\d{2}\s[\(]\d{2}[\)]\s\d{5}[\-]\d{4}|\d{2}\s[\(]\d{2}[\)]\s\d{5}[\-]\d{3}|[\(]\d{2}[\)]\s\d{5}[\-]\d{4}|[\(]\d{2}[\)]\s\d{5}[\-]\d{3}/ }
+
+  validates_length_of :ddd, :minimum => 2, :maximum => 2, :allow_blank => true
+  validates_length_of :phone_number, :minimum => 8, :maximum => 10, :allow_blank => true
 
   belongs_to :bill
 
@@ -29,6 +32,7 @@ class Reservation
   scope :active_until_now, ->(bill) { where(bill_id: bill.id, status: :active, :date.lte => DateTime.now - 1) }
 
   def escape_fields
+    self.ddd = h self.ddd
     self.phone_number = h self.phone_number
     self.email = h self.email
   end

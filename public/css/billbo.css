@@ -264,3 +264,11 @@ footer {
   position: relative;
   top: 2px;
 }
+
+.ddd-phone-number {
+  width: 21%;
+}
+
+.phone-number {
+  width: 76%;
+}

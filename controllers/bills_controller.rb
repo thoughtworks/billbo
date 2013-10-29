@@ -25,6 +25,8 @@ end
 
 get '/bill/reserve/:bill_id' do
   @action = "/bill/reserve/#{params[:bill_id]}"
+  bill = Bill.find(params[:bill_id])
+  @ngo = bill.ngo
   erb :"bills/reserve"
 end
 

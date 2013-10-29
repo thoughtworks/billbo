@@ -1,7 +1,7 @@
 <section class="container main-content">
   <ol class="breadcrumb">
     <li>
-      <a href="/ngo/<%= params[:bill_id] %>">Contas da Ong</a>
+      <a href="/ngo/<%= @ngo.id %>"><%= @ngo.name %></a>
     </li>
     <li class="active">
       <%= I18n.t("reserve_bill") %>
