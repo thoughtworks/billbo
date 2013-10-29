@@ -1,7 +1,7 @@
 $(function() {
 
 // Phone number
-  $("input[type=tel]").mask("+99 (99) 9999-9999");
+  $(".tel").setMask( {mask: "99 (99) 99999-9999"} );
 
 // Search
   $('#search_field').keyup(function() {

@@ -11,11 +11,11 @@ class Reservation
   attr_accessible :email, :phone_number
 
   before_create :escape_fields
-  validates_presence_of :phone_number, :email
+  validates_presence_of :email
   validates :status, inclusion: { in: [:active, :inactive] }
 
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
-  validates :phone_number, format: { with: /[\+]\d{2}\s[\(]\d{2}[\)]\s\d{4}[\-]\d{4}|[\(]\d{2}[\)]\s\d{4}[\-]\d{4}/ }
+  validates :phone_number, :allow_blank => true, format: { with: /\d{2}\s[\(]\d{2}[\)]\s\d{5}[\-]\d{4}|\d{2}\s[\(]\d{2}[\)]\s\d{5}[\-]\d{3}|[\(]\d{2}[\)]\s\d{5}[\-]\d{4}|[\(]\d{2}[\)]\s\d{5}[\-]\d{3}/ }
 
   belongs_to :bill
 

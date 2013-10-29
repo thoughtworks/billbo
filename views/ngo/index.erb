@@ -1,111 +1,118 @@
-<section class="container main-content">
-  <section class="row mb40">
-    <div class="span3">
-      <img class="ngo_photo" src="<%= @ngo.photo_url %>" alt="ngo photo"/>
+<section class="container mt20">
+  <% flash.each do |key, value| %>
+    <div data-alert class="alert alert-<%= key == 'error' ? 'danger' : key %>">
+      <%= value %>
     </div>
-    <div class="span9">
-      <h1 class="ngo-name"> <%= @ngo.name %></h1>
-      <p><%= @ngo.description %></p>
+  <% end %>
 
-      <div class="contact-info">
-        <small id="contact">
-          <i class="glyphicon glyphicon-user"></i>
-          <%= @ngo.contact %>
-        </small>
-        <small id="phone">
-          <i class="glyphicon glyphicon-earphone"></i>
-          <%= @ngo.phone %>
-        </small>
-        <small id="website">
-          <i class="glyphicon glyphicon-globe"></i>
-          <a href="<%= @ngo.website %>" target="blank"><%= @ngo.website %></a>
-        </small>
-        <small id="email">
-          <i class="glyphicon glyphicon-envelope"></i>
-          <a href="mailto:<%= @ngo.email %>"><%= @ngo.email %></a>
-        </small>
+  <section class="container main-content">
+    <section class="row mb40">
+      <div class="span3">
+        <img class="ngo_photo" src="<%= @ngo.photo_url %>" alt="ngo photo"/>
       </div>
-    </div>
-  </section>
+      <div class="span9">
+        <h1 class="ngo-name"> <%= @ngo.name %></h1>
+        <p><%= @ngo.description %></p>
 
-
-  <fieldset >
-    <legend><%= I18n.t('our_bills') %></legend>
-
-    <section class="sort_list">
-      <div class="text-center">
-        <small class="text-muted">
-          <%= I18n.t('bills_ordered_by') %>
-        </small>
+        <div class="contact-info">
+          <small id="contact">
+            <i class="glyphicon glyphicon-user"></i>
+            <%= @ngo.contact %>
+          </small>
+          <small id="phone">
+            <i class="glyphicon glyphicon-earphone"></i>
+            <%= @ngo.phone %>
+          </small>
+          <small id="website">
+            <i class="glyphicon glyphicon-globe"></i>
+            <a href="<%= @ngo.website %>" target="blank"><%= @ngo.website %></a>
+          </small>
+          <small id="email">
+            <i class="glyphicon glyphicon-envelope"></i>
+            <a href="mailto:<%= @ngo.email %>"><%= @ngo.email %></a>
+          </small>
+        </div>
       </div>
-
-      <%= erb "ngo/_filters".to_sym %>
     </section>
 
-    <section>
-      <ul id="all_bills">
-        <% @ngo.bills.each do |bill| %>
-          <li class="bill" data-n="<%= bill.id %>">
-            <div class="thumbnail">
-              <div class="header alert <%= if bill.status == :opened then 'alert-success opened-bill' else 'alert-warning reserved-bill' end %>">
-                <%= if bill.status == :opened
-                      then I18n.t('bill_opened')
-                      else I18n.t('bill_reserved')
-                    end %>
-              </div>
 
-              <div class="caption">
-                <img src="<%= bill.image_url %>" alt="<%= bill.filename %>" class="mb20 th <%= bill.status %>">
+    <fieldset >
+      <legend><%= I18n.t('our_bills') %></legend>
 
-                <h3 class="mb10">
-                  <%= bill.issued_by %>
-                </h3>
-                <p>
+      <section class="sort_list">
+        <div class="text-center">
+          <small class="text-muted">
+            <%= I18n.t('bills_ordered_by') %>
+          </small>
+        </div>
 
-                  <span>
-                    <span class="iconize">R$</span>
-                    <span class="total_amount"><%= "%.2f" % bill.total_amount %></span>
-                  </span>
-                  <br>
-                  <span class="due_date" data-timestamp="<%= bill.due_date.to_time.to_i %>">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                    <%= I18n.l bill.due_date %>
-                  </span>
+        <%= erb "ngo/_filters".to_sym %>
+      </section>
 
-                </p>
+      <section>
+        <ul id="all_bills">
+          <% @ngo.bills.each do |bill| %>
+            <li class="bill" data-n="<%= bill.id %>">
+              <div class="thumbnail">
+                <div class="header alert <%= if bill.status == :opened then 'alert-success opened-bill' else 'alert-warning reserved-bill' end %>">
+                  <%= if bill.status == :opened
+                        then I18n.t('bill_opened')
+                        else I18n.t('bill_reserved')
+                      end %>
+                </div>
 
-                <% if logged_in %>
-                  <hr>
-                  <div class="text-center">
-                    <% if bill.status == :opened %>
-                      <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-reserve" data-id="<%= bill.id %>">
-                        <%= I18n.t('reserve_bill') %>
+                <div class="caption">
+                  <img src="<%= bill.image_url %>" alt="<%= bill.filename %>" class="mb20 th <%= bill.status %>">
+
+                  <h3 class="mb10">
+                    <%= bill.issued_by %>
+                  </h3>
+                  <p>
+
+                    <span>
+                      <span class="iconize">R$</span>
+                      <span class="total_amount"><%= "%.2f" % bill.total_amount %></span>
+                    </span>
+                    <br>
+                    <span class="due_date" data-timestamp="<%= bill.due_date.to_time.to_i %>">
+                      <i class="glyphicon glyphicon-calendar"></i>
+                      <%= I18n.l bill.due_date %>
+                    </span>
+
+                  </p>
+
+                  <% if logged_in %>
+                    <hr>
+                    <div class="text-center">
+                      <% if bill.status == :opened %>
+                        <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-reserve" data-id="<%= bill.id %>">
+                          <%= I18n.t('reserve_bill') %>
+                          <i class="glyphicon glyphicon-chevron-down"></i>
+                        </a>
+                      <% end %>
+                      <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-upload" data-id="<%= bill.id %>">
+                        <%= I18n.t('upload_receipt') %>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                       </a>
-                    <% end %>
-                    <a href="javascript:;" class="btn btn-default bg-gray btn-sm btn-upload" data-id="<%= bill.id %>">
-                      <%= I18n.t('upload_receipt') %>
-                      <i class="glyphicon glyphicon-chevron-down"></i>
-                    </a>
-                  </div>
+                    </div>
 
-                  <%= erb("ngo/_reserve_form".to_sym, locals: {bill: bill}) if bill.status == :opened %>
+                    <%= erb("ngo/_reserve_form".to_sym, locals: {bill: bill}) if bill.status == :opened %>
 
-                  <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group hidden-form" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
-                    <%= erb "receipts/_form_fields".to_sym %>
-                  </form>
+                    <form method="post" action="/bills/<%= bill.id %>/receipts/create" class="form-group hidden-form" id="form-upload-<%= bill.id %>" enctype="multipart/form-data">
+                      <%= erb "receipts/_form_fields".to_sym %>
+                    </form>
 
-                <% end %>
+                  <% end %>
 
-                <%= erb "ngo/_admin_actions".to_sym, locals: { bill: bill } if logged_as_admin? %>
+                  <%= erb "ngo/_admin_actions".to_sym, locals: { bill: bill } if logged_as_admin? %>
 
+                </div>
               </div>
-            </div>
 
-          </li>
-        <% end %>
-      </ul>
-    </section>
-  </fieldset>
-
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    </fieldset>
+  </section>
 </section>

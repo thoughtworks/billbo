@@ -135,11 +135,12 @@ describe 'Bills controller' do
             reservation.bill.should == bill
           end
 
-          it 'should redirect to homepage url on success reservation' do
+          it 'should redirect to NGO url on success reservation' do
             create_reservation!
 
+            ngo = bill.ngo
             last_response.should be_ok
-            last_request.url.should == homepage_url
+            last_request.url.should == "#{homepage_url}ngo/#{ngo.id}"
           end
 
           context "when bill already reserved" do

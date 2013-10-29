@@ -98,7 +98,7 @@ describe Bill do
   context 'update reservation status' do
     it 'verify if the bill reservation status is updated back to opened' do
       bill.update_attributes(status: :reserved)
-      reservation = bill.build_reservation(:email => 'test@xxx.com', :phone_number => '(81) 9999-1111')
+      reservation = bill.build_reservation(:email => 'test@xxx.com', :phone_number => '(81) 99999-1111')
       reservation.date = DateTime.yesterday
       reservation.save!
 
