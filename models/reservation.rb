@@ -17,7 +17,7 @@ class Reservation
 
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
 
-  validates_length_of :ddd, :is => 2, :allow_blank => true
+  validates_length_of :ddd, :minimum => 2, :maximum => 2, :allow_blank => true
   validates_length_of :phone_number, :minimum => 8, :maximum => 10, :allow_blank => true
 
   belongs_to :bill

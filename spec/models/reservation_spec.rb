@@ -21,7 +21,7 @@ describe Reservation do
     end
 
     context :ddd do
-      it { should validate_length_of(:ddd).is(2) }
+      it { should validate_length_of(:ddd).within(2..2) }
     end
   end
 
