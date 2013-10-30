@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-spec_commands = ["bundle exec rspec spec",
+spec_commands = ["export DISPLAY=:99.0",
+                 "sh -e /etc/init.d/xvfb start",
+                 "bundle exec rspec spec",
                  "cucumber --tags ~@wip --format progress --strict"]
 
 deploy_commands = ["git checkout master",
