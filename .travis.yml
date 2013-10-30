@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 1.9.3
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+script: ci/travis.rb
+env:
+  global:
+  - secure: X7TE4gia427eXgdDTzvAAhRuGLR2JIaFxAiYqx/6/1t69KExxe2NfgoHyDkiCrJYB4+0iiVTXRCE1xJU/LO5hFUrByRWx1qq80G5dSdm+fbEpmZ0fOXLfHQvytHXcGFSyP4aeWXG8YBWnzC/m+mD+2MH6SZxEFZco6HpRyDTSho=
+  - secure: VZXLbz011j9O0yMhNKHzucgwcT5mg4kdjEYgX9wYefn5xK34r6uWutfLDE5KtgXT69z+Zp3RS1bmIH7aoiEbYAxXsP1gLDxdXAJxtanHDDALABvlKIUJZVk5/O6aTG2WmEf1Yr0ne8dXUUFS/B6TzwE93devAYEiRXMoTWhuugk=
+  - secure: UQHebxXNxq3TSVhIAgQRGI25b6qyXKbzoBwIDWTTAAX3eKJfPkDkwo/2W/nLZs/3eWeYjCyEF+uw04+Jgz+iY61hy6aOFdNwvbh7/Xtxmoi0VRrselQ1zNqQVgw9dsHYIcz8DuC/9WgnqmkX3+D5/vlZfaQRAM+C5ovzbAPhJHE=
