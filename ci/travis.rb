@@ -11,7 +11,7 @@ deploy_commands = ["git checkout master",
 
 def run(commands)
   commands.each do |command|
-    system("export DISPLAY=:99.0 && bundle exec #{command}")
+    system(command)
     raise "#{command} failed!" unless $?.exitstatus == 0
   end
 end
