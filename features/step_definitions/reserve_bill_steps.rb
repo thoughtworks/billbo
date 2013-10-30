@@ -2,8 +2,9 @@
 
 When(/^I try to reserve an "(.*?)" bill$/) do |status|
   within "ul#all_bills" do
-    @bill = first("div.#{status}-bill").find(:xpath, '../..')
-    within @bill do
+    @bill_id = first("div.#{status}-bill").find(:xpath, '../..')["data-n"]
+    bill = first(:xpath,"//li[@class='bill' and @data-n='#{@bill_id}']")
+    within bill do
       find("a.btn-reserve").click
     end
   end
@@ -12,20 +13,16 @@ When(/^I try to reserve an "(.*?)" bill$/) do |status|
 end
 
 Then(/^that bill becomes "(.*?)"$/) do |status|
-  within @bill do
-    page.should have_css "div.#{status}-bill" #Didn't test due to a problem with the view
+  bill = first(:xpath,"//li[@class='bill' and @data-n='#{@bill_id}']")
+  within bill do
+    page.should have_css "div.#{status}-bill"
   end
 end
 
 Then(/^no other user can reserve it$/) do
-  within @bill do
-    page.should_not have_css "a.btn-reserve" #Didn't test due to a problem with the view
-  end
-end
-
-When(/^I select an "(.*?)" bill$/) do |status|
-  within "ul#all_bills" do
-    @bill = first("div.#{status}-bill").find(:xpath, '../..')
+  bill = first(:xpath,"//li[@class='bill' and @data-n='#{@bill_id}']")
+  within bill do
+    page.should_not have_css "a.btn-reserve"
   end
 end
 

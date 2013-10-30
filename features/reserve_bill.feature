@@ -6,7 +6,7 @@ Feature: Reserve bill
 	Background:
 		Given that there are 3 NGOs subscribed with 10 bills on each one
 
-	@wip @javascript
+	@javascript
 	Scenario: Only one contributor can reserve a bill at once
 		Given I am a contributor that is logged in
 		And I access a NGO's profile page
