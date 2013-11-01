@@ -20,17 +20,28 @@ FactoryGirl.define do
     ngo
   end
 
+  factory :reserved_bill, class: :bill do
+    issued_by     { generate(:issued_by) }
+    due_date      { generate(:due_date) }
+    total_amount  { generate(:total_amount) }
+    url           { generate(:url) }
+    filename      { generate(:filename) }
+    status        { "reserved" }
+    ngo
+  end
+
   factory :ngo do
     sequence(:name) { "NGO #{('A'..'Z').to_a.sample}" }
     description { "Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis." }
     phone { "+55 (81) 3034-5626"}
-    website { "my.com.br" }
+    website { "http://my.com.br" }
     email { "my@gmail.com" }
     contact { "Mary Lee" }
     photo_url {"https://docs.google.com/uc?&id=0Bya4RyzHQ9KxbUxPaGpkXzFMWG8"}
 
     ignore do
       bills_count 1
+      reserved_bills_count 0
     end
 
     factory :ngo_with_bills do
@@ -38,6 +49,14 @@ FactoryGirl.define do
         FactoryGirl.create_list(:bill, evaluator.bills_count, ngo: ngo)
       end
     end
+
+    factory :ngo_with_mixed_bills do
+      after(:create) do |ngo, evaluator|
+        FactoryGirl.create_list(:bill, evaluator.bills_count, ngo: ngo)
+        FactoryGirl.create_list(:reserved_bill, evaluator.reserved_bills_count, ngo: ngo)
+      end
+    end
+
   end
 
   factory :reservation do
@@ -68,7 +87,6 @@ FactoryGirl.define do
     url { generate :url }
     filename { generate :filename }
   end
-
 
 end
 
