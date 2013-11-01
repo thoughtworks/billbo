@@ -26,6 +26,20 @@ Then(/^no other user can reserve it$/) do
   end
 end
 
-Then(/^I can't see the buttons that allow me to reserve bills$/) do
-  page.should_not have_css "a.btn-reserve"
+Then(/^I can see the buttons that allow me to reserve "(.*?)" bills$/) do |bill_status|
+  all("div.#{bill_status}-bill").each do |element|
+    selected_bill = element.find(:xpath, '../..')
+    within selected_bill do
+      page.should have_css "a.btn-reserve"
+    end
+  end
+end
+
+Then(/^I can't see the buttons that allow me to reserve "(.*?)" bills$/) do |bill_status|
+  all("div.#{bill_status}-bill").each do |element|
+    selected_bill = element.find(:xpath, '../..')
+    within selected_bill do
+      page.should_not have_css "a.btn-reserve"
+    end
+  end
 end
