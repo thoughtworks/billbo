@@ -4,8 +4,13 @@ Feature: Upload receipt
 
 	Background:
 		Given that there are 2 NGOs subscribed with 3 bills on each one
-		
-	Scenario: Not logged users can't see the buttons that allow them to upload receipts
-		Given I am a contributor that is not logged in
+
+	Scenario Outline: Analyse whether the users can see the upload receipt buttons or not
+		Given I am a contributor that is <Status>
 		When I access a NGO's profile page
-		Then I can't see the buttons that allow me to upload receipts
+		Then I <Result> that allow me to upload receipts
+
+		Examples:
+			| Status        | Result                |
+			| logged in     | can see the buttons   |
+			| not logged in | can't see the buttons |
