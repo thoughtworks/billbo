@@ -10,6 +10,12 @@ Given(/^that there (?:is|are) (\d+) NGOs? subscribed with (\d+) bills?/) do |ngo
   end
 end
 
+Given(/^that there (?:is|are) (\d+) NGOs? subscribed with (\d+) opened bills and (\d+) reserved bills?/) do |ngos,opened_bills,reserved_bills|
+  ngos.to_i.times do
+    FactoryGirl.create(:ngo_with_mixed_bills, bills_count: opened_bills.to_i, reserved_bills_count: reserved_bills.to_i)
+  end
+end
+
 Given(/^I am a contributor that is not logged in$/) do
 end
 
