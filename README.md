@@ -27,7 +27,13 @@ Help an institution that helps other people. They got a lot of bills to pay and 
 - Run `$ rake test:functional` to run the functional tests
 - Run `$ rake test:all` to all tests
 
+### Running functional tests on headless mode
+
+- Just set and environment variable HEADLESS to true
+
+
 ### If you want to deploy on the cloud
+
 
 I'd recommend using <a href="http://appfog.com" target="_blank">AppFog</a>
 
